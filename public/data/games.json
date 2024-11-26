@@ -1,0 +1,7080 @@
+[
+  {
+    "gameName": "Fall Guys",
+    "platform": "PS4",
+    "trophyTypeCounts": { "bronze": 21, "silver": 8, "gold": 5, "platinum": 1 },
+    "earnedCounts": { "bronze": 8, "silver": 0, "gold": 0, "platinum": 0 },
+    "trophyList": [
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "platinum",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.5,
+        "trophyName": "Ultimate Fall Guy",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.3,
+        "trophyName": "Fall Guy Fashionista",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 18.3,
+        "trophyName": "Shopping Spree",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-06-23T05:01:12Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 77.9,
+        "trophyName": "Snowflake",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 28.4,
+        "trophyName": "Bargain Bucket",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 14.9,
+        "trophyName": "Mad Trendy",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Rare",
+        "earnedRate": 26.2,
+        "trophyName": "Head Turner",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 36.7,
+        "trophyName": "Catwalk Model",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 58.3,
+        "trophyName": "One to Watch",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 30.7,
+        "trophyName": "Household Name",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Rare",
+        "earnedRate": 17.2,
+        "trophyName": "Star of the Show",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 61.4,
+        "trophyName": "Flawless Victory",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 49.7,
+        "trophyName": "Ahead of the Pack",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 20.4,
+        "trophyName": "Quite Dashing",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Very Rare",
+        "earnedRate": 5.2,
+        "trophyName": "Track Star",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.9,
+        "trophyName": "Infallible",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-06-23T05:33:54Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 49.5,
+        "trophyName": "Victory!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 16.4,
+        "trophyName": "Top Tier",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 6.4,
+        "trophyName": "Golden Guy",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-06-23T05:26:43Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 83,
+        "trophyName": "One small trip",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 35.2,
+        "trophyName": "One giant leap",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Very Rare",
+        "earnedRate": 10,
+        "trophyName": "Veteran Status",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 11.9,
+        "trophyName": "Show Off",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 17.2,
+        "trophyName": "Squad Goals",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 32.2,
+        "trophyName": "Down to the Wire",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-06-23T05:33:51Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 67.5,
+        "trophyName": "Face First",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 20.3,
+        "trophyName": "Low Baller",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6.4,
+        "trophyName": "Big Tease",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-06-26T06:47:40Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 60.7,
+        "trophyName": "Fall Bae",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 22,
+        "trophyName": "Big Air",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 59.2,
+        "trophyName": "Stumble Chums",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-06-26T05:43:44Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 72.8,
+        "trophyName": "Style Points",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-06-26T05:43:49Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 75.9,
+        "trophyName": "Big Bully",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-06-26T05:44:04Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 69.6,
+        "trophyName": "Troublemaker",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 72.5,
+        "trophyName": "Fall Throttle",
+        "groupId": "default"
+      }
+    ]
+  },
+  {
+    "gameName": "Call of Duty®: Black Ops III",
+    "platform": "PS4",
+    "trophyTypeCounts": {
+      "bronze": 72,
+      "silver": 25,
+      "gold": 1,
+      "platinum": 1
+    },
+    "earnedCounts": { "bronze": 5, "silver": 0, "gold": 0, "platinum": 0 },
+    "trophyList": [
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "platinum",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Platinum",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 10.4,
+        "trophyName": "Disavowed",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 7.2,
+        "trophyName": "A Second Chance",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 5.5,
+        "trophyName": "High Tide",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.2,
+        "trophyName": "Belly of the Beast",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.5,
+        "trophyName": "Into the Abyss",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.3,
+        "trophyName": "Blood for Blood",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.1,
+        "trophyName": "Friends and Foes",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.7,
+        "trophyName": "Understanding Madness",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.6,
+        "trophyName": "Fly, Swim, Shoot",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.3,
+        "trophyName": "200 Stories of Sheer Adventure!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.5,
+        "trophyName": "Full Circle",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.2,
+        "trophyName": "No One Will Believe You",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.5,
+        "trophyName": "Another Side of the Story",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.3,
+        "trophyName": "Hold Still!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.3,
+        "trophyName": "Rolling Heavy",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 10.3,
+        "trophyName": "Sting like a Talon",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-28T18:15:38Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 30.5,
+        "trophyName": "Decimator",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.2,
+        "trophyName": "Curator",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Gun Game",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Personal Decorator",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.1,
+        "trophyName": "Doing Camo Right",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.6,
+        "trophyName": "Maximum Firepower",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2,
+        "trophyName": "Walking Encyclopedia",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 11.1,
+        "trophyName": "Crackshot",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-28T17:57:20Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 48.3,
+        "trophyName": "Can't Hide",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.5,
+        "trophyName": "Biff! Bap! KaPow!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.2,
+        "trophyName": "Inertial Distance",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.4,
+        "trophyName": "For real this time",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-28T18:32:31Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 32.1,
+        "trophyName": "Foe To Friend",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.5,
+        "trophyName": "Throwing Flak",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.7,
+        "trophyName": "Unlocked Potential",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 16.1,
+        "trophyName": "Lock, Stock, And Then Some",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.8,
+        "trophyName": "In Their Sleep",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-28T19:50:52Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 21.2,
+        "trophyName": "Silverback In Black",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 18.3,
+        "trophyName": "The Beginning of the End",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 18.3,
+        "trophyName": "From the Shadows",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.6,
+        "trophyName": "Not out of Gobblegum!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.5,
+        "trophyName": "Sorry, we’re DEAD",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.5,
+        "trophyName": "Strike!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.7,
+        "trophyName": "Beat CoP",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.1,
+        "trophyName": "The Spider and the Fly",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8,
+        "trophyName": "Margwa Party",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.4,
+        "trophyName": "Parasite-Seeing",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-05-29T09:53:52Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 33.5,
+        "trophyName": "Welcome to the Club",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 14.8,
+        "trophyName": "Battle Tested",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 10,
+        "trophyName": "Tactical Specialist",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 30.9,
+        "trophyName": "Deadly Specialist",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.5,
+        "trophyName": "My Brother’s Keeper",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.7,
+        "trophyName": "Der Meisterbogenschuetze",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.4,
+        "trophyName": "None Left Standing",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 6,
+        "trophyName": "Take a Bow",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.2,
+        "trophyName": "Not Big Enough",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1,
+        "trophyName": "Time to Slam",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "Quick Off Your Feet",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.1,
+        "trophyName": "That’s a lot of Jigawatts!",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.3,
+        "trophyName": "Fling Me to the Moon",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.3,
+        "trophyName": "Death From Above",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1,
+        "trophyName": "Seeds of Doubt ",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.9,
+        "trophyName": "Sanguine Serum",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.5,
+        "trophyName": "Herbal Remedy",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.5,
+        "trophyName": "The Ultimate Sacrifice ",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.8,
+        "trophyName": "Crop Duster",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.3,
+        "trophyName": "Iron Lung",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.2,
+        "trophyName": "In the Belly of the Beast",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.4,
+        "trophyName": "Assault With Battery",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Web of Defeat",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.8,
+        "trophyName": "One Too Many",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.6,
+        "trophyName": "Love And War",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.6,
+        "trophyName": "Wield a Fist of Iron",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Time Attack",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.7,
+        "trophyName": "Taking Flight",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.8,
+        "trophyName": "Not One Inch",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.4,
+        "trophyName": "Viktorious Revenge",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.5,
+        "trophyName": "Vaporeyezed",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.4,
+        "trophyName": "Fire Mission",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.2,
+        "trophyName": "Blown Away",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Zombiepult",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.8,
+        "trophyName": "For The Good Of All",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.7,
+        "trophyName": "A Better Tomorrow",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.9,
+        "trophyName": "Pack-A-Punch-ectomy",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Keep Close",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.2,
+        "trophyName": "Death Ray",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.2,
+        "trophyName": "The Grand Tour",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.9,
+        "trophyName": "Wardrobe Change",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.2,
+        "trophyName": "Wonderful",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.2,
+        "trophyName": "Controlled Chaos",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "It's a Trap!",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.9,
+        "trophyName": "The Eagle has Landers",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.8,
+        "trophyName": "Chimp on the Barbie",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Time Travel Will Tell",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Small Consolation ",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.8,
+        "trophyName": "Cryogenic Slumber Party",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Ground Control",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1,
+        "trophyName": "Little Lost Girl",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.6,
+        "trophyName": "Overachiever",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.4,
+        "trophyName": "I said we’re CLOSED!",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Acted Alone",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2,
+        "trophyName": "I’ve seen some things…",
+        "groupId": "005"
+      }
+    ]
+  },
+  {
+    "gameName": "Rocket League®",
+    "platform": "PS4",
+    "trophyTypeCounts": {
+      "bronze": 51,
+      "silver": 24,
+      "gold": 12,
+      "platinum": 1
+    },
+    "earnedCounts": { "bronze": 15, "silver": 2, "gold": 1, "platinum": 0 },
+    "trophyList": [
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "platinum",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.6,
+        "trophyName": "Virtuoso",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Rare",
+        "earnedRate": 23.8,
+        "trophyName": "Stocked",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Rare",
+        "earnedRate": 26.9,
+        "trophyName": "Far, Far Away...",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Rare",
+        "earnedRate": 36.3,
+        "trophyName": "Super Victorious",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Very Rare",
+        "earnedRate": 7.9,
+        "trophyName": "Champion",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Rare",
+        "earnedRate": 24.7,
+        "trophyName": "The Streak",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Common",
+        "earnedRate": 50.5,
+        "trophyName": "Helen's Pride",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 37.6,
+        "trophyName": "Car Collector",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 37.6,
+        "trophyName": "Drops in the Bucket",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 9.4,
+        "trophyName": "Rocketeer",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-05-01T04:36:55Z",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 43.6,
+        "trophyName": "Grease Monkey",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Common",
+        "earnedRate": 50.2,
+        "trophyName": "Pitch Veteran",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 33.5,
+        "trophyName": "Rider's Block",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 39.3,
+        "trophyName": "Break Shot",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-05-01T01:01:23Z",
+        "type": "silver",
+        "rarity": "Common",
+        "earnedRate": 63.4,
+        "trophyName": "Turbocharger",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 16.7,
+        "trophyName": "Drill Sergeant",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-30T09:42:03Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 59.9,
+        "trophyName": "Minute to Win it",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-05-01T02:54:32Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 53.5,
+        "trophyName": "Speed Demon",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-30T09:31:25Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 69.6,
+        "trophyName": "Pick-Me Up",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-05-01T01:00:10Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 62.5,
+        "trophyName": "Wall-Crawler",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 12,
+        "trophyName": "Team Player",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 16.3,
+        "trophyName": "SARPBC Forever",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 13.7,
+        "trophyName": "Feather in Your Recap",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-30T09:58:34Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 62.9,
+        "trophyName": "Winner",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 68.8,
+        "trophyName": "Clean Sheet",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-30T09:06:28Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 73.5,
+        "trophyName": "Triple Threat",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-30T10:38:32Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 58.7,
+        "trophyName": "Double Up",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 47.9,
+        "trophyName": "Singles Club",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 21.4,
+        "trophyName": "Perfect Start",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-30T09:17:27Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 48.9,
+        "trophyName": "Still A Show-Off",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-30T22:05:51Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 32.9,
+        "trophyName": "Know the Drill",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-30T10:32:39Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 58.8,
+        "trophyName": "Traveler",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-30T09:08:58Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 70.9,
+        "trophyName": "Tinkerer",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-30T09:02:30Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 83.7,
+        "trophyName": "First-Timer",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 47.3,
+        "trophyName": "Barras Bravas",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 40.6,
+        "trophyName": "Friendly",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 27.3,
+        "trophyName": "Sky High",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 38.4,
+        "trophyName": "All Fours",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 47.5,
+        "trophyName": "Gladiator",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.9,
+        "trophyName": "Winning is Winning",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 10.2,
+        "trophyName": "An Inch and 6.2 Miles",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 18.8,
+        "trophyName": "Ride or Die",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.9,
+        "trophyName": "Don't Look Back",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 23.7,
+        "trophyName": "Family, Not Friends",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 16.4,
+        "trophyName": "Drift King",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.5,
+        "trophyName": "Survival of the Fittest",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 18.5,
+        "trophyName": "Heartbreaker",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 11.1,
+        "trophyName": "Natural Progression",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 25.1,
+        "trophyName": "Throwback",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8,
+        "trophyName": "Hot Shot, Part Two",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Very Rare",
+        "earnedRate": 8.3,
+        "trophyName": "My World is Fire",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.9,
+        "trophyName": "Spectacular",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "Savage",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6.4,
+        "trophyName": "Ruthless",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 13.5,
+        "trophyName": "Psycho-Master Exploder",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 12.3,
+        "trophyName": "Mad Scientist",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 15.1,
+        "trophyName": "Icing the Cake",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9,
+        "trophyName": "Left Wing, Right Wing",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.8,
+        "trophyName": "Fast Break",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7,
+        "trophyName": "Buzzer Beater",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 29.3,
+        "trophyName": "Budding Artist",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 13.7,
+        "trophyName": "One Better",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 9.3,
+        "trophyName": "Certifiable",
+        "groupId": "005"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-30T09:06:28Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 41.3,
+        "trophyName": "GG",
+        "groupId": "006"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-05-01T00:57:59Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 41.9,
+        "trophyName": "Trifecta",
+        "groupId": "006"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 28.8,
+        "trophyName": "Infinite Power!",
+        "groupId": "006"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 11.3,
+        "trophyName": "Stopped Cold",
+        "groupId": "006"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.3,
+        "trophyName": "Sea Turtle",
+        "groupId": "006"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 7.9,
+        "trophyName": "Get Up, Mr. Bubbles!",
+        "groupId": "006"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Rare",
+        "earnedRate": 20.2,
+        "trophyName": "Rocket Repleter",
+        "groupId": "006"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.2,
+        "trophyName": "Registered Voter",
+        "groupId": "007"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.1,
+        "trophyName": "Metaverse",
+        "groupId": "007"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 24.4,
+        "trophyName": "Brave the Elements",
+        "groupId": "007"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 11.1,
+        "trophyName": "Damage Control",
+        "groupId": "007"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.1,
+        "trophyName": "Full Course",
+        "groupId": "007"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Very Rare",
+        "earnedRate": 7.5,
+        "trophyName": "Buckminster x10",
+        "groupId": "007"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 26,
+        "trophyName": "Storm Trooper",
+        "groupId": "008"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-30T09:20:21Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 52.7,
+        "trophyName": "Good Times",
+        "groupId": "008"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 11.9,
+        "trophyName": "New Profile Who This?",
+        "groupId": "008"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 17.9,
+        "trophyName": "Trade Secret",
+        "groupId": "008"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 26.3,
+        "trophyName": "Rank Up",
+        "groupId": "008"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-05-01T00:56:42Z",
+        "type": "gold",
+        "rarity": "Rare",
+        "earnedRate": 39.5,
+        "trophyName": "Coming On Strong",
+        "groupId": "008"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 18.1,
+        "trophyName": "Join the Club!",
+        "groupId": "009"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 15.6,
+        "trophyName": "Together is Better",
+        "groupId": "009"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 16.1,
+        "trophyName": "New Challenger",
+        "groupId": "009"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 13.3,
+        "trophyName": "People Person",
+        "groupId": "009"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 13,
+        "trophyName": "Squad Goals",
+        "groupId": "009"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Very Rare",
+        "earnedRate": 11.1,
+        "trophyName": "Best of the Bunch",
+        "groupId": "009"
+      }
+    ]
+  },
+  {
+    "gameName": "Apex Legends Trophies",
+    "platform": "PS4",
+    "trophyTypeCounts": { "bronze": 9, "silver": 2, "gold": 1, "platinum": 0 },
+    "earnedCounts": { "bronze": 8, "silver": 1, "gold": 0, "platinum": 0 },
+    "trophyList": [
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-29T10:54:01Z",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 20.5,
+        "trophyName": "The Player",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-20T11:57:49Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 26.2,
+        "trophyName": "Decked Out",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-05T09:35:58Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 49.9,
+        "trophyName": "Team Player",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-05T10:33:41Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 39.6,
+        "trophyName": "Fully Kitted",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-05T09:07:48Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 55.8,
+        "trophyName": "Jumpmaster",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 12.3,
+        "trophyName": "Well-Rounded",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-05T09:32:13Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 44,
+        "trophyName": "Kill Leader",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-25T00:04:03Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 38.7,
+        "trophyName": "Apex Assault",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 22.6,
+        "trophyName": "Apex Controller",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-05T09:46:23Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 31.4,
+        "trophyName": "Apex Support",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-21T16:50:06Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 34.8,
+        "trophyName": "Apex Recon",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Very Rare",
+        "earnedRate": 11.9,
+        "trophyName": "Apex Legend",
+        "groupId": "default"
+      }
+    ]
+  },
+  {
+    "gameName": "Overwatch 2",
+    "platform": "PS4",
+    "trophyTypeCounts": { "bronze": 85, "silver": 5, "gold": 1, "platinum": 1 },
+    "earnedCounts": { "bronze": 0, "silver": 0, "gold": 0, "platinum": 0 },
+    "trophyList": [
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "platinum",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Overwatch Platinum Trophy",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 48.4,
+        "trophyName": "The Friend Zone",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Rare",
+        "earnedRate": 22.5,
+        "trophyName": "Centenary",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 52.8,
+        "trophyName": "Level 10",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 37,
+        "trophyName": "Level 25",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 26.8,
+        "trophyName": "Level 50",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9.2,
+        "trophyName": "The Path Is Closed",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 15.4,
+        "trophyName": "Survival Expert",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 60.1,
+        "trophyName": "Decorated",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 38,
+        "trophyName": "Blackjack",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9.5,
+        "trophyName": "Decked Out",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 14.8,
+        "trophyName": "Die Die Die... Die",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.3,
+        "trophyName": "Slice and Dice",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9.7,
+        "trophyName": "Their Own Worst Enemy",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.4,
+        "trophyName": "Waste Not, Want Not",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 15.9,
+        "trophyName": "Gotcha",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6.8,
+        "trophyName": "It's High Noon",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 10.5,
+        "trophyName": "Death From Above",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 18.9,
+        "trophyName": "Clearing the Area",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 13.2,
+        "trophyName": "Rocket Man",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 15.4,
+        "trophyName": "Target Rich Environment",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 13.6,
+        "trophyName": "Total Recall",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.5,
+        "trophyName": "Special Delivery",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 17.8,
+        "trophyName": "Triple Threat",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.9,
+        "trophyName": "Incoming!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 10.4,
+        "trophyName": "Simple Geometry",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9,
+        "trophyName": "The Dragon Is Sated",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 11.8,
+        "trophyName": "Mine Like a Steel Trap",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.1,
+        "trophyName": "Roadkill",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 19.7,
+        "trophyName": "Ice Blocked",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 13.7,
+        "trophyName": "Cold Snap",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.6,
+        "trophyName": "Raid Wipe",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.3,
+        "trophyName": "Armor Up!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 12.8,
+        "trophyName": "Did That Sting?",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.6,
+        "trophyName": "Smooth as Silk",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 16.8,
+        "trophyName": "Shot Down",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 13.3,
+        "trophyName": "Game Over",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 11.4,
+        "trophyName": "I Am Your Shield",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8,
+        "trophyName": "Storm, Earth and Fire",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 26.5,
+        "trophyName": "Giving You the Hook",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6,
+        "trophyName": "Hog Wild",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.9,
+        "trophyName": "Mine Sweeper",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.1,
+        "trophyName": "Anger Management",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 10.6,
+        "trophyName": "Power Overwhelming",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 14.2,
+        "trophyName": "The Power of Attraction",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 25.4,
+        "trophyName": "Undying",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.4,
+        "trophyName": "The Floor Is Lava",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 18.5,
+        "trophyName": "Supersonic",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 25.2,
+        "trophyName": "Group Health Plan",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6.9,
+        "trophyName": "Huge Rez",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 23.4,
+        "trophyName": "The Car Wash",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.6,
+        "trophyName": "Huge Success",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.3,
+        "trophyName": "Rapid Discord",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.7,
+        "trophyName": "The Iris Embraces You",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 33.3,
+        "trophyName": "Lockdown",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 24.8,
+        "trophyName": "Double Cap",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 19.3,
+        "trophyName": "Escort Duty",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Common",
+        "earnedRate": 59.7,
+        "trophyName": "Can't Touch This",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Common",
+        "earnedRate": 53.5,
+        "trophyName": "Shutout",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 45.2,
+        "trophyName": "World Traveler",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 16.7,
+        "trophyName": "Naptime",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.2,
+        "trophyName": "Enabler",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6.6,
+        "trophyName": "Hack the Planet",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9.2,
+        "trophyName": "Power Outage",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.7,
+        "trophyName": "Terrable Terrable Damage",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 10.2,
+        "trophyName": "Tip Of The Spear",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3,
+        "trophyName": "Power Punch",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.4,
+        "trophyName": "Cratered",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.3,
+        "trophyName": "Antipode",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 16.5,
+        "trophyName": "Simple Trigonometry",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9.5,
+        "trophyName": "Grounded",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 12.2,
+        "trophyName": "Excuse Me",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.5,
+        "trophyName": "Adaptation",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9,
+        "trophyName": "Strike",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.8,
+        "trophyName": "Served Up",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.4,
+        "trophyName": "Short Fuse",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Window of Opportunity",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.1,
+        "trophyName": "Stand By Me",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.6,
+        "trophyName": "Event Horizon",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 11.7,
+        "trophyName": "Conservation of Energy",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.9,
+        "trophyName": "Focused",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "Adaptability",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.4,
+        "trophyName": "Purified",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.2,
+        "trophyName": "Yokai",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.2,
+        "trophyName": "On The Move",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.3,
+        "trophyName": "Taking Charge",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.2,
+        "trophyName": "Adrenaline Junkie",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.6,
+        "trophyName": "Coup De Gracie",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.3,
+        "trophyName": "Any Means",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.2,
+        "trophyName": "Incomparable Pain",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.2,
+        "trophyName": "Giving Tree",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.6,
+        "trophyName": "Life Weaving",
+        "groupId": "003"
+      }
+    ]
+  },
+  {
+    "gameName": "Mortal Kombat X Trophies",
+    "platform": "PS4",
+    "trophyTypeCounts": { "bronze": 67, "silver": 5, "gold": 1, "platinum": 1 },
+    "earnedCounts": { "bronze": 15, "silver": 0, "gold": 0, "platinum": 0 },
+    "trophyList": [
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "platinum",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Platinum Trophy",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 33,
+        "trophyName": "Tower Kompetitor",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.5,
+        "trophyName": "Tower Warrior",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.2,
+        "trophyName": "Tower Master",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.3,
+        "trophyName": "Tower God",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.3,
+        "trophyName": "Challenge Accepted",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.1,
+        "trophyName": "BUDDY!!!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-03-30T07:41:22Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 59,
+        "trophyName": "Pledge Yourself",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.1,
+        "trophyName": "Faction Champion",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "No Loyalty",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1,
+        "trophyName": "Jump Ship",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 33.8,
+        "trophyName": "Time Out",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.8,
+        "trophyName": "Keep it Secret",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-03-30T08:14:55Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 17.2,
+        "trophyName": "Statistical Advantage",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-03-31T04:45:59Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 44.1,
+        "trophyName": "Moving Up",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.3,
+        "trophyName": "Elder God",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-03-31T07:36:58Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 24.2,
+        "trophyName": "A New Beginning",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-01T09:30:04Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 18.6,
+        "trophyName": "There is a Ruler",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 13.6,
+        "trophyName": "Inner Strength",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "Return Kustomer",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.7,
+        "trophyName": "Royalty",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.5,
+        "trophyName": "Good to be King",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4,
+        "trophyName": "Giving Respect",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Respected Fighter",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-03-30T08:05:36Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 25.7,
+        "trophyName": "Terrifying Encounter",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.9,
+        "trophyName": "I'm number 1",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Juggernaut",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "A Kontender",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.9,
+        "trophyName": "Bill of Goods",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.2,
+        "trophyName": "Dropping Fools",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 32,
+        "trophyName": "Hit the Dojo",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.9,
+        "trophyName": "Unstoppable",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6.1,
+        "trophyName": "That's How You Do It",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Knockout",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-03-30T22:15:59Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 63.7,
+        "trophyName": "FINISH HIM",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1,
+        "trophyName": "Bloody Good Time",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.1,
+        "trophyName": "Straight Power",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-01T09:52:11Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 36.7,
+        "trophyName": "Brutal End",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.7,
+        "trophyName": "Dark Future",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6.6,
+        "trophyName": "Need a Doctor",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.3,
+        "trophyName": "Master",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.7,
+        "trophyName": "Only a Real Master",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.7,
+        "trophyName": "Well Rounded",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-03-30T22:23:07Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 63.8,
+        "trophyName": "It's a Gusher",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-03-31T06:08:15Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 49.1,
+        "trophyName": "Blanche Advantage",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.2,
+        "trophyName": "Hara Kiri",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-02T03:52:10Z",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9.3,
+        "trophyName": "Back It Up",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-02T03:52:11Z",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.9,
+        "trophyName": "Real Icon",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-02T03:52:11Z",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.8,
+        "trophyName": "So Bored",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-03-30T22:26:23Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 75.6,
+        "trophyName": "Jumping Bean",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.9,
+        "trophyName": "Trolling",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "All the Pieces",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2023-04-02T05:53:32Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 18.3,
+        "trophyName": "Luck be a Lady",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "The Kollector",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.5,
+        "trophyName": "Disco",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.6,
+        "trophyName": "Almighty",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6.8,
+        "trophyName": "Not Dead Yet",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 5,
+        "trophyName": "Stay Back",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "DIE WILL YOU",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.3,
+        "trophyName": "INVASION",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6.3,
+        "trophyName": "Can't Stop This",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.2,
+        "trophyName": "Where It All Started",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "The Kraken",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.2,
+        "trophyName": "What Doesn't Kill You Makes You Still Alive",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Lands-Down",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.9,
+        "trophyName": "Fox Finish",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Dance The Night Away",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.2,
+        "trophyName": "Throwback",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.2,
+        "trophyName": "Getting Tipsy",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.3,
+        "trophyName": "Hug It Out",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.4,
+        "trophyName": "The Grinder",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.5,
+        "trophyName": "Robots Rule",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4,
+        "trophyName": "Going the Distance",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.4,
+        "trophyName": "All I Do Is Win",
+        "groupId": "001"
+      }
+    ]
+  },
+  {
+    "gameName": "Minecraft: PlayStation®4 Edition",
+    "platform": "PS4",
+    "trophyTypeCounts": {
+      "bronze": 79,
+      "silver": 36,
+      "gold": 11,
+      "platinum": 1
+    },
+    "earnedCounts": { "bronze": 36, "silver": 4, "gold": 1, "platinum": 0 },
+    "trophyList": [
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "platinum",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.4,
+        "trophyName": "Awarded all trophies",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-23T13:35:52Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 83.6,
+        "trophyName": "Taking Inventory",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-23T20:45:02Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 79.2,
+        "trophyName": "Getting Wood",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-23T13:36:00Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 71.4,
+        "trophyName": "Benchmarking",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-23T13:36:05Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 68.9,
+        "trophyName": "Time to Mine!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-25T17:39:57Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 58.4,
+        "trophyName": "Hot Topic",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-25T18:03:16Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 51.1,
+        "trophyName": "Acquire Hardware",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-26T11:06:47Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 44.1,
+        "trophyName": "Time to Farm!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-23T20:45:13Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 37.3,
+        "trophyName": "Bake Bread",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.9,
+        "trophyName": "The Lie",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-23T13:36:11Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 64.4,
+        "trophyName": "Getting an Upgrade",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-31T00:46:03Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 28,
+        "trophyName": "Delicious Fish",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.9,
+        "trophyName": "On A Rail",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-24T12:34:43Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 65.8,
+        "trophyName": "Time to Strike!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-24T12:41:27Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 69,
+        "trophyName": "Monster Hunter",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-24T09:50:25Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 66.4,
+        "trophyName": "Cow Tipper",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.8,
+        "trophyName": "When Pigs Fly",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 13.5,
+        "trophyName": "Leader Of The Pack",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-26T11:06:47Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 46.8,
+        "trophyName": "MOAR Tools",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-12T07:32:48Z",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.3,
+        "trophyName": "Dispense With This",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-29T07:24:02Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 20.2,
+        "trophyName": "Into The Nether",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.1,
+        "trophyName": "Sniper Duel",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-26T10:24:56Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 37.8,
+        "trophyName": "DIAMONDS!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 9.5,
+        "trophyName": "Return to Sender",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-21T02:02:49Z",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 13.3,
+        "trophyName": "Into Fire",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-30T10:00:05Z",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 12.1,
+        "trophyName": "Local Brewery",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-21T04:58:21Z",
+        "type": "gold",
+        "rarity": "Very Rare",
+        "earnedRate": 7.9,
+        "trophyName": "The End?",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-21T05:06:25Z",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7,
+        "trophyName": "The End.",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-29T10:44:38Z",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 14.5,
+        "trophyName": "Enchanter",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-15T15:07:52Z",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.8,
+        "trophyName": "Overkill",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-06T06:27:19Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 16.7,
+        "trophyName": "Librarian",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-24T12:30:32Z",
+        "type": "silver",
+        "rarity": "Common",
+        "earnedRate": 51.3,
+        "trophyName": "Adventuring Time",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-28T21:19:49Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 22.6,
+        "trophyName": "Repopulation",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 20,
+        "trophyName": "Diamonds to you!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-28T14:32:24Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 45.1,
+        "trophyName": "Pork Chop",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-11T02:34:12Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 34,
+        "trophyName": "Passing the Time",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-29T15:39:49Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 16.2,
+        "trophyName": "Archer",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 13.6,
+        "trophyName": "The Haggler",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 12.9,
+        "trophyName": "Pot Planter",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-04T10:27:57Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 24.6,
+        "trophyName": "It’s a Sign!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.7,
+        "trophyName": "Iron Belly",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-28T14:54:57Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 22.4,
+        "trophyName": "Have a Shearful Day",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.3,
+        "trophyName": "Rainbow Collection",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-21T01:43:45Z",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9.6,
+        "trophyName": "Stayin’ Frosty",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9.3,
+        "trophyName": "Chestful of Cobblestone",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-25T17:59:08Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 20,
+        "trophyName": "Renewable Energy",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 15.2,
+        "trophyName": "Music to my Ears",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.6,
+        "trophyName": "Body Guard",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-26T10:52:30Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 37,
+        "trophyName": "Iron Man",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Very Rare",
+        "earnedRate": 5.1,
+        "trophyName": "Zombie Doctor",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.6,
+        "trophyName": "Lion Hunter",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.6,
+        "trophyName": "The Beginning?",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.2,
+        "trophyName": "The Beginning.",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "Beaconator",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.8,
+        "trophyName": "Overpowered",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.6,
+        "trophyName": "Tie Dye Outfit",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.2,
+        "trophyName": "Trampoline",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 6.2,
+        "trophyName": "The Student...",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "...has become the Master",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.9,
+        "trophyName": "'Tis but a scratch",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.2,
+        "trophyName": "Cupid",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.4,
+        "trophyName": "Hunger Pain",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Mine!",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.7,
+        "trophyName": "The End... Again...",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.9,
+        "trophyName": "You Need a Mint",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.7,
+        "trophyName": "Super Sonic",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.1,
+        "trophyName": "Dry Spell",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 6,
+        "trophyName": "Free Diver",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.3,
+        "trophyName": "Super Fuel",
+        "groupId": "004"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-04T02:27:46Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 31.3,
+        "trophyName": "Saddle Up",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.7,
+        "trophyName": "Taste of Your Own Medicine",
+        "groupId": "004"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-21T05:19:57Z",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 7.5,
+        "trophyName": "Beam Me Up",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.6,
+        "trophyName": "Map Room",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.5,
+        "trophyName": "Camouflage",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1,
+        "trophyName": "Back from the Dead",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "S-No Throw",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.2,
+        "trophyName": "Snow Storm",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.9,
+        "trophyName": "Hotshot",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.2,
+        "trophyName": "Snowplough",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.7,
+        "trophyName": "Overlord",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.4,
+        "trophyName": "Underdog",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.2,
+        "trophyName": "The Deep End",
+        "groupId": "006"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.6,
+        "trophyName": "Great View From Up Here",
+        "groupId": "006"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 17.7,
+        "trophyName": "Change of Sheets",
+        "groupId": "006"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 8.6,
+        "trophyName": "Cheating Death",
+        "groupId": "006"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.2,
+        "trophyName": "So I got that going for me...",
+        "groupId": "006"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.4,
+        "trophyName": "Let it go!",
+        "groupId": "006"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 9.8,
+        "trophyName": "Feeling ill",
+        "groupId": "006"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.1,
+        "trophyName": "One Pickle, Two Pickle, Sea Pickle, Four",
+        "groupId": "007"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.8,
+        "trophyName": "Alternative Fuel",
+        "groupId": "007"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2,
+        "trophyName": "Moskstraumen",
+        "groupId": "007"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.2,
+        "trophyName": "Castaway",
+        "groupId": "007"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.7,
+        "trophyName": "Sleep with the Fishes",
+        "groupId": "007"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.2,
+        "trophyName": "Echolocation",
+        "groupId": "007"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3,
+        "trophyName": "Do a Barrel Roll",
+        "groupId": "008"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.9,
+        "trophyName": "Marine Biologist",
+        "groupId": "008"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 26.3,
+        "trophyName": "Ahoy!",
+        "groupId": "008"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.8,
+        "trophyName": "Top of the World",
+        "groupId": "008"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.4,
+        "trophyName": "Where Have You Been?",
+        "groupId": "008"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.2,
+        "trophyName": "Zoologist",
+        "groupId": "008"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 22.6,
+        "trophyName": "Atlantis?",
+        "groupId": "009"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-21T06:26:38Z",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.3,
+        "trophyName": "Organizational Wizard",
+        "groupId": "009"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.5,
+        "trophyName": "Fruit on the Loom",
+        "groupId": "009"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.1,
+        "trophyName": "Plethora of Cats",
+        "groupId": "009"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Rare",
+        "earnedRate": 19.2,
+        "trophyName": "Sail the 7 Seas",
+        "groupId": "009"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Very Rare",
+        "earnedRate": 6.2,
+        "trophyName": "Buy Low, Sell High",
+        "groupId": "010"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-18T13:45:46Z",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8,
+        "trophyName": "Disenchanted",
+        "groupId": "010"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-18T15:16:11Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 18.9,
+        "trophyName": "I've got a bad feeling about this",
+        "groupId": "010"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 9.7,
+        "trophyName": "Kill the Beast!",
+        "groupId": "010"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 17.5,
+        "trophyName": "Sound the Alarm!",
+        "groupId": "010"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 11.6,
+        "trophyName": "We're being attacked!",
+        "groupId": "010"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.6,
+        "trophyName": "Freight Station",
+        "groupId": "011"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.3,
+        "trophyName": "Smelt Everything!",
+        "groupId": "011"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.5,
+        "trophyName": "Inception",
+        "groupId": "011"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.8,
+        "trophyName": "Artificial Selection",
+        "groupId": "011"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7,
+        "trophyName": "Rabbit Season",
+        "groupId": "011"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.7,
+        "trophyName": "Treasure Hunter",
+        "groupId": "011"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 6.9,
+        "trophyName": "Me Gold!",
+        "groupId": "011"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.7,
+        "trophyName": "Master Trader",
+        "groupId": "011"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.4,
+        "trophyName": "Time for Stew",
+        "groupId": "012"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.1,
+        "trophyName": "Bee Our Guest",
+        "groupId": "012"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.2,
+        "trophyName": "Total Beelocation",
+        "groupId": "012"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.9,
+        "trophyName": "Sticky Situation",
+        "groupId": "012"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.2,
+        "trophyName": "Bullseye",
+        "groupId": "013"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4,
+        "trophyName": "Cover me in debris",
+        "groupId": "013"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-11T14:16:02Z",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.7,
+        "trophyName": "Oooh, shiny!",
+        "groupId": "013"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-11-23T05:52:47Z",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 11.5,
+        "trophyName": "Hot tourist destination",
+        "groupId": "013"
+      }
+    ]
+  },
+  {
+    "gameName": "Assassin's Creed® Unity",
+    "platform": "PS4",
+    "trophyTypeCounts": {
+      "bronze": 41,
+      "silver": 14,
+      "gold": 2,
+      "platinum": 1
+    },
+    "earnedCounts": { "bronze": 6, "silver": 1, "gold": 0, "platinum": 0 },
+    "trophyList": [
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "platinum",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.1,
+        "trophyName": "Master Assassin",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-07T10:19:28Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 92.6,
+        "trophyName": "A Long Time Ago",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-08T07:04:54Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 78.6,
+        "trophyName": "Youth In Versailles",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-08T08:21:33Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 71.7,
+        "trophyName": "Rebirth",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-09T04:17:29Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 62.2,
+        "trophyName": "First Blood",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-10T05:04:16Z",
+        "type": "silver",
+        "rarity": "Common",
+        "earnedRate": 53.3,
+        "trophyName": "La Cour des Miracles",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 46.2,
+        "trophyName": "The Root Of Evil",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 43.3,
+        "trophyName": "Secret Meeting",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 41.2,
+        "trophyName": "Mystery Solved",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 39.4,
+        "trophyName": "Bloody Trail",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 36.7,
+        "trophyName": "Road To Starvation",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 33.7,
+        "trophyName": "Love And Duty",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 33.1,
+        "trophyName": "Down But Not Out",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Rare",
+        "earnedRate": 29.3,
+        "trophyName": "Curtain Call",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 5,
+        "trophyName": "No Man's Land",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9.5,
+        "trophyName": "Needs More Data",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.8,
+        "trophyName": "Thawed",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 55.2,
+        "trophyName": "Blade In The Crowd",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.2,
+        "trophyName": "I Want It All",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-10T21:39:38Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 45.8,
+        "trophyName": "Networking",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 5.5,
+        "trophyName": "An Old Internet Meme",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-10T04:38:22Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 56.3,
+        "trophyName": "Falling From The Sky",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.2,
+        "trophyName": "From the Past",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 38,
+        "trophyName": "The Baguette Boyband",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.7,
+        "trophyName": "Know-It-All",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 19.6,
+        "trophyName": "Gentleman Cambrioleur",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.1,
+        "trophyName": "Curiosity",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.6,
+        "trophyName": "Visited Once",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 40.5,
+        "trophyName": "Business and Pleasure",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.2,
+        "trophyName": "And Stay Down!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 17.4,
+        "trophyName": "Panoramic View",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 58.4,
+        "trophyName": "Help Me!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 32.7,
+        "trophyName": "Hand of Justice",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.7,
+        "trophyName": "Ransacking Versailles",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 20.4,
+        "trophyName": "Accurate Prediction",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.4,
+        "trophyName": "Tricolore",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.8,
+        "trophyName": "Don't Need It",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.5,
+        "trophyName": "Patron of the Arts",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.7,
+        "trophyName": "Share the Wealth",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 18.2,
+        "trophyName": "Safe and Secure",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9.2,
+        "trophyName": "Room With A View",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 18,
+        "trophyName": "Poked!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 23.9,
+        "trophyName": "Chopped!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 26.5,
+        "trophyName": "Master Architect",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 29.6,
+        "trophyName": "Guillotined",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 19,
+        "trophyName": "Never Say Die",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.1,
+        "trophyName": "Merciful Killer",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 11.3,
+        "trophyName": "Choreography",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 54.8,
+        "trophyName": "The Bells! The Bells!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 42,
+        "trophyName": "Must've Left it Open",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.7,
+        "trophyName": "I Got Skills",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Very Rare",
+        "earnedRate": 11.3,
+        "trophyName": "Piece Of Eden",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.9,
+        "trophyName": "Defender Of Franciade",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.3,
+        "trophyName": "Liberator",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 13.5,
+        "trophyName": "Reign Of Terror",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 12.7,
+        "trophyName": "Freedom Fighter",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1,
+        "trophyName": "Hydrogen Bonded",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.5,
+        "trophyName": "Fraternité!",
+        "groupId": "001"
+      }
+    ]
+  },
+  {
+    "gameName": "Assassin's Creed® III Remastered",
+    "platform": "PS4",
+    "trophyTypeCounts": { "bronze": 46, "silver": 7, "gold": 1, "platinum": 1 },
+    "earnedCounts": { "bronze": 8, "silver": 0, "gold": 0, "platinum": 0 },
+    "trophyList": [
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "platinum",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.6,
+        "trophyName": "Master Assassin",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-06T22:55:40Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 90,
+        "trophyName": "Rude Awakening",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 26.9,
+        "trophyName": "Daddy Dearest",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-08T04:19:36Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 39.9,
+        "trophyName": "Criss Cross",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 21.5,
+        "trophyName": "The End is Nigh",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 18.6,
+        "trophyName": "No Good Deed Goes Unpunished",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-07T02:20:35Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 54.8,
+        "trophyName": "Mystery Guest",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-07T15:04:51Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 46.8,
+        "trophyName": "How D'ya Like Them Apples",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-08T01:57:21Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 44.3,
+        "trophyName": "Heroes are Born",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-08T04:10:39Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 40.4,
+        "trophyName": "The Day the Templars Cried",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 32.9,
+        "trophyName": "Tea is for Englishmen",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 28.8,
+        "trophyName": "The Whites of Their Eyes",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 27.2,
+        "trophyName": "Caged Wolf",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 24,
+        "trophyName": "Two if by Sea",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 21.7,
+        "trophyName": "Grim Expectations",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 20.5,
+        "trophyName": "Difficult End",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Rare",
+        "earnedRate": 19.7,
+        "trophyName": "The Sum of Truth",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.9,
+        "trophyName": "Perfectionist",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.4,
+        "trophyName": "An Extraordinary Man",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.2,
+        "trophyName": "Patent Not Pending",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-08T04:32:45Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 32.4,
+        "trophyName": "House Party",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 10.7,
+        "trophyName": "A Complete Set",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.1,
+        "trophyName": "Original Gamer",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 11.3,
+        "trophyName": "Bring Down the House",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.1,
+        "trophyName": "Kidd Gloves",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 7.1,
+        "trophyName": "All Washed Up",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.3,
+        "trophyName": "Entrepreneur, not Pirate!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 12.1,
+        "trophyName": "Tumblehome",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-09-08T02:00:24Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 43.7,
+        "trophyName": "By Invitation Only",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.8,
+        "trophyName": "In Good Standing",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 12.3,
+        "trophyName": "Man of the People",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.4,
+        "trophyName": "Monopoly Man",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9.2,
+        "trophyName": "Blowing in the Wind",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "Completionist",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 11.1,
+        "trophyName": "Multitasking",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.6,
+        "trophyName": "Spit Roast",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 20.1,
+        "trophyName": "Circus Act",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.8,
+        "trophyName": "Predator",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.8,
+        "trophyName": "Prince of Thieves",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 26.7,
+        "trophyName": "Whit's fur ye'll no go by ye!",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8,
+        "trophyName": "Jager Bomb",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6,
+        "trophyName": "Magna cum Laude",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.4,
+        "trophyName": "Coureur des Bois",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 15.8,
+        "trophyName": "Eye Witness",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 15.4,
+        "trophyName": "Fin",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9.7,
+        "trophyName": "Uniquely Familiar",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.6,
+        "trophyName": "A Wolf in Sheep's Clothing",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.9,
+        "trophyName": "Frontiersman",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.9,
+        "trophyName": "West Point Payback",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.9,
+        "trophyName": "Frequent Flyer",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "The New Tea Party",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.3,
+        "trophyName": "Blindsided",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 5,
+        "trophyName": "Aftershock",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "If I Can Make It There",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 5,
+        "trophyName": "First in the Hearts",
+        "groupId": "default"
+      }
+    ]
+  },
+  {
+    "gameName": "Assassin's Creed® Liberation Remastered",
+    "platform": "PS4",
+    "trophyTypeCounts": { "bronze": 8, "silver": 18, "gold": 4, "platinum": 1 },
+    "earnedCounts": { "bronze": 0, "silver": 0, "gold": 0, "platinum": 0 },
+    "trophyList": [
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "platinum",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.5,
+        "trophyName": "Julius Caesar",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 9.7,
+        "trophyName": "Sequence 1",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 6.8,
+        "trophyName": "Sequence 2",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 5.2,
+        "trophyName": "Sequence 4",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.5,
+        "trophyName": "Sequence 6",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.4,
+        "trophyName": "Sequence 8",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.2,
+        "trophyName": "Complete Aveline's Story",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.1,
+        "trophyName": "The Truth",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.7,
+        "trophyName": "Complete all Mission Constraints",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "Human Shields",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.7,
+        "trophyName": "Collector",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.7,
+        "trophyName": "Persona Collector",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.4,
+        "trophyName": "Machete",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.1,
+        "trophyName": "Survivor",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.1,
+        "trophyName": "Shipmaster",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9.2,
+        "trophyName": "Swamp Queen",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.6,
+        "trophyName": "Death by Poison",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "Secret Lives",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "Umbrella",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 11.2,
+        "trophyName": "My 1st Dressing Chamber",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.2,
+        "trophyName": "Buy All Dressing Chambers",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2,
+        "trophyName": "Thief",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.6,
+        "trophyName": "Hangman",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "One Watch is not Enough",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.9,
+        "trophyName": "Poison",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.7,
+        "trophyName": "RHP Master",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.5,
+        "trophyName": "Business Woman",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.3,
+        "trophyName": "Ship Crew",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "Bayou Fever",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.4,
+        "trophyName": "Liberation",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.1,
+        "trophyName": "Predator",
+        "groupId": "default"
+      }
+    ]
+  },
+  {
+    "gameName": "Warframe",
+    "platform": "PS4",
+    "trophyTypeCounts": {
+      "bronze": 54,
+      "silver": 22,
+      "gold": 8,
+      "platinum": 0
+    },
+    "earnedCounts": { "bronze": 5, "silver": 0, "gold": 0, "platinum": 0 },
+    "trophyList": [
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 12.1,
+        "trophyName": "Sentinel Proficiency",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 15.4,
+        "trophyName": "Blade Proficiency",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.9,
+        "trophyName": "Brawler Proficiency",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6.3,
+        "trophyName": "Dagger Proficiency",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.7,
+        "trophyName": "Heavy Weapon Proficiency",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 10,
+        "trophyName": "Pole Weapon Proficiency",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 8.4,
+        "trophyName": "Shuriken Proficiency",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 13.4,
+        "trophyName": "Pistol Proficiency",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 13.4,
+        "trophyName": "Rifle Proficiency",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 10.1,
+        "trophyName": "Bow Proficiency",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.1,
+        "trophyName": "Shotgun Proficiency",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 13.8,
+        "trophyName": "Healer",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 35.8,
+        "trophyName": "Our Tools Shape Us",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-24T19:21:51Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 73.6,
+        "trophyName": "No Longer a Rookie",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-25T10:22:11Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 52.7,
+        "trophyName": "Special Agent",
+        "groupId": "default"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Rare",
+        "earnedRate": 19.7,
+        "trophyName": "It Keeps Getting Better",
+        "groupId": "default"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-28T11:28:15Z",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 38.7,
+        "trophyName": "Angel of Death",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 5.4,
+        "trophyName": "Field Medic",
+        "groupId": "001"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-25T10:27:11Z",
+        "type": "bronze",
+        "rarity": "Common",
+        "earnedRate": 50.3,
+        "trophyName": "Weaponsmith",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 11.2,
+        "trophyName": "Scientist",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 14.6,
+        "trophyName": "Merchant",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 20.3,
+        "trophyName": "Where Credit is Due",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 16.4,
+        "trophyName": "Saviour of Mercury",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 7.5,
+        "trophyName": "Saviour of Uranus",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 22.2,
+        "trophyName": "Saviour of Venus",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.8,
+        "trophyName": "Saviour of Sedna",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.9,
+        "trophyName": "The Sword Alone",
+        "groupId": "006"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 11.3,
+        "trophyName": "Shield Saver",
+        "groupId": "006"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4,
+        "trophyName": "Mercenary",
+        "groupId": "007"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 11.3,
+        "trophyName": "Dark Sectors",
+        "groupId": "007"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 7.6,
+        "trophyName": "Without a Hitch",
+        "groupId": "008"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 17.1,
+        "trophyName": "Control Freak",
+        "groupId": "008"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4,
+        "trophyName": "Alchemist",
+        "groupId": "009"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Rare",
+        "earnedRate": 23.6,
+        "trophyName": "No Witness",
+        "groupId": "009"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 5.9,
+        "trophyName": "Tenno of all trades",
+        "groupId": "010"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Rare",
+        "earnedRate": 15.9,
+        "trophyName": "Hats off to you!",
+        "groupId": "010"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6.4,
+        "trophyName": "Polarize This",
+        "groupId": "011"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 5.9,
+        "trophyName": "Polarize That",
+        "groupId": "011"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 11.1,
+        "trophyName": "Ride the Wave",
+        "groupId": "012"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6.8,
+        "trophyName": "The Camera Adds 10 Pounds",
+        "groupId": "012"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Very Rare",
+        "earnedRate": 9.7,
+        "trophyName": "Into the Void",
+        "groupId": "013"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.4,
+        "trophyName": "What A Nightmare",
+        "groupId": "014"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.6,
+        "trophyName": "Hive Five!",
+        "groupId": "014"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Very Rare",
+        "earnedRate": 9.7,
+        "trophyName": "Tenno and Hooch",
+        "groupId": "015"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 13.4,
+        "trophyName": "Egg Timer",
+        "groupId": "015"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.8,
+        "trophyName": "The 8-fold Path",
+        "groupId": "016"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 10,
+        "trophyName": "KABOOM!",
+        "groupId": "016"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.2,
+        "trophyName": "This Is What You Are",
+        "groupId": "017"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.8,
+        "trophyName": "Liberator",
+        "groupId": "017"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Very Rare",
+        "earnedRate": 5.4,
+        "trophyName": "The War Within",
+        "groupId": "018"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.2,
+        "trophyName": "Octavia's Anthem",
+        "groupId": "019"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.2,
+        "trophyName": "Chains of Harrow",
+        "groupId": "020"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Very Rare",
+        "earnedRate": 9.9,
+        "trophyName": "Saya's Vigil",
+        "groupId": "021"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.1,
+        "trophyName": "From on High",
+        "groupId": "021"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.6,
+        "trophyName": "Forged in Fire",
+        "groupId": "021"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.6,
+        "trophyName": "By the Dawn's Early Light",
+        "groupId": "021"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.7,
+        "trophyName": "Tomb Looter",
+        "groupId": "021"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.9,
+        "trophyName": "Sleds of Sunshine",
+        "groupId": "021"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.8,
+        "trophyName": "The Great Eidolon Hunt",
+        "groupId": "021"
+      },
+      {
+        "isEarned": true,
+        "earnedOn": "2022-08-27T11:32:13Z",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 9.8,
+        "trophyName": "Sharp Shooter",
+        "groupId": "022"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.3,
+        "trophyName": "Marathoner",
+        "groupId": "022"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 4.1,
+        "trophyName": "Champion of the People",
+        "groupId": "022"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.7,
+        "trophyName": "Pest Control",
+        "groupId": "023"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6.6,
+        "trophyName": "Master Angler",
+        "groupId": "023"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.1,
+        "trophyName": "Plains Prospector",
+        "groupId": "023"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.9,
+        "trophyName": "The Sacrifice",
+        "groupId": "024"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.9,
+        "trophyName": "Joyride",
+        "groupId": "025"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Ride or Die",
+        "groupId": "026"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.9,
+        "trophyName": "Money Can't Buy Happiness",
+        "groupId": "026"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.5,
+        "trophyName": "Moa Money, Moa Problems",
+        "groupId": "026"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Race Ace",
+        "groupId": "026"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "K-Driven",
+        "groupId": "026"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Vallis Spelunker",
+        "groupId": "026"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6.7,
+        "trophyName": "Hang Tenno",
+        "groupId": "026"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.1,
+        "trophyName": "Airborne Exterminator",
+        "groupId": "027"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.5,
+        "trophyName": "Bounty Hunter",
+        "groupId": "027"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.4,
+        "trophyName": "Stay Frosty",
+        "groupId": "028"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.8,
+        "trophyName": "Animal Lover",
+        "groupId": "028"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.8,
+        "trophyName": "The Abyss Gazes Into You",
+        "groupId": "029"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.3,
+        "trophyName": "That Which Does Not Kill Us",
+        "groupId": "029"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 6.2,
+        "trophyName": "Gonna Need a Bigger Boat",
+        "groupId": "030"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 2.5,
+        "trophyName": "Some Assembly Required",
+        "groupId": "030"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.8,
+        "trophyName": "I'm the Captain Now",
+        "groupId": "031"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.9,
+        "trophyName": "From out of the Sun",
+        "groupId": "031"
+      }
+    ]
+  },
+  {
+    "gameName": "Minecraft: PlayStation®4 Edition Set 2",
+    "platform": "PS4",
+    "trophyTypeCounts": { "bronze": 10, "silver": 4, "gold": 4, "platinum": 0 },
+    "earnedCounts": { "bronze": 0, "silver": 0, "gold": 0, "platinum": 0 },
+    "trophyList": [
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.9,
+        "trophyName": "Whatever floats your Goat",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.2,
+        "trophyName": "Wax on, Wax off",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1.6,
+        "trophyName": "The Healing Power of Friendship!",
+        "groupId": "001"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.4,
+        "trophyName": "Caves and Cliffs",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.2,
+        "trophyName": "Star trader",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.5,
+        "trophyName": "Sound of Music",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.2,
+        "trophyName": "Feels Like Home",
+        "groupId": "002"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 3.7,
+        "trophyName": "It Spreads",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.2,
+        "trophyName": "Birthday Song",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.3,
+        "trophyName": "With Our Powers Combined!",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Very Rare",
+        "earnedRate": 5.9,
+        "trophyName": "Sneak 100",
+        "groupId": "003"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.3,
+        "trophyName": "Planting the past",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.3,
+        "trophyName": "Careful restoration",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "gold",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Smithing with style",
+        "groupId": "004"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 1,
+        "trophyName": "Revaulting",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Crafters Crafting Crafters",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "bronze",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.4,
+        "trophyName": "Who Needs Rockets?",
+        "groupId": "005"
+      },
+      {
+        "isEarned": false,
+        "earnedOn": "unearned",
+        "type": "silver",
+        "rarity": "Ultra Rare",
+        "earnedRate": 0.1,
+        "trophyName": "Over-Overkill",
+        "groupId": "005"
+      }
+    ]
+  }
+]
