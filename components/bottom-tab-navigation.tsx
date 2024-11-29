@@ -14,16 +14,41 @@ export default function BottomTabNavigation() {
   const [activeTab, setActiveTab] = useState("miner");
 
   const tabs = [
-    { id: "miner", icon: Home, label: "Miner" },
-    { id: "rank", icon: Gamepad2, label: "Rank" },
-    { id: "play", icon: Trophy, label: "Play" },
-    { id: "task", icon: Wallet, label: "Task" },
-    { id: "invite", icon: Wallet, label: "Invite" },
+    {
+      id: "miner",
+      label: "Miner",
+      icon: "/navigation-logos/miner-active.svg",
+      inactive_icon: "/navigation-logos/miner-inactive.svg",
+    },
+    {
+      id: "rank",
+      label: "Rank",
+      icon: "/navigation-logos/rank-active.svg",
+      inactive_icon: "/navigation-logos/rank-inactive.svg",
+    },
+    {
+      id: "play",
+      label: "Play",
+      icon: "/navigation-logos/play-active.svg",
+      inactive_icon: "/navigation-logos/play-inactive.svg",
+    },
+    {
+      id: "task",
+      label: "Task",
+      icon: "/navigation-logos/task-active.svg",
+      inactive_icon: "/navigation-logos/task-inactive.svg",
+    },
+    {
+      id: "invite",
+      label: "Invite",
+      icon: "/navigation-logos/invite-active.svg",
+      inactive_icon: "/navigation-logos/invite-inactive.svg",
+    },
   ];
 
   return (
-    <div className="min-h-screen pb-16 flex flex-col">
-      <main className="flex-1 overflow-y-auto ">
+    <div className="min-h-screen pb-24 flex flex-col">
+      <main className="flex-1 overflow-y-auto">
         {activeTab === "miner" && (
           <div className="space-y-4">
             <Miner />
@@ -57,8 +82,9 @@ export default function BottomTabNavigation() {
           </div>
         )}
       </main>
-      <nav className="bg-[#1E2E3D] fixed bottom-0 left-0 right-0 bg-background border-t border-border">
-        <ul className="flex justify-around items-center h-16">
+
+      <nav className="bg-[#1E2E3D] fixed bottom-0 left-0 right-0 border-border">
+        <ul className="flex justify-around items-center h-24">
           {tabs.map((tab) => (
             <li key={tab.id} className="flex-1">
               <button
@@ -71,13 +97,22 @@ export default function BottomTabNavigation() {
                 )}
               >
                 <Image
-                  src="/placeholder.svg?height=24&width=24"
-                  width={24}
-                  height={24}
+                  src={activeTab == tab.id ? tab.icon : tab.inactive_icon}
+                  width={50}
+                  height={50}
                   alt="Miner"
                   className="mb-1"
                 />
-                <span className="text-yellow-400 text-xs">{tab.label}</span>
+                <span
+                  className={cn(
+                    jersey.className,
+                    activeTab == tab.id
+                      ? "text-xl text-[#FFE500]"
+                      : "text-lg text-white"
+                  )}
+                >
+                  {tab.label}
+                </span>
               </button>
             </li>
           ))}
