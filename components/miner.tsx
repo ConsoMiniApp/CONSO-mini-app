@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Wallet, ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { jersey } from "./ui/fonts";
+import { handjet, jersey } from "./ui/fonts";
 
 export default function Miner() {
   return (
@@ -160,75 +160,99 @@ export default function Miner() {
         </div>
 
         {/* Connect Section */}
-        <div className=" flex-1 p-4">
-          <div className="flex justify-between items-center mb-4">
-            <span className="text-white font-bold tracking-wider">
-              CONNECT TO EARN
-            </span>
-            <button className="text-yellow-400 flex items-center">
-              LESS
-              <ChevronDown className="h-4 w-4" />
-            </button>
+        <div className="flex flex-col ">
+          <div className=" mb-4">
+            <hr className="w-full border-[#C9C9C9] mb-2" />
+            <div className="flex justify-between px-4">
+              <span
+                className={cn(
+                  "text-[#D7D7D7] text-2xl font-extrabold",
+                  handjet.className
+                )}
+              >
+                CONNECT TO EARN
+              </span>
+
+              <button
+                className={cn(
+                  "text-[#FFE500] text-2xl font-extrabold flex items-center gap-2",
+                  jersey.className
+                )}
+              >
+                LESS
+                <ChevronDown className="h-6 w-6" />
+              </button>
+            </div>
+            <hr className="w-full border-[#C9C9C9] mt-2" />
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4 px-4 mb-4">
             {/* PlayStation */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Image
-                  src="/placeholder.svg?height=24&width=24"
-                  width={24}
-                  height={24}
+                  src="/console-logos/playstation-pixelated.svg"
+                  width={32}
+                  height={32}
                   alt="PlayStation"
                   className="inline-block"
                 />
-                <span className="text-white">PlayStation</span>
+                <p className={cn(jersey.className, "text-2xl text-white")}>
+                  PlayStation
+                </p>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-white">4.5x</span>
-                <button className="bg-emerald-500 text-white px-4 py-1 rounded">
-                  Mining...
-                </button>
+                <p className={cn(jersey.className, "text-2xl text-white")}>
+                  4.5x
+                </p>
+
+                <a
+                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer"
+                  style={{
+                    backgroundImage: "url('/other-logos/button-bg-green.svg')",
+                    backgroundSize: "cover",
+                  }}
+                  onClick={() => console.log("Connecting PlayStation")}
+                >
+                  <span className={cn(jersey.className, "text-2xl")}>
+                    Mining...
+                  </span>
+                </a>
               </div>
             </div>
 
             {/* Xbox */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Image
-                  src="/placeholder.svg?height=24&width=24"
-                  width={24}
-                  height={24}
-                  alt="Xbox"
-                  className="inline-block"
-                />
-                <span className="text-white">Xbox</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-white">3.5x</span>
-                <button className="bg-yellow-400 text-black px-4 py-1 rounded">
-                  Connect
-                </button>
-              </div>
-            </div>
 
-            {/* Steam */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Image
-                  src="/placeholder.svg?height=24&width=24"
-                  width={24}
-                  height={24}
-                  alt="Steam"
+                  src="/console-logos/xbox-pixelated.svg"
+                  width={32}
+                  height={32}
+                  alt="PlayStation"
                   className="inline-block"
                 />
-                <span className="text-white">Steam</span>
+                <p className={cn(jersey.className, "text-2xl text-white")}>
+                  Xbox
+                </p>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-white">2.5x</span>
-                <button className="bg-yellow-400 text-black px-4 py-1 rounded">
-                  Connect
-                </button>
+                <p className={cn(jersey.className, "text-2xl text-white")}>
+                  4.5x
+                </p>
+
+                <a
+                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform"
+                  style={{
+                    backgroundImage: "url('/other-logos/button-bg-yellow.svg')",
+                    backgroundSize: "cover",
+                  }}
+                  onClick={() => console.log("Connecting PlayStation")}
+                >
+                  <span className={cn(jersey.className, "text-2xl")}>
+                    Connect
+                  </span>
+                </a>
               </div>
             </div>
 
@@ -236,19 +260,67 @@ export default function Miner() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Image
-                  src="/placeholder.svg?height=24&width=24"
-                  width={24}
-                  height={24}
+                  src="/console-logos/nintendo-pixelated.svg"
+                  width={32}
+                  height={32}
                   alt="Nintendo"
                   className="inline-block"
                 />
-                <span className="text-white">Nintendo</span>
+                <p className={cn(jersey.className, "text-2xl text-white")}>
+                  Nintendo
+                </p>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-white">2.5x</span>
-                <button className="bg-yellow-400 text-black px-4 py-1 rounded">
-                  Connect
-                </button>
+                <p className={cn(jersey.className, "text-2xl text-white")}>
+                  4.5x
+                </p>
+
+                <a
+                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform"
+                  style={{
+                    backgroundImage: "url('/other-logos/button-bg-yellow.svg')",
+                    backgroundSize: "cover",
+                  }}
+                  onClick={() => console.log("Connecting PlayStation")}
+                >
+                  <span className={cn(jersey.className, "text-2xl")}>
+                    Connect
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            {/* Steam */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/console-logos/steam-pixelated.svg"
+                  width={32}
+                  height={32}
+                  alt="Steam"
+                  className="inline-block"
+                />
+                <p className={cn(jersey.className, "text-2xl text-white")}>
+                  Steam
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <p className={cn(jersey.className, "text-2xl text-white")}>
+                  4.5x
+                </p>
+
+                <a
+                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform"
+                  style={{
+                    backgroundImage: "url('/other-logos/button-bg-yellow.svg')",
+                    backgroundSize: "cover",
+                  }}
+                  onClick={() => console.log("Connecting PlayStation")}
+                >
+                  <span className={cn(jersey.className, "text-2xl")}>
+                    Connect
+                  </span>
+                </a>
               </div>
             </div>
 
@@ -256,39 +328,71 @@ export default function Miner() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Image
-                  src="/placeholder.svg?height=24&width=24"
-                  width={24}
-                  height={24}
+                  src="/console-logos/bitboy-pixelated.svg"
+                  width={32}
+                  height={32}
                   alt="Bitboy"
                   className="inline-block"
                 />
-                <span className="text-white">Bitboy</span>
+                <p className={cn(jersey.className, "text-2xl text-white")}>
+                  Bitboy
+                </p>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-white">2.5x</span>
-                <button className="bg-gray-700 text-white px-4 py-1 rounded">
-                  Soon...
-                </button>
+                <p className={cn(jersey.className, "text-2xl text-white")}>
+                  4.5x
+                </p>
+
+                <a
+                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform"
+                  style={{
+                    backgroundImage: "url('/other-logos/button-bg-gray.svg')",
+                    backgroundSize: "cover",
+                  }}
+                  onClick={() => console.log("Connecting Bitboy")}
+                >
+                  <span
+                    className={cn(jersey.className, "text-2xl text-[#CECECE]")}
+                  >
+                    Soon...
+                  </span>
+                </a>
               </div>
             </div>
 
-            {/* SuiPlayOx1 */}
+            {/* Sui */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Image
-                  src="/placeholder.svg?height=24&width=24"
-                  width={24}
-                  height={24}
-                  alt="SuiPlayOx1"
+                  src="/console-logos/sui-pixelated.svg"
+                  width={32}
+                  height={32}
+                  alt="Sui"
                   className="inline-block"
                 />
-                <span className="text-white">SuiPlayOx1</span>
+                <p className={cn(jersey.className, "text-2xl text-white")}>
+                  Sui
+                </p>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-white">2.5x</span>
-                <button className="bg-gray-700 text-white px-4 py-1 rounded">
-                  Soon...
-                </button>
+                <p className={cn(jersey.className, "text-2xl text-white")}>
+                  4.5x
+                </p>
+
+                <a
+                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform"
+                  style={{
+                    backgroundImage: "url('/other-logos/button-bg-gray.svg')",
+                    backgroundSize: "cover",
+                  }}
+                  onClick={() => console.log("Connecting Sui")}
+                >
+                  <span
+                    className={cn(jersey.className, "text-2xl text-[#CECECE]")}
+                  >
+                    Soon...
+                  </span>
+                </a>
               </div>
             </div>
           </div>
