@@ -6,9 +6,9 @@ import { jersey } from "./ui/fonts";
 export default function Miner() {
   return (
     <div className="min-h-screen bg-[#5C6E7E]">
-      <div className="max-w-md mx-auto bg-black min-h-screen flex flex-col">
+      <div className="max-w-md mx-auto min-h-screen flex flex-col">
         {/* Top Status Card */}
-        <div className=" bg-black p-4 rounded-3xl m-4 border-2 border-neutral-800">
+        <div className=" p-4 rounded-3xl m-4 border-2 shadow-lg bg-black border-neutral-800">
           <div className="flex justify-around mb-4">
             <div></div>
             <span
@@ -48,82 +48,106 @@ export default function Miner() {
             </span>
           </div>
 
-          <div className="flex gap-2 mb-4">
-            <div className="bg-yellow-200 rounded px-3 py-1 text-sm flex items-center gap-1">
+          <div className="flex justify-center gap-2 mb-4">
+            <div
+              className="w-[73.33px] h-[27px] flex justify-center items-center rounded-lg"
+              style={{
+                backgroundImage: "url('/keys-logos/gold-background.svg')",
+                backgroundSize: "cover",
+              }}
+            >
               <Image
-                src="/placeholder.svg?height=16&width=16"
-                width={16}
-                height={16}
+                src="/keys-logos/gold-key.svg"
+                width={30}
+                height={30}
                 alt="Key"
                 className="inline-block"
               />
-              1
+              <span className={cn(jersey.className)}>x4</span>
             </div>
-            <div className="bg-gray-300 rounded px-3 py-1 text-sm flex items-center gap-1">
+            <div
+              className="w-[73.33px] h-[27px] flex justify-center items-center rounded-lg"
+              style={{
+                backgroundImage: "url('/keys-logos/silver-background.svg')",
+                backgroundSize: "cover",
+              }}
+            >
               <Image
-                src="/placeholder.svg?height=16&width=16"
-                width={16}
-                height={16}
+                src="/keys-logos/silver-key.svg"
+                width={30}
+                height={30}
                 alt="Key"
                 className="inline-block"
               />
-              4
+              <span className={cn(jersey.className)}>x4</span>
             </div>
-            <div className="bg-gray-500 rounded px-3 py-1 text-sm flex items-center gap-1">
+            <div
+              className="w-[73.33px] h-[27px] flex justify-center items-center rounded-lg"
+              style={{
+                backgroundImage: "url('/keys-logos/bronze-background.svg')",
+                backgroundSize: "cover",
+              }}
+            >
               <Image
-                src="/placeholder.svg?height=16&width=16"
-                width={16}
-                height={16}
+                src="/keys-logos/bronze-key.svg"
+                width={30}
+                height={30}
                 alt="Key"
                 className="inline-block"
               />
-              9
+              <span className={cn(jersey.className)}>x4</span>
             </div>
           </div>
 
-          <div className="space-y-1 mb-4">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-col items-center mx-auto space-y-1 mb-4">
+            <div className="flex gap-2 w-full justify-center">
               <Image
-                src="/placeholder.svg?height=20&width=20"
-                width={20}
-                height={20}
+                src="/other-logos/coin.svg"
+                width={25}
+                height={25}
                 alt="Lightning"
                 className="inline-block"
               />
-              <span className="text-pink-500">Total Boost:</span>
-              <span className="text-white">x4.5</span>
+              <span className={cn("text-[#DE5EA6] text-2xl", jersey.className)}>
+                Total Boost:
+              </span>
+              <span className={cn("text-white text-2xl", jersey.className)}>
+                x4.5
+              </span>
             </div>
-
-            <div className="flex items-center gap-2">
+            <div className="flex gap-2 w-full justify-center">
               <Image
-                src="/placeholder.svg?height=20&width=20"
-                width={20}
-                height={20}
-                alt="Token"
+                src="/other-logos/coin.svg"
+                width={25}
+                height={25}
+                alt="Lightning"
                 className="inline-block"
               />
-              <span className="text-pink-500">Tap Bonus:</span>
-              <span className="text-white">23,456.23</span>
+              <span className={cn("text-[#DE5EA6] text-2xl", jersey.className)}>
+                Tap Bonus:
+              </span>
+              <span className={cn("text-white text-2xl", jersey.className)}>
+                x4.5
+              </span>
             </div>
-
-            <div className="flex items-center gap-2">
+            <div className="flex gap-2 w-full justify-center">
               <Image
-                src="/placeholder.svg?height=20&width=20"
-                width={20}
-                height={20}
-                alt="Controller"
+                src="/other-logos/console.svg"
+                width={25}
+                height={25}
+                alt="Lightning"
                 className="inline-block"
               />
-              <span className="text-pink-500">All Consoles:</span>
-              <div className="text-white">
-                Play Station 4
-                <br />
-                Xbox 360
-              </div>
+              <span className={cn("text-[#DE5EA6] text-2xl", jersey.className)}>
+                All Consoles:
+              </span>
+              <span className={cn("text-white text-2xl", jersey.className)}>
+                Play Station 5
+              </span>
             </div>
           </div>
 
-          <div className="bg-pink-500 rounded-lg p-2 text-center text-white">
+          {/* <div className="bg-pink-500 rounded-lg p-2 text-center text-white">
             <Image
               src="/placeholder.svg?height=16&width=16"
               width={16}
@@ -132,11 +156,11 @@ export default function Miner() {
               className="inline-block mr-2"
             />
             10 Token added for the ad play
-          </div>
+          </div> */}
         </div>
 
         {/* Connect Section */}
-        <div className="bg-slate-600 flex-1 p-4">
+        <div className=" flex-1 p-4">
           <div className="flex justify-between items-center mb-4">
             <span className="text-white font-bold tracking-wider">
               CONNECT TO EARN
