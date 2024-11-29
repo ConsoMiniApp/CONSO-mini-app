@@ -57,6 +57,7 @@ export interface XboxUserData {
   settings: UserSetting[];
   isSponsoredUser: boolean;
 }
+
 // TO DO: Add the NintendoGameDataType interface
 export interface NintendoGameDataType {
   titleId: string;

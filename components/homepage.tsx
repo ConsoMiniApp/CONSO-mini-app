@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import isSteamDeckVerifiedGame from "@/lib/data/steamGames";
 
 export default function Homepage({
   setActiveTab,
@@ -49,6 +50,12 @@ export default function Homepage({
     { rank: 3, name: "TokenWarrior", points: 9000 },
   ];
 
+  function testSomething() {
+    console.log("testSomething");
+    const result = isSteamDeckVerifiedGame("346110");
+    console.log("result", result);
+  }
+
   useEffect(() => {
     console.log("telegram mini app useEffect");
     //@ts-ignore
@@ -71,15 +78,16 @@ export default function Homepage({
           {/* <Button size="lg" onClick={() => router.push()}>
             Test New Tab
           </Button> */}
-          <a target="__blank" href="https://google.com">
+          {/* <a target="__blank" href="https://google.com">
             Test link
-          </a>
+          </a> */}
           <Button
             size="lg"
             variant="outline"
-            onClick={() => setActiveTab("account")}
+            // onClick={() => setActiveTab("account")}
+            onClick={testSomething}
           >
-            Create Account
+            Test Something
           </Button>
         </div>
       </section>
