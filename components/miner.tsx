@@ -1,28 +1,51 @@
+import { cn } from "@/lib/utils";
 import { Wallet, ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { jersey } from "./ui/fonts";
 
 export default function Miner() {
   return (
     <div className="min-h-screen bg-[#5C6E7E]">
       <div className="max-w-md mx-auto bg-black min-h-screen flex flex-col">
         {/* Top Status Card */}
-        <div className="relative bg-black p-4 rounded-3xl m-4 border-2 border-neutral-800">
-          <div className="flex justify-between items-center mb-4">
-            <span className="font-mono text-2xl text-white tracking-widest">
+        <div className=" bg-black p-4 rounded-3xl m-4 border-2 border-neutral-800">
+          <div className="flex justify-around mb-4">
+            <div></div>
+            <span
+              className={cn(
+                "text-6xl text-white tracking-widest",
+                jersey.className
+              )}
+            >
               CONSO
             </span>
-            <Wallet className="text-white h-5 w-5" />
+            <Image
+              alt="Wallet"
+              src="./other-logos/wallet.svg"
+              height={30}
+              width={30}
+              className="hover:opacity-90"
+              onClick={() => console.log("Wallet")}
+            ></Image>
           </div>
 
-          <div className="flex items-center gap-1 mb-4">
+          <div className="flex justify-center items-center gap-2 mb-4">
             <Image
-              src="/placeholder.svg?height=20&width=20"
-              width={20}
-              height={20}
+              src="./other-logos/coin.svg"
+              width={30}
+              height={30}
               alt=""
               className="inline-block"
+              onClick={() => console.log("Coin")}
             />
-            <span className="text-yellow-400 text-xl font-bold">4,000,000</span>
+            <span
+              className={cn(
+                "text-yellow-400 text-4xl font-bold",
+                jersey.className
+              )}
+            >
+              4,000,000
+            </span>
           </div>
 
           <div className="flex gap-2 mb-4">
