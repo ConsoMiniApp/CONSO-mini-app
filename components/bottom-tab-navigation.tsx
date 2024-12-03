@@ -1,14 +1,12 @@
 import { useState } from "react";
-import { Home, Gamepad2, Trophy, Wallet } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Leaderboard from "./leaderboard";
-import Account from "./account";
-import Homepage from "./homepage";
-import TestApi from "./psn/PSNData";
-import PSData from "./psn/PSNData";
 import Image from "next/image";
 import Miner from "./miner";
 import { jersey } from "./ui/fonts";
+import Rank from "./rank";
+import Play from "./play";
+import Tasks from "./tasks";
+import Invite from "./invite";
 
 export default function BottomTabNavigation() {
   const [activeTab, setActiveTab] = useState("miner");
@@ -56,29 +54,22 @@ export default function BottomTabNavigation() {
         )}
         {activeTab === "rank" && (
           <div className="space-y-4">
-            <h1 className={cn(`text-5xl  `, jersey.className)}>Game</h1>
-            <p>
-              This is where you can start playing or view your current games.
-            </p>
+            <Rank />
           </div>
         )}
         {activeTab === "play" && (
           <div className="space-y-4">
-            {/* <h1 className="text-2xl font-bold">Leaderboard</h1>
-            <p>Check out the top players and your ranking here.</p> */}
-            <Leaderboard />
+            <Play />
           </div>
         )}
         {activeTab === "task" && (
           <div className="space-y-4">
-            <Account />
-            {/* <PSData /> */}
+            <Tasks />
           </div>
         )}
         {activeTab === "invite" && (
           <div className="space-y-4">
-            <Account />
-            {/* <PSData /> */}
+            <Invite />
           </div>
         )}
       </main>

@@ -1,55 +1,9 @@
 import { cn } from "@/lib/utils";
-import { ChevronDown } from "lucide-react";
+import { Wallet, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { handjet, jersey } from "./ui/fonts";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { XboxConnectDialog } from "./xbox/XboxConnectDialog";
-import CustomButton from "./conso/CustomButton";
-import { CustomButtonType } from "@/lib/types";
-import { PlaystationConnectDialog } from "./psn/PlaystationConnectDialog";
-import { NintendoConnectDialog } from "./nintendo/NintendoConnectDialog";
-import { SteamConnectDialog } from "./steam/SteamConnectDialog";
-import { BitboyConnectDialog } from "./bitboy/BitboyConnectDialog";
-import { SuiConnectDialog } from "./sui/SuiConnectDialog";
 
-const connectButtons = {
-  playstation: CustomButtonType.MINING,
-  xbox: CustomButtonType.CONNECT,
-  nintendo: CustomButtonType.CONNECT,
-  steam: CustomButtonType.CONNECT,
-  bitboy: CustomButtonType.SOON,
-  sui: CustomButtonType.SOON,
-};
-
-export default function Miner() {
-  const handlePlayStationConnect = () => {
-    console.log("Connecting PlayStation");
-  };
-
-  const handleXboxConnect = () => {
-    console.log("Connecting Xbox");
-  };
-
-  const handleNintendoConnect = () => {
-    console.log("Connecting Nintendo");
-  };
-
-  const handleSteamConnect = () => {
-    console.log("Connecting Steam");
-  };
-
-  const handleBitboyConnect = () => {
-    console.log("Connecting Bitboy");
-  };
-
-  const handleSuiConnect = () => {
-    console.log("Connecting Sui");
-  };
-
-  const doNothing = () => {
-    console.log("Do nothing");
-  };
-
+export default function Rank() {
   return (
     <div className="min-h-screen bg-[#5C6E7E]">
       <div className="max-w-md mx-auto min-h-screen flex flex-col">
@@ -63,7 +17,7 @@ export default function Miner() {
                 jersey.className
               )}
             >
-              CONSO
+              RANK
             </span>
             <Image
               alt="Wallet"
@@ -252,28 +206,23 @@ export default function Miner() {
                   4.5x
                 </p>
 
-                {connectButtons.playstation === CustomButtonType.CONNECT ? (
-                  <Dialog>
-                    <DialogTrigger>
-                      <CustomButton
-                        type={CustomButtonType.MINING}
-                        handleClick={doNothing}
-                      />
-                    </DialogTrigger>
-                    <DialogContent className=" w-[95%] h-[95%] rounded-lg">
-                      <PlaystationConnectDialog />
-                    </DialogContent>
-                  </Dialog>
-                ) : (
-                  <CustomButton
-                    type={connectButtons.playstation}
-                    handleClick={doNothing}
-                  />
-                )}
+                <a
+                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer"
+                  style={{
+                    backgroundImage: "url('/other-logos/button-bg-green.svg')",
+                    backgroundSize: "cover",
+                  }}
+                  onClick={() => console.log("Connecting PlayStation")}
+                >
+                  <span className={cn(jersey.className, "text-2xl")}>
+                    Mining...
+                  </span>
+                </a>
               </div>
             </div>
 
             {/* Xbox */}
+
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Image
@@ -292,24 +241,18 @@ export default function Miner() {
                   4.5x
                 </p>
 
-                {connectButtons.xbox === CustomButtonType.CONNECT ? (
-                  <Dialog>
-                    <DialogTrigger>
-                      <CustomButton
-                        type={CustomButtonType.CONNECT}
-                        handleClick={handleXboxConnect}
-                      />
-                    </DialogTrigger>
-                    <DialogContent className=" w-[95%] h-[95%] rounded-lg">
-                      <XboxConnectDialog />
-                    </DialogContent>
-                  </Dialog>
-                ) : (
-                  <CustomButton
-                    type={connectButtons.xbox}
-                    handleClick={doNothing}
-                  />
-                )}
+                <a
+                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform"
+                  style={{
+                    backgroundImage: "url('/other-logos/button-bg-yellow.svg')",
+                    backgroundSize: "cover",
+                  }}
+                  onClick={() => console.log("Connecting PlayStation")}
+                >
+                  <span className={cn(jersey.className, "text-2xl")}>
+                    Connect
+                  </span>
+                </a>
               </div>
             </div>
 
@@ -331,24 +274,19 @@ export default function Miner() {
                 <p className={cn(jersey.className, "text-2xl text-white")}>
                   4.5x
                 </p>
-                {connectButtons.nintendo === CustomButtonType.CONNECT ? (
-                  <Dialog>
-                    <DialogTrigger>
-                      <CustomButton
-                        type={CustomButtonType.CONNECT}
-                        handleClick={handleNintendoConnect}
-                      />
-                    </DialogTrigger>
-                    <DialogContent className=" w-[95%] h-[95%] rounded-lg">
-                      <NintendoConnectDialog />
-                    </DialogContent>
-                  </Dialog>
-                ) : (
-                  <CustomButton
-                    type={connectButtons.nintendo}
-                    handleClick={doNothing}
-                  />
-                )}
+
+                <a
+                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform"
+                  style={{
+                    backgroundImage: "url('/other-logos/button-bg-yellow.svg')",
+                    backgroundSize: "cover",
+                  }}
+                  onClick={() => console.log("Connecting PlayStation")}
+                >
+                  <span className={cn(jersey.className, "text-2xl")}>
+                    Connect
+                  </span>
+                </a>
               </div>
             </div>
 
@@ -371,24 +309,18 @@ export default function Miner() {
                   4.5x
                 </p>
 
-                {connectButtons.steam === CustomButtonType.CONNECT ? (
-                  <Dialog>
-                    <DialogTrigger>
-                      <CustomButton
-                        type={CustomButtonType.CONNECT}
-                        handleClick={handleSteamConnect}
-                      />
-                    </DialogTrigger>
-                    <DialogContent className=" w-[95%] h-[95%] rounded-lg">
-                      <SteamConnectDialog />
-                    </DialogContent>
-                  </Dialog>
-                ) : (
-                  <CustomButton
-                    type={connectButtons.steam}
-                    handleClick={doNothing}
-                  />
-                )}
+                <a
+                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform"
+                  style={{
+                    backgroundImage: "url('/other-logos/button-bg-yellow.svg')",
+                    backgroundSize: "cover",
+                  }}
+                  onClick={() => console.log("Connecting PlayStation")}
+                >
+                  <span className={cn(jersey.className, "text-2xl")}>
+                    Connect
+                  </span>
+                </a>
               </div>
             </div>
 
@@ -411,24 +343,20 @@ export default function Miner() {
                   4.5x
                 </p>
 
-                {connectButtons.bitboy === CustomButtonType.CONNECT ? (
-                  <Dialog>
-                    <DialogTrigger>
-                      <CustomButton
-                        type={CustomButtonType.CONNECT}
-                        handleClick={handleBitboyConnect}
-                      />
-                    </DialogTrigger>
-                    <DialogContent className=" w-[95%] h-[95%] rounded-lg">
-                      <BitboyConnectDialog />
-                    </DialogContent>
-                  </Dialog>
-                ) : (
-                  <CustomButton
-                    type={connectButtons.bitboy}
-                    handleClick={doNothing}
-                  />
-                )}
+                <a
+                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform"
+                  style={{
+                    backgroundImage: "url('/other-logos/button-bg-gray.svg')",
+                    backgroundSize: "cover",
+                  }}
+                  onClick={() => console.log("Connecting Bitboy")}
+                >
+                  <span
+                    className={cn(jersey.className, "text-2xl text-[#CECECE]")}
+                  >
+                    Soon...
+                  </span>
+                </a>
               </div>
             </div>
 
@@ -450,24 +378,21 @@ export default function Miner() {
                 <p className={cn(jersey.className, "text-2xl text-white")}>
                   4.5x
                 </p>
-                {connectButtons.sui === CustomButtonType.CONNECT ? (
-                  <Dialog>
-                    <DialogTrigger>
-                      <CustomButton
-                        type={CustomButtonType.CONNECT}
-                        handleClick={handleSuiConnect}
-                      />
-                    </DialogTrigger>
-                    <DialogContent className=" w-[95%] h-[95%] rounded-lg">
-                      <SuiConnectDialog />
-                    </DialogContent>
-                  </Dialog>
-                ) : (
-                  <CustomButton
-                    type={connectButtons.sui}
-                    handleClick={doNothing}
-                  />
-                )}
+
+                <a
+                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform"
+                  style={{
+                    backgroundImage: "url('/other-logos/button-bg-gray.svg')",
+                    backgroundSize: "cover",
+                  }}
+                  onClick={() => console.log("Connecting Sui")}
+                >
+                  <span
+                    className={cn(jersey.className, "text-2xl text-[#CECECE]")}
+                  >
+                    Soon...
+                  </span>
+                </a>
               </div>
             </div>
           </div>

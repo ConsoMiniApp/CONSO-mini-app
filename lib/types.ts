@@ -1,3 +1,11 @@
+// button types
+export enum CustomButtonType {
+  CONNECT = "connect",
+  DISCONNECT = "disconnect",
+  MINING = "mining",
+  SOON = "soon",
+}
+
 export interface GameData {
   npServiceName: string;
   npCommunicationId: string;
