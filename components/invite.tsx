@@ -1,402 +1,258 @@
 import { cn } from "@/lib/utils";
 import { Wallet, ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { handjet, jersey } from "./ui/fonts";
+import { handjet, jersey, ibmPlex } from "./ui/fonts";
+import CustomButton from "./conso/CustomButton";
+import { CustomButtonType } from "@/lib/types";
+
+const friendsList = [
+  {
+    rank: 1,
+    name: "John Doe",
+    boost: 4.5,
+    conso: 43.37,
+  },
+  {
+    rank: 2,
+    name: "Jane Doe",
+    boost: 3.5,
+    conso: 33.37,
+  },
+];
 
 export default function Invite() {
   return (
-    <div className="min-h-screen bg-[#5C6E7E]">
+    <div className="min-h-screen bg-black">
       <div className="max-w-md mx-auto min-h-screen flex flex-col">
-        {/* Top Status Card */}
-        <div className=" p-4 rounded-3xl m-4 border-2 shadow-lg bg-black border-neutral-800">
+        {/* Heading */}
+        <div className=" bg-black ">
           <div className="flex justify-around mb-4">
-            <div></div>
             <span
-              className={cn(
-                "text-6xl text-white tracking-widest",
-                jersey.className
-              )}
+              className={cn("text-5xl mt-10 text-white ", jersey.className)}
             >
-              INVITE
-            </span>
-            <Image
-              alt="Wallet"
-              src="./other-logos/wallet.svg"
-              height={30}
-              width={30}
-              className="hover:opacity-90"
-              onClick={() => console.log("Wallet")}
-            ></Image>
-          </div>
-
-          <div className="flex justify-center items-center gap-2 mb-4">
-            <Image
-              src="./other-logos/coin.svg"
-              width={30}
-              height={30}
-              alt=""
-              className="inline-block"
-              onClick={() => console.log("Coin")}
-            />
-            <span
-              className={cn(
-                "text-yellow-400 text-4xl font-bold",
-                jersey.className
-              )}
-            >
-              4,000,000
+              REFER & EARN
             </span>
           </div>
 
-          <div className="flex justify-center gap-2 mb-4">
-            <div
-              className="w-[73.33px] h-[27px] flex justify-center items-center rounded-lg"
-              style={{
-                backgroundImage: "url('/keys-logos/gold-background.svg')",
-                backgroundSize: "cover",
-              }}
+          <div className="flex justify-center mb-4">
+            <span
+              className={cn(
+                "text-white text-sm text-center w-[65%] ",
+                ibmPlex.className
+              )}
             >
-              <Image
-                src="/keys-logos/gold-key.svg"
-                width={30}
-                height={30}
-                alt="Key"
-                className="inline-block"
-              />
-              <span className={cn(jersey.className)}>x4</span>
-            </div>
-            <div
-              className="w-[73.33px] h-[27px] flex justify-center items-center rounded-lg"
-              style={{
-                backgroundImage: "url('/keys-logos/silver-background.svg')",
-                backgroundSize: "cover",
-              }}
-            >
-              <Image
-                src="/keys-logos/silver-key.svg"
-                width={30}
-                height={30}
-                alt="Key"
-                className="inline-block"
-              />
-              <span className={cn(jersey.className)}>x4</span>
-            </div>
-            <div
-              className="w-[73.33px] h-[27px] flex justify-center items-center rounded-lg"
-              style={{
-                backgroundImage: "url('/keys-logos/bronze-background.svg')",
-                backgroundSize: "cover",
-              }}
-            >
-              <Image
-                src="/keys-logos/bronze-key.svg"
-                width={30}
-                height={30}
-                alt="Key"
-                className="inline-block"
-              />
-              <span className={cn(jersey.className)}>x4</span>
-            </div>
+              YOU AND YOUR FRENS WILL RECEIVE BONUSES FOR INVITATION
+            </span>
           </div>
-
-          <div className="flex flex-col items-center mx-auto space-y-1 mb-4">
-            <div className="flex gap-2 w-full justify-center">
-              <Image
-                src="/other-logos/coin.svg"
-                width={25}
-                height={25}
-                alt="Lightning"
-                className="inline-block"
-              />
-              <span className={cn("text-[#DE5EA6] text-2xl", jersey.className)}>
-                Total Boost:
-              </span>
-              <span className={cn("text-white text-2xl", jersey.className)}>
-                x4.5
-              </span>
-            </div>
-            <div className="flex gap-2 w-full justify-center">
-              <Image
-                src="/other-logos/coin.svg"
-                width={25}
-                height={25}
-                alt="Lightning"
-                className="inline-block"
-              />
-              <span className={cn("text-[#DE5EA6] text-2xl", jersey.className)}>
-                Tap Bonus:
-              </span>
-              <span className={cn("text-white text-2xl", jersey.className)}>
-                x4.5
-              </span>
-            </div>
-            <div className="flex gap-2 w-full justify-center">
-              <Image
-                src="/other-logos/console.svg"
-                width={25}
-                height={25}
-                alt="Lightning"
-                className="inline-block"
-              />
-              <span className={cn("text-[#DE5EA6] text-2xl", jersey.className)}>
-                All Consoles:
-              </span>
-              <span className={cn("text-white text-2xl", jersey.className)}>
-                Play Station 5
-              </span>
-            </div>
-          </div>
-
-          {/* <div className="bg-pink-500 rounded-lg p-2 text-center text-white">
-            <Image
-              src="/placeholder.svg?height=16&width=16"
-              width={16}
-              height={16}
-              alt="Token"
-              className="inline-block mr-2"
-            />
-            10 Token added for the ad play
-          </div> */}
         </div>
 
-        {/* Connect Section */}
-        <div className="flex flex-col ">
-          <div className=" mb-4">
-            <hr className="w-full border-[#C9C9C9] mb-2" />
-            <div className="flex justify-between px-4">
+        {/* Earned so far */}
+        <div className="bg-[#1E2E3D] ">
+          <div className="flex flex-col justify-center items-center m-4">
+            <p
+              className={cn(
+                handjet.className,
+                "text-[15px] text-white font-normal tracking-[0.1em]"
+              )}
+            >
+              EARNED SO FAR
+            </p>
+            <div className="flex justify-center gap-2">
+              <Image
+                src="./other-logos/coin.svg"
+                width={30}
+                height={30}
+                alt=""
+                className="inline-block"
+                onClick={() => console.log("Coin")}
+              />
               <span
                 className={cn(
-                  "text-[#D7D7D7] text-2xl font-extrabold",
-                  handjet.className
-                )}
-              >
-                CONNECT TO EARN
-              </span>
-
-              <button
-                className={cn(
-                  "text-[#FFE500] text-2xl font-extrabold flex items-center gap-2",
+                  "text-yellow-400 text-4xl font-bold",
                   jersey.className
                 )}
               >
-                LESS
-                <ChevronDown className="h-6 w-6" />
-              </button>
-            </div>
-            <hr className="w-full border-[#C9C9C9] mt-2" />
-          </div>
-
-          <div className="space-y-4 px-4 mb-4">
-            {/* PlayStation */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Image
-                  src="/console-logos/playstation-pixelated.svg"
-                  width={32}
-                  height={32}
-                  alt="PlayStation"
-                  className="inline-block"
-                />
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  PlayStation
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  4.5x
-                </p>
-
-                <a
-                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer"
-                  style={{
-                    backgroundImage: "url('/other-logos/button-bg-green.svg')",
-                    backgroundSize: "cover",
-                  }}
-                  onClick={() => console.log("Connecting PlayStation")}
-                >
-                  <span className={cn(jersey.className, "text-2xl")}>
-                    Mining...
-                  </span>
-                </a>
-              </div>
-            </div>
-
-            {/* Xbox */}
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Image
-                  src="/console-logos/xbox-pixelated.svg"
-                  width={32}
-                  height={32}
-                  alt="PlayStation"
-                  className="inline-block"
-                />
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  Xbox
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  4.5x
-                </p>
-
-                <a
-                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform"
-                  style={{
-                    backgroundImage: "url('/other-logos/button-bg-yellow.svg')",
-                    backgroundSize: "cover",
-                  }}
-                  onClick={() => console.log("Connecting PlayStation")}
-                >
-                  <span className={cn(jersey.className, "text-2xl")}>
-                    Connect
-                  </span>
-                </a>
-              </div>
-            </div>
-
-            {/* Nintendo */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Image
-                  src="/console-logos/nintendo-pixelated.svg"
-                  width={32}
-                  height={32}
-                  alt="Nintendo"
-                  className="inline-block"
-                />
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  Nintendo
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  4.5x
-                </p>
-
-                <a
-                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform"
-                  style={{
-                    backgroundImage: "url('/other-logos/button-bg-yellow.svg')",
-                    backgroundSize: "cover",
-                  }}
-                  onClick={() => console.log("Connecting PlayStation")}
-                >
-                  <span className={cn(jersey.className, "text-2xl")}>
-                    Connect
-                  </span>
-                </a>
-              </div>
-            </div>
-
-            {/* Steam */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Image
-                  src="/console-logos/steam-pixelated.svg"
-                  width={32}
-                  height={32}
-                  alt="Steam"
-                  className="inline-block"
-                />
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  Steam
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  4.5x
-                </p>
-
-                <a
-                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform"
-                  style={{
-                    backgroundImage: "url('/other-logos/button-bg-yellow.svg')",
-                    backgroundSize: "cover",
-                  }}
-                  onClick={() => console.log("Connecting PlayStation")}
-                >
-                  <span className={cn(jersey.className, "text-2xl")}>
-                    Connect
-                  </span>
-                </a>
-              </div>
-            </div>
-
-            {/* Bitboy */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Image
-                  src="/console-logos/bitboy-pixelated.svg"
-                  width={32}
-                  height={32}
-                  alt="Bitboy"
-                  className="inline-block"
-                />
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  Bitboy
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  4.5x
-                </p>
-
-                <a
-                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform"
-                  style={{
-                    backgroundImage: "url('/other-logos/button-bg-gray.svg')",
-                    backgroundSize: "cover",
-                  }}
-                  onClick={() => console.log("Connecting Bitboy")}
-                >
-                  <span
-                    className={cn(jersey.className, "text-2xl text-[#CECECE]")}
-                  >
-                    Soon...
-                  </span>
-                </a>
-              </div>
-            </div>
-
-            {/* Sui */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Image
-                  src="/console-logos/sui-pixelated.svg"
-                  width={32}
-                  height={32}
-                  alt="Sui"
-                  className="inline-block"
-                />
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  Sui
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  4.5x
-                </p>
-
-                <a
-                  className="w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform"
-                  style={{
-                    backgroundImage: "url('/other-logos/button-bg-gray.svg')",
-                    backgroundSize: "cover",
-                  }}
-                  onClick={() => console.log("Connecting Sui")}
-                >
-                  <span
-                    className={cn(jersey.className, "text-2xl text-[#CECECE]")}
-                  >
-                    Soon...
-                  </span>
-                </a>
-              </div>
+                30,000
+              </span>
             </div>
           </div>
         </div>
+
+        <div className=" grid grid-cols-2 gap-[1px] h-[196px]">
+          <div className="flex flex-col text-white bg-[#5C6E7E] justify-center items-center">
+            <p className={cn(jersey.className, "text-2xl")}>INVITE A FREN</p>
+            <p className={cn(ibmPlex.className, "text-[12px] text-center")}>
+              YOU AND YOUR FRIEND BOTH EARN
+            </p>
+            <div className="bg-[#DE5EA6] rounded-lg p-1 flex justify-center items-center gap-1 mt-4">
+              <Image
+                src="./other-logos/coin.svg"
+                width={25}
+                height={25}
+                alt=""
+                className="inline-block"
+                onClick={() => console.log("Coin")}
+              />
+              <span className={cn(" text-3xl font-bold", jersey.className)}>
+                30,000
+              </span>
+            </div>
+          </div>
+
+          <div className="flex flex-col text-white bg-[#5C6E7E] justify-center items-center">
+            <p className={cn(jersey.className, "text-2xl")}>EARN EXTRA</p>
+            <p className={cn(ibmPlex.className, "text-[12px] text-center ")}>
+              ADDITIONALLY 10% OF LIFETIME EARNINGS
+            </p>
+            <div className="bg-[#DE5EA6] rounded-lg p-1 flex justify-center items-center gap-1 mt-4">
+              <Image
+                src="./other-logos/coin.svg"
+                width={25}
+                height={25}
+                alt=""
+                className="inline-block"
+                onClick={() => console.log("Coin")}
+              />
+              <span className={cn(" text-3xl font-bold", jersey.className)}>
+                10%
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col justify-center items-center gap-3 h-40">
+          <span className={cn("text-xl text-[#E8BA00] ", jersey.className)}>
+            2/1000 MORE LEFT
+          </span>
+          <CustomButton type={CustomButtonType.OTHER} handleClick={() => {}} />
+        </div>
+
+        {/* Friend List Table Heading */}
+        <div className="flex flex-col ">
+          <div className="">
+            <div className="grid grid-cols-2 px-4 h-[31px]">
+              <span
+                className={cn(
+                  "text-[#BABABA] text-xl text-left col-span-1 tracking-[0.1em]",
+                  handjet.className
+                )}
+              >
+                FRIENDS LIST
+              </span>
+
+              <span
+                className={cn(
+                  "text-[#BABABA] text-right text-xl col-span-1 tracking-[0.1em]",
+                  handjet.className
+                )}
+              >
+                TOTAL : 2
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col ">
+          <div className="">
+            <div className="grid grid-cols-8 justify-center items-center px-4 bg-[#DE5EA6] h-[31px] border border-[#004AAD] border-1">
+              <span
+                className={cn(
+                  "text-white text-xl font-normal col-span-1 ",
+                  jersey.className
+                )}
+              >
+                #
+              </span>
+              <span
+                className={cn(
+                  "text-white text-xl font-normal col-span-3",
+                  jersey.className
+                )}
+              >
+                NAME
+              </span>
+              <span
+                className={cn(
+                  "text-white text-center text-xl font-normal col-span-2 border-l border-r border-[#004AAD]",
+                  jersey.className
+                )}
+              >
+                <Image
+                  src="./other-logos/boost.svg"
+                  width={11}
+                  height={11}
+                  alt=""
+                  className="inline-block mr-1"
+                  onClick={() => console.log("Coin")}
+                />
+                BOOST
+              </span>
+              <span
+                className={cn(
+                  "text-white text-center text-xl font-normal col-span-2",
+                  jersey.className
+                )}
+              >
+                <Image
+                  src="./other-logos/coin.svg"
+                  width={12}
+                  height={12}
+                  alt=""
+                  className="inline-block mr-1"
+                  onClick={() => console.log("Coin")}
+                />
+                CONSO
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Friends List Table Body */}
+        {friendsList.map((row, index) => (
+          <div className="flex flex-col ">
+            <div className="">
+              <div
+                className={cn(
+                  "grid grid-cols-8 justify-center items-center px-4  h-[32px]",
+                  index % 2 !== 0 ? "bg-[#5C6E7E]" : "bg-black"
+                )}
+              >
+                <span
+                  className={cn(
+                    "text-white text-xl font-normal col-span-1 ",
+                    jersey.className
+                  )}
+                >
+                  #{row.rank}
+                </span>
+                <span
+                  className={cn(
+                    "text-white text-xl font-normal col-span-3",
+                    jersey.className
+                  )}
+                >
+                  {row.name}
+                </span>
+                <span
+                  className={cn(
+                    "text-white text-center text-xl font-normal col-span-2 ",
+                    jersey.className
+                  )}
+                >
+                  x{row.boost}
+                </span>
+                <span
+                  className={cn(
+                    "text-[#E8BA00] text-center text-xl font-normal col-span-2",
+                    jersey.className
+                  )}
+                >
+                  {row.conso}M
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+        <div className="h-8"></div>
       </div>
     </div>
   );

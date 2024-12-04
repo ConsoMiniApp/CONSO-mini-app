@@ -54,7 +54,18 @@ export default function Miner() {
     <div className="min-h-screen bg-[#5C6E7E]">
       <div className="max-w-md mx-auto min-h-screen flex flex-col">
         {/* Top Status Card */}
-        <div className=" p-4 rounded-3xl m-4 border-2 shadow-lg bg-black border-neutral-800">
+        <div
+          className="p-4 rounded-3xl m-4 border-2 shadow-lg bg-black border-neutral-800"
+          style={{
+            boxShadow: `
+              0px 0px 10px 0px #181818,
+              0px 0px 5px 0px #13131380,
+              0px 0px 3px 0px #060606,
+              4px -4px 8px 0px #000000BF inset,
+              -1px 1px 2px 0px #000000 inset
+            `,
+          }}
+        >
           <div className="flex justify-around mb-4">
             <div></div>
             <span
@@ -145,51 +156,67 @@ export default function Miner() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center mx-auto space-y-1 mb-4">
-            <div className="flex gap-2 w-full justify-center">
-              <Image
-                src="/other-logos/coin.svg"
-                width={25}
-                height={25}
-                alt="Lightning"
-                className="inline-block"
-              />
-              <span className={cn("text-[#DE5EA6] text-2xl", jersey.className)}>
-                Total Boost:
-              </span>
-              <span className={cn("text-white text-2xl", jersey.className)}>
-                x4.5
-              </span>
+          <div className="flex gap-2 ml-8 justify-center items-center  mb-4">
+            <div>
+              <div className="flex gap-2 w-full justify-center">
+                <Image
+                  src="/other-logos/boost.svg"
+                  width={24}
+                  height={24}
+                  alt="Lightning"
+                  className="inline-block"
+                />
+                <span
+                  className={cn("text-[#DE5EA6] text-2xl", jersey.className)}
+                >
+                  Total Boost:
+                </span>
+              </div>
+              <div className="flex gap-2 w-full justify-center">
+                <Image
+                  src="/other-logos/coin.svg"
+                  width={25}
+                  height={25}
+                  alt="Lightning"
+                  className="inline-block"
+                />
+                <span
+                  className={cn("text-[#DE5EA6] text-2xl", jersey.className)}
+                >
+                  Tap Bonus:
+                </span>
+              </div>
+              <div className="flex gap-2 w-full justify-center">
+                <Image
+                  src="/other-logos/console.svg"
+                  width={25}
+                  height={25}
+                  alt="Lightning"
+                  className="inline-block"
+                />
+                <span
+                  className={cn("text-[#DE5EA6] text-2xl", jersey.className)}
+                >
+                  All Consoles:
+                </span>
+              </div>
             </div>
-            <div className="flex gap-2 w-full justify-center">
-              <Image
-                src="/other-logos/coin.svg"
-                width={25}
-                height={25}
-                alt="Lightning"
-                className="inline-block"
-              />
-              <span className={cn("text-[#DE5EA6] text-2xl", jersey.className)}>
-                Tap Bonus:
-              </span>
-              <span className={cn("text-white text-2xl", jersey.className)}>
-                x4.5
-              </span>
-            </div>
-            <div className="flex gap-2 w-full justify-center">
-              <Image
-                src="/other-logos/console.svg"
-                width={25}
-                height={25}
-                alt="Lightning"
-                className="inline-block"
-              />
-              <span className={cn("text-[#DE5EA6] text-2xl", jersey.className)}>
-                All Consoles:
-              </span>
-              <span className={cn("text-white text-2xl", jersey.className)}>
-                Play Station 5
-              </span>
+            <div className="">
+              <div className="flex items-center gap-2 w-full justify-left">
+                <span className={cn("text-white text-2xl", jersey.className)}>
+                  x4.5
+                </span>
+              </div>
+              <div className="flex gap-2 w-full justify-left">
+                <span className={cn("text-white text-2xl", jersey.className)}>
+                  x4.5
+                </span>
+              </div>
+              <div className="flex gap-2 w-full justify-left">
+                <span className={cn("text-white text-2xl", jersey.className)}>
+                  Play Station 5
+                </span>
+              </div>
             </div>
           </div>
 

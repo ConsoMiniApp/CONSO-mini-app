@@ -4,6 +4,7 @@ export enum CustomButtonType {
   DISCONNECT = "disconnect",
   MINING = "mining",
   SOON = "soon",
+  OTHER = "other",
 }
 
 export interface GameData {

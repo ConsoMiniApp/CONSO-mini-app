@@ -6,6 +6,7 @@ import { CustomButtonType } from "@/lib/types";
 interface ButtonProps {
   type: CustomButtonType;
   handleClick: () => void;
+  text?: string;
 }
 
 function getButtonDetails(type: CustomButtonType) {
@@ -54,10 +55,21 @@ function getButtonDetails(type: CustomButtonType) {
         buttonClassName:
           "w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer",
       };
+    default:
+      return {
+        buttonText: "",
+        buttonTextStyles: cn(jersey.className, "text-2xl"),
+        buttonStyles: {
+          backgroundImage: "url('/other-logos/button-bg-invite.svg')",
+          backgroundSize: "cover",
+        },
+        buttonClassName:
+          "w-[184px] h-[40px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform",
+      };
   }
 }
 
-const CustomButton = ({ type, handleClick }: ButtonProps) => {
+const CustomButton = ({ type, handleClick, text }: ButtonProps) => {
   const { buttonText, buttonTextStyles, buttonStyles, buttonClassName } =
     getButtonDetails(type);
   return (
@@ -66,7 +78,7 @@ const CustomButton = ({ type, handleClick }: ButtonProps) => {
       style={buttonStyles}
       onClick={() => handleClick()}
     >
-      <span className={buttonTextStyles}>{buttonText}</span>
+      <span className={buttonTextStyles}>{text ? text : buttonText}</span>
     </a>
   );
 };
