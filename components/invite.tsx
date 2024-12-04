@@ -188,7 +188,7 @@ export default function Invite() {
               </span>
               <span
                 className={cn(
-                  "text-white text-center text-xl font-normal col-span-2",
+                  "text-white text-center text-xl flex items-center justify-center font-normal col-span-2",
                   jersey.className
                 )}
               >
