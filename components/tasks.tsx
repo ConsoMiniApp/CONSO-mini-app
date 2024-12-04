@@ -62,7 +62,7 @@ export default function Tasks() {
             <p
               className={cn(
                 handjet.className,
-                "text-[15px] text-white font-normal "
+                "text-[15px] text-white font-normal tracking-[0.1em]"
               )}
             >
               CURRENT POINTS....
