@@ -289,7 +289,7 @@ export default function Miner() {
                     className="inline-block hover:opacity-90 hover:scale-95 transition-transform duration-100"
                   />
                 </DialogTrigger>
-                <DialogContent className=" w-[95%] h-[95%] rounded-lg">
+                <DialogContent className="h-screen">
                   <AdvertisementDialog />
                 </DialogContent>
               </Dialog>

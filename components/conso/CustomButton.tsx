@@ -7,6 +7,7 @@ interface ButtonProps {
   type: CustomButtonType;
   handleClick: () => void;
   text?: string;
+  className?: string;
 }
 
 function getButtonDetails(type: CustomButtonType) {
@@ -69,12 +70,12 @@ function getButtonDetails(type: CustomButtonType) {
   }
 }
 
-const CustomButton = ({ type, handleClick, text }: ButtonProps) => {
+const CustomButton = ({ type, handleClick, text, className }: ButtonProps) => {
   const { buttonText, buttonTextStyles, buttonStyles, buttonClassName } =
     getButtonDetails(type);
   return (
     <a
-      className={cn(buttonClassName)}
+      className={cn(buttonClassName, className)}
       style={buttonStyles}
       onClick={() => handleClick()}
     >
