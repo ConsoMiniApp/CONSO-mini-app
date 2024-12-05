@@ -12,9 +12,10 @@ import { SteamConnectDialog } from "./steam/SteamConnectDialog";
 import { BitboyConnectDialog } from "./bitboy/BitboyConnectDialog";
 import { SuiConnectDialog } from "./sui/SuiConnectDialog";
 import { AdvertisementDialog } from "./conso/AdvertisementDialog";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { InfoDialog } from "./conso/InfoDialog";
+import { useAppContext } from "@/contexts/AppContext";
 
 const connectButtons = {
   playstation: CustomButtonType.MINING,
@@ -29,8 +30,11 @@ export default function Miner() {
   const { toast } = useToast();
   const [tapClass, setTapClass] = useState("inline-block ");
   const [soundClass, setSoundClass] = useState("inline-block");
-  const [mute, setMute] = useState(false);
-  const [pointBalance, setPointBalance] = useState(0);
+  const [mute, setMute] = useState(true);
+  // const [pointBalance, setPointBalance] = useState(0);
+  const { pointBalance, setPointBalance } = useAppContext();
+
+  const [connectSectionCollapsed, setConnectSectionCollapsed] = useState(true);
 
   const handlePlayStationConnect = () => {
     console.log("Connecting PlayStation");
@@ -66,7 +70,7 @@ export default function Miner() {
     if (pointBalance) {
       let start = 0;
       const end = Number(pointBalance); // Final value loaded from the server
-      const chunk = Math.round((end - start) / 100); // Animation duration in milliseconds
+      const chunk = Math.round((end - start) / 50); // Animation duration in milliseconds
       const stepTime = 10; // Time per increment
 
       const timer = setInterval(() => {
@@ -367,7 +371,7 @@ export default function Miner() {
                     setPointBalance(pointBalance + 1);
                     localStorage.setItem(
                       "pointBalance",
-                      pointBalance.toString()
+                      (pointBalance + 1).toString()
                     );
                   }, 100);
                 }}
@@ -390,15 +394,35 @@ export default function Miner() {
                 CONNECT TO EARN
               </span>
 
-              <button
-                className={cn(
-                  "text-[#FFE500] text-2xl font-extrabold flex items-center gap-2",
-                  jersey.className
-                )}
-              >
-                LESS
-                <ChevronUp className="h-6 w-6" />
-              </button>
+              {!connectSectionCollapsed ? (
+                <button
+                  className={cn(
+                    "text-[#FFE500] text-2xl font-extrabold flex items-center gap-2",
+                    jersey.className
+                  )}
+                  onClick={() => {
+                    console.log("Collapsing");
+                    setConnectSectionCollapsed(true);
+                  }}
+                >
+                  LESS
+                  <ChevronUp className="h-6 w-6" />
+                </button>
+              ) : (
+                <button
+                  className={cn(
+                    "text-[#FFE500] text-2xl font-extrabold flex items-center gap-2",
+                    jersey.className
+                  )}
+                  onClick={() => {
+                    console.log("Expanding");
+                    setConnectSectionCollapsed(false);
+                  }}
+                >
+                  MORE
+                  <ChevronDown className="h-6 w-6" />
+                </button>
+              )}
             </div>
             <hr className="w-full border-[#C9C9C9] mt-2" />
           </div>
@@ -563,84 +587,88 @@ export default function Miner() {
               </div>
             </div>
 
-            {/* Bitboy */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Image
-                  src="/console-logos/bitboy-pixelated.svg"
-                  width={32}
-                  height={32}
-                  alt="Bitboy"
-                  className="inline-block"
-                />
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  Bitboy
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  4.5x
-                </p>
+            {!connectSectionCollapsed && (
+              <>
+                {/* Bitboy */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/console-logos/bitboy-pixelated.svg"
+                      width={32}
+                      height={32}
+                      alt="Bitboy"
+                      className="inline-block"
+                    />
+                    <p className={cn(jersey.className, "text-2xl text-white")}>
+                      Bitboy
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <p className={cn(jersey.className, "text-2xl text-white")}>
+                      4.5x
+                    </p>
 
-                {connectButtons.bitboy === CustomButtonType.CONNECT ? (
-                  <Dialog>
-                    <DialogTrigger>
+                    {connectButtons.bitboy === CustomButtonType.CONNECT ? (
+                      <Dialog>
+                        <DialogTrigger>
+                          <CustomButton
+                            type={CustomButtonType.CONNECT}
+                            handleClick={handleBitboyConnect}
+                          />
+                        </DialogTrigger>
+                        <DialogContent className=" w-[95%] h-[95%] rounded-lg">
+                          <BitboyConnectDialog />
+                        </DialogContent>
+                      </Dialog>
+                    ) : (
                       <CustomButton
-                        type={CustomButtonType.CONNECT}
-                        handleClick={handleBitboyConnect}
+                        type={connectButtons.bitboy}
+                        handleClick={doNothing}
                       />
-                    </DialogTrigger>
-                    <DialogContent className=" w-[95%] h-[95%] rounded-lg">
-                      <BitboyConnectDialog />
-                    </DialogContent>
-                  </Dialog>
-                ) : (
-                  <CustomButton
-                    type={connectButtons.bitboy}
-                    handleClick={doNothing}
-                  />
-                )}
-              </div>
-            </div>
+                    )}
+                  </div>
+                </div>
 
-            {/* Sui */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Image
-                  src="/console-logos/sui-pixelated.svg"
-                  width={32}
-                  height={32}
-                  alt="Sui"
-                  className="inline-block"
-                />
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  Sui
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <p className={cn(jersey.className, "text-2xl text-white")}>
-                  4.5x
-                </p>
-                {connectButtons.sui === CustomButtonType.CONNECT ? (
-                  <Dialog>
-                    <DialogTrigger>
+                {/* Sui */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/console-logos/sui-pixelated.svg"
+                      width={32}
+                      height={32}
+                      alt="Sui"
+                      className="inline-block"
+                    />
+                    <p className={cn(jersey.className, "text-2xl text-white")}>
+                      Sui
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <p className={cn(jersey.className, "text-2xl text-white")}>
+                      4.5x
+                    </p>
+                    {connectButtons.sui === CustomButtonType.CONNECT ? (
+                      <Dialog>
+                        <DialogTrigger>
+                          <CustomButton
+                            type={CustomButtonType.CONNECT}
+                            handleClick={handleSuiConnect}
+                          />
+                        </DialogTrigger>
+                        <DialogContent className=" w-[95%] h-[95%] rounded-lg">
+                          <SuiConnectDialog />
+                        </DialogContent>
+                      </Dialog>
+                    ) : (
                       <CustomButton
-                        type={CustomButtonType.CONNECT}
-                        handleClick={handleSuiConnect}
+                        type={connectButtons.sui}
+                        handleClick={doNothing}
                       />
-                    </DialogTrigger>
-                    <DialogContent className=" w-[95%] h-[95%] rounded-lg">
-                      <SuiConnectDialog />
-                    </DialogContent>
-                  </Dialog>
-                ) : (
-                  <CustomButton
-                    type={connectButtons.sui}
-                    handleClick={doNothing}
-                  />
-                )}
-              </div>
-            </div>
+                    )}
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

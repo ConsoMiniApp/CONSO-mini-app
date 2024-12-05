@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 import { useEffect, useState } from "react";
+import { AppProvider } from "@/contexts/AppContext";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -43,10 +44,12 @@ export default function RootLayout({
         <head>
           {/* <script src="https://telegram.org/js/telegram-web-app.js"></script> */}
         </head>
-        <body>
-          <main>{children}</main>
-          <Toaster />
-        </body>
+        <AppProvider>
+          <body>
+            <main>{children}</main>
+            <Toaster />
+          </body>
+        </AppProvider>
       </html>
     );
   else

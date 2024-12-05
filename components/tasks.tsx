@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { Wallet, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { handjet, ibmPlex, jersey } from "./ui/fonts";
+import { useAppContext } from "@/contexts/AppContext";
 
 const missons = [
   {
@@ -32,6 +33,7 @@ const missons = [
 ];
 
 export default function Tasks() {
+  const { pointBalance } = useAppContext();
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-md mx-auto min-h-screen flex flex-col">
@@ -82,7 +84,7 @@ export default function Tasks() {
                   jersey.className
                 )}
               >
-                4,000,000
+                {pointBalance.toLocaleString()}
               </span>
             </div>
           </div>
