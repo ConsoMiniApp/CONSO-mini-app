@@ -276,109 +276,111 @@ export default function Miner() {
         </div>
 
         {/* Tap and Ads Section */}
-        <div className="space-y-4 px-4 mb-4">
-          <div className="grid grid-cols-3 gap-1">
-            <div className="flex items-center justify-center ">
-              <Dialog>
-                <DialogTrigger>
+        {connectSectionCollapsed && (
+          <div className="space-y-4 px-4 mb-4">
+            <div className="grid grid-cols-3 gap-1">
+              <div className="flex items-center justify-center ">
+                <Dialog>
+                  <DialogTrigger>
+                    <Image
+                      src="/other-logos/play.svg"
+                      width={114}
+                      height={114}
+                      alt="Ads"
+                      className="inline-block hover:opacity-90 hover:scale-95 transition-transform duration-100"
+                    />
+                  </DialogTrigger>
+                  <DialogContent className="h-screen">
+                    <AdvertisementDialog />
+                  </DialogContent>
+                </Dialog>
+              </div>
+              <div className="flex flex-col gap-3 items-center justify-center ">
+                <div className="flex gap-3">
                   <Image
-                    src="/other-logos/play.svg"
-                    width={114}
-                    height={114}
-                    alt="Ads"
-                    className="inline-block hover:opacity-90 hover:scale-95 transition-transform duration-100"
-                  />
-                </DialogTrigger>
-                <DialogContent className="h-screen">
-                  <AdvertisementDialog />
-                </DialogContent>
-              </Dialog>
-            </div>
-            <div className="flex flex-col gap-3 items-center justify-center ">
-              <div className="flex gap-3">
-                <Image
-                  src="/other-logos/sound.svg"
-                  width={45}
-                  height={45}
-                  alt="sound"
-                  className={soundClass}
-                  onClick={() => {
-                    if (mute) {
-                      setMute(false);
-                      console.log("Sound is off");
-                      setSoundClass(
-                        "inline-block opacity-40 transition-opacity duration-100"
-                      );
-                    } else {
-                      setMute(true);
-                      console.log("Sound is on");
-                      setSoundClass(
-                        "inline-block opacity-100 transition-opacity duration-100"
-                      );
-                    }
+                    src="/other-logos/sound.svg"
+                    width={45}
+                    height={45}
+                    alt="sound"
+                    className={soundClass}
+                    onClick={() => {
+                      if (mute) {
+                        setMute(false);
+                        console.log("Sound is off");
+                        setSoundClass(
+                          "inline-block opacity-40 transition-opacity duration-100"
+                        );
+                      } else {
+                        setMute(true);
+                        console.log("Sound is on");
+                        setSoundClass(
+                          "inline-block opacity-100 transition-opacity duration-100"
+                        );
+                      }
 
+                      // toast({
+                      //   // title: "You have tapped",
+                      //   description: "You have tapped",
+                      //   variant: "custom",
+                      // });
+                    }}
+                  />
+                  <Dialog>
+                    <DialogTrigger>
+                      <Image
+                        src="/other-logos/info.svg"
+                        width={45}
+                        height={45}
+                        alt="Ads"
+                        className="inline-block hover:opacity-90 hover:scale-95 transition-transform duration-100"
+                      />
+                    </DialogTrigger>
+                    <DialogContent className=" w-[95%] h-[95%] rounded-lg">
+                      <InfoDialog />
+                    </DialogContent>
+                  </Dialog>
+                </div>
+                <Image
+                  src="/other-logos/wave.svg"
+                  width={62}
+                  height={44}
+                  alt="Wave"
+                  className="inline-block"
+                />
+              </div>
+
+              <div className="flex items-center justify-center animate-">
+                <Image
+                  src="/other-logos/tap.svg"
+                  width={114}
+                  height={114}
+                  alt="Tap"
+                  className={tapClass}
+                  onClick={() => {
+                    setTapClass(
+                      "inline-block scale-95 transition-transform duration-100 opacity-80"
+                    );
                     // toast({
                     //   // title: "You have tapped",
                     //   description: "You have tapped",
                     //   variant: "custom",
                     // });
+
+                    console.log("Tapped");
+                    setTimeout(() => {
+                      setTapClass("inline-block");
+                      setPointBalance(pointBalance + 1);
+                      localStorage.setItem(
+                        "pointBalance",
+                        (pointBalance + 1).toString()
+                      );
+                    }, 100);
                   }}
                 />
-                <Dialog>
-                  <DialogTrigger>
-                    <Image
-                      src="/other-logos/info.svg"
-                      width={45}
-                      height={45}
-                      alt="Ads"
-                      className="inline-block hover:opacity-90 hover:scale-95 transition-transform duration-100"
-                    />
-                  </DialogTrigger>
-                  <DialogContent className=" w-[95%] h-[95%] rounded-lg">
-                    <InfoDialog />
-                  </DialogContent>
-                </Dialog>
               </div>
-              <Image
-                src="/other-logos/wave.svg"
-                width={62}
-                height={44}
-                alt="Wave"
-                className="inline-block"
-              />
-            </div>
-
-            <div className="flex items-center justify-center animate-">
-              <Image
-                src="/other-logos/tap.svg"
-                width={114}
-                height={114}
-                alt="Tap"
-                className={tapClass}
-                onClick={() => {
-                  setTapClass(
-                    "inline-block scale-95 transition-transform duration-100 opacity-80"
-                  );
-                  // toast({
-                  //   // title: "You have tapped",
-                  //   description: "You have tapped",
-                  //   variant: "custom",
-                  // });
-
-                  console.log("Tapped");
-                  setTimeout(() => {
-                    setTapClass("inline-block");
-                    setPointBalance(pointBalance + 1);
-                    localStorage.setItem(
-                      "pointBalance",
-                      (pointBalance + 1).toString()
-                    );
-                  }, 100);
-                }}
-              />
             </div>
           </div>
-        </div>
+        )}
 
         {/* Connect Section */}
         <div className="flex flex-col ">

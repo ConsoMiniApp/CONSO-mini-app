@@ -54,7 +54,7 @@ export default function Tasks() {
                 ibmPlex.className
               )}
             >
-              EARN TOP GAMERS AND NOSY WINNERS UPDATED DAILY
+              EARN TOP GAMERS AND CONSO WINNERS UPDATED DAILY
             </span>
           </div>
         </div>

@@ -147,7 +147,7 @@ export default function Rank() {
                 ibmPlex.className
               )}
             >
-              DISCOVER TOP GAMERS AND NOSY WINNERS UPDATED DAILY
+              DISCOVER TOP GAMERS AND CONSO WINNERS UPDATED DAILY
             </span>
           </div>
         </div>
