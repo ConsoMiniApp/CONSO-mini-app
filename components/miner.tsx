@@ -14,6 +14,7 @@ import { SuiConnectDialog } from "./sui/SuiConnectDialog";
 import { AdvertisementDialog } from "./conso/AdvertisementDialog";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { InfoDialog } from "./conso/InfoDialog";
 
 const connectButtons = {
   playstation: CustomButtonType.MINING,
@@ -63,17 +64,30 @@ export default function Miner() {
     // get point balance from the local storage
     const pointBalance = localStorage.getItem("pointBalance");
     if (pointBalance) {
-      setPointBalance(Number(pointBalance));
+      let start = 0;
+      const end = Number(pointBalance); // Final value loaded from the server
+      const chunk = Math.round((end - start) / 100); // Animation duration in milliseconds
+      const stepTime = 10; // Time per increment
+
+      const timer = setInterval(() => {
+        start += chunk;
+        setPointBalance(start);
+
+        if (start >= end) {
+          clearInterval(timer);
+          setPointBalance(Number(pointBalance));
+        }
+      }, stepTime);
     } else {
       setPointBalance(4000000);
     }
   }, []);
 
-  useEffect(() => {
-    // save point balance to the local storage
-    if (pointBalance)
-      localStorage.setItem("pointBalance", pointBalance.toString());
-  }, [pointBalance]);
+  // useEffect(() => {
+  //   // save point balance to the local storage
+  //   if (pointBalance)
+
+  // }, [pointBalance]);
 
   return (
     <div className="min-h-screen bg-[#5C6E7E]">
@@ -306,13 +320,20 @@ export default function Miner() {
                     // });
                   }}
                 />
-                <Image
-                  src="/other-logos/info.svg"
-                  width={45}
-                  height={45}
-                  alt="Info"
-                  className="inline-block"
-                />
+                <Dialog>
+                  <DialogTrigger>
+                    <Image
+                      src="/other-logos/info.svg"
+                      width={45}
+                      height={45}
+                      alt="Ads"
+                      className="inline-block hover:opacity-90 hover:scale-95 transition-transform duration-100"
+                    />
+                  </DialogTrigger>
+                  <DialogContent className=" w-[95%] h-[95%] rounded-lg">
+                    <InfoDialog />
+                  </DialogContent>
+                </Dialog>
               </div>
               <Image
                 src="/other-logos/wave.svg"
@@ -344,6 +365,10 @@ export default function Miner() {
                   setTimeout(() => {
                     setTapClass("inline-block");
                     setPointBalance(pointBalance + 1);
+                    localStorage.setItem(
+                      "pointBalance",
+                      pointBalance.toString()
+                    );
                   }, 100);
                 }}
               />
