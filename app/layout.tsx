@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
 // const geistSans = localFont({
@@ -28,7 +28,10 @@ export default function RootLayout({
       <head>
         <script src="https://telegram.org/js/telegram-web-app.js"></script>
       </head>
-      <body>{children}</body>
+      <body>
+        <main>{children}</main>
+        <Toaster />
+      </body>
     </html>
   );
 }

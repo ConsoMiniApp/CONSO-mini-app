@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import { handjet, jersey } from "./ui/fonts";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
@@ -11,6 +11,9 @@ import { NintendoConnectDialog } from "./nintendo/NintendoConnectDialog";
 import { SteamConnectDialog } from "./steam/SteamConnectDialog";
 import { BitboyConnectDialog } from "./bitboy/BitboyConnectDialog";
 import { SuiConnectDialog } from "./sui/SuiConnectDialog";
+import { AdvertisementDialog } from "./conso/AdvertisementDialog";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const connectButtons = {
   playstation: CustomButtonType.MINING,
@@ -22,6 +25,11 @@ const connectButtons = {
 };
 
 export default function Miner() {
+  const { toast } = useToast();
+  const [tapClass, setTapClass] = useState("inline-block ");
+  const [soundClass, setSoundClass] = useState("inline-block");
+  const [mute, setMute] = useState(false);
+
   const handlePlayStationConnect = () => {
     console.log("Connecting PlayStation");
   };
@@ -232,6 +240,99 @@ export default function Miner() {
           </div> */}
         </div>
 
+        {/* Tap and Ads Section */}
+        <div className="space-y-4 px-4 mb-4">
+          <div className="grid grid-cols-3 gap-1">
+            <div className="flex items-center justify-center ">
+              <Dialog>
+                <DialogTrigger>
+                  <Image
+                    src="/other-logos/play.svg"
+                    width={114}
+                    height={114}
+                    alt="Ads"
+                    className="inline-block hover:opacity-90 hover:scale-95 transition-transform duration-100"
+                  />
+                </DialogTrigger>
+                <DialogContent className=" w-[95%] h-[95%] rounded-lg">
+                  <AdvertisementDialog />
+                </DialogContent>
+              </Dialog>
+            </div>
+            <div className="flex flex-col gap-3 items-center justify-center ">
+              <div className="flex gap-3">
+                <Image
+                  src="/other-logos/sound.svg"
+                  width={45}
+                  height={45}
+                  alt="sound"
+                  className={soundClass}
+                  onClick={() => {
+                    if (mute) {
+                      setMute(false);
+                      console.log("Sound is off");
+                      setSoundClass(
+                        "inline-block opacity-40 transition-opacity duration-100"
+                      );
+                    } else {
+                      setMute(true);
+                      console.log("Sound is on");
+                      setSoundClass(
+                        "inline-block opacity-100 transition-opacity duration-100"
+                      );
+                    }
+
+                    // toast({
+                    //   // title: "You have tapped",
+                    //   description: "You have tapped",
+                    //   variant: "custom",
+                    // });
+                  }}
+                />
+                <Image
+                  src="/other-logos/info.svg"
+                  width={45}
+                  height={45}
+                  alt="Info"
+                  className="inline-block"
+                />
+              </div>
+              <Image
+                src="/other-logos/wave.svg"
+                width={62}
+                height={44}
+                alt="Wave"
+                className="inline-block"
+              />
+            </div>
+
+            <div className="flex items-center justify-center animate-">
+              <Image
+                src="/other-logos/tap.svg"
+                width={114}
+                height={114}
+                alt="Tap"
+                className={tapClass}
+                onClick={() => {
+                  setTapClass(
+                    "inline-block scale-95 transition-transform duration-100 opacity-80"
+                  );
+                  // toast({
+                  //   // title: "You have tapped",
+                  //   description: "You have tapped",
+                  //   variant: "custom",
+                  // });
+
+                  console.log("Tapped");
+                  setTimeout(() => {
+                    setTapClass("inline-block");
+                  }, 100);
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
         {/* Connect Section */}
         <div className="flex flex-col ">
           <div className=" mb-4">
@@ -253,7 +354,7 @@ export default function Miner() {
                 )}
               >
                 LESS
-                <ChevronDown className="h-6 w-6" />
+                <ChevronUp className="h-6 w-6" />
               </button>
             </div>
             <hr className="w-full border-[#C9C9C9] mt-2" />
@@ -284,7 +385,7 @@ export default function Miner() {
                     <DialogTrigger>
                       <CustomButton
                         type={CustomButtonType.MINING}
-                        handleClick={doNothing}
+                        handleClick={handlePlayStationConnect}
                       />
                     </DialogTrigger>
                     <DialogContent className=" w-[95%] h-[95%] rounded-lg">
