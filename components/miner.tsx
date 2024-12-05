@@ -12,7 +12,7 @@ import { SteamConnectDialog } from "./steam/SteamConnectDialog";
 import { BitboyConnectDialog } from "./bitboy/BitboyConnectDialog";
 import { SuiConnectDialog } from "./sui/SuiConnectDialog";
 import { AdvertisementDialog } from "./conso/AdvertisementDialog";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 const connectButtons = {
@@ -29,6 +29,7 @@ export default function Miner() {
   const [tapClass, setTapClass] = useState("inline-block ");
   const [soundClass, setSoundClass] = useState("inline-block");
   const [mute, setMute] = useState(false);
+  const [pointBalance, setPointBalance] = useState(0);
 
   const handlePlayStationConnect = () => {
     console.log("Connecting PlayStation");
@@ -57,6 +58,22 @@ export default function Miner() {
   const doNothing = () => {
     console.log("Do nothing");
   };
+  // FOR TESTING
+  useEffect(() => {
+    // get point balance from the local storage
+    const pointBalance = localStorage.getItem("pointBalance");
+    if (pointBalance) {
+      setPointBalance(Number(pointBalance));
+    } else {
+      setPointBalance(4000000);
+    }
+  }, []);
+
+  useEffect(() => {
+    // save point balance to the local storage
+    if (pointBalance)
+      localStorage.setItem("pointBalance", pointBalance.toString());
+  }, [pointBalance]);
 
   return (
     <div className="min-h-screen bg-[#5C6E7E]">
@@ -109,7 +126,7 @@ export default function Miner() {
                 jersey.className
               )}
             >
-              4,000,000
+              {pointBalance.toLocaleString()}
             </span>
           </div>
 
@@ -326,6 +343,7 @@ export default function Miner() {
                   console.log("Tapped");
                   setTimeout(() => {
                     setTapClass("inline-block");
+                    setPointBalance(pointBalance + 1);
                   }, 100);
                 }}
               />
