@@ -208,7 +208,10 @@ export default function Miner() {
                     className="inline-block"
                   />
                   <span
-                    className={cn("text-[#DE5EA6] text-2xl", jersey.className)}
+                    className={cn(
+                      "text-[#DE5EA6] text-2xl text-nowrap",
+                      jersey.className
+                    )}
                   >
                     Total Boost:
                   </span>
@@ -222,7 +225,10 @@ export default function Miner() {
                     className="inline-block"
                   />
                   <span
-                    className={cn("text-[#DE5EA6] text-2xl", jersey.className)}
+                    className={cn(
+                      "text-[#DE5EA6] text-2xl text-nowrap",
+                      jersey.className
+                    )}
                   >
                     Tap Bonus:
                   </span>
@@ -236,7 +242,10 @@ export default function Miner() {
                     className="inline-block"
                   />
                   <span
-                    className={cn("text-[#DE5EA6] text-2xl", jersey.className)}
+                    className={cn(
+                      "text-[#DE5EA6] text-2xl text-nowrap",
+                      jersey.className
+                    )}
                   >
                     All Consoles:
                   </span>
@@ -256,11 +265,11 @@ export default function Miner() {
                 <div className="flex gap-2 w-full justify-left ">
                   <div
                     className={cn(
-                      "text-white text-2xl h-16 overflow-y-scroll pr-4 scrollbar-always-visible",
+                      "text-white text-2xl h-16 overflow-y-scroll pr-4 scrollbar-always-visible text-nowrap",
                       jersey.className
                     )}
                   >
-                    <p>Play Station</p>
+                    <p>Play Station </p>
                     <p>Xbox</p>
                     <p>Steam Deck</p>
                     <p>Nintendo</p>
