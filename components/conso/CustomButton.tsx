@@ -15,7 +15,7 @@ function getButtonDetails(type: CustomButtonType) {
     case CustomButtonType.CONNECT:
       return {
         buttonText: "Connect",
-        buttonTextStyles: cn(jersey.className, "text-2xl"),
+        buttonTextStyles: cn(jersey.className, "text-xl tracking-[0.05em]"),
         buttonStyles: {
           backgroundImage: "url('/other-logos/button-bg-yellow.svg')",
           backgroundSize: "cover",
@@ -26,7 +26,7 @@ function getButtonDetails(type: CustomButtonType) {
     case CustomButtonType.DISCONNECT:
       return {
         buttonText: "Disconnect",
-        buttonTextStyles: cn(jersey.className, "text-2xl"),
+        buttonTextStyles: cn(jersey.className, "text-xl tracking-[0.05em]"),
         buttonStyles: {
           backgroundImage: "url('/other-logos/button-bg-red.svg')",
           backgroundSize: "cover",
@@ -37,7 +37,7 @@ function getButtonDetails(type: CustomButtonType) {
     case CustomButtonType.MINING:
       return {
         buttonText: "Mining...",
-        buttonTextStyles: cn(jersey.className, "text-2xl"),
+        buttonTextStyles: cn(jersey.className, "text-xl tracking-[0.05em]"),
         buttonStyles: {
           backgroundImage: "url('/other-logos/button-bg-green.svg')",
           backgroundSize: "cover",
@@ -48,7 +48,11 @@ function getButtonDetails(type: CustomButtonType) {
     case CustomButtonType.SOON:
       return {
         buttonText: "Soon...",
-        buttonTextStyles: cn(jersey.className, "text-2xl", "text-[#CECECE]"),
+        buttonTextStyles: cn(
+          jersey.className,
+          "text-2xl tracking-[0.05em]",
+          "text-[#CECECE]"
+        ),
         buttonStyles: {
           backgroundImage: "url('/other-logos/button-bg-gray.svg')",
           backgroundSize: "cover",
@@ -59,7 +63,7 @@ function getButtonDetails(type: CustomButtonType) {
     default:
       return {
         buttonText: "",
-        buttonTextStyles: cn(jersey.className, "text-2xl"),
+        buttonTextStyles: cn(jersey.className, "text-2xl tracking-[0.05em]"),
         buttonStyles: {
           backgroundImage: "url('/other-logos/button-bg-invite.svg')",
           backgroundSize: "cover",

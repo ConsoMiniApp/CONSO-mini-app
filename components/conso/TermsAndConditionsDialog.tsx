@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 import CustomButton from "./CustomButton";
 import { CustomButtonType } from "@/lib/types";
 
-export function InfoDialog() {
+export function TermsDisclaimer() {
   return (
     <>
       <div className="">
@@ -25,7 +25,7 @@ export function InfoDialog() {
         <div className="flex justify-between ">
           <p className={cn(handjet.className, "text-xl text-[#7C7C7C]")}>
             {" "}
-            CONSO REWARD SYSTEM
+            TERMS & CONDITIONS
           </p>
           <DialogClose>
             <a>
