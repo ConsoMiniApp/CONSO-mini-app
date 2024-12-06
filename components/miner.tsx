@@ -143,6 +143,8 @@ export default function Miner() {
               </span>
             </div>
 
+            {/* Key Info Section */}
+
             <div className="flex justify-center gap-2 mb-4">
               <div
                 className="w-[73.33px] h-[27px] flex justify-center items-center rounded-lg"
@@ -194,7 +196,8 @@ export default function Miner() {
               </div>
             </div>
 
-            <div className="flex gap-2 ml-8 justify-center items-center  mb-4">
+            {/* User Multipliers and Info Section */}
+            <div className="flex gap-2 ml-8 justify-center items-start mb-4">
               <div>
                 <div className="flex gap-2 w-full justify-left">
                   <Image
@@ -251,30 +254,20 @@ export default function Miner() {
                   </span>
                 </div>
                 <div className="flex gap-2 w-full justify-left ">
-                  <span
+                  <div
                     className={cn(
-                      "text-white text-2xl h-8 overflow-scroll",
+                      "text-white text-2xl h-16 overflow-y-scroll pr-4",
                       jersey.className
                     )}
                   >
                     <p>Play Station</p>
-                    {/* <p>Xbox</p>
-                    <p>Steam Deck</p> */}
-                  </span>
+                    <p>Xbox</p>
+                    <p>Steam Deck</p>
+                    <p>Nintendo</p>
+                  </div>
                 </div>
               </div>
             </div>
-
-            {/* <div className="bg-pink-500 rounded-lg p-2 text-center text-white">
-            <Image
-              src="/placeholder.svg?height=16&width=16"
-              width={16}
-              height={16}
-              alt="Token"
-              className="inline-block mr-2"
-            />
-            10 Token added for the ad play
-          </div> */}
           </div>
 
           {/* Tap and Ads Section */}
