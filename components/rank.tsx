@@ -209,6 +209,112 @@ export default function Rank() {
           </div>
         </div>
 
+        {/* My Rank Row */}
+        <div className="">
+          <div
+            className={cn(
+              "grid grid-cols-8 justify-center items-center px-4 h-[32px]",
+              "bg-[#5C6E7E]"
+            )}
+            // onClick={() => console.log("My Rank")}
+          >
+            <span
+              className={cn(
+                "text-white text-xl font-normal col-span-1 ",
+                jersey.className
+              )}
+            >
+              99.9k
+            </span>
+            <span
+              className={cn(
+                "text-white text-xl font-normal col-span-3",
+                jersey.className
+              )}
+            >
+              You
+            </span>
+            <span
+              className={cn(
+                "text-white text-center text-xl font-normal col-span-2 ",
+                jersey.className
+              )}
+            >
+              x4.5
+            </span>
+            <span
+              className={cn(
+                "text-[#E8BA00] text-center text-xl font-normal col-span-2",
+                jersey.className
+              )}
+            >
+              43.37 M
+            </span>
+          </div>
+          <div
+            className={cn(
+              "grid grid-cols-8 justify-center items-center w-full px-4 h-[58px]",
+              "bg-[#5C6E7E]"
+            )}
+          >
+            <div className="col-span-1 "> </div>
+            <div className="col-span-7 h-[49px] bg-white rounded-md mb-2 py-1 px-4 ">
+              <div className="grid grid-cols-2 ">
+                <p
+                  className={cn(
+                    handjet.className,
+                    "text-sm tracking-wider text-[#808080]"
+                  )}
+                >
+                  GAME DISTANCE
+                </p>
+                <p
+                  className={cn(
+                    handjet.className,
+                    "text-sm tracking-wider text-[#808080]"
+                  )}
+                >
+                  CONSOLES
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 ">
+                <div
+                  className={cn(
+                    jersey.className,
+                    "text-lg tracking-wider text-black"
+                  )}
+                >
+                  5,24,56,234 m
+                </div>
+                <div className={cn("flex gap-1")}>
+                  <Image
+                    src="./console-logos/playstation-color.svg"
+                    width={14}
+                    height={14}
+                    alt=""
+                    className="inline-block"
+                  />
+                  <Image
+                    src="./console-logos/xbox-color.svg"
+                    width={14}
+                    height={14}
+                    alt=""
+                    className="inline-block"
+                  />
+                  <Image
+                    src="./console-logos/nintendo-color.svg"
+                    width={14}
+                    height={14}
+                    alt=""
+                    className="inline-block"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Table Body */}
         {leaderboardRows.map((row, index) => (
           <div className="flex flex-col ">
@@ -216,7 +322,7 @@ export default function Rank() {
               <div
                 className={cn(
                   "grid grid-cols-8 justify-center items-center px-4  h-[32px]",
-                  index % 2 == 0 ? "bg-[#5C6E7E]" : "bg-black"
+                  index % 2 !== 0 ? "bg-[#5C6E7E]" : "bg-black"
                 )}
               >
                 <span
