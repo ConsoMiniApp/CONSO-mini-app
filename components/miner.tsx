@@ -256,7 +256,7 @@ export default function Miner() {
                 <div className="flex gap-2 w-full justify-left ">
                   <div
                     className={cn(
-                      "text-white text-2xl h-16 overflow-y-scroll pr-4",
+                      "text-white text-2xl h-16 overflow-y-scroll pr-4 scrollbar-always-visible",
                       jersey.className
                     )}
                   >

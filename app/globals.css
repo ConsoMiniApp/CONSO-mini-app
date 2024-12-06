@@ -76,3 +76,21 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.scrollbar-always-visible::-webkit-scrollbar {
+  width: 8px; /* Adjust width as needed */
+}
+
+.scrollbar-always-visible::-webkit-scrollbar-thumb {
+  background: #888; /* Customize scrollbar color */
+  border-radius: 4px;
+}
+
+.scrollbar-always-visible::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.scrollbar-always-visible {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #888 transparent; /* For Firefox */
+}
