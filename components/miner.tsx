@@ -253,13 +253,13 @@ export default function Miner() {
                 <div className="flex gap-2 w-full justify-left ">
                   <span
                     className={cn(
-                      "text-white text-2xl h-16 overflow-scroll",
+                      "text-white text-2xl h-8 overflow-scroll",
                       jersey.className
                     )}
                   >
                     <p>Play Station</p>
-                    <p>Xbox</p>
-                    <p>Steam Deck</p>
+                    {/* <p>Xbox</p>
+                    <p>Steam Deck</p> */}
                   </span>
                 </div>
               </div>
