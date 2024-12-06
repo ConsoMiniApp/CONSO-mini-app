@@ -92,14 +92,14 @@ export default function BottomTabNavigation() {
                   width={50}
                   height={50}
                   alt="Miner"
-                  className="mb-1"
+                  className=""
                 />
                 <span
                   className={cn(
                     jersey.className,
                     activeTab == tab.id
-                      ? "text-xl text-[#FFE500]"
-                      : "text-lg text-white"
+                      ? "text-xl text-[#FFE500] tracking-wider"
+                      : "text-xl text-white tracking-wider"
                   )}
                 >
                   {tab.label}
