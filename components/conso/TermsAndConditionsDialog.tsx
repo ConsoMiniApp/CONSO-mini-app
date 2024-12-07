@@ -20,9 +20,9 @@ import { CustomButtonType } from "@/lib/types";
 export function TermsDisclaimer() {
   return (
     <>
-      <div className="overflow-y-scroll scrollbar-always-visible">
+      <div className="overflow-y-scroll scrollbar-always-visible ">
         {/* Top Section */}
-        <div className="flex justify-between ">
+        <div className="flex justify-between  ">
           <p className={cn(handjet.className, "text-xl text-[#7C7C7C]")}>
             {" "}
             TERMS & CONDITIONS
@@ -40,7 +40,7 @@ export function TermsDisclaimer() {
         </div>
 
         {/* All Details */}
-        <div className="flex flex-col space-y-4 text-black mt-2">
+        <div className="flex flex-col space-y-4 text-black mt-2 mr-2 ">
           <p className={cn(ibmPlex500.className, "text-xs tracking-tight")}>
             {" "}
             By using the CONSO app, you agree to the following terms:
