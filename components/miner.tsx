@@ -17,6 +17,7 @@ import { useToast } from "@/hooks/use-toast";
 import { InfoDialog } from "./conso/InfoDialog";
 import { useAppContext } from "@/contexts/AppContext";
 import { TermsDisclaimer } from "./conso/TermsAndConditionsDialog";
+import { AdvertisementDialogV2 } from "./conso/AdvertisementDialogV2";
 
 const connectButtons = {
   playstation: CustomButtonType.MINING,
@@ -25,6 +26,15 @@ const connectButtons = {
   steam: CustomButtonType.CONNECT,
   bitboy: CustomButtonType.SOON,
   sui: CustomButtonType.SOON,
+};
+
+const videoSrc = "/videos/ad.mp4";
+const advertiserInfo = {
+  title: "EigenLayer",
+  description: "Shared security to hyperscale ethereum",
+  link: "https://eigenlayer.com",
+  logoUrl: "/pngs/eigenlayer.png",
+  bgImageUrl: "/pngs/eigenlayer-bg.png",
 };
 
 export default function Miner() {
@@ -295,7 +305,10 @@ export default function Miner() {
                       />
                     </DialogTrigger>
                     <DialogContent className="h-screen">
-                      <AdvertisementDialog />
+                      <AdvertisementDialogV2
+                        videoSrc={videoSrc}
+                        advertiserInfo={advertiserInfo}
+                      />
                     </DialogContent>
                   </Dialog>
                 </div>
