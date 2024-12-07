@@ -41,26 +41,51 @@ export function AdvertisementDialogV2({
     setShowAdInfo(true);
   };
 
-  const enterFullScreen = () => {
-    if (videoRef.current) {
-      if (videoRef.current.requestFullscreen) {
-        videoRef.current.requestFullscreen();
-      }
-    }
-  };
+  // const enterFullScreen = () => {
+  //   if (videoRef.current) {
+  //     if (videoRef.current.requestFullscreen) {
+  //       videoRef.current.requestFullscreen();
+  //     }
+  //   }
+  // };
 
   return (
     <div>
       {!showAdInfo ? (
-        <video
-          ref={videoRef}
-          src={videoSrc}
-          controls={false}
-          autoPlay
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          onEnded={handleVideoEnd}
-          onLoadedMetadata={enterFullScreen}
-        ></video>
+        <>
+          <video
+            ref={videoRef}
+            src={videoSrc}
+            controls={true}
+            autoPlay
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            onEnded={handleVideoEnd}
+            className="rounded-lg bg-black"
+            // onLoadedMetadata={enterFullScreen}
+          ></video>
+          {/* Top Section */}
+          <div className="flex justify-end items-center z-10 absolute top-0 left-0 right-0 p-4">
+            {/* <Image
+              src="/pngs/eigenlayer.png"
+              alt="Advertisement"
+              width={50}
+              height={50}
+              className="bg-white rounded-lg p-2"
+            /> */}
+
+            <div className="flex gap-2 bg-black rounded-full p-2">
+              <Image
+                src="/other-logos/coin.svg"
+                alt="Advertisement"
+                width={22}
+                height={22}
+              />
+              <p className={cn(jersey.className, "text-2xl text-white")}>
+                10 with this ad
+              </p>
+            </div>
+          </div>
+        </>
       ) : (
         <div className="">
           {/* Top Section */}
