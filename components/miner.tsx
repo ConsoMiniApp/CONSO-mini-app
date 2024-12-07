@@ -100,11 +100,13 @@ export default function Miner() {
   }, []);
 
   let termsAccepted = false;
-  const alreadyAcceptedTerms = localStorage.getItem("termsAccepted");
-  if (alreadyAcceptedTerms == "true") {
-    termsAccepted = true;
-  } else {
-    termsAccepted = false;
+  if (typeof window !== "undefined") {
+    const alreadyAcceptedTerms = localStorage.getItem("termsAccepted");
+    if (alreadyAcceptedTerms == "true") {
+      termsAccepted = true;
+    } else {
+      termsAccepted = false;
+    }
   }
 
   return (
