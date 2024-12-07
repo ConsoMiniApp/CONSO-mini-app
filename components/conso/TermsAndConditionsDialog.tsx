@@ -150,7 +150,7 @@ export function TermsDisclaimer() {
             <p
               className={cn(
                 ibmPlex500.className,
-                "text-xs tracking-tight ml-5 mt-1"
+                "text-xs tracking-tight ml-5 mt-1 mb-16"
               )}
             >
               {" "}
