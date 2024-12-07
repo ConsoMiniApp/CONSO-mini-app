@@ -213,7 +213,7 @@ export default function Miner() {
                       jersey.className
                     )}
                   >
-                    Total Boost:
+                    Total Boost :
                   </span>
                 </div>
                 <div className="flex gap-2 w-full justify-left">
@@ -230,7 +230,7 @@ export default function Miner() {
                       jersey.className
                     )}
                   >
-                    Tap Bonus:
+                    Tap Bonus :
                   </span>
                 </div>
                 <div className="flex gap-2 w-full justify-left">
@@ -247,7 +247,7 @@ export default function Miner() {
                       jersey.className
                     )}
                   >
-                    All Consoles:
+                    All Consoles :
                   </span>
                 </div>
               </div>
@@ -259,7 +259,7 @@ export default function Miner() {
                 </div>
                 <div className="flex gap-2 w-full justify-left">
                   <span className={cn("text-white text-2xl", jersey.className)}>
-                    x4.5
+                    5,000
                   </span>
                 </div>
                 <div className="flex gap-2 w-full justify-left ">
@@ -701,7 +701,7 @@ export default function Miner() {
                           "text-2xl text-white tracking-[0.05em]"
                         )}
                       >
-                        Sui
+                        SuiPlay0X1
                       </p>
                     </div>
                     <div className="flex items-center gap-2">

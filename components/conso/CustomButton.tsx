@@ -50,7 +50,7 @@ function getButtonDetails(type: CustomButtonType) {
         buttonText: "Soon...",
         buttonTextStyles: cn(
           jersey.className,
-          "text-2xl tracking-[0.05em]",
+          "text-xl tracking-[0.05em]",
           "text-[#CECECE]"
         ),
         buttonStyles: {

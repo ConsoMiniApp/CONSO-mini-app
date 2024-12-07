@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { Wallet, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { handjet, ibmPlex, jersey } from "./ui/fonts";
+import RankRow from "./conso/rank/RankRow";
 
 const leaderboardRows = [
   {
@@ -251,6 +252,7 @@ export default function Rank() {
               43.37 M
             </span>
           </div>
+          {/* Expanded Data View for a Rank */}
           <div
             className={cn(
               "grid grid-cols-8 justify-center items-center w-full px-4 h-[58px]",
@@ -317,49 +319,7 @@ export default function Rank() {
 
         {/* Table Body */}
         {leaderboardRows.map((row, index) => (
-          <div className="flex flex-col ">
-            <div className="">
-              <div
-                className={cn(
-                  "grid grid-cols-8 justify-center items-center px-4  h-[32px]",
-                  index % 2 !== 0 ? "bg-[#5C6E7E]" : "bg-black"
-                )}
-              >
-                <span
-                  className={cn(
-                    "text-white text-xl font-normal col-span-1 ",
-                    jersey.className
-                  )}
-                >
-                  #{row.rank}
-                </span>
-                <span
-                  className={cn(
-                    "text-white text-xl font-normal col-span-3",
-                    jersey.className
-                  )}
-                >
-                  {row.name}
-                </span>
-                <span
-                  className={cn(
-                    "text-white text-center text-xl font-normal col-span-2 ",
-                    jersey.className
-                  )}
-                >
-                  x{row.boost}
-                </span>
-                <span
-                  className={cn(
-                    "text-[#E8BA00] text-center text-xl font-normal col-span-2",
-                    jersey.className
-                  )}
-                >
-                  {row.conso}M
-                </span>
-              </div>
-            </div>
-          </div>
+          <RankRow key={index} row={row} index={index} />
         ))}
       </div>
     </div>
