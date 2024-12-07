@@ -78,6 +78,7 @@ export default function Miner() {
   useEffect(() => {
     // get point balance from the local storage
     const pointBalance = localStorage.getItem("pointBalance");
+
     if (pointBalance) {
       let start = 0;
       const end = Number(pointBalance); // Final value loaded from the server
@@ -98,16 +99,18 @@ export default function Miner() {
     }
   }, []);
 
-  // useEffect(() => {
-  //   // save point balance to the local storage
-  //   if (pointBalance)
-
-  // }, [pointBalance]);
+  let termsAccepted = false;
+  const alreadyAcceptedTerms = localStorage.getItem("termsAccepted");
+  if (alreadyAcceptedTerms == "true") {
+    termsAccepted = true;
+  } else {
+    termsAccepted = false;
+  }
 
   return (
     <>
-      <Dialog>
-        {/* <DialogTrigger className="hidden"></DialogTrigger> */}
+      <Dialog defaultOpen={!termsAccepted}>
+        {/* <DialogTrigger ></DialogTrigger> */}
         <DialogContent className=" w-[95%] h-[95%] rounded-xl">
           <TermsDisclaimer />
         </DialogContent>

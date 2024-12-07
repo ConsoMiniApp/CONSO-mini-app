@@ -321,6 +321,11 @@ export default function Rank() {
         {leaderboardRows.map((row, index) => (
           <RankRow key={index} row={row} index={index} />
         ))}
+
+        {/* Pagination Section */}
+        <div className="flex justify-center items-center bg-black py-4">
+          <p className="text-white">[TO DO]1 2 3 4 5 6 7 8 9 10</p>
+        </div>
       </div>
     </div>
   );
