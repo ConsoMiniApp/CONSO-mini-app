@@ -535,7 +535,7 @@ export default function Miner() {
                           handleClick={handlePlayStationConnected}
                         />
                       </DialogTrigger>
-                      <DialogContent className=" w-[100%] bg-[#5C6E7E] ">
+                      <DialogContent className=" w-[95%] h-[95%] rounded-xl border-none bg-[#5C6E7E] ">
                         <PlaystationConnectedDialog />
                       </DialogContent>
                     </Dialog>
@@ -592,7 +592,7 @@ export default function Miner() {
                           handleClick={handleXboxConnected}
                         />
                       </DialogTrigger>
-                      <DialogContent className=" w-[100%] h-[100 %] bg-[#5C6E7E]">
+                      <DialogContent className=" w-[100%] bg-[#5C6E7E]">
                         <XboxConnectedDialog />
                       </DialogContent>
                     </Dialog>
