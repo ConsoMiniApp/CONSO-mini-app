@@ -2,10 +2,24 @@ import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
 import { handjet, ibmPlex500, ibmPlex700, jersey } from "../ui/fonts";
 import { cn } from "@/lib/utils";
-import CustomButton from "./CustomButton";
-import { CustomButtonType } from "@/lib/types";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 export function InfoDialog() {
+  const activities = [
+    { name: "PlayStation", rate: "2.5x" },
+    { name: "Xbox", rate: "2.5x" },
+    { name: "Bitboy", rate: "2.0x" },
+    { name: "Sui Console", rate: "2.0x" },
+    { name: "Nintendo", rate: "1.75x" },
+    { name: "Steam", rate: "1.5x" },
+  ];
   return (
     <>
       <div className="overflow-y-scroll scrollbar-always-visible ">
@@ -32,7 +46,7 @@ export function InfoDialog() {
           </DialogClose>
         </div>
 
-        {/* All Details */}
+        {/* Sub Heading */}
         <div className="flex flex-col space-y-4 text-black mt-2 mr-2 ">
           <p className={cn(ibmPlex500.className, "text-xs tracking-tight")}>
             {" "}
@@ -41,119 +55,164 @@ export function InfoDialog() {
           </p>
 
           <div className="ml-1">
-            <p
-              className={cn(
-                ibmPlex700.className,
-                "text-xs tracking-tight flex gap-2"
-              )}
-            >
-              {" "}
-              <Image
-                src={"/other-logos/console.svg"}
-                alt="Console"
-                width={24}
-                height={14}
-              />
+            {/* Console Info */}
+            <div>
               <p
                 className={cn(
-                  jersey.className,
-                  "text-[#DE5EA6] text-xl tracking-wider"
+                  ibmPlex700.className,
+                  "text-xs tracking-tight flex items-start gap-2"
                 )}
               >
-                CONSOLES:
-                <span
+                {" "}
+                <Image
+                  src={"/other-logos/console.svg"}
+                  alt="Console"
+                  width={24}
+                  height={14}
+                />
+                <p
                   className={cn(
                     jersey.className,
-                    "text-[#A08F00] text-xl tracking-wider"
+                    "text-[#DE5EA6] text-xl tracking-wider"
                   )}
                 >
-                  {" "}
-                  The Data Providers
-                </span>
+                  CONSOLES:
+                  <span
+                    className={cn(
+                      jersey.className,
+                      "text-[#A08F00] text-xl tracking-wider"
+                    )}
+                  >
+                    {" "}
+                    The Data Providers
+                  </span>
+                </p>
               </p>
-            </p>
-            <p
-              className={cn(
-                ibmPlex500.className,
-                "text-xs tracking-tight mt-1 flex gap-2 items-start"
-              )}
-            >
-              <Image
-                src={"/other-logos/right-arrow.svg"}
-                alt="Console"
-                width={24}
-                height={14}
-              />{" "}
-              <p>
-                Connected consoles act as data providers, boosting mining rates
-                and enriching the ecosystem.
-              </p>
-            </p>
-
-            <p
-              className={cn(
-                ibmPlex700.className,
-                "text-xs tracking-tight flex gap-2 mt-3"
-              )}
-            >
-              {" "}
-              <Image
-                src={"/other-logos/boost.svg"}
-                alt="Console"
-                width={16}
-                height={16}
-              />
               <p
                 className={cn(
-                  jersey.className,
-                  "text-[#DE5EA6] text-xl tracking-wider"
+                  ibmPlex500.className,
+                  "text-xs tracking-tight mt-1 flex gap-2 items-start"
                 )}
               >
-                ACTIVE ENGAGEMENT:
-                <span
+                <Image
+                  src={"/other-logos/right-arrow.svg"}
+                  alt="Console"
+                  width={24}
+                  height={14}
+                />{" "}
+                <p>
+                  Connected consoles act as data providers, boosting mining
+                  rates and enriching the ecosystem.
+                </p>
+              </p>
+              {/* Table with info */}
+              <div className={cn("w-[90%]  mt-4 ml-4 ", ibmPlex500.className)}>
+                <Table>
+                  <TableHeader className="bg-[#E7E8E3] ">
+                    <TableRow>
+                      <TableHead className="text-xs text-black">
+                        Activity
+                      </TableHead>
+                      <TableHead className="text-xs text-black">
+                        Mining Rate
+                      </TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {activities.map((activity) => (
+                      <TableRow key={activity.name}>
+                        <TableCell className="text-xs text-gray-600">
+                          {activity.name}
+                        </TableCell>
+                        <TableCell className="text-gray-600 text-xs">
+                          {activity.rate}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+            <div className="mt-3">
+              <p
+                className={cn(
+                  ibmPlex700.className,
+                  "text-xs tracking-tight flex items-start gap-2 "
+                )}
+              >
+                {" "}
+                <Image
+                  src={"/other-logos/boost.svg"}
+                  alt="Console"
+                  width={16}
+                  height={18}
+                  className="mt-[4px]"
+                />
+                <p
                   className={cn(
                     jersey.className,
-                    "text-[#A08F00] text-xl tracking-wider"
+                    "text-[#DE5EA6] text-xl tracking-wider"
                   )}
                 >
-                  {" "}
-                  Mini App Users
-                </span>
+                  ACTIVE ENGAGEMENT:
+                  <span
+                    className={cn(
+                      jersey.className,
+                      "text-[#A08F00] text-xl tracking-wider"
+                    )}
+                  >
+                    {" "}
+                    Mini App Users
+                  </span>
+                </p>
               </p>
-            </p>
-            <p
-              className={cn(
-                ibmPlex500.className,
-                "text-xs tracking-tight mt-1 flex items-start gap-2"
-              )}
-            >
-              <Image
-                src={"/other-logos/right-arrow.svg"}
-                alt="Console"
-                width={24}
-                height={14}
-              />{" "}
-              <p>
-                Earn extra by contributing through gaming, tapping, and watching
-                ads.
+              <p
+                className={cn(
+                  ibmPlex500.className,
+                  "text-xs tracking-tight mt-1 flex items-start gap-2"
+                )}
+              >
+                <Image
+                  src={"/other-logos/right-arrow.svg"}
+                  alt="Console"
+                  width={24}
+                  height={14}
+                />{" "}
+                <p>
+                  Earn extra by contributing through gaming, tapping, and
+                  watching ads.
+                </p>
               </p>
-            </p>
+              {/* Table with info */}
+              <div className={cn("w-[90%]  mt-4 ml-4 ", ibmPlex500.className)}>
+                <Table>
+                  <TableHeader className="bg-[#E7E8E3] ">
+                    <TableRow>
+                      <TableHead className="text-xs text-black">
+                        Activity
+                      </TableHead>
+                      <TableHead className="text-xs text-black">
+                        Mining Rate
+                      </TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {activities.map((activity) => (
+                      <TableRow key={activity.name}>
+                        <TableCell className="text-xs text-gray-600">
+                          {activity.name}
+                        </TableCell>
+                        <TableCell className="text-gray-600 text-xs">
+                          {activity.rate}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
           </div>
         </div>
-
-        {/* Bottom Advertiser Info Section */}
-        {/* <div className="absolute flex justify-center bottom-0 left-1/2 transform -translate-x-1/2 py-4 bg-white w-full rounded-lg">
-          <DialogClose>
-            <CustomButton
-              type={CustomButtonType.CONNECT}
-              text="ACCEPT "
-              handleClick={() => {
-                localStorage.setItem("termsAccepted", "true");
-              }}
-              className="text-black"
-            ></CustomButton>
-          </DialogClose>
-        </div> */}
       </div>
     </>
   );
