@@ -121,7 +121,7 @@ export function AdvertisementDialogV2({
               alt="Advertisement Background"
               layout="fill"
               objectFit="cover"
-              className="z-[-1]"
+              className="z-[-1] "
             />
           </div>
 

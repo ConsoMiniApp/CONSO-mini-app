@@ -1,15 +1,3 @@
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
 import { handjet, ibmPlex, ibmPlex500, ibmPlex700, jersey } from "../ui/fonts";
@@ -23,7 +11,12 @@ export function TermsDisclaimer() {
       <div className="overflow-y-scroll scrollbar-always-visible ">
         {/* Top Section */}
         <div className="flex justify-between  ">
-          <p className={cn(handjet.className, "text-xl text-[#7C7C7C]")}>
+          <p
+            className={cn(
+              handjet.className,
+              "text-xl text-[#7C7C7C] tracking-wider"
+            )}
+          >
             {" "}
             TERMS & CONDITIONS
           </p>
