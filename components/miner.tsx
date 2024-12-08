@@ -18,6 +18,7 @@ import { InfoDialog } from "./conso/InfoDialog";
 import { useAppContext } from "@/contexts/AppContext";
 import { TermsDisclaimer } from "./conso/TermsAndConditionsDialog";
 import { AdvertisementDialogV2 } from "./conso/AdvertisementDialogV2";
+import { PlaystationConnectedDialog } from "./psn/PlaystationConnectedDialog";
 
 const connectButtons = {
   playstation: CustomButtonType.MINING,
@@ -49,6 +50,10 @@ export default function Miner() {
 
   const handlePlayStationConnect = () => {
     console.log("Connecting PlayStation");
+  };
+
+  const handlePlayStationConnected = () => {
+    console.log("Show Conneced Dialog");
   };
 
   const handleXboxConnect = () => {
@@ -132,11 +137,19 @@ export default function Miner() {
             `,
             }}
           >
-            <div className="flex justify-center ">
-              {/* <div></div> */}
+            <div className="flex justify-between items-center px-2">
+              <div className="w-8"></div>
               <span className={cn("text-6xl text-white ", jersey.className)}>
                 CONSO
               </span>
+              <div>
+                <Image
+                  src="/other-logos/wallet.svg"
+                  width={32}
+                  height={32}
+                  alt="Wallet"
+                />
+              </div>
             </div>
 
             <div className="flex justify-center items-center gap-2 mb-4">
@@ -494,10 +507,17 @@ export default function Miner() {
                       </DialogContent>
                     </Dialog>
                   ) : (
-                    <CustomButton
-                      type={connectButtons.playstation}
-                      handleClick={doNothing}
-                    />
+                    <Dialog>
+                      <DialogTrigger>
+                        <CustomButton
+                          type={connectButtons.playstation}
+                          handleClick={handlePlayStationConnected}
+                        />
+                      </DialogTrigger>
+                      <DialogContent className=" w-[100%] h-[100 %] bg-[#5C6E7E]">
+                        <PlaystationConnectedDialog />
+                      </DialogContent>
+                    </Dialog>
                   )}
                 </div>
               </div>

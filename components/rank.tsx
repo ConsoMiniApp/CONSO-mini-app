@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { Wallet, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { handjet, ibmPlex, jersey } from "./ui/fonts";
 import RankRow from "./conso/rank/RankRow";
@@ -132,7 +131,7 @@ export default function Rank() {
     <div className="min-h-screen bg-[#5C6E7E]">
       <div className="max-w-md mx-auto min-h-screen flex flex-col">
         {/* Heading */}
-        <div className=" bg-black ">
+        <div className="bg-black">
           <div className="flex justify-around mb-4">
             <span
               className={cn("text-5xl mt-10 text-white ", jersey.className)}
@@ -155,58 +154,56 @@ export default function Rank() {
 
         {/* Leaderboard Table Section */}
         {/* Table Heading */}
-        <div className="flex flex-col ">
-          <div className="">
-            <div className="grid grid-cols-8 justify-center items-center px-4 bg-[#DE5EA6] h-[31px] border border-[#004AAD] border-1">
-              <span
-                className={cn(
-                  "text-white text-xl font-normal col-span-1 ",
-                  jersey.className
-                )}
-              >
-                #
-              </span>
-              <span
-                className={cn(
-                  "text-white text-xl font-normal col-span-3",
-                  jersey.className
-                )}
-              >
-                NAME
-              </span>
-              <span
-                className={cn(
-                  "text-white text-center text-xl font-normal col-span-2 border-l border-r border-[#004AAD]",
-                  jersey.className
-                )}
-              >
-                <Image
-                  src="./other-logos/boost.svg"
-                  width={11}
-                  height={11}
-                  alt=""
-                  className="inline-block mr-1"
-                  onClick={() => console.log("Coin")}
-                />
-                BOOST
-              </span>
-              <span
-                className={cn(
-                  "text-white text-center text-xl flex items-center justify-center font-normal col-span-2",
-                  jersey.className
-                )}
-              >
-                <Image
-                  src="./other-logos/coin.svg"
-                  width={12}
-                  height={12}
-                  alt=""
-                  className="inline-block mr-1"
-                  onClick={() => console.log("Coin")}
-                />
-                CONSO
-              </span>
-            </div>
+        <div className=" ">
+          <div className="grid grid-cols-8 justify-center items-center px-4 bg-[#DE5EA6] h-[31px] border border-[#004AAD] border-1">
+            <span
+              className={cn(
+                "text-white text-xl font-normal col-span-1 ",
+                jersey.className
+              )}
+            >
+              #
+            </span>
+            <span
+              className={cn(
+                "text-white text-xl font-normal col-span-3",
+                jersey.className
+              )}
+            >
+              NAME
+            </span>
+            <span
+              className={cn(
+                "text-white text-center text-xl font-normal col-span-2 border-l border-r border-[#004AAD]",
+                jersey.className
+              )}
+            >
+              <Image
+                src="./other-logos/boost.svg"
+                width={11}
+                height={11}
+                alt=""
+                className="inline-block mr-1"
+                onClick={() => console.log("Coin")}
+              />
+              BOOST
+            </span>
+            <span
+              className={cn(
+                "text-white text-center text-xl flex items-center justify-center font-normal col-span-2",
+                jersey.className
+              )}
+            >
+              <Image
+                src="./other-logos/coin.svg"
+                width={12}
+                height={12}
+                alt=""
+                className="inline-block mr-1"
+                onClick={() => console.log("Coin")}
+              />
+              CONSO
+            </span>
           </div>
         </div>
 

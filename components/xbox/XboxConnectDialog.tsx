@@ -1,44 +1,159 @@
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { DialogClose } from "@radix-ui/react-dialog";
+import Image from "next/image";
+import { handjet, ibmPlex500, ibmPlex700, jersey } from "../ui/fonts";
+import { cn } from "@/lib/utils";
+import Lottie from "lottie-react";
+import consoleAnimation from "@/public/animations/console-animation.json";
 
 export function XboxConnectDialog() {
   return (
     <>
-      <DialogHeader>
-        <DialogTitle>Connect Xbox</DialogTitle>
-        <DialogDescription>You can connect your Xbox here.</DialogDescription>
-      </DialogHeader>
-      <div className="grid gap-4 py-4">
-        <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="name" className="text-right">
-            Name
-          </Label>
-          <Input id="name" defaultValue="Pedro Duarte" className="col-span-3" />
+      <div className="overflow-y-scroll scrollbar-always-visible ">
+        {/* Top Section */}
+        <div className="flex justify-between  ">
+          <p
+            className={cn(
+              handjet.className,
+              "text-xl text-[#7C7C7C] tracking-wider"
+            )}
+          >
+            {" "}
+            CONSO REWARD SYSTEM
+          </p>
+          <DialogClose>
+            <a>
+              <Image
+                src="/other-logos/close.svg"
+                alt="Advertisement"
+                width={24}
+                height={24}
+              />
+            </a>
+          </DialogClose>
         </div>
-        <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="username" className="text-right">
-            Username
-          </Label>
-          <Input
-            id="username"
-            defaultValue="@peduarte"
-            className="col-span-3"
-          />
+
+        {/* Sub Heading */}
+        <div className="flex flex-col space-y-4 text-black mt-2 mr-2 ">
+          <p className={cn(ibmPlex500.className, "text-xs tracking-tight")}>
+            {" "}
+            Earn CONSO tokens by contributing to the network in various ways.
+            Check out the mining rates based on your engagement level:
+          </p>
+
+          <div className="flex justify-center">
+            <Lottie
+              animationData={consoleAnimation}
+              className="w-[50%]"
+              loop={true}
+            />
+          </div>
+
+          <div className="ml-1">
+            {/* Console Info */}
+            <div>
+              <p
+                className={cn(
+                  ibmPlex700.className,
+                  "text-xs tracking-tight flex items-start gap-2"
+                )}
+              >
+                {" "}
+                <Image
+                  src={"/other-logos/console.svg"}
+                  alt="Console"
+                  width={24}
+                  height={14}
+                />
+                <p
+                  className={cn(
+                    jersey.className,
+                    "text-[#DE5EA6] text-xl tracking-wider"
+                  )}
+                >
+                  CONSOLES:
+                  <span
+                    className={cn(
+                      jersey.className,
+                      "text-[#A08F00] text-xl tracking-wider"
+                    )}
+                  >
+                    {" "}
+                    The Data Providers
+                  </span>
+                </p>
+              </p>
+              <p
+                className={cn(
+                  ibmPlex500.className,
+                  "text-xs tracking-tight mt-1 flex gap-2 items-start"
+                )}
+              >
+                <Image
+                  src={"/other-logos/right-arrow.svg"}
+                  alt="Console"
+                  width={24}
+                  height={14}
+                />{" "}
+                <p>
+                  Connected consoles act as data providers, boosting mining
+                  rates and enriching the ecosystem.
+                </p>
+              </p>
+            </div>
+            <div className="mt-3">
+              <p
+                className={cn(
+                  ibmPlex700.className,
+                  "text-xs tracking-tight flex items-start gap-2 "
+                )}
+              >
+                {" "}
+                <Image
+                  src={"/other-logos/boost.svg"}
+                  alt="Console"
+                  width={16}
+                  height={18}
+                  className="mt-[4px]"
+                />
+                <p
+                  className={cn(
+                    jersey.className,
+                    "text-[#DE5EA6] text-xl tracking-wider"
+                  )}
+                >
+                  ACTIVE ENGAGEMENT:
+                  <span
+                    className={cn(
+                      jersey.className,
+                      "text-[#A08F00] text-xl tracking-wider"
+                    )}
+                  >
+                    {" "}
+                    Mini App Users
+                  </span>
+                </p>
+              </p>
+              <p
+                className={cn(
+                  ibmPlex500.className,
+                  "text-xs tracking-tight mt-1 flex items-start gap-2"
+                )}
+              >
+                <Image
+                  src={"/other-logos/right-arrow.svg"}
+                  alt="Console"
+                  width={24}
+                  height={14}
+                />{" "}
+                <p>
+                  Earn extra by contributing through gaming, tapping, and
+                  watching ads.
+                </p>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <DialogFooter>
-        <Button type="submit">Save changes</Button>
-      </DialogFooter>
     </>
   );
 }
