@@ -95,3 +95,12 @@ body {
   scrollbar-width: thin; /* For Firefox */
   scrollbar-color: #888 transparent; /* For Firefox */
 }
+
+.scrollbar-hide {
+  -ms-overflow-style: "none"; /* Internet Explorer 10+ */
+  scrollbar-width: "none"; /* Firefox */
+}
+
+&::-webkit-scrollbar {
+  display: "none"; /* Safari and Chrome */
+}

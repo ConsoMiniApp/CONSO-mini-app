@@ -19,6 +19,7 @@ import { useAppContext } from "@/contexts/AppContext";
 import { TermsDisclaimer } from "./conso/TermsAndConditionsDialog";
 import { AdvertisementDialogV2 } from "./conso/AdvertisementDialogV2";
 import { PlaystationConnectedDialog } from "./psn/PlaystationConnectedDialog";
+import { XboxConnectedDialog } from "./xbox/XboxConnectedDialog";
 
 const connectButtons = {
   playstation: CustomButtonType.MINING,
@@ -60,7 +61,15 @@ export default function Miner() {
     console.log("Connecting Xbox");
   };
 
+  const handleXboxConnected = () => {
+    console.log("Connecting Xbox");
+  };
+
   const handleNintendoConnect = () => {
+    console.log("Connecting Nintendo");
+  };
+
+  const handleNintendoConnected = () => {
     console.log("Connecting Nintendo");
   };
 
@@ -68,11 +77,23 @@ export default function Miner() {
     console.log("Connecting Steam");
   };
 
+  const handleSteamConnected = () => {
+    console.log("Connecting Steam");
+  };
+
   const handleBitboyConnect = () => {
     console.log("Connecting Bitboy");
   };
 
+  const handleBitboyConnected = () => {
+    console.log("Connecting Bitboy");
+  };
+
   const handleSuiConnect = () => {
+    console.log("Connecting Sui");
+  };
+
+  const handleSuiConnected = () => {
     console.log("Connecting Sui");
   };
 
@@ -514,7 +535,7 @@ export default function Miner() {
                           handleClick={handlePlayStationConnected}
                         />
                       </DialogTrigger>
-                      <DialogContent className=" w-[100%] h-[100 %] bg-[#5C6E7E]">
+                      <DialogContent className=" w-[100%] bg-[#5C6E7E] ">
                         <PlaystationConnectedDialog />
                       </DialogContent>
                     </Dialog>
@@ -564,10 +585,17 @@ export default function Miner() {
                       </DialogContent>
                     </Dialog>
                   ) : (
-                    <CustomButton
-                      type={connectButtons.xbox}
-                      handleClick={doNothing}
-                    />
+                    <Dialog>
+                      <DialogTrigger>
+                        <CustomButton
+                          type={connectButtons.xbox}
+                          handleClick={handleXboxConnected}
+                        />
+                      </DialogTrigger>
+                      <DialogContent className=" w-[100%] h-[100 %] bg-[#5C6E7E]">
+                        <XboxConnectedDialog />
+                      </DialogContent>
+                    </Dialog>
                   )}
                 </div>
               </div>
