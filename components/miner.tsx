@@ -56,6 +56,7 @@ export default function Miner() {
 
   // sounds
   const [tapSound, setTapSound] = useState<Howl>();
+  const [bgMinerSound, setBgMinerSound] = useState<Howl>();
 
   const handlePlayStationConnect = () => {
     console.log("Connecting PlayStation");
@@ -120,7 +121,25 @@ export default function Miner() {
         },
       })
     );
+    setBgMinerSound(
+      new Howl({
+        src: ["/sounds/bg-miner-music.mp3"],
+        volume: 0.1,
+        loop: true,
+      })
+    );
   }, []);
+
+  // Play the background music
+  useEffect(() => {
+    if (bgMinerSound) {
+      if (mute) {
+        bgMinerSound.stop();
+      } else {
+        bgMinerSound.play();
+      }
+    }
+  }, [mute]);
 
   // FOR TESTING
   useEffect(() => {
