@@ -13,7 +13,6 @@ import { BitboyConnectDialog } from "./bitboy/BitboyConnectDialog";
 import { SuiConnectDialog } from "./sui/SuiConnectDialog";
 import { AdvertisementDialog } from "./conso/AdvertisementDialog";
 import { useContext, useEffect, useState } from "react";
-import { useToast } from "@/hooks/use-toast";
 import { InfoDialog } from "./conso/InfoDialog";
 import { useAppContext } from "@/contexts/AppContext";
 import { TermsDisclaimer } from "./conso/TermsAndConditionsDialog";
@@ -25,6 +24,7 @@ import { SteamConnectedDialog } from "./steam/SteamConnectedDialog";
 import { BitboyConnectedDialog } from "./bitboy/BitboyConnectedDialog";
 import { SuiConnectedDialog } from "./sui/SuiConnectedDialog";
 import { Howl } from "howler";
+import toast from "react-hot-toast";
 
 const connectButtons = {
   playstation: CustomButtonType.MINING,
@@ -45,7 +45,6 @@ const advertiserInfo = {
 };
 
 export default function Miner() {
-  const { toast } = useToast();
   const [tapClass, setTapClass] = useState("inline-block ");
   const [soundClass, setSoundClass] = useState("inline-block opacity-40 ");
   const [mute, setMute] = useState<boolean>(true);
@@ -169,7 +168,7 @@ export default function Miner() {
     });
   }
 
-  // FOR TESTING
+  // FOR TESTING: BUG
   useEffect(() => {
     // get point balance from the local storage
     const pointBalance = localStorage.getItem("pointBalance");
@@ -216,15 +215,13 @@ export default function Miner() {
         <div className="max-w-md mx-auto min-h-screen flex flex-col">
           {/* Top Status Card */}
           <div
-            className="p-4 rounded-3xl m-4 border-2 shadow-lg bg-black border-neutral-800"
+            className="p-4 rounded-3xl m-4  bg-black"
             style={{
-              boxShadow: `
-              0px 0px 10px 0px #181818,
-              0px 0px 5px 0px #13131380,
-              0px 0px 3px 0px #060606,
-              4px -4px 8px 0px #000000BF inset,
-              -1px 1px 2px 0px #000000 inset
-            `,
+              boxShadow: `0px 0px 3px #060606, 0px 0px 5px rgba(19, 19, 19, 0.5), 0px 0px 10px #181818, inset -1px 1px 2px #000000, inset 4px -4px 8px rgba(0, 0, 0, 0.75)`,
+              border: "3px solid #000000",
+              backgroundImage: "url('/pngs/bg-cover.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
             }}
           >
             <div className="flex justify-between items-center px-2">
@@ -473,7 +470,7 @@ export default function Miner() {
                   />
                 </div>
 
-                <div className="flex items-center justify-center animate-">
+                <div className="flex items-center justify-center">
                   <Image
                     src="/other-logos/tap.svg"
                     width={114}
@@ -485,11 +482,21 @@ export default function Miner() {
                         "inline-block scale-95 transition-transform duration-100 opacity-80"
                       );
                       tapSound?.play("tap");
-                      // toast({
-                      //   // title: "You have tapped",
-                      //   description: "You have tapped",
-                      //   variant: "custom",
-                      // });
+                      toast("You Tapped.", {
+                        className: cn(jersey.className, "text-xl text-white"),
+                        style: {
+                          background: "#000",
+                          color: "#fff",
+                        },
+                        icon: (
+                          <Image
+                            src="/toast-logos/success.svg"
+                            width={24}
+                            height={24}
+                            alt="Coin"
+                          />
+                        ),
+                      });
 
                       console.log("Tapped");
                       setTimeout(() => {

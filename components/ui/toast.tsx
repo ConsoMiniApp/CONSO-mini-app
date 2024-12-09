@@ -5,6 +5,7 @@ import * as ToastPrimitives from "@radix-ui/react-toast";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { Cross2Icon } from "@radix-ui/react-icons";
+import { jersey } from "./fonts";
 
 const ToastProvider = ToastPrimitives.Provider;
 
@@ -32,6 +33,10 @@ const toastVariants = cva(
         destructive:
           "destructive group border-destructive bg-destructive text-destructive-foreground",
         custom: "border bg-red-500 text-green-800",
+        conso_success: cn(
+          jersey.className,
+          "text-xl text-white border-none rounded-lg shadow-lg bg-black flex gap-4"
+        ),
       },
     },
     defaultVariants: {

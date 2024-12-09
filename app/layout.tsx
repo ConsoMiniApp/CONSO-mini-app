@@ -1,6 +1,6 @@
 "use client";
 import type { Metadata } from "next";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import { useEffect, useState } from "react";
 import { AppProvider } from "@/contexts/AppContext";
