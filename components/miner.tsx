@@ -24,6 +24,7 @@ import { NintendoConnectedDialog } from "./nintendo/NintendoConnectedDialog";
 import { SteamConnectedDialog } from "./steam/SteamConnectedDialog";
 import { BitboyConnectedDialog } from "./bitboy/BitboyConnectedDialog";
 import { SuiConnectedDialog } from "./sui/SuiConnectedDialog";
+import { Howl } from "howler";
 
 const connectButtons = {
   playstation: CustomButtonType.MINING,
@@ -52,6 +53,9 @@ export default function Miner() {
   const { pointBalance, setPointBalance } = useAppContext();
 
   const [connectSectionCollapsed, setConnectSectionCollapsed] = useState(true);
+
+  // sounds
+  const [tapSound, setTapSound] = useState<Howl>();
 
   const handlePlayStationConnect = () => {
     console.log("Connecting PlayStation");
@@ -104,6 +108,20 @@ export default function Miner() {
   const doNothing = () => {
     console.log("Do nothing");
   };
+
+  // Load the sounds
+  useEffect(() => {
+    setTapSound(
+      new Howl({
+        src: ["/sounds/tap.mp3"],
+        volume: 0.5,
+        sprite: {
+          tap: [500, 800],
+        },
+      })
+    );
+  }, []);
+
   // FOR TESTING
   useEffect(() => {
     // get point balance from the local storage
@@ -377,12 +395,6 @@ export default function Miner() {
                             "inline-block opacity-100 transition-opacity duration-100"
                           );
                         }
-
-                        // toast({
-                        //   // title: "You have tapped",
-                        //   description: "You have tapped",
-                        //   variant: "custom",
-                        // });
                       }}
                     />
                     <Dialog>
@@ -420,6 +432,7 @@ export default function Miner() {
                       setTapClass(
                         "inline-block scale-95 transition-transform duration-100 opacity-80"
                       );
+                      tapSound?.play("tap");
                       // toast({
                       //   // title: "You have tapped",
                       //   description: "You have tapped",
