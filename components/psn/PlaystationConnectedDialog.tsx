@@ -9,14 +9,6 @@ export function PlaystationConnectedDialog() {
   return (
     <>
       <div className="overflow-y-scroll scrollbar-none ">
-        <DialogClose className="absolute top-0 right-0 p-2 ">
-          <Image
-            src="/other-logos/close.svg"
-            alt="Advertisement"
-            width={24}
-            height={24}
-          />
-        </DialogClose>
         {/* Top Status Card */}
         <div className="p-4 mt-4 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
           <div className="flex justify-between ">

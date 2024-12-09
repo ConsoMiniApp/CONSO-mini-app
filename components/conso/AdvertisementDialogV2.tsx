@@ -73,7 +73,7 @@ export function AdvertisementDialogV2({
               className="bg-white rounded-lg p-2"
             /> */}
 
-            <div className="flex gap-2 bg-black rounded-full p-2">
+            <div className="flex gap-2 bg-[#5C6E7E] rounded-full p-2">
               <Image
                 src="/other-logos/coin.svg"
                 alt="Advertisement"

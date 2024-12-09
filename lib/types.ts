@@ -1,6 +1,7 @@
 // button types
 export enum CustomButtonType {
   CONNECT = "connect",
+  CONSOLE_CONNECT = "consoleconnect",
   DISCONNECT = "disconnect",
   MINING = "mining",
   SOON = "soon",

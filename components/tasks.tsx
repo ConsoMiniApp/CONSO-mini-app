@@ -4,7 +4,7 @@ import Image from "next/image";
 import { handjet, ibmPlex, jersey } from "./ui/fonts";
 import { useAppContext } from "@/contexts/AppContext";
 
-const missons = [
+const missions = [
   {
     logo: "./other-logos/console.svg",
     title: "Connect atleast two Consoles.",
@@ -39,7 +39,7 @@ export default function Tasks() {
       <div className="max-w-md mx-auto min-h-screen flex flex-col">
         {/* Heading */}
         <div className=" ">
-          <div className="flex justify-around mb-4">
+          <div className="flex justify-around mb-2">
             <span
               className={cn("text-5xl mt-10 text-white ", jersey.className)}
             >
@@ -47,7 +47,7 @@ export default function Tasks() {
             </span>
           </div>
 
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center ">
             <span
               className={cn(
                 "text-white text-sm text-center w-[60%] ",
@@ -59,7 +59,7 @@ export default function Tasks() {
           </div>
         </div>
         {/* Current Points */}
-        <div className="bg-[#1E2E3D] ">
+        {/* <div className="bg-[#1E2E3D] ">
           <div className="flex flex-col justify-center items-center m-4">
             <p
               className={cn(
@@ -88,23 +88,38 @@ export default function Tasks() {
               </span>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Tasks Buttons */}
         <div className="mt-4">
-          <div className="grid grid-cols-3 gap-3 px-4 justify-center items-center text-center">
+          <div className="grid grid-cols-3 gap-3 px-4 justify-center items-center text-center ">
             <div className="bg-[#DE5EA6] ">
-              <span className={cn(jersey.className, "text-xl text-white")}>
+              <span
+                className={cn(
+                  jersey.className,
+                  "text-xl text-white tracking-wider"
+                )}
+              >
                 All Tasks
               </span>
             </div>
             <div className="bg-white">
-              <span className={cn(jersey.className, "text-xl text-black")}>
+              <span
+                className={cn(
+                  jersey.className,
+                  "text-xl text-black tracking-wider"
+                )}
+              >
                 Daily
               </span>
             </div>
             <div className="bg-white">
-              <span className={cn(jersey.className, "text-xl text-black")}>
+              <span
+                className={cn(
+                  jersey.className,
+                  "text-xl text-black tracking-wider"
+                )}
+              >
                 Weekly
               </span>
             </div>
@@ -113,8 +128,8 @@ export default function Tasks() {
 
         {/* Task Cards */}
         <div className="flex flex-col px-4 my-6 gap-3 w-full">
-          {missons.map((mission) => (
-            <div className="grid grid-cols-6 justify-center items-center px-4 py-2 bg-[#5C6E7E]">
+          {missions.map((mission) => (
+            <div className="grid grid-cols-7 justify-center items-center px-2 py-2 bg-[#5C6E7E]">
               <div className="col-span-1 bg-[#1E2E3D] flex items-center justify-center rounded-lg h-10 w-10">
                 <Image
                   src="./other-logos/console.svg"
@@ -128,12 +143,12 @@ export default function Tasks() {
               <span
                 className={cn(
                   jersey.className,
-                  "text-xl text-white col-span-3"
+                  "text-xl text-white col-span-4 tracking-wider"
                 )}
               >
                 Connect atleast two Consoles.
               </span>
-              <div className="bg-[#00BA64] col-span-2 rounded-md p-1 flex justify-center items-center gap-2">
+              <div className="bg-[#00BA64]  col-span-2 rounded-md p-1 flex justify-center items-center gap-2">
                 <Image
                   src="./other-logos/coin.svg"
                   width={20}

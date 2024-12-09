@@ -2,157 +2,175 @@ import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
 import { handjet, ibmPlex500, ibmPlex700, jersey } from "../ui/fonts";
 import { cn } from "@/lib/utils";
-import Lottie from "lottie-react";
-import consoleAnimation from "@/public/animations/console-animation.json";
+import CustomButton from "../conso/CustomButton";
+import { CustomButtonType } from "@/lib/types";
 
 export function XboxConnectDialog() {
   return (
     <>
-      <div className="overflow-y-scroll scrollbar-always-visible ">
-        {/* Top Section */}
-        <div className="flex justify-between  ">
-          <p
+      <div className="overflow-y-scroll scrollbar-none ">
+        {/* <DialogClose className="absolute top-0 right-0 p-2 ">
+          <Image
+            src="/other-logos/close.svg"
+            alt="Advertisement"
+            width={24}
+            height={24}
+          />
+        </DialogClose> */}
+        {/* Top Status Card */}
+        <div className="p-4 mt-4 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
+          <div className="flex justify-between ">
+            <DialogClose>
+              <Image
+                src="/other-logos/back-arrow.svg"
+                width={32}
+                height={32}
+                alt="Back"
+              />
+            </DialogClose>
+            <span className={cn("text-6xl text-white ", jersey.className)}>
+              CONSO
+            </span>
+            <div className="w-8"></div>
+          </div>
+          {/* Console Details */}
+          <div
             className={cn(
-              handjet.className,
-              "text-xl text-[#7C7C7C] tracking-wider"
+              " flex flex-col gap-2 justify-center items-center mt-4"
             )}
           >
-            {" "}
-            CONSO REWARD SYSTEM
-          </p>
-          <DialogClose>
-            <a>
-              <Image
-                src="/other-logos/close.svg"
-                alt="Advertisement"
-                width={24}
-                height={24}
-              />
-            </a>
-          </DialogClose>
-        </div>
+            <p
+              className={cn(
+                "text-[#DE5EA6] text-2xl text-nowrap tracking-wider",
+                jersey.className
+              )}
+            >
+              CONNECT CONSOLE
+            </p>
 
-        {/* Sub Heading */}
-        <div className="flex flex-col space-y-4 text-black mt-2 mr-2 ">
-          <p className={cn(ibmPlex500.className, "text-xs tracking-tight")}>
-            {" "}
-            Earn CONSO tokens by contributing to the network in various ways.
-            Check out the mining rates based on your engagement level:
-          </p>
-
-          <div className="flex justify-center">
-            <Lottie
-              animationData={consoleAnimation}
-              className="w-[50%]"
-              loop={true}
+            <p
+              className={cn(
+                "text-white text-2xl text-nowrap tracking-wider",
+                jersey.className
+              )}
+            >
+              Xbox
+            </p>
+            <Image
+              src={"console-logos/xbox-pixelated.svg"}
+              height={120}
+              width={120}
+              alt="Xbox"
             />
+
+            <p
+              className={cn(
+                "text-[#FFE500] text-2xl text-nowrap tracking-wider",
+                jersey.className
+              )}
+            >
+              4.5x Boost
+            </p>
+          </div>
+        </div>
+
+        {/* Instructions Card */}
+        <div className="p-4 mt-4 rounded-3xl shadow-lg bg-white ">
+          <div className="flex justify-between px-2">
+            <p
+              className={cn(
+                handjet.className,
+                "text-xl text-[#7C7C7C] tracking-wider"
+              )}
+            >
+              {" "}
+              INSTRUCTIONS
+            </p>
+            <div className="flex gap-2">
+              <Image
+                src="/other-logos/youtube.svg"
+                width={26}
+                height={19}
+                alt="Delete"
+                onClick={() => console.log("Delete")}
+              />
+              <a
+                href="https://youtu.be"
+                target="__blank"
+                className={cn(
+                  jersey.className,
+                  "text-[#002E87] text-lg underline"
+                )}
+              >
+                Tutorial
+              </a>
+            </div>
           </div>
 
-          <div className="ml-1">
-            {/* Console Info */}
-            <div>
-              <p
-                className={cn(
-                  ibmPlex700.className,
-                  "text-xs tracking-tight flex items-start gap-2"
-                )}
-              >
-                {" "}
-                <Image
-                  src={"/other-logos/console.svg"}
-                  alt="Console"
-                  width={24}
-                  height={14}
+          <div className="flex flex-col gap-3 px-2 mt-3">
+            {/* Console Connected Card */}
+            <div className=" flex flex-col gap-3 tracking-tighter">
+              <p className={cn(ibmPlex500.className, " text-xs")}>
+                <span
+                  className={cn(ibmPlex700.className, "text-xs text-black")}
+                >
+                  1.{" "}
+                </span>
+                Log in to{" "}
+                <a
+                  href="https://xbl.io"
+                  target="__blank"
+                  className="underline text-[#002E87]"
+                >
+                  https://xbl.io
+                </a>{" "}
+                and create an API key.
+              </p>
+
+              <p className={cn(ibmPlex500.className, " text-xs")}>
+                <span
+                  className={cn(ibmPlex700.className, "text-xs text-black")}
+                >
+                  2.{" "}
+                </span>
+                Enter the 36-digit API key.
+              </p>
+              <form className="flex flex-col gap-4 ">
+                <input
+                  type="text"
+                  placeholder="YOUR_API_KEY"
+                  className={cn(
+                    "border-2 border-gray-400 bg-[#D7D7D7] rounded-lg p-2  ml-4 text-xs tracking-wider mr-2",
+                    ibmPlex500.className
+                  )}
                 />
+
                 <p
                   className={cn(
-                    jersey.className,
-                    "text-[#DE5EA6] text-xl tracking-wider"
+                    ibmPlex500.className,
+                    " text-[11px] text-[#7C7C7C] tracking-tighter ml-4"
                   )}
                 >
-                  CONSOLES:
-                  <span
-                    className={cn(
-                      jersey.className,
-                      "text-[#A08F00] text-xl tracking-wider"
-                    )}
-                  >
-                    {" "}
-                    The Data Providers
-                  </span>
+                  Xbox Console holders will act as NODES, contributing data and
+                  mining tokens with a 2.5x BOOST multiplier over the base rate.
                 </p>
-              </p>
-              <p
-                className={cn(
-                  ibmPlex500.className,
-                  "text-xs tracking-tight mt-1 flex gap-2 items-start"
-                )}
-              >
-                <Image
-                  src={"/other-logos/right-arrow.svg"}
-                  alt="Console"
-                  width={24}
-                  height={14}
-                />{" "}
-                <p>
-                  Connected consoles act as data providers, boosting mining
-                  rates and enriching the ecosystem.
-                </p>
-              </p>
-            </div>
-            <div className="mt-3">
-              <p
-                className={cn(
-                  ibmPlex700.className,
-                  "text-xs tracking-tight flex items-start gap-2 "
-                )}
-              >
-                {" "}
-                <Image
-                  src={"/other-logos/boost.svg"}
-                  alt="Console"
-                  width={16}
-                  height={18}
-                  className="mt-[4px]"
-                />
-                <p
-                  className={cn(
-                    jersey.className,
-                    "text-[#DE5EA6] text-xl tracking-wider"
-                  )}
-                >
-                  ACTIVE ENGAGEMENT:
-                  <span
-                    className={cn(
-                      jersey.className,
-                      "text-[#A08F00] text-xl tracking-wider"
-                    )}
-                  >
-                    {" "}
-                    Mini App Users
-                  </span>
-                </p>
-              </p>
-              <p
-                className={cn(
-                  ibmPlex500.className,
-                  "text-xs tracking-tight mt-1 flex items-start gap-2"
-                )}
-              >
-                <Image
-                  src={"/other-logos/right-arrow.svg"}
-                  alt="Console"
-                  width={24}
-                  height={14}
-                />{" "}
-                <p>
-                  Earn extra by contributing through gaming, tapping, and
-                  watching ads.
-                </p>
-              </p>
+
+                <div className="flex justify-center mt-2">
+                  <CustomButton
+                    text="CONNECT XBOX"
+                    type={CustomButtonType.CONSOLE_CONNECT}
+                    handleClick={() => {
+                      console.log("Connect Xbox");
+                    }}
+                  />
+                </div>
+              </form>
             </div>
           </div>
         </div>
+
+        {/* Empty Space */}
+        <br />
       </div>
     </>
   );

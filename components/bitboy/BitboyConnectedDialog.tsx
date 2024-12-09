@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import Lottie from "lottie-react";
 import consoleAnimation from "@/public/animations/console-animation.json";
 
-export function SteamConnectDialog() {
+export function BitboyConnectedDialog() {
   return (
     <>
       <div className="overflow-y-scroll scrollbar-none ">

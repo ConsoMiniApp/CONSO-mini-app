@@ -20,6 +20,10 @@ import { TermsDisclaimer } from "./conso/TermsAndConditionsDialog";
 import { AdvertisementDialogV2 } from "./conso/AdvertisementDialogV2";
 import { PlaystationConnectedDialog } from "./psn/PlaystationConnectedDialog";
 import { XboxConnectedDialog } from "./xbox/XboxConnectedDialog";
+import { NintendoConnectedDialog } from "./nintendo/NintendoConnectedDialog";
+import { SteamConnectedDialog } from "./steam/SteamConnectedDialog";
+import { BitboyConnectedDialog } from "./bitboy/BitboyConnectedDialog";
+import { SuiConnectedDialog } from "./sui/SuiConnectedDialog";
 
 const connectButtons = {
   playstation: CustomButtonType.MINING,
@@ -343,7 +347,7 @@ export default function Miner() {
                         className="inline-block hover:opacity-90 hover:scale-95 transition-transform duration-100"
                       />
                     </DialogTrigger>
-                    <DialogContent className="h-screen">
+                    <DialogContent className="h-screen border-none bg-black">
                       <AdvertisementDialogV2
                         videoSrc={videoSrc}
                         advertiserInfo={advertiserInfo}
@@ -523,7 +527,7 @@ export default function Miner() {
                           handleClick={handlePlayStationConnect}
                         />
                       </DialogTrigger>
-                      <DialogContent className=" w-[95%] h-[95%] rounded-lg">
+                      <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">
                         <PlaystationConnectDialog />
                       </DialogContent>
                     </Dialog>
@@ -535,7 +539,7 @@ export default function Miner() {
                           handleClick={handlePlayStationConnected}
                         />
                       </DialogTrigger>
-                      <DialogContent className=" w-[95%] h-[95%] rounded-xl border-none bg-[#5C6E7E] ">
+                      <DialogContent className=" w-[100%] h-[100%] border-none bg-[#5C6E7E] ">
                         <PlaystationConnectedDialog />
                       </DialogContent>
                     </Dialog>
@@ -580,7 +584,7 @@ export default function Miner() {
                           handleClick={handleXboxConnect}
                         />
                       </DialogTrigger>
-                      <DialogContent className=" w-[95%] h-[95%] rounded-lg">
+                      <DialogContent className="  w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
                         <XboxConnectDialog />
                       </DialogContent>
                     </Dialog>
@@ -592,7 +596,7 @@ export default function Miner() {
                           handleClick={handleXboxConnected}
                         />
                       </DialogTrigger>
-                      <DialogContent className=" w-[100%] bg-[#5C6E7E]">
+                      <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">
                         <XboxConnectedDialog />
                       </DialogContent>
                     </Dialog>
@@ -636,15 +640,22 @@ export default function Miner() {
                           handleClick={handleNintendoConnect}
                         />
                       </DialogTrigger>
-                      <DialogContent className=" w-[95%] h-[95%] rounded-lg">
+                      <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">
                         <NintendoConnectDialog />
                       </DialogContent>
                     </Dialog>
                   ) : (
-                    <CustomButton
-                      type={connectButtons.nintendo}
-                      handleClick={doNothing}
-                    />
+                    <Dialog>
+                      <DialogTrigger>
+                        <CustomButton
+                          type={connectButtons.nintendo}
+                          handleClick={handleNintendoConnected}
+                        />
+                      </DialogTrigger>
+                      <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">
+                        <NintendoConnectedDialog />
+                      </DialogContent>
+                    </Dialog>
                   )}
                 </div>
               </div>
@@ -686,15 +697,22 @@ export default function Miner() {
                           handleClick={handleSteamConnect}
                         />
                       </DialogTrigger>
-                      <DialogContent className=" w-[95%] h-[95%] rounded-lg">
+                      <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">
                         <SteamConnectDialog />
                       </DialogContent>
                     </Dialog>
                   ) : (
-                    <CustomButton
-                      type={connectButtons.steam}
-                      handleClick={doNothing}
-                    />
+                    <Dialog>
+                      <DialogTrigger>
+                        <CustomButton
+                          type={connectButtons.steam}
+                          handleClick={handleSteamConnected}
+                        />
+                      </DialogTrigger>
+                      <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">
+                        <SteamConnectedDialog />
+                      </DialogContent>
+                    </Dialog>
                   )}
                 </div>
               </div>
@@ -742,11 +760,23 @@ export default function Miner() {
                             <BitboyConnectDialog />
                           </DialogContent>
                         </Dialog>
-                      ) : (
+                      ) : connectButtons.bitboy === CustomButtonType.SOON ? (
                         <CustomButton
                           type={connectButtons.bitboy}
                           handleClick={doNothing}
                         />
+                      ) : (
+                        <Dialog>
+                          <DialogTrigger>
+                            <CustomButton
+                              type={connectButtons.bitboy}
+                              handleClick={handleBitboyConnected}
+                            />
+                          </DialogTrigger>
+                          <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">
+                            <BitboyConnectedDialog />
+                          </DialogContent>
+                        </Dialog>
                       )}
                     </div>
                   </div>
@@ -791,11 +821,23 @@ export default function Miner() {
                             <SuiConnectDialog />
                           </DialogContent>
                         </Dialog>
-                      ) : (
+                      ) : connectButtons.sui === CustomButtonType.SOON ? (
                         <CustomButton
                           type={connectButtons.sui}
                           handleClick={doNothing}
                         />
+                      ) : (
+                        <Dialog>
+                          <DialogTrigger>
+                            <CustomButton
+                              type={connectButtons.sui}
+                              handleClick={handleSuiConnected}
+                            />
+                          </DialogTrigger>
+                          <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">
+                            <SuiConnectedDialog />
+                          </DialogContent>
+                        </Dialog>
                       )}
                     </div>
                   </div>

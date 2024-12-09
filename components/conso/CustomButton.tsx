@@ -23,6 +23,17 @@ function getButtonDetails(type: CustomButtonType) {
         buttonClassName:
           "w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform",
       };
+    case CustomButtonType.CONSOLE_CONNECT:
+      return {
+        buttonText: "",
+        buttonTextStyles: cn(jersey.className, "text-2xl tracking-[0.05em]"),
+        buttonStyles: {
+          backgroundImage: "url('/other-logos/button-wide-bg-yellow.svg')",
+          backgroundSize: "cover",
+        },
+        buttonClassName:
+          "w-[290px] h-[36px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform",
+      };
     case CustomButtonType.DISCONNECT:
       return {
         buttonText: "Disconnect",
@@ -63,13 +74,13 @@ function getButtonDetails(type: CustomButtonType) {
     default:
       return {
         buttonText: "",
-        buttonTextStyles: cn(jersey.className, "text-2xl tracking-[0.05em]"),
+        buttonTextStyles: cn(jersey.className, "text-4xl tracking-[0.05em]"),
         buttonStyles: {
           backgroundImage: "url('/other-logos/button-bg-invite.svg')",
           backgroundSize: "cover",
         },
         buttonClassName:
-          "w-[184px] h-[40px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform",
+          "w-[284px] h-[62px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform",
       };
   }
 }

@@ -132,7 +132,7 @@ export default function Rank() {
       <div className="max-w-md mx-auto min-h-screen flex flex-col">
         {/* Heading */}
         <div className="bg-black">
-          <div className="flex justify-around mb-4">
+          <div className="flex justify-around mb-2">
             <span
               className={cn("text-5xl mt-10 text-white ", jersey.className)}
             >

@@ -26,7 +26,7 @@ export default function Invite() {
       <div className="max-w-md mx-auto min-h-screen flex flex-col">
         {/* Heading */}
         <div className=" bg-black ">
-          <div className="flex justify-around mb-4">
+          <div className="flex justify-around mb-2">
             <span
               className={cn("text-5xl mt-10 text-white ", jersey.className)}
             >
@@ -81,7 +81,9 @@ export default function Invite() {
         <div className=" grid grid-cols-2 gap-[1px] h-[196px]">
           <div className="flex flex-col text-white bg-[#5C6E7E] justify-center items-center">
             <p className={cn(jersey.className, "text-2xl")}>INVITE A FREN</p>
-            <p className={cn(ibmPlex.className, "text-[12px] text-center")}>
+            <p
+              className={cn(ibmPlex.className, "text-[12px] text-center px-6")}
+            >
               YOU AND YOUR FRIEND BOTH EARN
             </p>
             <div className="bg-[#DE5EA6] rounded-lg p-1 flex justify-center items-center gap-1 mt-4">
@@ -101,7 +103,9 @@ export default function Invite() {
 
           <div className="flex flex-col text-white bg-[#5C6E7E] justify-center items-center">
             <p className={cn(jersey.className, "text-2xl")}>EARN EXTRA</p>
-            <p className={cn(ibmPlex.className, "text-[12px] text-center ")}>
+            <p
+              className={cn(ibmPlex.className, "text-[12px] text-center px-6 ")}
+            >
               ADDITIONALLY 10% OF LIFETIME EARNINGS
             </p>
             <div className="bg-[#DE5EA6] rounded-lg p-1 flex justify-center items-center gap-1 mt-4">
@@ -120,11 +124,15 @@ export default function Invite() {
           </div>
         </div>
 
-        <div className="flex flex-col justify-center items-center gap-3 h-40">
-          <span className={cn("text-xl text-[#E8BA00] ", jersey.className)}>
+        <div className="flex flex-col justify-center items-center gap-3 h-20 mb-8 mt-4">
+          {/* <span className={cn("text-xl text-[#E8BA00] ", jersey.className)}>
             2/1000 MORE LEFT
-          </span>
-          <CustomButton type={CustomButtonType.OTHER} handleClick={() => {}} />
+          </span> */}
+          <CustomButton
+            text="INVITE FRIENDS"
+            type={CustomButtonType.OTHER}
+            handleClick={() => {}}
+          />
         </div>
 
         {/* Friend List Table Heading */}
