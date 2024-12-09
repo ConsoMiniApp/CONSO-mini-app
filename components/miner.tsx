@@ -47,8 +47,8 @@ const advertiserInfo = {
 export default function Miner() {
   const { toast } = useToast();
   const [tapClass, setTapClass] = useState("inline-block ");
-  const [soundClass, setSoundClass] = useState("inline-block");
-  const [mute, setMute] = useState(true);
+  const [soundClass, setSoundClass] = useState("inline-block opacity-40 ");
+  const [mute, setMute] = useState<boolean>(true);
   // const [pointBalance, setPointBalance] = useState(0);
   const { pointBalance, setPointBalance } = useAppContext();
 
@@ -57,6 +57,8 @@ export default function Miner() {
   // sounds
   const [tapSound, setTapSound] = useState<Howl>();
   const [bgMinerSound, setBgMinerSound] = useState<Howl>();
+  const [infoOpenSound, setInfoOpenSound] = useState<Howl>();
+  const [coinsCreditedSound, setCoinsCreditedSound] = useState<Howl>();
 
   const handlePlayStationConnect = () => {
     console.log("Connecting PlayStation");
@@ -128,6 +130,25 @@ export default function Miner() {
         loop: true,
       })
     );
+    setInfoOpenSound(
+      new Howl({
+        src: ["/sounds/info-open.mp3"],
+        volume: 0.1,
+        sprite: {
+          info: [100, 500],
+        },
+      })
+    );
+
+    setCoinsCreditedSound(
+      new Howl({
+        src: ["/sounds/coins-credited.mp3"],
+        volume: 1,
+        sprite: {
+          coins: [100, 500],
+        },
+      })
+    );
   }, []);
 
   // Play the background music
@@ -140,6 +161,13 @@ export default function Miner() {
       }
     }
   }, [mute]);
+
+  function playCoinsCreditedSound() {
+    coinsCreditedSound?.play("coins");
+    coinsCreditedSound?.once("end", () => {
+      coinsCreditedSound?.play("coins");
+    });
+  }
 
   // FOR TESTING
   useEffect(() => {
@@ -388,6 +416,7 @@ export default function Miner() {
                       <AdvertisementDialogV2
                         videoSrc={videoSrc}
                         advertiserInfo={advertiserInfo}
+                        playSound={playCoinsCreditedSound}
                       />
                     </DialogContent>
                   </Dialog>
@@ -403,15 +432,15 @@ export default function Miner() {
                       onClick={() => {
                         if (mute) {
                           setMute(false);
-                          console.log("Sound is off");
+                          console.log("Sound is now on");
                           setSoundClass(
-                            "inline-block opacity-40 transition-opacity duration-100"
+                            "inline-block opacity-100 transition-opacity duration-100"
                           );
                         } else {
                           setMute(true);
-                          console.log("Sound is on");
+                          console.log("Sound is now off");
                           setSoundClass(
-                            "inline-block opacity-100 transition-opacity duration-100"
+                            "inline-block opacity-40 transition-opacity duration-100"
                           );
                         }
                       }}
@@ -423,6 +452,10 @@ export default function Miner() {
                           width={45}
                           height={45}
                           alt="Ads"
+                          onClick={
+                            () => infoOpenSound?.play("info")
+                            // playCoinsCreditedSound()
+                          }
                           className="inline-block hover:opacity-90 hover:scale-95 transition-transform duration-100"
                         />
                       </DialogTrigger>

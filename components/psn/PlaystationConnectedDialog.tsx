@@ -10,7 +10,7 @@ export function PlaystationConnectedDialog() {
     <>
       <div className="overflow-y-scroll scrollbar-none ">
         {/* Top Status Card */}
-        <div className="p-4 mt-4 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
+        <div className="p-4 mt-1 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
           <div className="flex justify-between ">
             <DialogClose>
               <Image
@@ -48,7 +48,7 @@ export function PlaystationConnectedDialog() {
             >
               PlayStation
             </p>
-            <Lottie className="w-24 " animationData={consoleAnimation} />
+            <Lottie className="w-32 " animationData={consoleAnimation} />
 
             <p
               className={cn(

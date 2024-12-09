@@ -27,12 +27,14 @@ interface AdvertisementDialogProps {
     logoUrl: string;
     bgImageUrl: string;
   };
+  playSound: () => void;
 }
 
 // this dialog shows a video and then advertiser info after the video ends
 export function AdvertisementDialogV2({
   videoSrc,
   advertiserInfo,
+  playSound,
 }: AdvertisementDialogProps) {
   const [showAdInfo, setShowAdInfo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -97,6 +99,11 @@ export function AdvertisementDialogV2({
                   alt="Advertisement"
                   width={50}
                   height={50}
+                  onClick={() => {
+                    setTimeout(() => {
+                      playSound();
+                    }, 1000);
+                  }}
                 />
               </a>
             </DialogClose>
