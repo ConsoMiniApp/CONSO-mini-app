@@ -10,7 +10,7 @@ export function PlaystationConnectedDialog() {
     <>
       <div className="overflow-y-scroll scrollbar-none ">
         {/* Top Status Card */}
-        <div className="p-4 mt-1 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
+        <div className="p-4 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
           <div className="flex justify-between ">
             <DialogClose>
               <Image
@@ -52,7 +52,7 @@ export function PlaystationConnectedDialog() {
 
             <p
               className={cn(
-                "text-[#FFE500] text-2xl text-nowrap tracking-wider",
+                "text-[#FFE500] text-2xl text-nowrap tracking-wider mt-[-30px] mb-[10px]",
                 jersey.className
               )}
             >
