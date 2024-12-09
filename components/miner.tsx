@@ -114,9 +114,9 @@ export default function Miner() {
     setTapSound(
       new Howl({
         src: ["/sounds/tap.mp3"],
-        volume: 0.5,
+        volume: 1,
         sprite: {
-          tap: [500, 800],
+          tap: [400, 700],
         },
       })
     );
