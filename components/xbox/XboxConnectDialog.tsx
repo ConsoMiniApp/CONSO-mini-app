@@ -110,30 +110,32 @@ export function XboxConnectDialog() {
           <div className="flex flex-col gap-3 px-2 mt-3">
             {/* Console Connected Card */}
             <div className=" flex flex-col gap-3 tracking-tighter">
-              <p className={cn(ibmPlex500.className, " text-xs")}>
+              <p className={cn(ibmPlex500.className, " text-xs flex gap-1")}>
                 <span
                   className={cn(ibmPlex700.className, "text-xs text-black")}
                 >
                   1.{" "}
                 </span>
-                Log in to{" "}
-                <a
-                  href="https://xbl.io"
-                  target="__blank"
-                  className="underline text-[#002E87]"
-                >
-                  https://xbl.io
-                </a>{" "}
-                and create an API key.
+                <span>
+                  Log in to{" "}
+                  <a
+                    href="https://xbl.io"
+                    target="__blank"
+                    className="underline text-[#002E87]"
+                  >
+                    https://xbl.io
+                  </a>{" "}
+                  and create an API key.
+                </span>
               </p>
 
-              <p className={cn(ibmPlex500.className, " text-xs")}>
+              <p className={cn(ibmPlex500.className, " text-xs flex gap-1")}>
                 <span
                   className={cn(ibmPlex700.className, "text-xs text-black")}
                 >
                   2.{" "}
                 </span>
-                Enter the 36-digit API key.
+                <span>Enter the 36-digit API key.</span>
               </p>
               <form className="flex flex-col gap-4 ">
                 <input

@@ -6,7 +6,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { XboxConnectDialog } from "./xbox/XboxConnectDialog";
 import CustomButton from "./conso/CustomButton";
 import { CustomButtonType } from "@/lib/types";
-import { PlaystationConnectDialog } from "./psn/PlaystationConnectDialog";
+import { PlayStationConnectDialog } from "./psn/PlaystationConnectDialog";
 import { NintendoConnectDialog } from "./nintendo/NintendoConnectDialog";
 import { SteamConnectDialog } from "./steam/SteamConnectDialog";
 import { BitboyConnectDialog } from "./bitboy/BitboyConnectDialog";
@@ -587,12 +587,12 @@ export default function Miner() {
                     <Dialog>
                       <DialogTrigger>
                         <CustomButton
-                          type={CustomButtonType.MINING}
+                          type={connectButtons.playstation}
                           handleClick={handlePlayStationConnect}
                         />
                       </DialogTrigger>
-                      <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">
-                        <PlaystationConnectDialog />
+                      <DialogContent className="  w-[100%] h-[100%] border-none bg-[#5C6E7E]">
+                        <PlayStationConnectDialog />
                       </DialogContent>
                     </Dialog>
                   ) : (
@@ -660,7 +660,7 @@ export default function Miner() {
                           handleClick={handleXboxConnected}
                         />
                       </DialogTrigger>
-                      <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">
+                      <DialogContent className="  w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
                         <XboxConnectedDialog />
                       </DialogContent>
                     </Dialog>
@@ -704,7 +704,7 @@ export default function Miner() {
                           handleClick={handleNintendoConnect}
                         />
                       </DialogTrigger>
-                      <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">
+                      <DialogContent className="  w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
                         <NintendoConnectDialog />
                       </DialogContent>
                     </Dialog>
@@ -716,7 +716,7 @@ export default function Miner() {
                           handleClick={handleNintendoConnected}
                         />
                       </DialogTrigger>
-                      <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">
+                      <DialogContent className=" w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
                         <NintendoConnectedDialog />
                       </DialogContent>
                     </Dialog>
@@ -761,7 +761,7 @@ export default function Miner() {
                           handleClick={handleSteamConnect}
                         />
                       </DialogTrigger>
-                      <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">
+                      <DialogContent className="  w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
                         <SteamConnectDialog />
                       </DialogContent>
                     </Dialog>
@@ -773,7 +773,7 @@ export default function Miner() {
                           handleClick={handleSteamConnected}
                         />
                       </DialogTrigger>
-                      <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">
+                      <DialogContent className="  w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
                         <SteamConnectedDialog />
                       </DialogContent>
                     </Dialog>
@@ -820,7 +820,7 @@ export default function Miner() {
                               handleClick={handleBitboyConnect}
                             />
                           </DialogTrigger>
-                          <DialogContent className=" w-[95%] h-[95%] rounded-lg">
+                          <DialogContent className=" w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
                             <BitboyConnectDialog />
                           </DialogContent>
                         </Dialog>
@@ -837,7 +837,7 @@ export default function Miner() {
                               handleClick={handleBitboyConnected}
                             />
                           </DialogTrigger>
-                          <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">
+                          <DialogContent className="  w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
                             <BitboyConnectedDialog />
                           </DialogContent>
                         </Dialog>
