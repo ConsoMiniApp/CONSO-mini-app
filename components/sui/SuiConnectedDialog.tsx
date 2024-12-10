@@ -99,7 +99,7 @@ export function SuiConnectedDialog() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 px-2 mt-3">
+          <div className="flex flex-col gap-3 px-1 mt-3">
             {/* Console Connected Card */}
             <div className="bg-[#F1F1F1] flex flex-col gap-2 rounded-md border-[0.5px] border-black p-4 tracking-tighter">
               <p className={cn(ibmPlex700.className, "text-[#DE5EA6] text-xs")}>

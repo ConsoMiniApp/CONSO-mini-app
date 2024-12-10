@@ -107,7 +107,7 @@ export function XboxConnectDialog() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 px-2 mt-3">
+          <div className="flex flex-col gap-3 px-1 mt-3">
             {/* Console Connected Card */}
             <div className=" flex flex-col gap-3 tracking-tighter">
               <p className={cn(ibmPlex500.className, " text-xs flex gap-1")}>

@@ -150,7 +150,7 @@ export function NintendoConnectedDialog() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 px-2 mt-3">
+          <div className="flex flex-col gap-3 px-1 mt-3">
             {/* Console Connected Card */}
             {consoles.map((console) => (
               <div className="bg-[#F1F1F1] grid grid-cols-6 rounded-md border-[0.5px] border-black p-4 tracking-tighter">
