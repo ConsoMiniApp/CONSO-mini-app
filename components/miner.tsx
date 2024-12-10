@@ -25,6 +25,7 @@ import { BitboyConnectedDialog } from "./bitboy/BitboyConnectedDialog";
 import { SuiConnectedDialog } from "./sui/SuiConnectedDialog";
 import { Howl } from "howler";
 import toast from "react-hot-toast";
+import CountUp from "react-countup";
 
 const connectButtons = {
   playstation: CustomButtonType.MINING,
@@ -48,8 +49,12 @@ export default function Miner() {
   const [tapClass, setTapClass] = useState("inline-block ");
   const [soundClass, setSoundClass] = useState("inline-block opacity-40 ");
   const [mute, setMute] = useState<boolean>(true);
-  // const [pointBalance, setPointBalance] = useState(0);
-  const { pointBalance, setPointBalance } = useAppContext();
+  const {
+    pointBalance,
+    setPointBalance,
+    startPointBalance,
+    setStartPointBalance,
+  } = useAppContext();
 
   const [connectSectionCollapsed, setConnectSectionCollapsed] = useState(true);
 
@@ -172,24 +177,8 @@ export default function Miner() {
   useEffect(() => {
     // get point balance from the local storage
     const pointBalance = localStorage.getItem("pointBalance");
-
     if (pointBalance) {
-      let start = 0;
-      const end = Number(pointBalance); // Final value loaded from the server
-      const chunk = Math.round((end - start) / 50); // Animation duration in milliseconds
-      const stepTime = 10; // Time per increment
-
-      const timer = setInterval(() => {
-        start += chunk;
-        setPointBalance(start);
-
-        if (start >= end) {
-          clearInterval(timer);
-          setPointBalance(Number(pointBalance));
-        }
-      }, stepTime);
-    } else {
-      setPointBalance(4000000);
+      setPointBalance(parseInt(pointBalance));
     }
   }, []);
 
@@ -248,14 +237,16 @@ export default function Miner() {
                 className="inline-block"
                 onClick={() => console.log("Coin")}
               />
-              <span
+
+              <CountUp
+                start={startPointBalance}
+                end={pointBalance}
+                duration={0.5}
                 className={cn(
                   "text-yellow-400 text-4xl font-bold",
                   jersey.className
                 )}
-              >
-                {pointBalance.toLocaleString()}
-              </span>
+              />
             </div>
 
             {/* Key Info Section */}
@@ -482,26 +473,27 @@ export default function Miner() {
                         "inline-block scale-95 transition-transform duration-100 opacity-80"
                       );
                       tapSound?.play("tap");
-                      toast("You Tapped.", {
-                        className: cn(jersey.className, "text-xl text-white"),
-                        style: {
-                          background: "#000",
-                          color: "#fff",
-                        },
-                        icon: (
-                          <Image
-                            src="/toast-logos/success.svg"
-                            width={24}
-                            height={24}
-                            alt="Coin"
-                          />
-                        ),
-                      });
+                      // toast("You Tapped.", {
+                      //   className: cn(jersey.className, "text-xl text-white"),
+                      //   style: {
+                      //     background: "#000",
+                      //     color: "#fff",
+                      //   },
+                      //   icon: (
+                      //     <Image
+                      //       src="/toast-logos/success.svg"
+                      //       width={24}
+                      //       height={24}
+                      //       alt="Coin"
+                      //     />
+                      //   ),
+                      // });
 
                       console.log("Tapped");
                       setTimeout(() => {
                         setTapClass("inline-block");
-                        setPointBalance(pointBalance + 1);
+                        setStartPointBalance(pointBalance + 1);
+                        setPointBalance((prev) => prev + 1);
                         localStorage.setItem(
                           "pointBalance",
                           (pointBalance + 1).toString()

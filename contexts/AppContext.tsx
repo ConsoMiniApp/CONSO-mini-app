@@ -17,8 +17,10 @@ interface AppState {
 interface AppContextType {
   // state: AppState;
   pointBalance: number;
+  startPointBalance: number;
   message: string;
   setPointBalance: Dispatch<SetStateAction<number>>;
+  setStartPointBalance: Dispatch<SetStateAction<number>>;
   setMessage: Dispatch<SetStateAction<string>>;
 }
 
@@ -28,13 +30,21 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 // Create the provider component
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [pointBalance, setPointBalance] = useState<number>(0);
+  const [startPointBalance, setStartPointBalance] = useState<number>(0);
   const [message, setMessage] = useState<string>("");
 
   // const state: AppState = { pointBalance, message };
 
   return (
     <AppContext.Provider
-      value={{ pointBalance, message, setPointBalance, setMessage }}
+      value={{
+        pointBalance,
+        startPointBalance,
+        message,
+        setPointBalance,
+        setStartPointBalance,
+        setMessage,
+      }}
     >
       {children}
     </AppContext.Provider>

@@ -11,7 +11,7 @@ export default function Play() {
   };
   return (
     <div>
-      {/* <PhaserGame ref={phaserRef} currentActiveScene={currentScene} /> */}
+      <PhaserGame ref={phaserRef} currentActiveScene={currentScene} />
       {/* <div
             className={cn(
               "text-6xl text-white text-center mt-40",
