@@ -7,7 +7,12 @@ import consoleAnimation from "@/public/animations/console-animation.json";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { AddIcon, BackArrow, DeleteIcon } from "@/components/ui/icons";
+import {
+  AddIcon,
+  BackArrow,
+  DeleteIcon,
+  SuccessIcon,
+} from "@/components/ui/icons";
 
 const consoleData = [
   {
@@ -117,18 +122,7 @@ export function NintendoConnectedDialog() {
                   handleDelete();
                   toast("Console removed.", {
                     className: cn(jersey.className, "text-xl text-white"),
-                    style: {
-                      background: "#000",
-                      color: "#fff",
-                    },
-                    icon: (
-                      <Image
-                        src="/toast-logos/success.svg"
-                        width={24}
-                        height={24}
-                        alt="Coin"
-                      />
-                    ),
+                    icon: <SuccessIcon />,
                   });
                 }}
               >

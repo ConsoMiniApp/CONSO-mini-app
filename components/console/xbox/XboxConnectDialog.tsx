@@ -4,7 +4,8 @@ import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
-import { BackArrow } from "@/components/ui/icons";
+import { BackArrow, SuccessIcon } from "@/components/ui/icons";
+import toast from "react-hot-toast";
 
 export function XboxConnectDialog() {
   return (
@@ -151,6 +152,10 @@ export function XboxConnectDialog() {
                     type={CustomButtonType.CONSOLE_CONNECT}
                     handleClick={() => {
                       console.log("Connect Xbox");
+                      toast("Xbox Connected.", {
+                        className: cn(jersey.className, "text-xl text-white"),
+                        icon: <SuccessIcon />,
+                      });
                     }}
                   />
                 </div>
