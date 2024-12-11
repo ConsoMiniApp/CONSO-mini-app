@@ -50,6 +50,12 @@ export default function RootLayout({
             as="image"
             type="image/svg+xml"
           />
+          <link
+            rel="preload"
+            href="/other-logos/button-bg-invite.svg"
+            as="image"
+            type="image/svg+xml"
+          />
         </head>
         <AppProvider>
           <body>
