@@ -6,6 +6,7 @@ export enum CustomButtonType {
   MINING = "mining",
   SOON = "soon",
   OTHER = "other",
+  TASK_COIN_AMOUNT = "taskcoinamount",
 }
 
 export interface GameData {

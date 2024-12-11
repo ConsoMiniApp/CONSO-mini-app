@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import { jersey } from "../ui/fonts";
 import { CustomButtonType } from "@/lib/types";
+import Image from "next/image";
 
 interface ButtonProps {
   type: CustomButtonType;
@@ -56,6 +57,18 @@ function getButtonDetails(type: CustomButtonType) {
         buttonClassName:
           "w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer",
       };
+    case CustomButtonType.TASK_COIN_AMOUNT:
+      return {
+        buttonText: "Mining...",
+        buttonTextStyles: cn(jersey.className, "text-xl tracking-[0.05em]"),
+        buttonStyles: {
+          backgroundImage: "url('/other-logos/button-bg-green.svg')",
+          backgroundSize: "cover",
+        },
+        buttonClassName:
+          "w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer text-black",
+        icon: "./other-logos/coin.svg",
+      };
     case CustomButtonType.SOON:
       return {
         buttonText: "Soon...",
@@ -86,7 +99,7 @@ function getButtonDetails(type: CustomButtonType) {
 }
 
 const CustomButton = ({ type, handleClick, text, className }: ButtonProps) => {
-  const { buttonText, buttonTextStyles, buttonStyles, buttonClassName } =
+  const { buttonText, buttonTextStyles, buttonStyles, buttonClassName, icon } =
     getButtonDetails(type);
   return (
     <a
@@ -94,6 +107,16 @@ const CustomButton = ({ type, handleClick, text, className }: ButtonProps) => {
       style={buttonStyles}
       onClick={() => handleClick()}
     >
+      {icon && (
+        <Image
+          src="./other-logos/coin.svg"
+          width={20}
+          height={20}
+          alt=""
+          className="inline-block mr-2"
+          onClick={() => console.log("Coin")}
+        />
+      )}
       <span className={buttonTextStyles}>{text ? text : buttonText}</span>
     </a>
   );

@@ -173,7 +173,7 @@ export default function Miner() {
     });
   }
 
-  // FOR TESTING: BUG
+  // Load the point balance : FOR TESTING PURPOSES
   useEffect(() => {
     // get point balance from the local storage
     const pointBalance = localStorage.getItem("pointBalance");

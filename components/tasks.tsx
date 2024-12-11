@@ -3,6 +3,8 @@ import { Wallet, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { handjet, ibmPlex, jersey } from "./ui/fonts";
 import { useAppContext } from "@/contexts/AppContext";
+import CustomButton from "./conso/CustomButton";
+import { CustomButtonType } from "@/lib/types";
 
 const missions = [
   {
@@ -148,24 +150,11 @@ export default function Tasks() {
               >
                 Connect atleast two Consoles.
               </span>
-              <div className="bg-[#00BA64]  col-span-2 rounded-md p-1 flex justify-center items-center gap-2">
-                <Image
-                  src="./other-logos/coin.svg"
-                  width={20}
-                  height={20}
-                  alt=""
-                  className="inline-block"
-                  onClick={() => console.log("Coin")}
-                />
-                <span
-                  className={cn(
-                    " text-2xl font-bold text-white",
-                    jersey.className
-                  )}
-                >
-                  2,500
-                </span>
-              </div>
+              <CustomButton
+                text="2500"
+                type={CustomButtonType.TASK_COIN_AMOUNT}
+                handleClick={() => console.log("do nothing")}
+              ></CustomButton>
             </div>
           ))}
         </div>
