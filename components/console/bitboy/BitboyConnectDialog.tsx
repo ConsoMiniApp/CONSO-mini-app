@@ -1,11 +1,11 @@
 import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
-import { handjet, ibmPlex500, ibmPlex700, jersey } from "../ui/fonts";
+import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import Lottie from "lottie-react";
 import consoleAnimation from "@/public/animations/console-animation.json";
 
-export function SteamConnectedDialog() {
+export function BitboyConnectDialog() {
   return (
     <>
       <div className="overflow-y-scroll scrollbar-none ">

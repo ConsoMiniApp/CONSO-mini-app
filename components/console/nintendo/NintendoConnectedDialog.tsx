@@ -1,14 +1,12 @@
 import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
-import { handjet, ibmPlex500, ibmPlex700, jersey } from "../ui/fonts";
+import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import Lottie from "lottie-react";
 import consoleAnimation from "@/public/animations/console-animation.json";
-import { Checkbox } from "../ui/checkbox";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { ConfirmDialog } from "../conso/ConfirmDialog";
-import { Dialog, DialogTrigger, DialogContent } from "../ui/dialog";
 
 const consoleData = [
   {
@@ -40,7 +38,7 @@ const consoleData = [
   },
 ];
 
-export function PlaystationConnectedDialog() {
+export function NintendoConnectedDialog() {
   const [consoles, setConsoles] = useState(consoleData);
 
   function handleDelete() {
@@ -117,27 +115,31 @@ export function PlaystationConnectedDialog() {
               MINING STATUS
             </p>
             <div className="flex gap-3">
-              <Dialog>
-                <DialogTrigger>
-                  <Image
-                    src="/other-logos/delete.svg"
-                    width={20}
-                    height={20}
-                    alt="Delete"
-                  />
-                  {/* <Image
-                    src="/other-logos/play.svg"
-                    width={114}
-                    height={114}
-                    alt="Ads"
-                    className="inline-block hover:opacity-90 hover:scale-95 transition-transform duration-100"
-                  /> */}
-                </DialogTrigger>
-                <DialogContent className="h-screen border-none backdrop-blur-md">
-                  <ConfirmDialog handleConfirm={handleDelete} />
-                </DialogContent>
-              </Dialog>
-
+              <Image
+                src="/other-logos/delete.svg"
+                width={20}
+                height={20}
+                alt="Delete"
+                onClick={() => {
+                  console.log("Deleting selected consoles");
+                  handleDelete();
+                  toast("Console removed.", {
+                    className: cn(jersey.className, "text-xl text-white"),
+                    style: {
+                      background: "#000",
+                      color: "#fff",
+                    },
+                    icon: (
+                      <Image
+                        src="/toast-logos/success.svg"
+                        width={24}
+                        height={24}
+                        alt="Coin"
+                      />
+                    ),
+                  });
+                }}
+              />
               <Image
                 src="/other-logos/add.svg"
                 width={20}

@@ -3,7 +3,7 @@ import { Wallet, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { handjet, ibmPlex, jersey } from "./ui/fonts";
 import { useAppContext } from "@/contexts/AppContext";
-import CustomButton from "./conso/CustomButton";
+import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 
 const missions = [

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import React from "react";
-import { jersey } from "../ui/fonts";
+import { jersey } from "@/components/ui/fonts";
 import { CustomButtonType } from "@/lib/types";
 import Image from "next/image";
 
@@ -13,7 +13,7 @@ interface ButtonProps {
 
 function getButtonDetails(type: CustomButtonType) {
   switch (type) {
-    case CustomButtonType.CONNECT:
+    case CustomButtonType.PRIMARY:
       return {
         buttonText: "Connect",
         buttonTextStyles: cn(jersey.className, "text-xl tracking-[0.05em]"),
@@ -46,7 +46,7 @@ function getButtonDetails(type: CustomButtonType) {
         buttonClassName:
           "w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer",
       };
-    case CustomButtonType.MINING:
+    case CustomButtonType.SUCCESS:
       return {
         buttonText: "Mining...",
         buttonTextStyles: cn(jersey.className, "text-xl tracking-[0.05em]"),
@@ -69,7 +69,7 @@ function getButtonDetails(type: CustomButtonType) {
           "w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer text-black",
         icon: "./other-logos/coin.svg",
       };
-    case CustomButtonType.SOON:
+    case CustomButtonType.INACTIVE:
       return {
         buttonText: "Soon...",
         buttonTextStyles: cn(

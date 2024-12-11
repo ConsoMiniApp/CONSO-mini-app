@@ -1,10 +1,10 @@
 // button types
 export enum CustomButtonType {
-  CONNECT = "connect",
+  PRIMARY = "primary",
   CONSOLE_CONNECT = "consoleconnect",
   DISCONNECT = "disconnect",
-  MINING = "mining",
-  SOON = "soon",
+  SUCCESS = "success",
+  INACTIVE = "inactive",
   OTHER = "other",
   TASK_COIN_AMOUNT = "taskcoinamount",
 }

@@ -2,7 +2,7 @@ import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
 import { handjet, ibmPlex, ibmPlex500, ibmPlex700, jersey } from "../ui/fonts";
 import { cn } from "@/lib/utils";
-import CustomButton from "./CustomButton";
+import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 
 export function TermsDisclaimer() {
@@ -156,7 +156,7 @@ export function TermsDisclaimer() {
         <div className="absolute flex justify-center bottom-0 left-1/2 transform -translate-x-1/2 py-4 bg-white w-full rounded-lg">
           <DialogClose>
             <CustomButton
-              type={CustomButtonType.CONNECT}
+              type={CustomButtonType.PRIMARY}
               text="ACCEPT "
               handleClick={() => {
                 localStorage.setItem("termsAccepted", "true");

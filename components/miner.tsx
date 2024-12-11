@@ -3,37 +3,37 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import { handjet, jersey } from "./ui/fonts";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { XboxConnectDialog } from "./xbox/XboxConnectDialog";
-import CustomButton from "./conso/CustomButton";
+import { XboxConnectDialog } from "./console/xbox/XboxConnectDialog";
+import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
-import { PlayStationConnectDialog } from "./psn/PlaystationConnectDialog";
-import { NintendoConnectDialog } from "./nintendo/NintendoConnectDialog";
-import { SteamConnectDialog } from "./steam/SteamConnectDialog";
-import { BitboyConnectDialog } from "./bitboy/BitboyConnectDialog";
-import { SuiConnectDialog } from "./sui/SuiConnectDialog";
-import { AdvertisementDialog } from "./conso/AdvertisementDialog";
+import { PlayStationConnectDialog } from "./console/psn/PlaystationConnectDialog";
+import { NintendoConnectDialog } from "./console/nintendo/NintendoConnectDialog";
+import { SteamConnectDialog } from "./console/steam/SteamConnectDialog";
+import { BitboyConnectDialog } from "./console/bitboy/BitboyConnectDialog";
+import { SuiConnectDialog } from "./console/sui/SuiConnectDialog";
+import { AdvertisementDialog } from "./app/AdvertisementDialog";
 import { useContext, useEffect, useState } from "react";
-import { InfoDialog } from "./conso/InfoDialog";
+import { InfoDialog } from "./app/InfoDialog";
 import { useAppContext } from "@/contexts/AppContext";
-import { TermsDisclaimer } from "./conso/TermsAndConditionsDialog";
-import { AdvertisementDialogV2 } from "./conso/AdvertisementDialogV2";
-import { PlaystationConnectedDialog } from "./psn/PlaystationConnectedDialog";
-import { XboxConnectedDialog } from "./xbox/XboxConnectedDialog";
-import { NintendoConnectedDialog } from "./nintendo/NintendoConnectedDialog";
-import { SteamConnectedDialog } from "./steam/SteamConnectedDialog";
-import { BitboyConnectedDialog } from "./bitboy/BitboyConnectedDialog";
-import { SuiConnectedDialog } from "./sui/SuiConnectedDialog";
+import { TermsDisclaimer } from "./app/TermsAndConditionsDialog";
+import { AdvertisementDialogV2 } from "./app/AdvertisementDialogV2";
+import { PlaystationConnectedDialog } from "./console/psn/PlaystationConnectedDialog";
+import { XboxConnectedDialog } from "./console/xbox/XboxConnectedDialog";
+import { NintendoConnectedDialog } from "./console/nintendo/NintendoConnectedDialog";
+import { SteamConnectedDialog } from "./console/steam/SteamConnectedDialog";
+import { BitboyConnectedDialog } from "./console/bitboy/BitboyConnectedDialog";
+import { SuiConnectedDialog } from "./console/sui/SuiConnectedDialog";
 import { Howl } from "howler";
 import toast from "react-hot-toast";
 import CountUp from "react-countup";
 
 const connectButtons = {
-  playstation: CustomButtonType.MINING,
-  xbox: CustomButtonType.CONNECT,
-  nintendo: CustomButtonType.CONNECT,
-  steam: CustomButtonType.CONNECT,
-  bitboy: CustomButtonType.SOON,
-  sui: CustomButtonType.SOON,
+  playstation: CustomButtonType.SUCCESS,
+  xbox: CustomButtonType.PRIMARY,
+  nintendo: CustomButtonType.PRIMARY,
+  steam: CustomButtonType.PRIMARY,
+  bitboy: CustomButtonType.INACTIVE,
+  sui: CustomButtonType.INACTIVE,
 };
 
 const videoSrc = "/videos/ad.mp4";
@@ -587,7 +587,7 @@ export default function Miner() {
                     4.5x
                   </p>
 
-                  {connectButtons.playstation === CustomButtonType.CONNECT ? (
+                  {connectButtons.playstation === CustomButtonType.PRIMARY ? (
                     <Dialog>
                       <DialogTrigger>
                         <CustomButton
@@ -644,11 +644,11 @@ export default function Miner() {
                     4.5x
                   </p>
 
-                  {connectButtons.xbox === CustomButtonType.CONNECT ? (
+                  {connectButtons.xbox === CustomButtonType.PRIMARY ? (
                     <Dialog>
                       <DialogTrigger>
                         <CustomButton
-                          type={CustomButtonType.CONNECT}
+                          type={CustomButtonType.PRIMARY}
                           handleClick={handleXboxConnect}
                         />
                       </DialogTrigger>
@@ -700,11 +700,11 @@ export default function Miner() {
                   >
                     4.5x
                   </p>
-                  {connectButtons.nintendo === CustomButtonType.CONNECT ? (
+                  {connectButtons.nintendo === CustomButtonType.PRIMARY ? (
                     <Dialog>
                       <DialogTrigger>
                         <CustomButton
-                          type={CustomButtonType.CONNECT}
+                          type={CustomButtonType.PRIMARY}
                           handleClick={handleNintendoConnect}
                         />
                       </DialogTrigger>
@@ -757,11 +757,11 @@ export default function Miner() {
                     4.5x
                   </p>
 
-                  {connectButtons.steam === CustomButtonType.CONNECT ? (
+                  {connectButtons.steam === CustomButtonType.PRIMARY ? (
                     <Dialog>
                       <DialogTrigger>
                         <CustomButton
-                          type={CustomButtonType.CONNECT}
+                          type={CustomButtonType.PRIMARY}
                           handleClick={handleSteamConnect}
                         />
                       </DialogTrigger>
@@ -816,11 +816,11 @@ export default function Miner() {
                         4.5x
                       </p>
 
-                      {connectButtons.bitboy === CustomButtonType.CONNECT ? (
+                      {connectButtons.bitboy === CustomButtonType.PRIMARY ? (
                         <Dialog>
                           <DialogTrigger>
                             <CustomButton
-                              type={CustomButtonType.CONNECT}
+                              type={CustomButtonType.PRIMARY}
                               handleClick={handleBitboyConnect}
                             />
                           </DialogTrigger>
@@ -828,7 +828,8 @@ export default function Miner() {
                             <BitboyConnectDialog />
                           </DialogContent>
                         </Dialog>
-                      ) : connectButtons.bitboy === CustomButtonType.SOON ? (
+                      ) : connectButtons.bitboy ===
+                        CustomButtonType.INACTIVE ? (
                         <CustomButton
                           type={connectButtons.bitboy}
                           handleClick={doNothing}
@@ -877,11 +878,11 @@ export default function Miner() {
                       >
                         4.5x
                       </p>
-                      {connectButtons.sui === CustomButtonType.CONNECT ? (
+                      {connectButtons.sui === CustomButtonType.PRIMARY ? (
                         <Dialog>
                           <DialogTrigger>
                             <CustomButton
-                              type={CustomButtonType.CONNECT}
+                              type={CustomButtonType.PRIMARY}
                               handleClick={handleSuiConnect}
                             />
                           </DialogTrigger>
@@ -889,7 +890,7 @@ export default function Miner() {
                             <SuiConnectDialog />
                           </DialogContent>
                         </Dialog>
-                      ) : connectButtons.sui === CustomButtonType.SOON ? (
+                      ) : connectButtons.sui === CustomButtonType.INACTIVE ? (
                         <CustomButton
                           type={connectButtons.sui}
                           handleClick={doNothing}

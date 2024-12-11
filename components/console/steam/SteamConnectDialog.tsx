@@ -1,11 +1,11 @@
 import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
-import { handjet, ibmPlex500, ibmPlex700, jersey } from "../ui/fonts";
+import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
-import CustomButton from "../conso/CustomButton";
+import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 
-export function PlayStationConnectDialog() {
+export function SteamConnectDialog() {
   return (
     <>
       <div className="overflow-y-scroll scrollbar-none ">
@@ -54,13 +54,13 @@ export function PlayStationConnectDialog() {
                 jersey.className
               )}
             >
-              PlayStation
+              Steam
             </p>
             <Image
-              src={"console-logos/playstation-pixelated.svg"}
+              src={"console-logos/steam-pixelated.svg"}
               height={120}
               width={120}
-              alt="PlayStation"
+              alt="Steam"
             />
 
             <p
@@ -110,6 +110,23 @@ export function PlayStationConnectDialog() {
           <div className="flex flex-col gap-3 px-1 mt-3">
             {/* Console Connected Card */}
             <div className=" flex flex-col gap-3 tracking-tighter">
+              {/* <p className={cn(ibmPlex500.className, " text-xs")}>
+                <span
+                  className={cn(ibmPlex700.className, "text-xs text-black")}
+                >
+                  1.{" "}
+                </span>
+                Log in to{" "}
+                <a
+                  href="https://xbl.io"
+                  target="__blank"
+                  className="underline text-[#002E87]"
+                >
+                  https://xbl.io
+                </a>{" "}
+                and create an API key.
+              </p> */}
+
               <p className={cn(ibmPlex500.className, " text-xs flex gap-1")}>
                 <span
                   className={cn(ibmPlex700.className, "text-xs text-black")}
@@ -117,48 +134,24 @@ export function PlayStationConnectDialog() {
                   1.{" "}
                 </span>
                 <span>
-                  Visit
+                  Go to{" "}
                   <a
-                    href="https://www.playstation.com"
+                    href="https://steamcommunity.com/dev/apikey"
                     target="__blank"
                     className="underline text-[#002E87]"
                   >
-                    https://www.playstation.com
+                    https://steamcommunity.com/dev/apikey
                   </a>{" "}
-                  and sign in.
+                  to retrieve your API key
+                  <br />
+                  <br />
+                  Enter Steam API Key
                 </span>
-              </p>
-
-              <p className={cn(ibmPlex500.className, " text-xs flex gap-1")}>
-                <span
-                  className={cn(ibmPlex700.className, "text-xs text-black")}
-                >
-                  2.{" "}
-                </span>
-                <span>
-                  Get your "npsso" code from -
-                  <a
-                    href="https://ca.account.sony.com/api/v1/ssocookie"
-                    target="__blank"
-                    className="underline text-[#002E87]"
-                  >
-                    https://ca.account.sony.com/api/v1/ssocookie
-                  </a>{" "}
-                </span>
-              </p>
-
-              <p className={cn(ibmPlex500.className, " text-xs flex gap-1")}>
-                <span
-                  className={cn(ibmPlex700.className, "text-xs text-black")}
-                >
-                  3.{" "}
-                </span>
-                <span>Enter 64 character “npsso” code :</span>
               </p>
               <form className="flex flex-col gap-4 ">
                 <input
                   type="text"
-                  placeholder="YOUR_NPSSO_CODE"
+                  placeholder="YOUR_API_KEY"
                   className={cn(
                     "border-2 border-gray-400 bg-[#D7D7D7] rounded-lg p-2  ml-4 text-xs tracking-wider mr-2",
                     ibmPlex500.className
@@ -171,17 +164,16 @@ export function PlayStationConnectDialog() {
                     " text-[11px] text-[#7C7C7C] tracking-tighter ml-4"
                   )}
                 >
-                  PlayStation Console holders will act as NODES, contributing
-                  data and mining tokens with a 2.5x BOOST multiplier over the
-                  base rate.
+                  Steam Console holders will act as NODES, contributing data and
+                  mining tokens with a 2.5x BOOST multiplier over the base rate.
                 </p>
 
                 <div className="flex justify-center mt-2">
                   <CustomButton
-                    text="CONNECT PLAYSTATION"
+                    text="CONNECT STEAM"
                     type={CustomButtonType.CONSOLE_CONNECT}
                     handleClick={() => {
-                      console.log("Connect PlayStation");
+                      console.log("Connect Steam");
                     }}
                   />
                 </div>

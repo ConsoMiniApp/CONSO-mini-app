@@ -1,8 +1,7 @@
 import { cn } from "@/lib/utils";
-import { Wallet, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { handjet, jersey, ibmPlex } from "./ui/fonts";
-import CustomButton from "./conso/CustomButton";
+import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 
 const friendsList = [

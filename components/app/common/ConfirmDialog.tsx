@@ -2,7 +2,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
-import { ibmPlex, ibmPlex500, ibmPlex700, jersey } from "../ui/fonts";
+import { ibmPlex, ibmPlex500, ibmPlex700, jersey } from "../../ui/fonts";
 import { cn } from "@/lib/utils";
 import CustomButton from "./CustomButton";
 import { CustomButtonType } from "@/lib/types";
@@ -40,14 +40,14 @@ export function ConfirmDialog({ handleConfirm }: ConfirmDialogProps) {
             <DialogClose>
               <CustomButton
                 text="No"
-                type={CustomButtonType.SOON}
+                type={CustomButtonType.INACTIVE}
                 handleClick={() => console.log("No")}
               />
             </DialogClose>
             <DialogClose>
               <CustomButton
                 text="Yes"
-                type={CustomButtonType.MINING}
+                type={CustomButtonType.SUCCESS}
                 handleClick={handleClick}
               />
             </DialogClose>

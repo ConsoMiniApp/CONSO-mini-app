@@ -1,11 +1,11 @@
 import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
-import { handjet, ibmPlex500, ibmPlex700, jersey } from "../ui/fonts";
+import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
-import CustomButton from "../conso/CustomButton";
+import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 
-export function SteamConnectDialog() {
+export function XboxConnectDialog() {
   return (
     <>
       <div className="overflow-y-scroll scrollbar-none ">
@@ -54,13 +54,13 @@ export function SteamConnectDialog() {
                 jersey.className
               )}
             >
-              Steam
+              Xbox
             </p>
             <Image
-              src={"console-logos/steam-pixelated.svg"}
+              src={"console-logos/xbox-pixelated.svg"}
               height={120}
               width={120}
-              alt="Steam"
+              alt="Xbox"
             />
 
             <p
@@ -110,23 +110,6 @@ export function SteamConnectDialog() {
           <div className="flex flex-col gap-3 px-1 mt-3">
             {/* Console Connected Card */}
             <div className=" flex flex-col gap-3 tracking-tighter">
-              {/* <p className={cn(ibmPlex500.className, " text-xs")}>
-                <span
-                  className={cn(ibmPlex700.className, "text-xs text-black")}
-                >
-                  1.{" "}
-                </span>
-                Log in to{" "}
-                <a
-                  href="https://xbl.io"
-                  target="__blank"
-                  className="underline text-[#002E87]"
-                >
-                  https://xbl.io
-                </a>{" "}
-                and create an API key.
-              </p> */}
-
               <p className={cn(ibmPlex500.className, " text-xs flex gap-1")}>
                 <span
                   className={cn(ibmPlex700.className, "text-xs text-black")}
@@ -134,19 +117,25 @@ export function SteamConnectDialog() {
                   1.{" "}
                 </span>
                 <span>
-                  Go to{" "}
+                  Log in to{" "}
                   <a
-                    href="https://steamcommunity.com/dev/apikey"
+                    href="https://xbl.io"
                     target="__blank"
                     className="underline text-[#002E87]"
                   >
-                    https://steamcommunity.com/dev/apikey
+                    https://xbl.io
                   </a>{" "}
-                  to retrieve your API key
-                  <br />
-                  <br />
-                  Enter Steam API Key
+                  and create an API key.
                 </span>
+              </p>
+
+              <p className={cn(ibmPlex500.className, " text-xs flex gap-1")}>
+                <span
+                  className={cn(ibmPlex700.className, "text-xs text-black")}
+                >
+                  2.{" "}
+                </span>
+                <span>Enter the 36-digit API key.</span>
               </p>
               <form className="flex flex-col gap-4 ">
                 <input
@@ -164,16 +153,16 @@ export function SteamConnectDialog() {
                     " text-[11px] text-[#7C7C7C] tracking-tighter ml-4"
                   )}
                 >
-                  Steam Console holders will act as NODES, contributing data and
+                  Xbox Console holders will act as NODES, contributing data and
                   mining tokens with a 2.5x BOOST multiplier over the base rate.
                 </p>
 
                 <div className="flex justify-center mt-2">
                   <CustomButton
-                    text="CONNECT STEAM"
+                    text="CONNECT XBOX"
                     type={CustomButtonType.CONSOLE_CONNECT}
                     handleClick={() => {
-                      console.log("Connect Steam");
+                      console.log("Connect Xbox");
                     }}
                   />
                 </div>

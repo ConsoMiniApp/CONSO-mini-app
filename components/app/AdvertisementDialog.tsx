@@ -14,7 +14,7 @@ import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
 import { ibmPlex, jersey } from "../ui/fonts";
 import { cn } from "@/lib/utils";
-import CustomButton from "./CustomButton";
+import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 
 export function AdvertisementDialog() {
@@ -79,7 +79,7 @@ export function AdvertisementDialog() {
               THE WORLD's LEADING PREDICTION MARKET
             </p>
             <CustomButton
-              type={CustomButtonType.CONNECT}
+              type={CustomButtonType.PRIMARY}
               text="GET"
               handleClick={() => {
                 console.log("GET");

@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { handjet, ibmPlex, jersey } from "./ui/fonts";
-import RankRow from "./conso/rank/RankRow";
+import RankRow from "./app/rank/RankRow";
 
 const leaderboardRows = [
   {

@@ -1,11 +1,11 @@
 import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
-import { handjet, ibmPlex500, ibmPlex700, jersey } from "../ui/fonts";
+import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
-import CustomButton from "../conso/CustomButton";
+import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 
-export function XboxConnectDialog() {
+export function PlayStationConnectDialog() {
   return (
     <>
       <div className="overflow-y-scroll scrollbar-none ">
@@ -54,13 +54,13 @@ export function XboxConnectDialog() {
                 jersey.className
               )}
             >
-              Xbox
+              PlayStation
             </p>
             <Image
-              src={"console-logos/xbox-pixelated.svg"}
+              src={"console-logos/playstation-pixelated.svg"}
               height={120}
               width={120}
-              alt="Xbox"
+              alt="PlayStation"
             />
 
             <p
@@ -117,15 +117,15 @@ export function XboxConnectDialog() {
                   1.{" "}
                 </span>
                 <span>
-                  Log in to{" "}
+                  Visit
                   <a
-                    href="https://xbl.io"
+                    href="https://www.playstation.com"
                     target="__blank"
                     className="underline text-[#002E87]"
                   >
-                    https://xbl.io
+                    https://www.playstation.com
                   </a>{" "}
-                  and create an API key.
+                  and sign in.
                 </span>
               </p>
 
@@ -135,12 +135,30 @@ export function XboxConnectDialog() {
                 >
                   2.{" "}
                 </span>
-                <span>Enter the 36-digit API key.</span>
+                <span>
+                  Get your "npsso" code from -
+                  <a
+                    href="https://ca.account.sony.com/api/v1/ssocookie"
+                    target="__blank"
+                    className="underline text-[#002E87]"
+                  >
+                    https://ca.account.sony.com/api/v1/ssocookie
+                  </a>{" "}
+                </span>
+              </p>
+
+              <p className={cn(ibmPlex500.className, " text-xs flex gap-1")}>
+                <span
+                  className={cn(ibmPlex700.className, "text-xs text-black")}
+                >
+                  3.{" "}
+                </span>
+                <span>Enter 64 character “npsso” code :</span>
               </p>
               <form className="flex flex-col gap-4 ">
                 <input
                   type="text"
-                  placeholder="YOUR_API_KEY"
+                  placeholder="YOUR_NPSSO_CODE"
                   className={cn(
                     "border-2 border-gray-400 bg-[#D7D7D7] rounded-lg p-2  ml-4 text-xs tracking-wider mr-2",
                     ibmPlex500.className
@@ -153,16 +171,17 @@ export function XboxConnectDialog() {
                     " text-[11px] text-[#7C7C7C] tracking-tighter ml-4"
                   )}
                 >
-                  Xbox Console holders will act as NODES, contributing data and
-                  mining tokens with a 2.5x BOOST multiplier over the base rate.
+                  PlayStation Console holders will act as NODES, contributing
+                  data and mining tokens with a 2.5x BOOST multiplier over the
+                  base rate.
                 </p>
 
                 <div className="flex justify-center mt-2">
                   <CustomButton
-                    text="CONNECT XBOX"
+                    text="CONNECT PLAYSTATION"
                     type={CustomButtonType.CONSOLE_CONNECT}
                     handleClick={() => {
-                      console.log("Connect Xbox");
+                      console.log("Connect PlayStation");
                     }}
                   />
                 </div>
