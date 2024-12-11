@@ -26,7 +26,7 @@ import RankActive from "@/public/navigation-logos/rank-active.svg";
 import RankInactive from "@/public/navigation-logos/rank-inactive.svg";
 import PlayActive from "@/public/navigation-logos/play-active.svg";
 import PlayInactive from "@/public/navigation-logos/play-inactive.svg";
-import TaskActive from "@/public/navigation-logos/play-active.svg";
+import TaskActive from "@/public/navigation-logos/task-active.svg";
 import TaskInactive from "@/public/navigation-logos/task-inactive.svg";
 import InviteActive from "@/public/navigation-logos/invite-active.svg";
 import InviteInactive from "@/public/navigation-logos/invite-inactive.svg";
