@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import CustomButton from "./CustomButton";
 import { CustomButtonType } from "@/lib/types";
 import toast from "react-hot-toast";
+import { SuccessIcon } from "@/components/ui/icons";
 
 export interface ConfirmDialogProps {
   handleConfirm: () => void;
@@ -18,14 +19,7 @@ export function ConfirmDialog({ handleConfirm }: ConfirmDialogProps) {
     handleConfirm();
     toast("Console removed.", {
       className: cn(jersey.className, "text-xl text-white"),
-      icon: (
-        <Image
-          src="/toast-logos/success.svg"
-          width={24}
-          height={24}
-          alt="Coin"
-        />
-      ),
+      icon: <SuccessIcon />,
     });
   }
 

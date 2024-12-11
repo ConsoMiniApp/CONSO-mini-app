@@ -7,6 +7,7 @@ import consoleAnimation from "@/public/animations/console-animation.json";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { AddIcon, BackArrow, DeleteIcon } from "@/components/ui/icons";
 
 const consoleData = [
   {
@@ -54,12 +55,7 @@ export function NintendoConnectedDialog() {
         <div className="p-4 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
           <div className="flex justify-between ">
             <DialogClose>
-              <Image
-                src="/other-logos/back-arrow.svg"
-                width={32}
-                height={32}
-                alt="Back"
-              />
+              <BackArrow />
             </DialogClose>
             <span className={cn("text-6xl text-white ", jersey.className)}>
               CONSO
@@ -115,11 +111,7 @@ export function NintendoConnectedDialog() {
               MINING STATUS
             </p>
             <div className="flex gap-3">
-              <Image
-                src="/other-logos/delete.svg"
-                width={20}
-                height={20}
-                alt="Delete"
+              <div
                 onClick={() => {
                   console.log("Deleting selected consoles");
                   handleDelete();
@@ -139,14 +131,12 @@ export function NintendoConnectedDialog() {
                     ),
                   });
                 }}
-              />
-              <Image
-                src="/other-logos/add.svg"
-                width={20}
-                height={20}
-                alt="Add"
-                onClick={() => console.log("Add")}
-              />
+              >
+                <DeleteIcon />
+              </div>
+              <div onClick={() => console.log("Add")}>
+                <AddIcon />
+              </div>
             </div>
           </div>
 

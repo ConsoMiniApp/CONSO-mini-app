@@ -10,6 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { ArrowRightIcon, Boost, Close, ConsoleIcon } from "../ui/icons";
 
 export function InfoDialog() {
   const activities = [
@@ -36,12 +37,7 @@ export function InfoDialog() {
           </p>
           <DialogClose>
             <a>
-              <Image
-                src="/other-logos/close.svg"
-                alt="Advertisement"
-                width={24}
-                height={24}
-              />
+              <Close />
             </a>
           </DialogClose>
         </div>
@@ -60,16 +56,13 @@ export function InfoDialog() {
               <p
                 className={cn(
                   ibmPlex700.className,
-                  "text-xs tracking-tight flex items-start gap-2"
+                  "text-xs tracking-tight flex items-center justify-left gap-2"
                 )}
               >
                 {" "}
-                <Image
-                  src={"/other-logos/console.svg"}
-                  alt="Console"
-                  width={24}
-                  height={14}
-                />
+                <div className="flex justify-center items-center">
+                  <ConsoleIcon />
+                </div>
                 <p
                   className={cn(
                     jersey.className,
@@ -94,12 +87,9 @@ export function InfoDialog() {
                   "text-xs tracking-tight mt-1 flex gap-2 items-start"
                 )}
               >
-                <Image
-                  src={"/other-logos/right-arrow.svg"}
-                  alt="Console"
-                  width={24}
-                  height={14}
-                />{" "}
+                <div>
+                  <ArrowRightIcon />
+                </div>
                 <p>
                   Connected consoles act as data providers, boosting mining
                   rates and enriching the ecosystem.
@@ -137,17 +127,14 @@ export function InfoDialog() {
               <p
                 className={cn(
                   ibmPlex700.className,
-                  "text-xs tracking-tight flex items-start gap-2 "
+                  "text-xs tracking-tight flex items-center justify-left gap-2 "
                 )}
               >
                 {" "}
-                <Image
-                  src={"/other-logos/boost.svg"}
-                  alt="Console"
-                  width={16}
-                  height={18}
-                  className="mt-[4px]"
-                />
+                <div className="flex justify-center items-center">
+                  {" "}
+                  <Boost />
+                </div>
                 <p
                   className={cn(
                     jersey.className,
@@ -172,12 +159,9 @@ export function InfoDialog() {
                   "text-xs tracking-tight mt-1 flex items-start gap-2"
                 )}
               >
-                <Image
-                  src={"/other-logos/right-arrow.svg"}
-                  alt="Console"
-                  width={24}
-                  height={14}
-                />{" "}
+                <div>
+                  <ArrowRightIcon />
+                </div>
                 <p>
                   Earn extra by contributing through gaming, tapping, and
                   watching ads.

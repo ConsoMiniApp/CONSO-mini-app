@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 import { useRef, useState } from "react";
+import { BackIcon, Coin } from "../ui/icons";
 
 interface AdvertisementDialogProps {
   videoSrc: string;
@@ -76,12 +77,7 @@ export function AdvertisementDialogV2({
             /> */}
 
             <div className="flex gap-2 bg-[#5C6E7E] rounded-full p-2">
-              <Image
-                src="/other-logos/coin.svg"
-                alt="Advertisement"
-                width={22}
-                height={22}
-              />
+              <Coin />
               <p className={cn(jersey.className, "text-2xl text-white")}>
                 10 with this ad
               </p>
@@ -94,27 +90,20 @@ export function AdvertisementDialogV2({
           <div className="flex justify-between items-center z-10 absolute top-0 left-0 right-0 p-4">
             <DialogClose>
               <a className="">
-                <Image
-                  src="/other-logos/back.svg"
-                  alt="Advertisement"
-                  width={50}
-                  height={50}
+                <div
                   onClick={() => {
                     setTimeout(() => {
                       playSound();
                     }, 1000);
                   }}
-                />
+                >
+                  <BackIcon />
+                </div>
               </a>
             </DialogClose>
 
             <div className="flex gap-2 bg-black rounded-full p-2">
-              <Image
-                src="/other-logos/coin.svg"
-                alt="Advertisement"
-                width={22}
-                height={22}
-              />
+              <Coin />
               <p className={cn(jersey.className, "text-2xl text-white")}>
                 10 with this ad
               </p>

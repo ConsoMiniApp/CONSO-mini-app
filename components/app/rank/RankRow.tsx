@@ -1,4 +1,9 @@
 import { handjet, jersey } from "@/components/ui/fonts";
+import {
+  NintendoColoredLogo,
+  PlaystationColoredLogo,
+  XboxColoredLogo,
+} from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
@@ -98,28 +103,10 @@ const RankRow = ({ row, index }: RankRowProps) => {
               >
                 5,24,56,234 m
               </div>
-              <div className={cn("flex gap-1")}>
-                <Image
-                  src="./console-logos/playstation-color.svg"
-                  width={14}
-                  height={14}
-                  alt=""
-                  className="inline-block"
-                />
-                <Image
-                  src="./console-logos/xbox-color.svg"
-                  width={14}
-                  height={14}
-                  alt=""
-                  className="inline-block"
-                />
-                <Image
-                  src="./console-logos/nintendo-color.svg"
-                  width={14}
-                  height={14}
-                  alt=""
-                  className="inline-block"
-                />
+              <div className={cn("flex gap-1 mt-1")}>
+                <PlaystationColoredLogo />
+                <XboxColoredLogo />
+                <NintendoColoredLogo />
               </div>
             </div>
           </div>

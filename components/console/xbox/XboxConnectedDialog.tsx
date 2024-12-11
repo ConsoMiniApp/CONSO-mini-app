@@ -4,6 +4,7 @@ import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import Lottie from "lottie-react";
 import consoleAnimation from "@/public/animations/console-animation.json";
+import { AddIcon, BackArrow, DeleteIcon } from "@/components/ui/icons";
 
 export function XboxConnectedDialog() {
   return (
@@ -13,12 +14,7 @@ export function XboxConnectedDialog() {
         <div className="p-4 mt-4 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
           <div className="flex justify-between ">
             <DialogClose>
-              <Image
-                src="/other-logos/back-arrow.svg"
-                width={32}
-                height={32}
-                alt="Back"
-              />
+              <BackArrow />
             </DialogClose>
             <span className={cn("text-6xl text-white ", jersey.className)}>
               CONSO
@@ -74,20 +70,8 @@ export function XboxConnectedDialog() {
               MINING STATUS
             </p>
             <div className="flex gap-3">
-              <Image
-                src="/other-logos/delete.svg"
-                width={20}
-                height={20}
-                alt="Delete"
-                onClick={() => console.log("Delete")}
-              />
-              <Image
-                src="/other-logos/add.svg"
-                width={20}
-                height={20}
-                alt="Add"
-                onClick={() => console.log("Add")}
-              />
+              <DeleteIcon />
+              <AddIcon />
             </div>
           </div>
 

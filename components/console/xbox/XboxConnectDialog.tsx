@@ -4,29 +4,17 @@ import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
+import { BackArrow } from "@/components/ui/icons";
 
 export function XboxConnectDialog() {
   return (
     <>
       <div className="overflow-y-scroll scrollbar-none ">
-        {/* <DialogClose className="absolute top-0 right-0 p-2 ">
-          <Image
-            src="/other-logos/close.svg"
-            alt="Advertisement"
-            width={24}
-            height={24}
-          />
-        </DialogClose> */}
         {/* Top Status Card */}
         <div className="p-4 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
           <div className="flex justify-between ">
             <DialogClose>
-              <Image
-                src="/other-logos/back-arrow.svg"
-                width={32}
-                height={32}
-                alt="Back"
-              />
+              <BackArrow />
             </DialogClose>
             <span className={cn("text-6xl text-white ", jersey.className)}>
               CONSO

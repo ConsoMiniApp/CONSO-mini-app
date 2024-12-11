@@ -9,6 +9,12 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { ConfirmDialog } from "@/components/app/common/ConfirmDialog";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
+import {
+  AddIcon,
+  BackArrow,
+  BackIcon,
+  DeleteIcon,
+} from "@/components/ui/icons";
 
 const consoleData = [
   {
@@ -56,12 +62,7 @@ export function PlaystationConnectedDialog() {
         <div className="p-4 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
           <div className="flex justify-between ">
             <DialogClose>
-              <Image
-                src="/other-logos/back-arrow.svg"
-                width={32}
-                height={32}
-                alt="Back"
-              />
+              <BackArrow />
             </DialogClose>
             <span className={cn("text-6xl text-white ", jersey.className)}>
               CONSO
@@ -119,32 +120,17 @@ export function PlaystationConnectedDialog() {
             <div className="flex gap-3">
               <Dialog>
                 <DialogTrigger>
-                  <Image
-                    src="/other-logos/delete.svg"
-                    width={20}
-                    height={20}
-                    alt="Delete"
-                  />
-                  {/* <Image
-                    src="/other-logos/play.svg"
-                    width={114}
-                    height={114}
-                    alt="Ads"
-                    className="inline-block hover:opacity-90 hover:scale-95 transition-transform duration-100"
-                  /> */}
+                  <div>
+                    <DeleteIcon />
+                  </div>
                 </DialogTrigger>
                 <DialogContent className="h-screen border-none backdrop-blur-md">
                   <ConfirmDialog handleConfirm={handleDelete} />
                 </DialogContent>
               </Dialog>
-
-              <Image
-                src="/other-logos/add.svg"
-                width={20}
-                height={20}
-                alt="Add"
-                onClick={() => console.log("Add")}
-              />
+              <div className="flex justify-center items-center">
+                <AddIcon />
+              </div>
             </div>
           </div>
 

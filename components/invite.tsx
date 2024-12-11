@@ -3,6 +3,7 @@ import Image from "next/image";
 import { handjet, jersey, ibmPlex } from "./ui/fonts";
 import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
+import { Coin, CoinSmallIcon } from "./ui/icons";
 
 const friendsList = [
   {
@@ -57,14 +58,11 @@ export default function Invite() {
               EARNED SO FAR
             </p>
             <div className="flex justify-center gap-2">
-              <Image
-                src="./other-logos/coin.svg"
-                width={30}
-                height={30}
-                alt=""
-                className="inline-block"
-                onClick={() => console.log("Coin")}
-              />
+              <div className="flex items-center">
+                {" "}
+                <Coin />
+              </div>
+
               <span
                 className={cn(
                   "text-yellow-400 text-4xl font-bold",
@@ -86,14 +84,10 @@ export default function Invite() {
               YOU AND YOUR FRIEND BOTH EARN
             </p>
             <div className="bg-[#DE5EA6] rounded-lg p-1 flex justify-center items-center gap-1 mt-4">
-              <Image
-                src="./other-logos/coin.svg"
-                width={25}
-                height={25}
-                alt=""
-                className="inline-block"
-                onClick={() => console.log("Coin")}
-              />
+              <div className="flex items-center">
+                {" "}
+                <CoinSmallIcon />
+              </div>
               <span className={cn(" text-3xl font-bold", jersey.className)}>
                 30,000
               </span>
@@ -108,14 +102,10 @@ export default function Invite() {
               ADDITIONALLY 10% OF LIFETIME EARNINGS
             </p>
             <div className="bg-[#DE5EA6] rounded-lg p-1 flex justify-center items-center gap-1 mt-4">
-              <Image
-                src="./other-logos/coin.svg"
-                width={25}
-                height={25}
-                alt=""
-                className="inline-block"
-                onClick={() => console.log("Coin")}
-              />
+              <div className="flex items-center">
+                {" "}
+                <CoinSmallIcon />
+              </div>
               <span className={cn(" text-3xl font-bold", jersey.className)}>
                 10%
               </span>

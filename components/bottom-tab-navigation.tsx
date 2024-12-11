@@ -1,12 +1,23 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Miner from "./miner";
 import { jersey } from "./ui/fonts";
 import Rank from "./rank";
 import Play from "./play";
 import Tasks from "./tasks";
 import Invite from "./invite";
+import {
+  InviteActive,
+  InviteInactive,
+  MinerActive,
+  MinerInactive,
+  PlayActive,
+  PlayInactive,
+  RankActive,
+  RankInactive,
+  TaskActive,
+  TaskInactive,
+} from "./ui/icons";
 
 export default function BottomTabNavigation() {
   const [activeTab, setActiveTab] = useState("miner");
@@ -15,32 +26,32 @@ export default function BottomTabNavigation() {
     {
       id: "miner",
       label: "Miner",
-      icon: "/navigation-logos/miner-active.svg",
-      inactive_icon: "/navigation-logos/miner-inactive.svg",
+      icon: <MinerActive />,
+      inactive_icon: <MinerInactive />,
     },
     {
       id: "rank",
       label: "Rank",
-      icon: "/navigation-logos/rank-active.svg",
-      inactive_icon: "/navigation-logos/rank-inactive.svg",
+      icon: <RankActive />,
+      inactive_icon: <RankInactive />,
     },
     {
       id: "play",
       label: "Play",
-      icon: "/navigation-logos/play-active.svg",
-      inactive_icon: "/navigation-logos/play-inactive.svg",
+      icon: <PlayActive />,
+      inactive_icon: <PlayInactive />,
     },
     {
       id: "task",
       label: "Task",
-      icon: "/navigation-logos/task-active.svg",
-      inactive_icon: "/navigation-logos/task-inactive.svg",
+      icon: <TaskActive />,
+      inactive_icon: <TaskInactive />,
     },
     {
       id: "invite",
       label: "Invite",
-      icon: "/navigation-logos/invite-active.svg",
-      inactive_icon: "/navigation-logos/invite-inactive.svg",
+      icon: <InviteActive />,
+      inactive_icon: <InviteInactive />,
     },
   ];
 
@@ -87,13 +98,8 @@ export default function BottomTabNavigation() {
                     : "text-muted-foreground hover:text-primary"
                 )}
               >
-                <Image
-                  src={activeTab == tab.id ? tab.icon : tab.inactive_icon}
-                  width={50}
-                  height={50}
-                  alt="Miner"
-                  className=""
-                />
+                {activeTab == tab.id ? tab.icon : tab.inactive_icon}
+
                 <span
                   className={cn(
                     jersey.className,

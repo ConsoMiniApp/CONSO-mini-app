@@ -4,29 +4,22 @@ import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import Lottie from "lottie-react";
 import consoleAnimation from "@/public/animations/console-animation.json";
+import { AddIcon, BackArrow, Close, DeleteIcon } from "@/components/ui/icons";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { ConfirmDialog } from "@/components/app/common/ConfirmDialog";
 
 export function SteamConnectedDialog() {
   return (
     <>
       <div className="overflow-y-scroll scrollbar-none ">
         <DialogClose className="absolute top-0 right-0 p-2 ">
-          <Image
-            src="/other-logos/close.svg"
-            alt="Advertisement"
-            width={24}
-            height={24}
-          />
+          <Close />
         </DialogClose>
         {/* Top Status Card */}
         <div className="p-4 mt-4 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
           <div className="flex justify-between ">
             <DialogClose>
-              <Image
-                src="/other-logos/back-arrow.svg"
-                width={32}
-                height={32}
-                alt="Back"
-              />
+              <BackArrow />
             </DialogClose>
             <span className={cn("text-6xl text-white ", jersey.className)}>
               CONSO
@@ -82,20 +75,19 @@ export function SteamConnectedDialog() {
               MINING STATUS
             </p>
             <div className="flex gap-3">
-              <Image
-                src="/other-logos/delete.svg"
-                width={20}
-                height={20}
-                alt="Delete"
-                onClick={() => console.log("Delete")}
-              />
-              <Image
-                src="/other-logos/add.svg"
-                width={20}
-                height={20}
-                alt="Add"
-                onClick={() => console.log("Add")}
-              />
+              <Dialog>
+                <DialogTrigger>
+                  <div>
+                    <DeleteIcon />
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="h-screen border-none backdrop-blur-md">
+                  <ConfirmDialog handleConfirm={() => console.log("")} />
+                </DialogContent>
+              </Dialog>
+              <div className="flex justify-center items-center">
+                <AddIcon />
+              </div>
             </div>
           </div>
 

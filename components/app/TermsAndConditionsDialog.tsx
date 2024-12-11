@@ -4,6 +4,7 @@ import { handjet, ibmPlex, ibmPlex500, ibmPlex700, jersey } from "../ui/fonts";
 import { cn } from "@/lib/utils";
 import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
+import { Close } from "../ui/icons";
 
 export function TermsDisclaimer() {
   return (
@@ -21,14 +22,7 @@ export function TermsDisclaimer() {
             TERMS & CONDITIONS
           </p>
           <DialogClose>
-            <a>
-              <Image
-                src="/other-logos/close.svg"
-                alt="Advertisement"
-                width={24}
-                height={24}
-              />
-            </a>
+            <Close />
           </DialogClose>
         </div>
 

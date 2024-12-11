@@ -2,6 +2,11 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { handjet, ibmPlex, jersey } from "./ui/fonts";
 import RankRow from "./app/rank/RankRow";
+import {
+  NintendoColoredLogo,
+  PlaystationColoredLogo,
+  XboxColoredLogo,
+} from "./ui/icons";
 
 const leaderboardRows = [
   {
@@ -468,28 +473,10 @@ export default function Rank() {
                 >
                   5,24,56,234 m
                 </div>
-                <div className={cn("flex gap-1")}>
-                  <Image
-                    src="./console-logos/playstation-color.svg"
-                    width={14}
-                    height={14}
-                    alt=""
-                    className="inline-block"
-                  />
-                  <Image
-                    src="./console-logos/xbox-color.svg"
-                    width={14}
-                    height={14}
-                    alt=""
-                    className="inline-block"
-                  />
-                  <Image
-                    src="./console-logos/nintendo-color.svg"
-                    width={14}
-                    height={14}
-                    alt=""
-                    className="inline-block"
-                  />
+                <div className={cn("flex gap-1 mt-1")}>
+                  <PlaystationColoredLogo />
+                  <XboxColoredLogo />
+                  <NintendoColoredLogo />
                 </div>
               </div>
             </div>

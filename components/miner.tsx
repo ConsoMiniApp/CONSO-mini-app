@@ -26,6 +26,25 @@ import { SuiConnectedDialog } from "./console/sui/SuiConnectedDialog";
 import { Howl } from "howler";
 import toast from "react-hot-toast";
 import CountUp from "react-countup";
+import {
+  BitboyPixelatedLogo,
+  Boost,
+  Coin,
+  CoinSmallIcon,
+  ConsoleIcon,
+  InfoIcon,
+  NintendoPixelatedLogo,
+  PlaystationPixelatedLogo,
+  SoundOff,
+  SoundOn,
+  SteamPixelatedLogo,
+  SuiPixelatedLogo,
+  TapIcon,
+  VideoPlayIcon,
+  Wallet,
+  WaveIcon,
+  XboxPixelatedLogo,
+} from "./ui/icons";
 
 const connectButtons = {
   playstation: CustomButtonType.SUCCESS,
@@ -219,24 +238,14 @@ export default function Miner() {
                 CONSO
               </span>
               <div>
-                <Image
-                  src="/other-logos/wallet.svg"
-                  width={32}
-                  height={32}
-                  alt="Wallet"
-                />
+                <div className="hover:opacity-90">
+                  <Wallet />
+                </div>
               </div>
             </div>
 
             <div className="flex justify-center items-center gap-2 mb-4">
-              <Image
-                src="./other-logos/coin.svg"
-                width={30}
-                height={30}
-                alt=""
-                className="inline-block"
-                onClick={() => console.log("Coin")}
-              />
+              <Coin />
 
               <CountUp
                 start={startPointBalance}
@@ -249,7 +258,7 @@ export default function Miner() {
               />
             </div>
 
-            {/* Key Info Section */}
+            {/* Key Info Section : TO REMOVE  */}
 
             <div className="flex justify-center gap-2 mb-4">
               <div
@@ -303,53 +312,42 @@ export default function Miner() {
             </div>
 
             {/* User Multipliers and Info Section */}
-            <div className="flex gap-2 ml-8 justify-center items-start mb-4">
+            <div className="flex gap-2 ml-8 justify-center mb-4">
               <div>
-                <div className="flex gap-2 w-full justify-left">
-                  <Image
-                    src="/other-logos/boost.svg"
-                    width={24}
-                    height={24}
-                    alt="Lightning"
-                    className="inline-block"
-                  />
+                <div className="grid grid-cols-4 justify-left items-left">
+                  <div className="col-span-1 flex items-center justify-center">
+                    <Boost />
+                  </div>
+
                   <span
                     className={cn(
-                      "text-[#DE5EA6] text-2xl text-nowrap",
+                      "text-[#DE5EA6] text-2xl text-nowrap col-span-3",
                       jersey.className
                     )}
                   >
                     Total Boost :
                   </span>
                 </div>
-                <div className="flex gap-2 w-full justify-left">
-                  <Image
-                    src="/other-logos/coin.svg"
-                    width={25}
-                    height={25}
-                    alt="Lightning"
-                    className="inline-block"
-                  />
+                <div className="grid grid-cols-4 justify-left items-left">
+                  <div className="col-span-1 flex items-center justify-center">
+                    <CoinSmallIcon />
+                  </div>
                   <span
                     className={cn(
-                      "text-[#DE5EA6] text-2xl text-nowrap",
+                      "text-[#DE5EA6] text-2xl text-nowrap col-span-3",
                       jersey.className
                     )}
                   >
                     Tap Bonus :
                   </span>
                 </div>
-                <div className="flex gap-2 w-full justify-left">
-                  <Image
-                    src="/other-logos/console.svg"
-                    width={25}
-                    height={25}
-                    alt="Lightning"
-                    className="inline-block"
-                  />
+                <div className="grid grid-cols-4 justify-left items-left">
+                  <div className="flex items-center justify-center col-span-1">
+                    <ConsoleIcon />
+                  </div>
                   <span
                     className={cn(
-                      "text-[#DE5EA6] text-2xl text-nowrap",
+                      "text-[#DE5EA6] text-2xl text-nowrap col-span-3",
                       jersey.className
                     )}
                   >
@@ -392,13 +390,9 @@ export default function Miner() {
                 <div className="flex items-center justify-center ">
                   <Dialog>
                     <DialogTrigger>
-                      <Image
-                        src="/other-logos/play.svg"
-                        width={114}
-                        height={114}
-                        alt="Ads"
-                        className="inline-block hover:opacity-90 hover:scale-95 transition-transform duration-100"
-                      />
+                      <div className="inline-block hover:opacity-90 hover:scale-95 transition-transform duration-100">
+                        <VideoPlayIcon />
+                      </div>
                     </DialogTrigger>
                     <DialogContent className="h-screen border-none bg-black">
                       <AdvertisementDialogV2
@@ -411,15 +405,7 @@ export default function Miner() {
                 </div>
                 <div className="flex flex-col gap-3 items-center justify-center ">
                   <div className="flex gap-3">
-                    <Image
-                      src={
-                        mute
-                          ? "/other-logos/sound-off.svg"
-                          : "/other-logos/sound.svg"
-                      }
-                      width={45}
-                      height={45}
-                      alt="sound"
+                    <div
                       className={soundClass}
                       onClick={() => {
                         if (mute) {
@@ -436,63 +422,34 @@ export default function Miner() {
                           );
                         }
                       }}
-                    />
+                    >
+                      {mute ? <SoundOff /> : <SoundOn />}
+                    </div>
                     <Dialog>
                       <DialogTrigger>
-                        <Image
-                          src="/other-logos/info.svg"
-                          width={45}
-                          height={45}
-                          alt="Ads"
-                          onClick={
-                            () => infoOpenSound?.play("info")
-                            // playCoinsCreditedSound()
-                          }
+                        <div
+                          onClick={() => infoOpenSound?.play("info")}
                           className="inline-block hover:opacity-90 hover:scale-95 transition-transform duration-100"
-                        />
+                        >
+                          <InfoIcon />
+                        </div>
                       </DialogTrigger>
                       <DialogContent className=" w-[95%] h-[95%] rounded-xl bg-white">
                         <InfoDialog />
                       </DialogContent>
                     </Dialog>
                   </div>
-                  <Image
-                    src="/other-logos/wave.svg"
-                    width={62}
-                    height={44}
-                    alt="Wave"
-                    className="inline-block"
-                  />
+                  <WaveIcon />
                 </div>
 
                 <div className="flex items-center justify-center">
-                  <Image
-                    src="/other-logos/tap.svg"
-                    width={114}
-                    height={114}
-                    alt="Tap"
+                  <div
                     className={tapClass}
                     onClick={() => {
                       setTapClass(
                         "inline-block scale-95 transition-transform duration-100 opacity-80"
                       );
                       tapSound?.play("tap");
-                      // toast("You Tapped.", {
-                      //   className: cn(jersey.className, "text-xl text-white"),
-                      //   style: {
-                      //     background: "#000",
-                      //     color: "#fff",
-                      //   },
-                      //   icon: (
-                      //     <Image
-                      //       src="/toast-logos/success.svg"
-                      //       width={24}
-                      //       height={24}
-                      //       alt="Coin"
-                      //     />
-                      //   ),
-                      // });
-
                       console.log("Tapped");
                       setTimeout(() => {
                         setTapClass("inline-block");
@@ -504,7 +461,9 @@ export default function Miner() {
                         );
                       }, 100);
                     }}
-                  />
+                  >
+                    <TapIcon />
+                  </div>
                 </div>
               </div>
             </div>
@@ -561,13 +520,7 @@ export default function Miner() {
               {/* PlayStation */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Image
-                    src="/console-logos/playstation-pixelated.svg"
-                    width={32}
-                    height={32}
-                    alt="PlayStation"
-                    className="inline-block"
-                  />
+                  <PlaystationPixelatedLogo />
                   <p
                     className={cn(
                       jersey.className,
@@ -618,13 +571,7 @@ export default function Miner() {
               {/* Xbox */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Image
-                    src="/console-logos/xbox-pixelated.svg"
-                    width={32}
-                    height={32}
-                    alt="PlayStation"
-                    className="inline-block"
-                  />
+                  <XboxPixelatedLogo />
                   <p
                     className={cn(
                       jersey.className,
@@ -675,13 +622,7 @@ export default function Miner() {
               {/* Nintendo */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Image
-                    src="/console-logos/nintendo-pixelated.svg"
-                    width={32}
-                    height={32}
-                    alt="Nintendo"
-                    className="inline-block"
-                  />
+                  <NintendoPixelatedLogo />
                   <p
                     className={cn(
                       jersey.className,
@@ -731,13 +672,7 @@ export default function Miner() {
               {/* Steam */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Image
-                    src="/console-logos/steam-pixelated.svg"
-                    width={32}
-                    height={32}
-                    alt="Steam"
-                    className="inline-block"
-                  />
+                  <SteamPixelatedLogo />
                   <p
                     className={cn(
                       jersey.className,
@@ -790,13 +725,7 @@ export default function Miner() {
                   {/* Bitboy */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Image
-                        src="/console-logos/bitboy-pixelated.svg"
-                        width={32}
-                        height={32}
-                        alt="Bitboy"
-                        className="inline-block"
-                      />
+                      <BitboyPixelatedLogo />
                       <p
                         className={cn(
                           jersey.className,
@@ -853,13 +782,7 @@ export default function Miner() {
                   {/* Sui */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Image
-                        src="/console-logos/sui-pixelated.svg"
-                        width={32}
-                        height={32}
-                        alt="Sui"
-                        className="inline-block"
-                      />
+                      <SuiPixelatedLogo />
                       <p
                         className={cn(
                           jersey.className,

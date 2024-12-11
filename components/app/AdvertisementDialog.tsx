@@ -16,6 +16,7 @@ import { ibmPlex, jersey } from "../ui/fonts";
 import { cn } from "@/lib/utils";
 import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
+import { BackIcon, Coin } from "../ui/icons";
 
 export function AdvertisementDialog() {
   return (
@@ -25,22 +26,12 @@ export function AdvertisementDialog() {
         <div className="flex justify-between items-center">
           <DialogClose>
             <a>
-              <Image
-                src="/other-logos/back.svg"
-                alt="Advertisement"
-                width={50}
-                height={50}
-              />
+              <BackIcon />
             </a>
           </DialogClose>
 
           <div className="flex gap-2 bg-black rounded-full p-2">
-            <Image
-              src="/other-logos/coin.svg"
-              alt="Advertisement"
-              width={22}
-              height={22}
-            />
+            <Coin />
             <p className={cn(jersey.className, "text-2xl text-white")}>
               10 with this ad
             </p>
