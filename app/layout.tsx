@@ -26,6 +26,30 @@ export default function RootLayout({
       <html lang="en">
         <head>
           {/* <script src="https://telegram.org/js/telegram-web-app.js"></script> */}
+          <link
+            rel="preload"
+            href="/other-logos/button-wide-bg-yellow.svg"
+            as="image"
+            type="image/svg+xml"
+          />
+          <link
+            rel="preload"
+            href="/other-logos/button-bg-yellow.svg"
+            as="image"
+            type="image/svg+xml"
+          />
+          <link
+            rel="preload"
+            href="/other-logos/button-bg-green.svg"
+            as="image"
+            type="image/svg+xml"
+          />
+          <link
+            rel="preload"
+            href="/other-logos/button-bg-gray.svg"
+            as="image"
+            type="image/svg+xml"
+          />
         </head>
         <AppProvider>
           <body>
