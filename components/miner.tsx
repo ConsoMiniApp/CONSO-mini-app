@@ -196,7 +196,7 @@ export default function Miner() {
     <>
       <Dialog defaultOpen={!termsAccepted}>
         {/* <DialogTrigger ></DialogTrigger> */}
-        <DialogContent className=" w-[95%] h-[95%] rounded-xl">
+        <DialogContent className=" w-[95%] h-[95%] rounded-xl bg-white backdrop-blur-md">
           <TermsDisclaimer />
         </DialogContent>
       </Dialog>
@@ -412,7 +412,11 @@ export default function Miner() {
                 <div className="flex flex-col gap-3 items-center justify-center ">
                   <div className="flex gap-3">
                     <Image
-                      src="/other-logos/sound.svg"
+                      src={
+                        mute
+                          ? "/other-logos/sound-off.svg"
+                          : "/other-logos/sound.svg"
+                      }
                       width={45}
                       height={45}
                       alt="sound"
@@ -447,7 +451,7 @@ export default function Miner() {
                           className="inline-block hover:opacity-90 hover:scale-95 transition-transform duration-100"
                         />
                       </DialogTrigger>
-                      <DialogContent className=" w-[95%] h-[95%] rounded-xl">
+                      <DialogContent className=" w-[95%] h-[95%] rounded-xl bg-white">
                         <InfoDialog />
                       </DialogContent>
                     </Dialog>

@@ -46,7 +46,7 @@ export default function BottomTabNavigation() {
 
   return (
     <div className="min-h-screen pb-24 flex flex-col">
-      <main className="flex-1 overflow-y-auto">
+      <main className="">
         {activeTab === "miner" && (
           <div className="space-y-4">
             <Miner />

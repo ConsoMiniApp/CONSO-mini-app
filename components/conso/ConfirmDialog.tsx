@@ -1,13 +1,3 @@
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { DialogClose } from "@radix-ui/react-dialog";
@@ -16,28 +6,29 @@ import { ibmPlex, ibmPlex500, ibmPlex700, jersey } from "../ui/fonts";
 import { cn } from "@/lib/utils";
 import CustomButton from "./CustomButton";
 import { CustomButtonType } from "@/lib/types";
+import toast from "react-hot-toast";
 
 export interface ConfirmDialogProps {
   handleConfirm: () => void;
 }
 
 export function ConfirmDialog({ handleConfirm }: ConfirmDialogProps) {
-  // onClick={() => {
-  //                     console.log("Deleting selected consoles");
-  //                     handleDelete();
-  //                     toast("10 Token added for the ad play", {
-  //                       className: cn(jersey.className, "text-xl text-white"),
+  function handleClick() {
+    console.log("Deleting selected consoles");
+    handleConfirm();
+    toast("Console removed.", {
+      className: cn(jersey.className, "text-xl text-white"),
+      icon: (
+        <Image
+          src="/toast-logos/success.svg"
+          width={24}
+          height={24}
+          alt="Coin"
+        />
+      ),
+    });
+  }
 
-  //                       icon: (
-  //                         <Image
-  //                           src="/toast-logos/error.svg"
-  //                           width={24}
-  //                           height={24}
-  //                           alt="Coin"
-  //                         />
-  //                       ),
-  //                     });
-  //                   }}
   return (
     <>
       <div className="flex justify-center items-center">
@@ -57,7 +48,7 @@ export function ConfirmDialog({ handleConfirm }: ConfirmDialogProps) {
               <CustomButton
                 text="Yes"
                 type={CustomButtonType.MINING}
-                handleClick={handleConfirm}
+                handleClick={handleClick}
               />
             </DialogClose>
           </div>
