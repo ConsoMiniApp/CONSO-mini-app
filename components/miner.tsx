@@ -434,7 +434,7 @@ export default function Miner() {
                           <InfoIcon />
                         </div>
                       </DialogTrigger>
-                      <DialogContent className=" w-[95%] h-[95%] rounded-xl bg-white">
+                      <DialogContent className=" w-[95%] h-[95%] rounded-xl bg-white backdrop-blur-md">
                         <InfoDialog />
                       </DialogContent>
                     </Dialog>
