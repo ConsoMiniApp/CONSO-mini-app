@@ -65,7 +65,7 @@ export function MissionsDrawer() {
           {/* Task Cards */}
           <div className="flex flex-col my-6 gap-3 w-full">
             {missions.map((mission) => (
-              <div className="grid grid-cols-7 justify-center items-center px-2 py-2 border-2 border-[#FFE500] rounded-xl">
+              <div className="grid grid-cols-7 justify-center items-center px-4 py-2 border-2 border-[#FFE500] rounded-xl">
                 <div className="col-span-1 bg-[#DE5EA6] flex items-center justify-center rounded-lg h-10 w-10 ">
                   {mission.logo}
                 </div>

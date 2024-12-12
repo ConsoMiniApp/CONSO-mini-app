@@ -180,7 +180,7 @@ export function MysteryBoxDrawer() {
                 <div
                   className={cn(
                     jersey.className,
-                    "absolute bottom-[-18px] left-1/2 transform -translate-x-1/2  px-2 bg-[#DE5EA6] rounded-lg border-2 border-white text-white text-lg"
+                    "absolute bottom-[-18px] left-1/2 transform -translate-x-1/2  px-2 bg-[#DE5EA6] rounded-lg border-2 border-white text-white text-[18px] w-[60%] text-center"
                   )}
                 >
                   x {box.count}
@@ -190,6 +190,8 @@ export function MysteryBoxDrawer() {
           </div>
         </div>
       </div>
+      <br />
+      <br />
     </>
   );
 }

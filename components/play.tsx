@@ -117,7 +117,7 @@ export default function Play() {
                     </p>
                   </div>
                 </DrawerTrigger>
-                <DrawerContent>
+                <DrawerContent className="">
                   <MysteryBoxDrawer />
                 </DrawerContent>
               </Drawer>

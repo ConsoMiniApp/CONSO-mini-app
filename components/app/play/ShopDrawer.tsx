@@ -18,7 +18,7 @@ const characters = [
     name: "NINJA",
     image: "/play-logos/ninja-character.gif",
     selected: false,
-    owned: true,
+    owned: false,
     price: 200,
   },
   {
@@ -42,7 +42,7 @@ const jetpacks = [
     name: "ROCKET",
     image: "/play-logos/rocket-jetpack.gif",
     selected: false,
-    owned: true,
+    owned: false,
     price: 2500,
   },
   {
@@ -238,6 +238,8 @@ export function ShopDrawer() {
           </div>
         </div>
       </div>
+      <br />
+      <br />
     </>
   );
 }
