@@ -77,13 +77,15 @@ export default function Play() {
           className="object-cover absolute top-0 h-screen  pb-24 z-[-1]"
           // onLoadedMetadata={enterFullScreen}
         ></video>
-        <Image
-          src={"/videos/player.gif"}
-          alt="player"
-          className="object-cover absolute bottom-0 mb-3 ml-10 bg-none pb-32"
-          width={100}
-          height={100}
-        ></Image>
+        {isVideoLoaded && (
+          <Image
+            src={"/videos/player.gif"}
+            alt="player"
+            className="object-cover absolute bottom-0 mb-3 ml-10 bg-none pb-32"
+            width={100}
+            height={100}
+          ></Image>
+        )}
         <div className="flex flex-col p-4">
           <div className="flex justify-center items-center mt-4">
             <GameLogo />
