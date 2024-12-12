@@ -160,7 +160,7 @@ export function SteamConnectDialog() {
                 <div className="flex justify-center mt-2">
                   <CustomButton
                     text="CONNECT STEAM"
-                    type={CustomButtonType.CONSOLE_CONNECT}
+                    type={CustomButtonType.PRIMARY_WIDE}
                     handleClick={() => {
                       console.log("Connect Steam");
                       toast("Steam Connected.", {

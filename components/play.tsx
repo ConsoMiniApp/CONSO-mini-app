@@ -15,7 +15,17 @@ import {
 } from "@/components/ui/drawer";
 import { Button } from "./ui/button";
 import { handjet, ibmPlex500, ibmPlex700, jersey } from "./ui/fonts";
-import { ArrowRightIcon, Boost, Close, ConsoleIcon } from "./ui/icons";
+import {
+  ArrowRightIcon,
+  Boost,
+  Close,
+  ConsoleIcon,
+  GameLogo,
+  MissionsLogo,
+  MysteryBoxLogo,
+  PotionLogo,
+  ShopSectionLogo,
+} from "./ui/icons";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -48,145 +58,110 @@ export default function Play() {
       <Image
         src={"/videos/player.gif"}
         alt="player"
-        className="object-cover absolute bottom-0 ml-10 bg-none pb-32"
+        className="object-cover absolute bottom-0 mb-3 ml-10 bg-none pb-32"
         width={100}
         height={100}
       ></Image>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <Drawer>
-          <DrawerTrigger>
-            <CustomButton
-              type={CustomButtonType.PRIMARY}
-              handleClick={() => {}}
-              text="TEST"
-            ></CustomButton>
-          </DrawerTrigger>
-          <DrawerContent>
-            <div className="p-4">
-              {/* Top Section */}
-              <div className="flex justify-between">
-                <p
-                  className={cn(
-                    handjet.className,
-                    "text-xl text-[#7C7C7C] tracking-wider"
-                  )}
-                >
-                  {" "}
-                  CONSO REWARD SYSTEM
-                </p>
-                {/* <DrawerClose>
-            <a>
-          <Close />
-            </a>
-          </DrawerClose> */}
-              </div>
+      <div className="flex flex-col p-4">
+        <div className="flex justify-center items-center mt-4">
+          <GameLogo />
+        </div>
 
-              {/* Sub Heading */}
-              <div className="flex flex-col space-y-4 text-black mt-2 mr-2 ">
-                <p
-                  className={cn(ibmPlex500.className, "text-xs tracking-tight")}
-                >
+        <div className="grid grid-cols-2 mt-10">
+          {/* Left Side Items */}
+          <div className="flex flex-col gap-4 items-start">
+            <Drawer>
+              <DrawerTrigger>
+                <div className="bg-black bg-opacity-40 rounded-md p-2 flex items-center justify-center gap-2">
                   {" "}
-                  Earn CONSO tokens by contributing to the network in various
-                  ways. Check out the mining rates based on your engagement
-                  level:
-                </p>
-
-                <div className="ml-1">
-                  {/* Console Info */}
-                  <div>
-                    <p
-                      className={cn(
-                        ibmPlex700.className,
-                        "text-xs tracking-tight flex items-center justify-left gap-2"
-                      )}
-                    >
-                      {" "}
-                      <div className="flex justify-center items-center">
-                        <ConsoleIcon />
-                      </div>
-                      <p
-                        className={cn(
-                          jersey.className,
-                          "text-[#DE5EA6] text-xl tracking-wider"
-                        )}
-                      >
-                        CONSOLES:
-                        <span
-                          className={cn(
-                            jersey.className,
-                            "text-[#A08F00] text-xl tracking-wider"
-                          )}
-                        >
-                          {" "}
-                          The Data Providers
-                        </span>
-                      </p>
-                    </p>
-                    <p
-                      className={cn(
-                        ibmPlex500.className,
-                        "text-xs tracking-tight mt-1 flex gap-2 items-start"
-                      )}
-                    >
-                      <div>
-                        <ArrowRightIcon />
-                      </div>
-                      <p>
-                        Connected consoles act as data providers, boosting
-                        mining rates and enriching the ecosystem.
-                      </p>
-                    </p>
-                  </div>
-                  <div className="mt-3">
-                    <p
-                      className={cn(
-                        ibmPlex700.className,
-                        "text-xs tracking-tight flex items-center justify-left gap-2 "
-                      )}
-                    >
-                      {" "}
-                      <div className="flex justify-center items-center">
-                        {" "}
-                        <Boost />
-                      </div>
-                      <p
-                        className={cn(
-                          jersey.className,
-                          "text-[#DE5EA6] text-xl tracking-wider"
-                        )}
-                      >
-                        ACTIVE ENGAGEMENT:
-                        <span
-                          className={cn(
-                            jersey.className,
-                            "text-[#A08F00] text-xl tracking-wider"
-                          )}
-                        >
-                          {" "}
-                          Mini App Users
-                        </span>
-                      </p>
-                    </p>
-                    <p
-                      className={cn(
-                        ibmPlex500.className,
-                        "text-xs tracking-tight mt-1 flex items-start gap-2"
-                      )}
-                    >
-                      <div>
-                        <ArrowRightIcon />
-                      </div>
-                      <p>
-                        Earn extra by contributing through gaming, tapping, and
-                        watching ads.
-                      </p>
-                    </p>
-                  </div>
+                  <MissionsLogo />{" "}
+                  <p className={cn(jersey.className, "text-2xl text-white")}>
+                    Missions
+                  </p>
                 </div>
-              </div>
+              </DrawerTrigger>
+              <DrawerContent>GAME MISSIONS</DrawerContent>
+            </Drawer>
+
+            <Drawer>
+              <DrawerTrigger>
+                <div className="bg-black bg-opacity-40 rounded-md p-2 flex items-center justify-center gap-2">
+                  {" "}
+                  <MysteryBoxLogo />{" "}
+                  <p className={cn(jersey.className, "text-2xl text-white")}>
+                    Rewards
+                  </p>
+                </div>
+              </DrawerTrigger>
+              <DrawerContent>MYSTERY BOXES</DrawerContent>
+            </Drawer>
+
+            <Drawer>
+              <DrawerTrigger>
+                <div className="bg-black bg-opacity-40 rounded-md p-2 flex items-center justify-center gap-2">
+                  {" "}
+                  <ShopSectionLogo />{" "}
+                  <p className={cn(jersey.className, "text-2xl text-white")}>
+                    Shop
+                  </p>
+                </div>
+              </DrawerTrigger>
+              <DrawerContent>SHOP ACCESSORIES</DrawerContent>
+            </Drawer>
+          </div>
+          {/* Right Side Items */}
+          <div className="flex flex-col gap-4 items-end">
+            <div className="bg-black bg-opacity-40 rounded-md p-2 flex flex-col items-left">
+              {" "}
+              <p
+                className={cn(
+                  handjet.className,
+                  "text-sm text-white tracking-wider text-left"
+                )}
+              >
+                HIGH SCORE
+              </p>
+              <p className={cn(jersey.className, "text-2xl text-white")}>
+                5,24,56,234 m
+              </p>
             </div>
-          </DrawerContent>
+
+            <div className="bg-black bg-opacity-40 rounded-md p-2 flex flex-col items-left ">
+              {" "}
+              <p
+                className={cn(
+                  handjet.className,
+                  "text-sm text-white tracking-wider"
+                )}
+              >
+                TOTAL DISTANCE
+              </p>
+              <p className={cn(jersey.className, "text-2xl text-white")}>
+                5,24,56,234 m
+              </p>
+            </div>
+
+            <div className="bg-black bg-opacity-40 rounded-md p-2 flex items-center justify-center gap-2">
+              {" "}
+              <PotionLogo />{" "}
+              <p className={cn(jersey.className, "text-2xl text-white")}>
+                x 24
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-center mt-4">
+          <CustomButton
+            type={CustomButtonType.PRIMARY_MEDIUM}
+            handleClick={() => {}}
+            text="TAP TO PLAY"
+          ></CustomButton>
+        </div>
+
+        <Drawer>
+          <DrawerTrigger></DrawerTrigger>
+          <DrawerContent></DrawerContent>
         </Drawer>
       </div>
     </div>

@@ -168,7 +168,7 @@ export function PlayStationConnectDialog() {
                 <div className="flex justify-center mt-2">
                   <CustomButton
                     text="CONNECT PLAYSTATION"
-                    type={CustomButtonType.CONSOLE_CONNECT}
+                    type={CustomButtonType.PRIMARY_WIDE}
                     handleClick={() => {
                       console.log("Connect PlayStation");
                       toast("PlayStation Connected.", {

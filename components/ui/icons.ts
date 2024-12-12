@@ -44,6 +44,13 @@ import NintendoColoredLogo from "@/public/console-logos/nintendo-color.svg"; // 
 import SuiColoredLogo from "@/public/console-logos/sui-color.svg"; // PENDING
 import BitboyColoredLogo from "@/public/console-logos/bitboy-color.svg"; // PENDING
 
+// game logos
+import GameLogo from "@/public/play-logos/game-logo.svg";
+import MissionsLogo from "@/public/play-logos/missions.svg";
+import MysteryBoxLogo from "@/public/play-logos/mystery-box.svg";
+import ShopSectionLogo from "@/public/play-logos/shop-section.svg";
+import PotionLogo from "@/public/play-logos/potion-logo.svg";
+
 export {
   BackIcon,
   BackArrow,
@@ -86,4 +93,9 @@ export {
   NintendoColoredLogo,
   SuiColoredLogo,
   BitboyColoredLogo,
+  GameLogo,
+  MissionsLogo,
+  MysteryBoxLogo,
+  ShopSectionLogo,
+  PotionLogo,
 };

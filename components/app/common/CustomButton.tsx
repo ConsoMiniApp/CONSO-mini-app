@@ -24,7 +24,18 @@ function getButtonDetails(type: CustomButtonType) {
         buttonClassName:
           "w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform",
       };
-    case CustomButtonType.CONSOLE_CONNECT:
+    case CustomButtonType.PRIMARY_MEDIUM:
+      return {
+        buttonText: "Connect",
+        buttonTextStyles: cn(jersey.className, "text-2xl tracking-[0.05em]"),
+        buttonStyles: {
+          backgroundImage: "url('/other-logos/button-md-bg-yellow.svg')",
+          backgroundSize: "cover",
+        },
+        buttonClassName:
+          "w-[162px] h-[40px] flex justify-center items-center rounded-lg cursor-pointer hover:opacity-90 hover:scale-95 transition-transform",
+      };
+    case CustomButtonType.PRIMARY_WIDE:
       return {
         buttonText: "",
         buttonTextStyles: cn(jersey.className, "text-2xl tracking-[0.05em]"),
@@ -84,6 +95,7 @@ function getButtonDetails(type: CustomButtonType) {
         buttonClassName:
           "w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer",
       };
+
     default:
       return {
         buttonText: "",

@@ -147,7 +147,7 @@ export function NintendoConnectDialog() {
                 <div className="flex justify-center mt-2">
                   <CustomButton
                     text="CONNECT NINTENDO"
-                    type={CustomButtonType.CONSOLE_CONNECT}
+                    type={CustomButtonType.PRIMARY_WIDE}
                     handleClick={() => {
                       console.log("Connect Nintendo");
                       toast("Nintendo Connected.", {

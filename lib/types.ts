@@ -5,7 +5,8 @@ export enum CustomButtonType {
   INACTIVE = "inactive",
   DISCONNECT = "disconnect",
   OTHER = "other",
-  CONSOLE_CONNECT = "consoleconnect",
+  PRIMARY_WIDE = "primarywide",
+  PRIMARY_MEDIUM = "primarymedium",
   TASK_COIN_AMOUNT = "taskcoinamount",
 }
 

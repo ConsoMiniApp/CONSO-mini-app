@@ -149,7 +149,7 @@ export function XboxConnectDialog() {
                 <div className="flex justify-center mt-2">
                   <CustomButton
                     text="CONNECT XBOX"
-                    type={CustomButtonType.CONSOLE_CONNECT}
+                    type={CustomButtonType.PRIMARY_WIDE}
                     handleClick={() => {
                       console.log("Connect Xbox");
                       toast("Xbox Connected.", {
