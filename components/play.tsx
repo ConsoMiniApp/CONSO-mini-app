@@ -66,7 +66,7 @@ export default function Play() {
       <div className="">
         {" "}
         <video
-          src={"/videos/mars.mp4"}
+          src={"/videos/player-video.mp4"}
           controls={false}
           loop={true}
           autoPlay
@@ -75,7 +75,6 @@ export default function Play() {
           onEnded={handleVideoEnd}
           onCanPlayThrough={handleVideoLoad}
           className="object-cover absolute top-0 h-screen  pb-24 z-[-1]"
-          // onLoadedMetadata={enterFullScreen}
         ></video>
         {isVideoLoaded && (
           <Image

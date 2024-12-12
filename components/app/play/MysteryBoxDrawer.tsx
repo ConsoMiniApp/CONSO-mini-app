@@ -1,26 +1,72 @@
-import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
 import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
-import { ConsoleIcon } from "@/components/ui/icons";
-import CustomButton from "../common/CustomButton";
-import { CustomButtonType } from "@/lib/types";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
+import { ClaimTokenDialog } from "../common/ClaimTokensDialog";
 
-const missions = [
+const unclaimedMysteryBoxes = [
   {
-    logo: <ConsoleIcon />,
-    title: "Connect atleast two Consoles.",
-    points: 2500,
+    title: "12 DEC",
   },
   {
-    logo: <ConsoleIcon />,
-    title: "Connect atleast two Consoles.",
-    points: 2500,
+    title: "12 DEC",
   },
   {
-    logo: <ConsoleIcon />,
-    title: "Connect atleast two Consoles.",
-    points: 2500,
+    title: "12 DEC",
+  },
+  {
+    title: "12 DEC",
+  },
+  {
+    title: "12 DEC",
+  },
+  {
+    title: "12 DEC",
+  },
+];
+
+const claimedMysteryBoxes = [
+  {
+    title: "POTIONS",
+    count: 2,
+    image: "/play-logos/potion-logo.svg",
+    class:
+      "border-2 border-[#00BA64] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#5EEFAC]",
+  },
+  {
+    title: "TOKENS",
+    count: 200,
+    image: "/other-logos/coin.svg",
+    class:
+      "border-2 border-[#FFE500] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#FFF59D]",
+  },
+  {
+    title: "NFT",
+    count: 1,
+    image: "/other-logos/nft-logo.png",
+    class:
+      "border-2 border-[#00A3FF] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#71CCFF]",
+  },
+  {
+    title: "POTIONS",
+    count: 2,
+    image: "/play-logos/potion-logo.svg",
+    class:
+      "border-2 border-[#00BA64] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#5EEFAC]",
+  },
+  {
+    title: "TOKENS",
+    count: 200,
+    image: "/other-logos/coin.svg",
+    class:
+      "border-2 border-[#FFE500] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#FFF59D]",
+  },
+  {
+    title: "NFT",
+    count: 1,
+    image: "/other-logos/nft-logo.png",
+    class:
+      "border-2 border-[#00A3FF] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#71CCFF]",
   },
 ];
 
@@ -60,27 +106,85 @@ export function MysteryBoxDrawer() {
             {" "}
             Earn NOSY tokens by contributing to the network in various ways.
           </p>
+        </div>
 
-          {/* Task Cards */}
-          <div className="flex flex-col my-6 gap-3 w-full">
-            {missions.map((mission) => (
-              <div className="grid grid-cols-7 justify-center items-center px-2 py-2 border-2 border-[#FFE500] rounded-xl">
-                <div className="col-span-1 bg-[#DE5EA6] flex items-center justify-center rounded-lg h-10 w-10 ">
-                  {mission.logo}
-                </div>
-                <span
+        {/* Unclaimed boxes */}
+        <div className="flex flex-col justify-between px-2 mt-4 ">
+          <p
+            className={cn(
+              handjet.className,
+              "text-xl text-black tracking-wider"
+            )}
+          >
+            {" "}
+            UNCLAIMED
+          </p>
+          <div className="grid grid-cols-3 gap-5 mt-4">
+            {unclaimedMysteryBoxes.map((box, index) => (
+              <Dialog>
+                <DialogTrigger>
+                  <div
+                    key={index}
+                    className="border-2 border-[#FFE500] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 "
+                  >
+                    <p
+                      className={cn(
+                        handjet.className,
+                        "text-xs text-black tracking-widest"
+                      )}
+                    >
+                      {box.title}
+                    </p>
+                    <Image
+                      src={"/play-logos/mystery-box.svg"}
+                      alt="Mystery Box"
+                      width={47}
+                      height={47}
+                    />
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="h-screen border-none backdrop-blur-md">
+                  <ClaimTokenDialog
+                    handleConfirm={() => console.log("you got 200 tokens")}
+                  />
+                </DialogContent>
+              </Dialog>
+            ))}
+          </div>
+        </div>
+
+        {/* Claimed boxes */}
+        <div className="flex flex-col justify-between px-2 mt-4">
+          <p
+            className={cn(
+              handjet.className,
+              "text-xl text-black tracking-wider"
+            )}
+          >
+            {" "}
+            CLAIMED BOXES
+          </p>
+          <div className="grid grid-cols-3 gap-5 mt-4">
+            {claimedMysteryBoxes.map((box, index) => (
+              <div key={index} className={box.class}>
+                <p
                   className={cn(
-                    jersey.className,
-                    "text-xl text-black col-span-4 tracking-wider ml-2"
+                    handjet.className,
+                    "text-xs text-black tracking-widest"
                   )}
                 >
-                  {mission.title}
-                </span>
-                <CustomButton
-                  text={mission.points.toString()}
-                  type={CustomButtonType.TASK_COIN_AMOUNT}
-                  handleClick={() => console.log("do nothing")}
-                ></CustomButton>
+                  {box.title}
+                </p>
+                <Image src={box.image} alt="potion" width={47} height={47} />
+
+                <div
+                  className={cn(
+                    jersey.className,
+                    "absolute bottom-[-18px] left-1/2 transform -translate-x-1/2  px-2 bg-[#DE5EA6] rounded-lg border-2 border-white text-white text-lg"
+                  )}
+                >
+                  x {box.count}
+                </div>
               </div>
             ))}
           </div>

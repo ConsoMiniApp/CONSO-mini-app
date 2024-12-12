@@ -2,6 +2,7 @@
 export enum CustomButtonType {
   PRIMARY = "primary",
   SUCCESS = "success",
+  SUCCESS_MEDIUM = "successmedium",
   INACTIVE = "inactive",
   DISCONNECT = "disconnect",
   OTHER = "other",

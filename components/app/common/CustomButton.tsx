@@ -68,6 +68,17 @@ function getButtonDetails(type: CustomButtonType) {
         buttonClassName:
           "w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer",
       };
+    case CustomButtonType.SUCCESS_MEDIUM:
+      return {
+        buttonText: "Mining...",
+        buttonTextStyles: cn(jersey.className, "text-xl tracking-[0.05em]"),
+        buttonStyles: {
+          backgroundImage: "url('/other-logos/button-md-bg-green.svg')",
+          backgroundSize: "cover",
+        },
+        buttonClassName:
+          "w-[164px] h-[45px] flex justify-center items-center rounded-lg cursor-pointer",
+      };
     case CustomButtonType.TASK_COIN_AMOUNT:
       return {
         buttonText: "Mining...",
