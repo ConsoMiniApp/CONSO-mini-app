@@ -39,8 +39,10 @@ export default function Play() {
         controls={false}
         loop={true}
         autoPlay
+        playsInline
+        muted
         onEnded={handleVideoEnd}
-        className="object-cover absolute top-0 h-screen  pb-24"
+        className="object-cover absolute top-0 h-screen  pb-24 z-[-1]"
         // onLoadedMetadata={enterFullScreen}
       ></video>
       <Image
