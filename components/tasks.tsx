@@ -27,6 +27,7 @@ const missions = [
 
 export default function Tasks() {
   const { pointBalance } = useAppContext();
+
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-md mx-auto min-h-screen flex flex-col">
