@@ -66,7 +66,7 @@ const advertiserInfo = {
 
 export default function Miner() {
   const [tapClass, setTapClass] = useState("inline-block ");
-  const [soundClass, setSoundClass] = useState("inline-block opacity-40 ");
+  const [soundClass, setSoundClass] = useState("inline-block ");
   const [mute, setMute] = useState<boolean>(true);
   const {
     pointBalance,
@@ -201,6 +201,11 @@ export default function Miner() {
     }
   }, []);
 
+  // scroll to top of screen on component load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   let termsAccepted = false;
   if (typeof window !== "undefined") {
     const alreadyAcceptedTerms = localStorage.getItem("termsAccepted");
@@ -215,7 +220,7 @@ export default function Miner() {
     <>
       <Dialog defaultOpen={!termsAccepted}>
         {/* <DialogTrigger ></DialogTrigger> */}
-        <DialogContent className=" w-[95%] h-[95%] rounded-xl bg-white backdrop-blur-md">
+        <DialogContent className=" w-[95%] h-[95%] border-none rounded-xl bg-white ">
           <TermsDisclaimer />
         </DialogContent>
       </Dialog>
@@ -411,15 +416,11 @@ export default function Miner() {
                         if (mute) {
                           setMute(false);
                           console.log("Sound is now on");
-                          setSoundClass(
-                            "inline-block opacity-100 transition-opacity duration-100"
-                          );
+                          setSoundClass("inline-block duration-100");
                         } else {
                           setMute(true);
                           console.log("Sound is now off");
-                          setSoundClass(
-                            "inline-block opacity-40 transition-opacity duration-100"
-                          );
+                          setSoundClass("inline-block duration-100");
                         }
                       }}
                     >

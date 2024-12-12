@@ -9,9 +9,9 @@ import { Close } from "../ui/icons";
 export function TermsDisclaimer() {
   return (
     <>
-      <div className="overflow-y-scroll scrollbar-none  ">
+      <div className="flex flex-col overflow-y-scroll scrollbar-none ">
         {/* Top Section */}
-        <div className="flex justify-between  ">
+        <div className="flex justify-between ">
           <p
             className={cn(
               handjet.className,

@@ -7,6 +7,7 @@ import {
   PlaystationColoredLogo,
   XboxColoredLogo,
 } from "./ui/icons";
+import { useEffect } from "react";
 
 const leaderboardRows = [
   {
@@ -313,6 +314,10 @@ const leaderboardRows = [
 ];
 
 export default function Rank() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="max-w-md mx-auto min-h-screen ">
       <div className="sticky top-0">
