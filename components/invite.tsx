@@ -4,6 +4,7 @@ import { handjet, jersey, ibmPlex } from "./ui/fonts";
 import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 import { Coin, CoinSmallIcon } from "./ui/icons";
+import { useEffect } from "react";
 
 const friendsList = [
   {
@@ -21,6 +22,9 @@ const friendsList = [
 ];
 
 export default function Invite() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-md mx-auto min-h-screen flex flex-col">

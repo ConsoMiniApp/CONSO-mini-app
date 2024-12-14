@@ -6,6 +6,7 @@ import { useAppContext } from "@/contexts/AppContext";
 import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 import { ConsoleIcon } from "./ui/icons";
+import { useEffect } from "react";
 
 const missions = [
   {
@@ -27,6 +28,11 @@ const missions = [
 
 export default function Tasks() {
   const { pointBalance } = useAppContext();
+
+  // scroll to top of screen on component load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen bg-black">
