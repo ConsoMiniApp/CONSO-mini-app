@@ -6,8 +6,13 @@ import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 import { BackArrow, SuccessIcon } from "@/components/ui/icons";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 export function NintendoConnectDialog() {
+  // scroll to top of screen on component load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className="overflow-y-scroll scrollbar-none ">

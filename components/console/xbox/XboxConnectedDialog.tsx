@@ -5,8 +5,13 @@ import { cn } from "@/lib/utils";
 import Lottie from "lottie-react";
 import consoleAnimation from "@/public/animations/console-animation.json";
 import { AddIcon, BackArrow, DeleteIcon } from "@/components/ui/icons";
+import { useEffect } from "react";
 
 export function XboxConnectedDialog() {
+  // scroll to top of screen on component load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className="overflow-y-scroll scrollbar-always-visible h-screen ">

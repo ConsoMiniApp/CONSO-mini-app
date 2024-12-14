@@ -52,6 +52,10 @@ export function NintendoConnectedDialog() {
     console.log(selectedConsoles);
     setConsoles(consoles.filter((c) => !c.selected));
   }
+  // scroll to top of screen on component load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

@@ -4,8 +4,13 @@ import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import Lottie from "lottie-react";
 import consoleAnimation from "@/public/animations/console-animation.json";
+import { useEffect } from "react";
 
 export function BitboyConnectDialog() {
+  // scroll to top of screen on component load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className="overflow-y-scroll scrollbar-none ">

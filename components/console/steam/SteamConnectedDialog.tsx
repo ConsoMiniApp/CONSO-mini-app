@@ -7,8 +7,13 @@ import consoleAnimation from "@/public/animations/console-animation.json";
 import { AddIcon, BackArrow, Close, DeleteIcon } from "@/components/ui/icons";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ConfirmDialog } from "@/components/app/common/ConfirmDialog";
+import { useEffect } from "react";
 
 export function SteamConnectedDialog() {
+  // scroll to top of screen on component load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className="overflow-y-scroll scrollbar-none ">
