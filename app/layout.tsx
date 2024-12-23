@@ -36,7 +36,7 @@ export default function RootLayout({
     return (
       <html lang="en">
         <head>
-          {/* <script src="https://telegram.org/js/telegram-web-app.js"></script> */}
+          <script src="https://telegram.org/js/telegram-web-app.js"></script>
           <link
             rel="preload"
             href="/other-logos/button-wide-bg-yellow.svg"
