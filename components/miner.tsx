@@ -46,6 +46,8 @@ import {
   XboxPixelatedLogo,
 } from "./ui/icons";
 
+import { createClient } from "@/utils/supabase/client";
+
 const connectButtons = {
   playstation: CustomButtonType.SUCCESS,
   xbox: CustomButtonType.PRIMARY,
@@ -65,6 +67,7 @@ const advertiserInfo = {
 };
 
 export default function Miner() {
+  const supabase = createClient();
   const [tapClass, setTapClass] = useState("inline-block ");
   const [soundClass, setSoundClass] = useState("inline-block ");
   const [mute, setMute] = useState<boolean>(true);
@@ -149,7 +152,7 @@ export default function Miner() {
     setBgMinerSound(
       new Howl({
         src: ["/sounds/bg-miner-music.mp3"],
-        volume: 0.1,
+        volume: 0.4,
         loop: true,
       })
     );
@@ -199,6 +202,19 @@ export default function Miner() {
     if (pointBalance) {
       setPointBalance(parseInt(pointBalance));
     }
+  }, []);
+
+  // load user data from supabase
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const { data, error } = await supabase.from("users_table").select("*");
+      if (error) {
+        console.log("Error fetching user data");
+        return;
+      }
+      console.log(data);
+    };
+    fetchUserData();
   }, []);
 
   // scroll to top of screen on component load

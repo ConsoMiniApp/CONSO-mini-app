@@ -1,7 +1,7 @@
 "use client";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AppProvider } from "@/contexts/AppContext";
 
 export default function RootLayout({
@@ -10,6 +10,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [isMobile, setIsMobile] = useState(true);
+  const [isTelegram, setIsTelegram] = useState(false);
   // get device info
   // useEffect(() => {
   //   if (typeof window !== "undefined") {
@@ -20,6 +21,16 @@ export default function RootLayout({
   //     setIsMobile(isMobileDevice);
   //   }
   // }, []);
+
+  // check if app is running on telegram
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const userAgent = navigator.userAgent;
+      const isTelegramApp = /telegram/i.test(userAgent);
+      console.log("isTelegramApp", isTelegramApp);
+      setIsTelegram(isTelegramApp);
+    }
+  }, []);
 
   if (isMobile)
     return (
