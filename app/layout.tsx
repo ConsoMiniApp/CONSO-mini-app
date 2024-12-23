@@ -23,14 +23,14 @@ export default function RootLayout({
   // }, []);
 
   // check if app is running on telegram
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const userAgent = navigator.userAgent;
-      const isTelegramApp = /telegram/i.test(userAgent);
-      console.log("isTelegramApp", isTelegramApp);
-      setIsTelegram(isTelegramApp);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const userAgent = navigator.userAgent;
+  //     const isTelegramApp = /telegram/i.test(userAgent);
+  //     console.log("isTelegramApp", isTelegramApp);
+  //     setIsTelegram(isTelegramApp);
+  //   }
+  // }, []);
 
   if (isMobile)
     return (
@@ -80,7 +80,7 @@ export default function RootLayout({
     return (
       <html lang="en">
         <head>
-          {/* <script src="https://telegram.org/js/telegram-web-app.js"></script> */}
+          <script src="https://telegram.org/js/telegram-web-app.js"></script>
         </head>
         <body>
           <div> Please Use this app on mobile device.</div>
