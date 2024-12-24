@@ -21,9 +21,9 @@ export function TermsDisclaimer() {
             {" "}
             TERMS & CONDITIONS
           </p>
-          <DialogClose>
+          {/* <DialogClose>
             <Close />
-          </DialogClose>
+          </DialogClose> */}
         </div>
 
         {/* All Details */}

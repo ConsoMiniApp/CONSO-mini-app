@@ -76,6 +76,8 @@ export default function Miner() {
     setPointBalance,
     startPointBalance,
     setStartPointBalance,
+    user,
+    setUserData,
   } = useAppContext();
 
   const [connectSectionCollapsed, setConnectSectionCollapsed] = useState(true);
@@ -207,9 +209,17 @@ export default function Miner() {
   // load user data from supabase
   useEffect(() => {
     const fetchUserData = async () => {
-      const { data, error } = await supabase.from("users_table").select("*");
+      const { data, error } = await supabase
+        .from("users_table")
+        .select("*")
+        .eq("username", "test_telegram_username")
+        .single();
+
+      if (data) {
+        setUserData(data);
+      }
       if (error) {
-        console.log("Error fetching user data");
+        console.log("Error fetching user data", error);
         return;
       }
       console.log(data);
@@ -359,7 +369,7 @@ export default function Miner() {
                       jersey.className
                     )}
                   >
-                    Tap Bonus :
+                    Global Rank :
                   </span>
                 </div>
                 <div className="grid grid-cols-4 justify-left items-left">
@@ -379,7 +389,7 @@ export default function Miner() {
               <div className="">
                 <div className="flex items-center gap-2 w-full justify-left">
                   <span className={cn("text-white text-2xl", jersey.className)}>
-                    x4.5
+                    x{user?.current_boost}
                   </span>
                 </div>
                 <div className="flex gap-2 w-full justify-left">

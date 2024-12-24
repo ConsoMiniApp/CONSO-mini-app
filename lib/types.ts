@@ -1,3 +1,16 @@
+// User: User table type
+export interface ConsoUser {
+  id: string;
+  nickname: string;
+  username: string;
+  degen_score: number;
+  current_boost: number;
+  user_points: number;
+  connected_consoles: Object;
+  created_at: string;
+  completed_missions: number[];
+}
+
 // button types
 export enum CustomButtonType {
   PRIMARY = "primary",

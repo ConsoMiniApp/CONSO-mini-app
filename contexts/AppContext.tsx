@@ -1,3 +1,4 @@
+import { ConsoUser } from "@/lib/types";
 import React, {
   createContext,
   useState,
@@ -17,8 +18,10 @@ interface AppState {
 interface AppContextType {
   // state: AppState;
   pointBalance: number;
+  user: ConsoUser;
   startPointBalance: number;
   message: string;
+  setUserData: Dispatch<SetStateAction<ConsoUser>>;
   setPointBalance: Dispatch<SetStateAction<number>>;
   setStartPointBalance: Dispatch<SetStateAction<number>>;
   setMessage: Dispatch<SetStateAction<string>>;
@@ -32,6 +35,17 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [pointBalance, setPointBalance] = useState<number>(0);
   const [startPointBalance, setStartPointBalance] = useState<number>(0);
   const [message, setMessage] = useState<string>("");
+  const [user, setUserData] = useState<ConsoUser>({
+    id: "",
+    nickname: "",
+    username: "",
+    degen_score: 0,
+    current_boost: 0,
+    user_points: 0,
+    connected_consoles: {},
+    created_at: "",
+    completed_missions: [],
+  });
 
   // const state: AppState = { pointBalance, message };
 
@@ -41,6 +55,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         pointBalance,
         startPointBalance,
         message,
+        user,
+        setUserData,
         setPointBalance,
         setStartPointBalance,
         setMessage,
