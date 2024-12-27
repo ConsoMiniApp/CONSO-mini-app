@@ -8,23 +8,17 @@ import React, {
   useContext,
 } from "react";
 
-// Define the type for the context state
-interface AppState {
-  pointBalance: number;
-  message: string;
-}
-
 // Define the type for the context value (state + setters)
 interface AppContextType {
   // state: AppState;
   pointBalance: number;
   user: ConsoUser;
   startPointBalance: number;
-  message: string;
+  telegramUsername: string;
   setUserData: Dispatch<SetStateAction<ConsoUser>>;
   setPointBalance: Dispatch<SetStateAction<number>>;
   setStartPointBalance: Dispatch<SetStateAction<number>>;
-  setMessage: Dispatch<SetStateAction<string>>;
+  setTelegramUsername: Dispatch<SetStateAction<string>>;
 }
 
 // Create the context with an undefined default value
@@ -34,7 +28,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [pointBalance, setPointBalance] = useState<number>(0);
   const [startPointBalance, setStartPointBalance] = useState<number>(0);
-  const [message, setMessage] = useState<string>("");
+  const [telegramUsername, setTelegramUsername] = useState<string>("");
   const [user, setUserData] = useState<ConsoUser>({
     id: "",
     nickname: "",
@@ -45,6 +39,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     connected_consoles: {},
     created_at: "",
     completed_missions: [],
+    global_rank: 0,
+    my_consoles: [],
   });
 
   // const state: AppState = { pointBalance, message };
@@ -54,12 +50,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       value={{
         pointBalance,
         startPointBalance,
-        message,
+        telegramUsername,
         user,
         setUserData,
         setPointBalance,
         setStartPointBalance,
-        setMessage,
+        setTelegramUsername,
       }}
     >
       {children}

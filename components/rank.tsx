@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { handjet, ibmPlex, jersey } from "./ui/fonts";
+import { handjet, ibmPlex, ibmPlex500, jersey } from "./ui/fonts";
 import RankRow from "./app/rank/RankRow";
 import {
   NintendoColoredLogo,
@@ -422,7 +422,7 @@ export default function Rank() {
                 jersey.className
               )}
             >
-              You
+              Nickname (You)
             </span>
             <span
               className={cn(
@@ -495,8 +495,48 @@ export default function Rank() {
       </div>
 
       {/* Pagination Section */}
-      <div className="flex justify-center items-center bg-black py-4">
-        <p className="text-white">[TO DO]1 2 3 4 5 6 7 8 9 10</p>
+      <div className="flex flex-col items-center justify-center space-y-2 bg-black py-4">
+        <div
+          className={cn(
+            "flex items-center space-x-2 text-white",
+            jersey.className
+          )}
+        >
+          {/* Previous Button */}
+          <button className="bg-[#DE5EA6] px-3 py-1 rounded-md hover:bg-[#DE5EA6] text-white hover:text-white">
+            &lt;
+          </button>
+
+          {/* Page Numbers */}
+          <button className="border-2 border-[#DE5EA6] text-[#DE5EA6] text-bg-[#DE5EA6] px-3 py-1 rounded-md hover:text-white">
+            1
+          </button>
+          <button className="border border-gray-400 px-3 py-1 rounded-md hover:text-white">
+            2
+          </button>
+          <button className="border border-gray-400 px-3 py-1 rounded-md hover:text-white">
+            3
+          </button>
+          <button className="border border-gray-400 px-3 py-1 rounded-md hover:text-white">
+            4
+          </button>
+          <button className="border border-gray-400 px-3 py-1 rounded-md hover:text-white">
+            ...
+          </button>
+          <button className="border border-gray-400 px-3 py-1 rounded-md hover:text-white">
+            20
+          </button>
+
+          {/* Next Button */}
+          <button className="bg-[#DE5EA6] text-white px-3 py-1 rounded-md hover:bg-bg-[#DE5EA6] hover:text-white">
+            &gt;
+          </button>
+        </div>
+
+        {/* Results Text */}
+        <p className={cn("text-white text-sm", ibmPlex500.className)}>
+          Results: 1-20 of 456,790
+        </p>
       </div>
     </div>
   );

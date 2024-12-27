@@ -9,6 +9,8 @@ export interface ConsoUser {
   connected_consoles: Object;
   created_at: string;
   completed_missions: number[];
+  global_rank: number;
+  my_consoles: Array<string>;
 }
 
 // button types
