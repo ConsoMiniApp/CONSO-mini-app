@@ -7,44 +7,88 @@ import { cn } from "@/lib/utils";
 import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 import toast from "react-hot-toast";
-import { SuccessIcon } from "@/components/ui/icons";
+import { ErrorIcon, SuccessIcon } from "@/components/ui/icons";
+import { createClient } from "@/utils/supabase/client";
+import { useState } from "react";
+import { useAppContext } from "@/contexts/AppContext";
 
-export function NicknameInput() {
-  function handleClick() {
-    console.log("Setting you conso nickname");
-    toast("Nickname added.", {
-      className: cn(jersey.className, "text-xl text-white"),
-      icon: <SuccessIcon />,
-    });
+export function NicknameInput({
+  setAcceptNickname,
+}: {
+  setAcceptNickname: (value: boolean) => void;
+}) {
+  const supabase = createClient();
+  const [nickname, setNickname] = useState("");
+  const { telegramUsername } = useAppContext();
+
+  async function handleClick() {
+    console.log("Setting your conso nickname");
+    try {
+      const { data, error } = await supabase
+        .from("users_table")
+        .update({ nickname: nickname })
+        .eq("username", telegramUsername)
+        .select();
+
+      if (error) {
+        throw error;
+      }
+
+      setAcceptNickname(false);
+
+      toast("Nickname added.", {
+        className: cn(jersey.className, "text-xl text-white"),
+        icon: <SuccessIcon />,
+      });
+    } catch (error) {
+      console.error("Error adding nickname:", error);
+      toast.error("There was an error.", {
+        className: cn(jersey.className, "text-xl text-white"),
+        icon: <ErrorIcon />,
+      });
+    }
   }
 
   return (
     <>
       <div className="flex justify-center items-center">
         <div className="bg-white h-60 w-[90%] rounded-md shadow-xl flex flex-col justify-center items-center text-center p-6">
-          <p className={cn(ibmPlex500.className, "text-lg mb-2")}>
+          <p className={cn(jersey.className, "text-2xl mb-2")}>
             Enter your nickname
           </p>
 
           <p className={cn(ibmPlex.className, "text-xs mb-8")}>
             You can change it later in settings
           </p>
-          <div className="flex gap-4">
-            {/* <DialogClose>
-              <CustomButton
-                text="No"
-                type={CustomButtonType.INACTIVE}
-                handleClick={() => console.log("No")}
-              />
-            </DialogClose> */}
-            <DialogClose>
-              <CustomButton
-                text="Save"
-                type={CustomButtonType.SUCCESS}
-                handleClick={handleClick}
-              />
-            </DialogClose>
-          </div>
+          <form
+            className="flex flex-col gap-4"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleClick();
+            }}
+          >
+            <input
+              type="text"
+              required
+              placeholder="YOUR_NICKNAME"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
+              className={cn(
+                "border-2 border-gray-400 bg-[#D7D7D7] rounded-lg p-2 text-xs tracking-wider w-full",
+                ibmPlex500.className
+              )}
+            />
+
+            <div className="flex justify-center mt-2">
+              <DialogClose>
+                <CustomButton
+                  text="SAVE"
+                  type={CustomButtonType.SUCCESS}
+                  handleClick={handleClick}
+                />
+              </DialogClose>
+            </div>
+          </form>
         </div>
       </div>
     </>

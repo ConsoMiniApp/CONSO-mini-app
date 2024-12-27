@@ -503,12 +503,12 @@ export default function Rank() {
           )}
         >
           {/* Previous Button */}
-          <button className="bg-[#DE5EA6] px-3 py-1 rounded-md hover:bg-[#DE5EA6] text-white hover:text-white">
+          <button className="bg-gray-400 px-3 py-1 rounded-md  text-white hover:text-white ">
             &lt;
           </button>
 
           {/* Page Numbers */}
-          <button className="border-2 border-[#DE5EA6] text-[#DE5EA6] text-bg-[#DE5EA6] px-3 py-1 rounded-md hover:text-white">
+          <button className="border-2 border-[#DE5EA6] bg-[#DE5EA6] text-bg-[#DE5EA6] px-3 py-1 rounded-md hover:text-white">
             1
           </button>
           <button className="border border-gray-400 px-3 py-1 rounded-md hover:text-white">

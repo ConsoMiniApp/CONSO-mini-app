@@ -6,7 +6,11 @@ import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 import { Close } from "../ui/icons";
 
-export function TermsDisclaimer() {
+export function TermsDisclaimer({
+  handleAccept,
+}: {
+  handleAccept: () => void;
+}) {
   return (
     <>
       <div className="flex flex-col overflow-y-scroll scrollbar-none ">
@@ -21,9 +25,6 @@ export function TermsDisclaimer() {
             {" "}
             TERMS & CONDITIONS
           </p>
-          {/* <DialogClose>
-            <Close />
-          </DialogClose> */}
         </div>
 
         {/* All Details */}
@@ -153,7 +154,7 @@ export function TermsDisclaimer() {
               type={CustomButtonType.PRIMARY}
               text="ACCEPT "
               handleClick={() => {
-                localStorage.setItem("termsAccepted", "true");
+                handleAccept();
               }}
               className="text-black"
             ></CustomButton>

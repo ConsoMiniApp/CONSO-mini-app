@@ -72,6 +72,8 @@ export default function Miner() {
   const [tapClass, setTapClass] = useState("inline-block ");
   const [soundClass, setSoundClass] = useState("inline-block ");
   const [mute, setMute] = useState<boolean>(true);
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [acceptNickname, setAcceptNickname] = useState(true);
   const {
     pointBalance,
     setPointBalance,
@@ -286,31 +288,51 @@ export default function Miner() {
     window.scrollTo(0, 0);
   }, []);
 
-  let termsAccepted = false;
+  let acceptedTerms = false;
   if (typeof window !== "undefined") {
     const alreadyAcceptedTerms = localStorage.getItem("termsAccepted");
-    if (alreadyAcceptedTerms == "true") {
-      termsAccepted = true;
-    } else {
-      termsAccepted = false;
+    if (alreadyAcceptedTerms === "true") {
+      acceptedTerms = true;
     }
   }
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const alreadyAcceptedTerms = localStorage.getItem("termsAccepted");
+      if (alreadyAcceptedTerms === "true") {
+        setTermsAccepted(true);
+        acceptedTerms = true;
+      } else {
+        setTermsAccepted(false);
+        acceptedTerms = false;
+      }
+    }
+  }, []);
+
+  const handleTermsAccept = () => {
+    localStorage.setItem("termsAccepted", "true");
+    setTermsAccepted(true);
+    acceptedTerms = true;
+  };
 
   return (
     <>
-      <Dialog defaultOpen={!termsAccepted}>
+      <Dialog defaultOpen={!acceptedTerms}>
         {/* <DialogTrigger ></DialogTrigger> */}
         <DialogContent className=" w-[95%] h-[95%] border-none rounded-xl bg-white ">
-          <TermsDisclaimer />
+          <TermsDisclaimer handleAccept={handleTermsAccept} />
         </DialogContent>
       </Dialog>
 
-      <Dialog defaultOpen={!user?.nickname && termsAccepted}>
-        {/* <DialogTrigger ></DialogTrigger> */}
-        <DialogContent className=" h-screen border-none backdrop-blur-md ">
-          <NicknameInput />
-        </DialogContent>
-      </Dialog>
+      {termsAccepted &&
+        (!user.nickname || user.nickname.trim() === "") &&
+        !isLoading && (
+          <Dialog open={acceptNickname}>
+            {/* <DialogTrigger ></DialogTrigger> */}
+            <DialogContent className=" h-screen border-none backdrop-blur-md ">
+              <NicknameInput setAcceptNickname={setAcceptNickname} />
+            </DialogContent>
+          </Dialog>
+        )}
 
       {isLoading ? (
         <div
