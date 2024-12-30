@@ -2,16 +2,25 @@ import { handjet, jersey } from "@/components/ui/fonts";
 import {
   NintendoColoredLogo,
   PlaystationColoredLogo,
+  SteamColoredLogo,
   XboxColoredLogo,
 } from "@/components/ui/icons";
+import { ConsoUser } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
 
 interface RankRowProps {
-  row: any;
+  row: ConsoUser;
   index: number;
 }
+
+const consoleLogos: any = {
+  "Play Station": PlaystationColoredLogo,
+  Xbox: XboxColoredLogo,
+  Steam: SteamColoredLogo,
+  Nintendo: NintendoColoredLogo,
+};
 
 const RankRow = ({ row, index }: RankRowProps) => {
   const [rowExpanded, setRowExpanded] = useState(false);
@@ -36,7 +45,7 @@ const RankRow = ({ row, index }: RankRowProps) => {
                 jersey.className
               )}
             >
-              #{row.rank}
+              #{row.id}
             </span>
             <span
               className={cn(
@@ -44,7 +53,7 @@ const RankRow = ({ row, index }: RankRowProps) => {
                 jersey.className
               )}
             >
-              {row.name}
+              {row.nickname}
             </span>
             <span
               className={cn(
@@ -52,7 +61,7 @@ const RankRow = ({ row, index }: RankRowProps) => {
                 jersey.className
               )}
             >
-              x{row.boost}
+              x{row.current_boost}
             </span>
             <span
               className={cn(
@@ -60,7 +69,7 @@ const RankRow = ({ row, index }: RankRowProps) => {
                 jersey.className
               )}
             >
-              {row.conso}M
+              {row.user_points}
             </span>
           </div>
         </div>
@@ -101,12 +110,24 @@ const RankRow = ({ row, index }: RankRowProps) => {
                   "text-lg tracking-wider text-black"
                 )}
               >
-                5,24,56,234 m
+                {row.game_distance} m
               </div>
               <div className={cn("flex gap-1 mt-1")}>
-                <PlaystationColoredLogo />
-                <XboxColoredLogo />
-                <NintendoColoredLogo />
+                {row.my_consoles.length > 0 ? (
+                  row.my_consoles.map((console: string) => {
+                    const Logo = consoleLogos[console];
+                    return <Logo />;
+                  })
+                ) : (
+                  <div
+                    className={cn(
+                      jersey.className,
+                      "text-lg tracking-wider text-black mt-0"
+                    )}
+                  >
+                    -NA-
+                  </div>
+                )}
               </div>
             </div>
           </div>

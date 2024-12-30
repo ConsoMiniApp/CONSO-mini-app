@@ -4,11 +4,17 @@ import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
-import { BackArrow, SuccessIcon } from "@/components/ui/icons";
+import { BackArrow, ErrorIcon, SuccessIcon } from "@/components/ui/icons";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createClient } from "@/utils/supabase/client";
+import { useAppContext } from "@/contexts/AppContext";
 
 export function PlayStationConnectDialog() {
+  const supabase = createClient();
+  const { telegramUsername } = useAppContext();
+
+  const [npssocode, setNpssocode] = useState("");
   // scroll to top of screen on component load
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -154,6 +160,8 @@ export function PlayStationConnectDialog() {
                 <input
                   type="text"
                   placeholder="YOUR_NPSSO_CODE"
+                  value={npssocode}
+                  onChange={(e) => setNpssocode(e.target.value)}
                   className={cn(
                     "border-2 border-gray-400 bg-[#D7D7D7] rounded-lg p-2  ml-4 text-xs tracking-wider mr-2",
                     ibmPlex500.className
@@ -175,12 +183,33 @@ export function PlayStationConnectDialog() {
                   <CustomButton
                     text="CONNECT PLAYSTATION"
                     type={CustomButtonType.PRIMARY_WIDE}
-                    handleClick={() => {
+                    handleClick={async () => {
+                      if (npssocode.length < 64) {
+                        toast.error("Invalid NPSSO Code", {
+                          className: cn(jersey.className, "text-xl text-white"),
+                        });
+                        return;
+                      }
                       console.log("Connect PlayStation");
-                      toast("PlayStation Connected.", {
-                        className: cn(jersey.className, "text-xl text-white"),
-                        icon: <SuccessIcon />,
-                      });
+
+                      try {
+                        const { data, error } = await supabase
+                          .from("users_table")
+                          .update({ my_consoles: ["Play Station"] })
+                          .eq("username", telegramUsername)
+                          .select();
+
+                        toast("PlayStation Connected.", {
+                          className: cn(jersey.className, "text-xl text-white"),
+                          icon: <SuccessIcon />,
+                        });
+                      } catch (error) {
+                        console.error("Error adding nickname:", error);
+                        toast.error("There was an error.", {
+                          className: cn(jersey.className, "text-xl text-white"),
+                          icon: <ErrorIcon />,
+                        });
+                      }
                     }}
                   />
                 </div>

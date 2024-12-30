@@ -11,6 +11,7 @@ export interface ConsoUser {
   completed_missions: number[];
   global_rank: number;
   my_consoles: Array<string>;
+  game_distance: number;
 }
 
 // button types

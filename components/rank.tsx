@@ -6,8 +6,12 @@ import {
   NintendoColoredLogo,
   PlaystationColoredLogo,
   XboxColoredLogo,
+  SteamColoredLogo,
 } from "./ui/icons";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useAppContext } from "@/contexts/AppContext";
+import { createClient } from "@/utils/supabase/client";
+import { ConsoUser } from "@/lib/types";
 
 const leaderboardRows = [
   {
@@ -313,7 +317,42 @@ const leaderboardRows = [
   },
 ];
 
+const consoleLogos: any = {
+  "Play Station": PlaystationColoredLogo,
+  Xbox: XboxColoredLogo,
+  Steam: SteamColoredLogo,
+  Nintendo: NintendoColoredLogo,
+};
+
 export default function Rank() {
+  const { user, telegramUsername } = useAppContext();
+  const supabase = createClient();
+  const [users, setUsers] = useState<ConsoUser[]>([]);
+
+  // load user data from supabase
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const { data, error } = await supabase
+        .from("users_table")
+        .select("*")
+        .order("id", { ascending: true });
+
+      if (data) {
+        console.log(data);
+        setUsers(data);
+      }
+      if (error) {
+        if (error.code == "PGRST116") {
+        }
+        console.log("Error fetching user data", error);
+
+        return;
+      }
+      console.log(data);
+    };
+    if (telegramUsername) fetchUsers();
+  }, [telegramUsername]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -414,7 +453,7 @@ export default function Rank() {
                 jersey.className
               )}
             >
-              99.9k
+              # {user?.id}
             </span>
             <span
               className={cn(
@@ -422,7 +461,7 @@ export default function Rank() {
                 jersey.className
               )}
             >
-              Nickname (You)
+              {user?.nickname} (You)
             </span>
             <span
               className={cn(
@@ -430,7 +469,7 @@ export default function Rank() {
                 jersey.className
               )}
             >
-              x4.5
+              x{user?.current_boost}
             </span>
             <span
               className={cn(
@@ -438,7 +477,7 @@ export default function Rank() {
                 jersey.className
               )}
             >
-              43.37 M
+              {user.user_points}
             </span>
           </div>
           {/* Expanded Data View for a Rank */}
@@ -476,12 +515,16 @@ export default function Rank() {
                     "text-lg tracking-wider text-black"
                   )}
                 >
-                  5,24,56,234 m
+                  {user.game_distance} m
                 </div>
                 <div className={cn("flex gap-1 mt-1")}>
-                  <PlaystationColoredLogo />
+                  {user.my_consoles.map((console: string) => {
+                    const Logo = consoleLogos[console];
+                    return <Logo />;
+                  })}
+                  {/* <PlaystationColoredLogo />
                   <XboxColoredLogo />
-                  <NintendoColoredLogo />
+                  <NintendoColoredLogo /> */}
                 </div>
               </div>
             </div>
@@ -489,13 +532,13 @@ export default function Rank() {
         </div>
 
         {/* Table Body */}
-        {leaderboardRows.map((row, index) => (
+        {users.map((row, index) => (
           <RankRow key={index} row={row} index={index} />
         ))}
       </div>
 
       {/* Pagination Section */}
-      <div className="flex flex-col items-center justify-center space-y-2 bg-black py-4">
+      <div className="flex flex-col items-center justify-center space-y-2 bg-black py-4 ">
         <div
           className={cn(
             "flex items-center space-x-2 text-white",
@@ -535,7 +578,7 @@ export default function Rank() {
 
         {/* Results Text */}
         <p className={cn("text-white text-sm", ibmPlex500.className)}>
-          Results: 1-20 of 456,790
+          Results: 1-{users.length} of {users.length}
         </p>
       </div>
     </div>

@@ -41,6 +41,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     completed_missions: [],
     global_rank: 0,
     my_consoles: [],
+    game_distance: 0,
   });
 
   // const state: AppState = { pointBalance, message };

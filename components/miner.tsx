@@ -49,8 +49,8 @@ import {
 import { createClient } from "@/utils/supabase/client";
 import { NicknameInput } from "./app/NicknameInput";
 
-const connectButtons = {
-  playstation: CustomButtonType.SUCCESS,
+const defaultConnectButtons = {
+  playstation: CustomButtonType.PRIMARY,
   xbox: CustomButtonType.PRIMARY,
   nintendo: CustomButtonType.PRIMARY,
   steam: CustomButtonType.PRIMARY,
@@ -83,6 +83,8 @@ export default function Miner() {
     setUserData,
     telegramUsername,
   } = useAppContext();
+
+  const [connectButtons, setConnectButtons] = useState(defaultConnectButtons);
 
   const [connectSectionCollapsed, setConnectSectionCollapsed] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
@@ -253,6 +255,12 @@ export default function Miner() {
 
       if (data) {
         setUserData(data);
+        setConnectButtons({
+          ...connectButtons,
+          playstation: data.my_consoles.includes("Play Station")
+            ? CustomButtonType.SUCCESS
+            : CustomButtonType.PRIMARY,
+        });
         setPointBalance(Number(data.user_points));
         setStartPointBalance(Number(data.user_points));
         setIsLoading(false);
@@ -271,6 +279,7 @@ export default function Miner() {
               completed_missions: [],
               global_rank: 0,
               my_consoles: [],
+              game_distance: 0,
             },
           ]);
         }
