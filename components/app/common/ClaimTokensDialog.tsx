@@ -26,7 +26,13 @@ export function ClaimTokenDialog({ handleConfirm }: ClaimTokenDialogProps) {
   return (
     <>
       <div className="flex justify-center items-center">
-        <div className="bg-white h-[435px] w-[70%] rounded-sm shadow-xl flex flex-col justify-center items-center text-center p-6">
+        <div
+          className="bg-white h-[435px] w-[90%] rounded-sm shadow-xl flex flex-col justify-center items-center text-center p-6"
+          style={{
+            backgroundImage: "url('/pngs/claim-token-bg.png')",
+            backgroundSize: "cover",
+          }}
+        >
           <div className="h-[222px] w-[222px] rounded-lg border-4 border-[#FFE500] bg-[#FFF59D] relative flex justify-center items-center">
             <div className="">
               <Image

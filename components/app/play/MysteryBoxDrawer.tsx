@@ -136,7 +136,7 @@ export function MysteryBoxDrawer() {
                       {box.title}
                     </p>
                     <Image
-                      src={"/play-logos/mystery-box.svg"}
+                      src={"/play-logos/mystery-box.gif"}
                       alt="Mystery Box"
                       width={47}
                       height={47}

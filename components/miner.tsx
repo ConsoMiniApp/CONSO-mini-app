@@ -741,56 +741,6 @@ export default function Miner() {
                   </div>
                 </div>
 
-                {/* Nintendo */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <NintendoPixelatedLogo />
-                    <p
-                      className={cn(
-                        jersey.className,
-                        "text-2xl text-white tracking-[0.05em]"
-                      )}
-                    >
-                      Nintendo
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <p
-                      className={cn(
-                        jersey.className,
-                        "text-xl text-white mr-2 tracking-[0.05em]"
-                      )}
-                    >
-                      4.5x
-                    </p>
-                    {connectButtons.nintendo === CustomButtonType.PRIMARY ? (
-                      <Dialog>
-                        <DialogTrigger>
-                          <CustomButton
-                            type={CustomButtonType.PRIMARY}
-                            handleClick={handleNintendoConnect}
-                          />
-                        </DialogTrigger>
-                        <DialogContent className="  w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
-                          <NintendoConnectDialog />
-                        </DialogContent>
-                      </Dialog>
-                    ) : (
-                      <Dialog>
-                        <DialogTrigger>
-                          <CustomButton
-                            type={connectButtons.nintendo}
-                            handleClick={handleNintendoConnected}
-                          />
-                        </DialogTrigger>
-                        <DialogContent className=" w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
-                          <NintendoConnectedDialog />
-                        </DialogContent>
-                      </Dialog>
-                    )}
-                  </div>
-                </div>
-
                 {/* Steam */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
@@ -836,6 +786,56 @@ export default function Miner() {
                         </DialogTrigger>
                         <DialogContent className="  w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
                           <SteamConnectedDialog />
+                        </DialogContent>
+                      </Dialog>
+                    )}
+                  </div>
+                </div>
+
+                {/* Nintendo */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <NintendoPixelatedLogo />
+                    <p
+                      className={cn(
+                        jersey.className,
+                        "text-2xl text-white tracking-[0.05em]"
+                      )}
+                    >
+                      Nintendo
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <p
+                      className={cn(
+                        jersey.className,
+                        "text-xl text-white mr-2 tracking-[0.05em]"
+                      )}
+                    >
+                      4.5x
+                    </p>
+                    {connectButtons.nintendo === CustomButtonType.PRIMARY ? (
+                      <Dialog>
+                        <DialogTrigger>
+                          <CustomButton
+                            type={CustomButtonType.PRIMARY}
+                            handleClick={handleNintendoConnect}
+                          />
+                        </DialogTrigger>
+                        <DialogContent className="  w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
+                          <NintendoConnectDialog />
+                        </DialogContent>
+                      </Dialog>
+                    ) : (
+                      <Dialog>
+                        <DialogTrigger>
+                          <CustomButton
+                            type={connectButtons.nintendo}
+                            handleClick={handleNintendoConnected}
+                          />
+                        </DialogTrigger>
+                        <DialogContent className=" w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
+                          <NintendoConnectedDialog />
                         </DialogContent>
                       </Dialog>
                     )}

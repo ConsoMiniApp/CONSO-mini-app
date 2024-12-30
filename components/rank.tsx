@@ -385,7 +385,7 @@ export default function Rank() {
         {/* Leaderboard Table Section */}
         {/* Table Heading */}
         <div className="">
-          <div className="grid grid-cols-8 w-full justify-center items-center px-4 bg-[#DE5EA6] h-[31px] border border-[#004AAD] border-1">
+          <div className="grid grid-cols-9 w-full justify-center items-center px-4 bg-[#DE5EA6] h-[31px] border border-[#004AAD] border-1">
             <span
               className={cn(
                 "text-white text-xl font-normal col-span-1 ",
@@ -396,31 +396,30 @@ export default function Rank() {
             </span>
             <span
               className={cn(
-                "text-white text-xl font-normal col-span-3",
+                "text-white text-xl font-normal col-span-3 tracking-wider",
                 jersey.className
               )}
             >
-              NAME
+              NICKNAME
             </span>
             <span
               className={cn(
-                "text-white text-center text-xl font-normal col-span-2 border-l border-r border-[#004AAD]",
+                "text-white text-center text-xl font-normal col-span-3 tracking-wider border-l border-r border-[#004AAD]",
                 jersey.className
               )}
             >
               <Image
-                src="./other-logos/boost.svg"
-                width={11}
-                height={11}
+                src="/play-logos/og_jetpack.png"
+                width={18}
+                height={18}
                 alt=""
                 className="inline-block mr-1"
-                onClick={() => console.log("Coin")}
               />
-              BOOST
+              DISTANCE
             </span>
             <span
               className={cn(
-                "text-white text-center text-xl flex items-center justify-center font-normal col-span-2",
+                "text-white text-center text-xl flex items-center justify-center tracking-wider font-normal col-span-2",
                 jersey.className
               )}
             >
@@ -430,7 +429,6 @@ export default function Rank() {
                 height={14}
                 alt=""
                 className="inline-block mr-1"
-                onClick={() => console.log("Coin")}
               />
               CONSO
             </span>
@@ -442,7 +440,7 @@ export default function Rank() {
         <div className="">
           <div
             className={cn(
-              "grid grid-cols-8 justify-center items-center px-4 h-[32px]",
+              "grid grid-cols-9 justify-center items-center px-4 h-[32px]",
               "bg-[#5C6E7E]"
             )}
             // onClick={() => console.log("My Rank")}
@@ -465,11 +463,11 @@ export default function Rank() {
             </span>
             <span
               className={cn(
-                "text-white text-center text-xl font-normal col-span-2 ",
+                "text-white text-center text-xl font-normal col-span-3 ",
                 jersey.className
               )}
             >
-              x{user?.current_boost}
+              {user?.game_distance} m
             </span>
             <span
               className={cn(
@@ -496,7 +494,7 @@ export default function Rank() {
                     "text-sm tracking-wider text-[#808080]"
                   )}
                 >
-                  GAME DISTANCE
+                  CURRENT BOOST
                 </p>
                 <p
                   className={cn(

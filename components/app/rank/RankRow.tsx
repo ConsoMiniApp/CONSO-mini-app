@@ -61,7 +61,7 @@ const RankRow = ({ row, index }: RankRowProps) => {
                 jersey.className
               )}
             >
-              x{row.current_boost}
+              {row.game_distance} m
             </span>
             <span
               className={cn(
@@ -69,7 +69,15 @@ const RankRow = ({ row, index }: RankRowProps) => {
                 jersey.className
               )}
             >
-              {row.user_points}
+              {/* {row.user_points} */}
+              {row.user_points < 1000
+                ? row.user_points
+                : Intl.NumberFormat("en-US", {
+                    notation: "compact",
+                    compactDisplay: "short",
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  }).format(row.user_points)}
             </span>
           </div>
         </div>
@@ -91,7 +99,7 @@ const RankRow = ({ row, index }: RankRowProps) => {
                   "text-sm tracking-wider text-[#808080]"
                 )}
               >
-                GAME DISTANCE
+                CURRENT BOOST
               </p>
               <p
                 className={cn(
@@ -110,7 +118,7 @@ const RankRow = ({ row, index }: RankRowProps) => {
                   "text-lg tracking-wider text-black"
                 )}
               >
-                {row.game_distance} m
+                {row.current_boost} x
               </div>
               <div className={cn("flex gap-1 mt-1")}>
                 {row.my_consoles.length > 0 ? (

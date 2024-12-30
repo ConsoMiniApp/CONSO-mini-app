@@ -5,10 +5,13 @@ import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { ClaimTokenDialog } from "../common/ClaimTokensDialog";
 import { ConfirmDialog } from "../common/ConfirmDialog";
 import { CoinSmallIcon } from "@/components/ui/icons";
+import { ConfirmShopDialog } from "../common/ConfirmShopDialog";
+import { useState } from "react";
 
-const characters = [
+const initialCharacter = [
   {
     name: "DEFAULT",
+    key: "og",
     image: "/play-logos/default-character.gif",
     selected: true,
     owned: true,
@@ -16,6 +19,7 @@ const characters = [
   },
   {
     name: "NINJA",
+    key: "ninja",
     image: "/play-logos/ninja-character.gif",
     selected: false,
     owned: false,
@@ -23,6 +27,7 @@ const characters = [
   },
   {
     name: "SAMURAI",
+    key: "samurai",
     image: "/play-logos/samurai-character.gif",
     selected: false,
     owned: false,
@@ -30,24 +35,27 @@ const characters = [
   },
 ];
 
-const jetpacks = [
+const initialJetpacks = [
   {
     name: "OG PACK",
-    image: "/play-logos/default-jetpack.gif",
+    key: "jetpack",
+    image: "/play-logos/og-jetpack.gif",
     selected: true,
     owned: true,
     price: 0,
   },
   {
     name: "ROCKET",
-    image: "/play-logos/rocket-jetpack.gif",
+    key: "rocket",
+    image: "/play-logos/og-rocket.gif",
     selected: false,
     owned: false,
     price: 2500,
   },
   {
     name: "HELICOPTER",
-    image: "/play-logos/helicopter-jetpack.gif",
+    key: "heli",
+    image: "/play-logos/og-heli.gif",
     selected: false,
     owned: false,
     price: 5000,
@@ -55,14 +63,18 @@ const jetpacks = [
 ];
 
 export function ShopDrawer() {
-  const activities = [
-    { name: "PlayStation", rate: "2.5x" },
-    { name: "Xbox", rate: "2.5x" },
-    { name: "Bitboy", rate: "2.0x" },
-    { name: "Sui Console", rate: "2.0x" },
-    { name: "Nintendo", rate: "1.75x" },
-    { name: "Steam", rate: "1.5x" },
-  ];
+  const [characters, setCharacters] = useState(initialCharacter);
+  const [jetpacks, setJetpacks] = useState(initialJetpacks);
+  function switchJetpacks(character: string) {
+    setJetpacks((prev) =>
+      prev.map((jetpack) => {
+        return {
+          ...jetpack,
+          image: `/play-logos/${character}-${jetpack.key}.gif`,
+        };
+      })
+    );
+  }
   return (
     <>
       <div className="overflow-y-scroll scrollbar-none p-4 ">
@@ -113,6 +125,18 @@ export function ShopDrawer() {
                       "border-2 border-[#FFE500] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative",
                       character.selected ? "bg-[#FFE500]" : "bg-white"
                     )}
+                    onClick={() => {
+                      if (!character.owned) return;
+                      setCharacters((prev) =>
+                        prev.map((char, i) =>
+                          i === index
+                            ? { ...char, selected: true }
+                            : { ...char, selected: false }
+                        )
+                      );
+
+                      switchJetpacks(character.key);
+                    }}
                   >
                     <p
                       className={cn(
@@ -155,11 +179,24 @@ export function ShopDrawer() {
                     </div>
                   </div>
                 </DialogTrigger>
-                <DialogContent className="h-screen border-none backdrop-blur-md">
-                  <ConfirmDialog
-                    handleConfirm={() => console.log("you got 200 tokens")}
-                  />
-                </DialogContent>
+                {!character.owned && (
+                  <DialogContent className="h-screen border-none backdrop-blur-md">
+                    <ConfirmShopDialog
+                      handleConfirm={() => {
+                        setCharacters((prev) =>
+                          prev.map((char, i) =>
+                            i === index
+                              ? { ...char, selected: true, owned: true }
+                              : { ...char, selected: false }
+                          )
+                        );
+                        console.log("you purchased an item");
+                        switchJetpacks(character.key);
+                      }}
+                      item={character}
+                    />
+                  </DialogContent>
+                )}
               </Dialog>
             ))}
           </div>
@@ -186,18 +223,28 @@ export function ShopDrawer() {
                       "border-2 border-[#FFE500] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative",
                       jetpack.selected ? "bg-[#FFE500]" : "bg-white"
                     )}
+                    onClick={() => {
+                      if (!jetpack.owned) return;
+                      setJetpacks((prev) =>
+                        prev.map((char, i) =>
+                          i === index
+                            ? { ...char, selected: true }
+                            : { ...char, selected: false }
+                        )
+                      );
+                    }}
                   >
                     <p
                       className={cn(
                         handjet.className,
-                        "text-xs text-black tracking-wider"
+                        "text-xs text-black tracking-widest"
                       )}
                     >
                       {jetpack.name}
                     </p>
                     <Image
                       src={jetpack.image}
-                      alt="potion"
+                      alt="jetpack "
                       width={134}
                       height={100}
                     />
@@ -228,11 +275,23 @@ export function ShopDrawer() {
                     </div>
                   </div>
                 </DialogTrigger>
-                <DialogContent className="h-screen border-none backdrop-blur-md">
-                  <ConfirmDialog
-                    handleConfirm={() => console.log("you got 200 tokens")}
-                  />
-                </DialogContent>
+                {!jetpack.owned && (
+                  <DialogContent className="h-screen border-none backdrop-blur-md">
+                    <ConfirmShopDialog
+                      handleConfirm={() => {
+                        setJetpacks((prev) =>
+                          prev.map((char, i) =>
+                            i === index
+                              ? { ...char, selected: true, owned: true }
+                              : { ...char, selected: false }
+                          )
+                        );
+                        console.log("you purchased an item");
+                      }}
+                      item={jetpack}
+                    />
+                  </DialogContent>
+                )}
               </Dialog>
             ))}
           </div>
