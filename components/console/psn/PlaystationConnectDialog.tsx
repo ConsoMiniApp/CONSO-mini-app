@@ -9,12 +9,84 @@ import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { useAppContext } from "@/contexts/AppContext";
+import { getUserData } from "@/lib/psn/getUserData";
+import { getGameData } from "@/lib/psn/getGameData";
 
 export function PlayStationConnectDialog() {
   const supabase = createClient();
   const { telegramUsername } = useAppContext();
 
   const [npssocode, setNpssocode] = useState("");
+  const [isPending, setIsPending] = useState(false);
+
+  async function handlePlaystationConnect() {
+    if (npssocode.length < 64) {
+      toast.error("Invalid NPSSO Code", {
+        className: cn(jersey.className, "text-xl text-white"),
+      });
+      return;
+    }
+    console.log("Connecting PlayStation");
+
+    try {
+      // check if npsso code already exists in database
+      setIsPending(true);
+      const { data, error } = await supabase
+        .from("playstation_users_consoles_data")
+        .select("npsso")
+        .eq("npsso", npssocode);
+
+      console.log(data, error);
+
+      if ((data && data.length > 0) || error) {
+        setIsPending(false);
+        toast.error("PlayStation already connected.", {
+          className: cn(jersey.className, "text-xl text-white"),
+          icon: <ErrorIcon />,
+        });
+        return;
+      }
+
+      // get user data and game data with this npsso and save to database
+      const userDataRes = await getUserData({ npsso: npssocode });
+      const gameDataRes = await getGameData({ npsso: npssocode });
+      console.log(userDataRes);
+      console.log(gameDataRes);
+
+      if (userDataRes.data.error || gameDataRes.data.error) {
+        setIsPending(false);
+        throw new Error(userDataRes.error);
+      }
+
+      // save data to database
+
+      const { data: playstationData, error: playstationError } = await supabase
+        .from("playstation_users_consoles_data")
+        .insert([
+          {
+            username: telegramUsername,
+            npsso: npssocode,
+            console_user_identifier: userDataRes.data.data.profile.accountId,
+            user_data: userDataRes.data.data.profile,
+            games_data: gameDataRes.data,
+          },
+        ]);
+
+      console.log(playstationData, playstationError);
+
+      toast("PlayStation Connected.", {
+        className: cn(jersey.className, "text-xl text-white"),
+        icon: <SuccessIcon />,
+      });
+    } catch (error) {
+      console.error("Error:", error);
+      setIsPending(false);
+      toast.error("There was an error.", {
+        className: cn(jersey.className, "text-xl text-white"),
+        icon: <ErrorIcon />,
+      });
+    }
+  }
   // scroll to top of screen on component load
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -118,7 +190,7 @@ export function PlayStationConnectDialog() {
                   1.{" "}
                 </span>
                 <span>
-                  Visit
+                  Visit{" "}
                   <a
                     href="https://www.playstation.com"
                     target="__blank"
@@ -156,7 +228,13 @@ export function PlayStationConnectDialog() {
                 </span>
                 <span>Enter 64 character “npsso” code :</span>
               </p>
-              <form className="flex flex-col gap-4 ">
+              <form
+                className="flex flex-col gap-4 "
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handlePlaystationConnect();
+                }}
+              >
                 <input
                   type="text"
                   placeholder="YOUR_NPSSO_CODE"
@@ -183,34 +261,7 @@ export function PlayStationConnectDialog() {
                   <CustomButton
                     text="CONNECT PLAYSTATION"
                     type={CustomButtonType.PRIMARY_WIDE}
-                    handleClick={async () => {
-                      if (npssocode.length < 64) {
-                        toast.error("Invalid NPSSO Code", {
-                          className: cn(jersey.className, "text-xl text-white"),
-                        });
-                        return;
-                      }
-                      console.log("Connect PlayStation");
-
-                      try {
-                        const { data, error } = await supabase
-                          .from("users_table")
-                          .update({ my_consoles: ["Play Station"] })
-                          .eq("username", telegramUsername)
-                          .select();
-
-                        toast("PlayStation Connected.", {
-                          className: cn(jersey.className, "text-xl text-white"),
-                          icon: <SuccessIcon />,
-                        });
-                      } catch (error) {
-                        console.error("Error adding nickname:", error);
-                        toast.error("There was an error.", {
-                          className: cn(jersey.className, "text-xl text-white"),
-                          icon: <ErrorIcon />,
-                        });
-                      }
-                    }}
+                    handleClick={handlePlaystationConnect}
                   />
                 </div>
               </form>

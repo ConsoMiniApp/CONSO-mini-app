@@ -1,25 +1,16 @@
-interface TestRequest {
-  value: string;
+interface PSNData {
+  npsso: string;
 }
 
-export const getGameData = async (data: TestRequest) => {
-  const result = await callApi(data);
+export const getGameData = async (data: PSNData) => {
+  const result = await callApi(data.npsso);
 
   return result;
 };
 
-async function callApi(query: TestRequest) {
-  const res = await fetch(`/api/psn/test-game-data/?testParam=${query.value}`);
+async function callApi(query: string) {
+  const res = await fetch(`/api/psn/test-game-data/?npsso=${query}`);
   if (!res.ok) {
-    const json = await res.json();
-    if (json.error) {
-      const error = new Error(json.error) as Error & { status: number };
-      error.status = res.status;
-      throw error;
-    } else {
-      throw new Error("An unexpected error occurred");
-    }
-  }
-
-  return res.json();
+    return { error: "An unexpected error occurred" };
+  } else return res.json();
 }
