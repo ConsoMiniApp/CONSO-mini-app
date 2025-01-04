@@ -22,12 +22,12 @@ export function RankTabSkeleton({ rows = 20 }: TableSkeletonProps) {
 
         {/* Nickname Column */}
         <div className="col-span-3">
-          <Skeleton className="h-4 w-32 bg-white/20" />
+          <Skeleton className="h-4 w-24 bg-white/20" />
         </div>
 
         {/* Distance Column */}
         <div className="col-span-3 flex justify-center">
-          <Skeleton className="h-4 w-20 bg-white/20" />
+          <Skeleton className="h-4 w-16 bg-white/20" />
         </div>
 
         {/* Points Column */}
