@@ -5,10 +5,6 @@ import { getUserData } from "@/lib/nintendo/getUserData";
 
 import { getGameData } from "@/lib/nintendo/getGameData";
 
-import { NintendoGameDataType } from "@/lib/types";
-import NintendoUserProfile from "./NintendoUserProfile";
-import NintendoGameData from "./NintendoGameData";
-
 export default function NintendoData() {
   const [loading, setLoading] = useState(false);
 
