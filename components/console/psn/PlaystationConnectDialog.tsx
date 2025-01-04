@@ -11,6 +11,8 @@ import { createClient } from "@/utils/supabase/client";
 import { useAppContext } from "@/contexts/AppContext";
 import { getUserData } from "@/lib/psn/getUserData";
 import { getGameData } from "@/lib/psn/getGameData";
+import { Circle, Loader, Loader2 } from "lucide-react";
+import RetroLoader from "@/components/app/common/RetroLoader";
 
 export function PlayStationConnectDialog() {
   const supabase = createClient();
@@ -78,6 +80,7 @@ export function PlayStationConnectDialog() {
         className: cn(jersey.className, "text-xl text-white"),
         icon: <SuccessIcon />,
       });
+      setIsPending(false);
     } catch (error) {
       console.error("Error:", error);
       setIsPending(false);
@@ -164,8 +167,7 @@ export function PlayStationConnectDialog() {
                 src="/other-logos/youtube.svg"
                 width={26}
                 height={19}
-                alt="Delete"
-                onClick={() => console.log("Delete")}
+                alt="YouTube"
               />
               <a
                 href="https://youtu.be"
@@ -257,13 +259,17 @@ export function PlayStationConnectDialog() {
                   base rate.
                 </p>
 
-                <div className="flex justify-center mt-2">
-                  <CustomButton
-                    text="CONNECT PLAYSTATION"
-                    type={CustomButtonType.PRIMARY_WIDE}
-                    handleClick={handlePlaystationConnect}
-                  />
-                </div>
+                {isPending ? (
+                  <RetroLoader />
+                ) : (
+                  <div className="flex justify-center mt-2">
+                    <CustomButton
+                      text="CONNECT PLAYSTATION"
+                      type={CustomButtonType.PRIMARY_WIDE}
+                      handleClick={handlePlaystationConnect}
+                    />
+                  </div>
+                )}
               </form>
             </div>
           </div>

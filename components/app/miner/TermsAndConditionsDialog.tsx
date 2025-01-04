@@ -1,10 +1,16 @@
 import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
-import { handjet, ibmPlex, ibmPlex500, ibmPlex700, jersey } from "../ui/fonts";
+import {
+  handjet,
+  ibmPlex,
+  ibmPlex500,
+  ibmPlex700,
+  jersey,
+} from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
-import { Close } from "../ui/icons";
+import { Close } from "@/components/ui/icons";
 
 export function TermsDisclaimer({
   handleAccept,

@@ -13,6 +13,8 @@ import { useState } from "react";
 interface RankRowProps {
   row: ConsoUser;
   index: number;
+  expandRow: (index: number) => void;
+  rowExpanded: boolean;
 }
 
 const consoleLogos: any = {
@@ -22,11 +24,11 @@ const consoleLogos: any = {
   Nintendo: NintendoColoredLogo,
 };
 
-const RankRow = ({ row, index }: RankRowProps) => {
-  const [rowExpanded, setRowExpanded] = useState(false);
+const RankRow = ({ row, index, expandRow, rowExpanded }: RankRowProps) => {
+  // const [rowExpanded, setRowExpanded] = useState(false);
 
   function handleRowClick() {
-    setRowExpanded(!rowExpanded);
+    expandRow(index);
   }
   return (
     <>
@@ -130,7 +132,7 @@ const RankRow = ({ row, index }: RankRowProps) => {
                   <div
                     className={cn(
                       jersey.className,
-                      "text-lg tracking-wider text-black mt-0"
+                      "text-lg tracking-wider text-black mt-[-4px]"
                     )}
                   >
                     -NA-

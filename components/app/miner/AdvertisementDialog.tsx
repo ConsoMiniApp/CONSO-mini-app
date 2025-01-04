@@ -12,11 +12,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
-import { ibmPlex, jersey } from "../ui/fonts";
+import { ibmPlex, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
-import { BackIcon, Coin } from "../ui/icons";
+import { BackIcon, Coin } from "@/components/ui/icons";
 
 export function AdvertisementDialog() {
   return (

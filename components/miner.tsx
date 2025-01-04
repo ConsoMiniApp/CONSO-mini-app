@@ -11,12 +11,12 @@ import { NintendoConnectDialog } from "./console/nintendo/NintendoConnectDialog"
 import { SteamConnectDialog } from "./console/steam/SteamConnectDialog";
 import { BitboyConnectDialog } from "./console/bitboy/BitboyConnectDialog";
 import { SuiConnectDialog } from "./console/sui/SuiConnectDialog";
-import { AdvertisementDialog } from "./app/AdvertisementDialog";
+import { AdvertisementDialog } from "./app/miner/AdvertisementDialog";
 import { useContext, useEffect, useState } from "react";
-import { InfoDialog } from "./app/InfoDialog";
+import { InfoDialog } from "./app/miner/InfoDialog";
 import { useAppContext } from "@/contexts/AppContext";
-import { TermsDisclaimer } from "./app/TermsAndConditionsDialog";
-import { AdvertisementDialogV2 } from "./app/AdvertisementDialogV2";
+import { TermsDisclaimer } from "./app/miner/TermsAndConditionsDialog";
+import { AdvertisementDialogV2 } from "./app/miner/AdvertisementDialogV2";
 import { PlaystationConnectedDialog } from "./console/psn/PlaystationConnectedDialog";
 import { XboxConnectedDialog } from "./console/xbox/XboxConnectedDialog";
 import { NintendoConnectedDialog } from "./console/nintendo/NintendoConnectedDialog";
@@ -47,7 +47,8 @@ import {
 } from "./ui/icons";
 
 import { createClient } from "@/utils/supabase/client";
-import { NicknameInput } from "./app/NicknameInput";
+import { NicknameInput } from "./app/miner/NicknameInput";
+import { MinerTabSkeleton } from "./app/miner/MinerTabSkeleton";
 
 const defaultConnectButtons = {
   playstation: CustomButtonType.PRIMARY,
@@ -260,6 +261,17 @@ export default function Miner() {
           playstation: data.my_consoles.includes("Play Station")
             ? CustomButtonType.SUCCESS
             : CustomButtonType.PRIMARY,
+          xbox: data.my_consoles.includes("Xbox")
+            ? CustomButtonType.SUCCESS
+            : CustomButtonType.PRIMARY,
+          steam: data.my_consoles.includes("Steam Deck")
+            ? CustomButtonType.SUCCESS
+            : CustomButtonType.PRIMARY,
+          nintendo: data.my_consoles.includes("Nintendo")
+            ? CustomButtonType.SUCCESS
+            : CustomButtonType.PRIMARY,
+          bitboy: CustomButtonType.INACTIVE,
+          sui: CustomButtonType.INACTIVE,
         });
         setPointBalance(Number(data.user_points));
         setStartPointBalance(Number(data.user_points));
@@ -344,13 +356,8 @@ export default function Miner() {
         )}
 
       {isLoading ? (
-        <div
-          className={cn(
-            "text-6xl text-white flex justify-center items-center h-screen",
-            jersey.className
-          )}
-        >
-          LOADING ...
+        <div>
+          <MinerTabSkeleton />
         </div>
       ) : (
         <div className="min-h-screen bg-[#5C6E7E]">
@@ -515,7 +522,7 @@ export default function Miner() {
                         <p>{console}</p>
                       ))}
 
-                      {user?.my_consoles.length === 0 && <p>NA</p>}
+                      {user?.my_consoles.length === 0 && <p>--- NA ---</p>}
 
                       {/* <p>Play Station </p>
                       <p>Xbox</p>

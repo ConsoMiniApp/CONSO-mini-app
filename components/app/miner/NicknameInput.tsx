@@ -1,5 +1,3 @@
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
 import { ibmPlex, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";

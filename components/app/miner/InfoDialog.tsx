@@ -1,6 +1,6 @@
 import { DialogClose } from "@radix-ui/react-dialog";
 import Image from "next/image";
-import { handjet, ibmPlex500, ibmPlex700, jersey } from "../ui/fonts";
+import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import {
   Table,
@@ -10,7 +10,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ArrowRightIcon, Boost, Close, ConsoleIcon } from "../ui/icons";
+import {
+  ArrowRightIcon,
+  Boost,
+  Close,
+  ConsoleIcon,
+} from "@/components/ui/icons";
 
 export function InfoDialog() {
   const activities = [
