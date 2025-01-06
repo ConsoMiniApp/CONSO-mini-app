@@ -7,8 +7,6 @@ import {
 } from "@/components/ui/icons";
 import { ConsoUser } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
-import { useState } from "react";
 
 interface RankRowProps {
   row: ConsoUser;
@@ -20,7 +18,7 @@ interface RankRowProps {
 const consoleLogos: any = {
   "Play Station": PlaystationColoredLogo,
   Xbox: XboxColoredLogo,
-  Steam: SteamColoredLogo,
+  "Steam Deck": SteamColoredLogo,
   Nintendo: NintendoColoredLogo,
 };
 
@@ -51,15 +49,17 @@ const RankRow = ({ row, index, expandRow, rowExpanded }: RankRowProps) => {
             </span>
             <span
               className={cn(
-                "text-white text-xl font-normal col-span-3",
+                "text-white text-xl font-normal col-span-3 tracking-wide",
                 jersey.className
               )}
             >
-              {row.nickname}
+              {row?.nickname?.length > 7
+                ? `${row.nickname.slice(0, 7)}...`
+                : row?.nickname}{" "}
             </span>
             <span
               className={cn(
-                "text-white text-center text-xl font-normal col-span-2 ",
+                "text-white text-center text-xl font-normal col-span-2 tracking-wide",
                 jersey.className
               )}
             >
@@ -67,7 +67,7 @@ const RankRow = ({ row, index, expandRow, rowExpanded }: RankRowProps) => {
             </span>
             <span
               className={cn(
-                "text-[#E8BA00] text-center text-xl font-normal col-span-2",
+                "text-[#E8BA00] text-center text-xl font-normal col-span-2 tracking-wide",
                 jersey.className
               )}
             >
@@ -95,14 +95,14 @@ const RankRow = ({ row, index, expandRow, rowExpanded }: RankRowProps) => {
           <div className="col-span-1 "> </div>
           <div className="col-span-7 h-[49px] bg-white rounded-md mb-2 py-1 px-4 ">
             <div className="grid grid-cols-2 ">
-              <p
+              {/* <p
                 className={cn(
                   handjet.className,
                   "text-sm tracking-wider text-[#808080]"
                 )}
               >
                 CURRENT BOOST
-              </p>
+              </p> */}
               <p
                 className={cn(
                   handjet.className,
@@ -114,19 +114,42 @@ const RankRow = ({ row, index, expandRow, rowExpanded }: RankRowProps) => {
             </div>
 
             <div className="grid grid-cols-2 ">
-              <div
+              {/* <div
                 className={cn(
                   jersey.className,
                   "text-lg tracking-wider text-black"
                 )}
               >
                 {row.current_boost} x
-              </div>
-              <div className={cn("flex gap-1 mt-1")}>
+              </div> */}
+              <div className={cn("flex gap-2 mt-1")}>
                 {row.my_consoles.length > 0 ? (
-                  row.my_consoles.map((console: string) => {
+                  Object.entries(
+                    row.my_consoles.reduce(
+                      (acc: Record<string, number>, console: string) => {
+                        acc[console] = (acc[console] || 0) + 1;
+                        return acc;
+                      },
+                      {}
+                    )
+                  ).map(([console, count]: [string, number]) => {
                     const Logo = consoleLogos[console];
-                    return <Logo />;
+                    if (!Logo) return null;
+                    return (
+                      <div className="flex items-center gap-1">
+                        <Logo />
+                        {count > 1 && (
+                          <span
+                            className={cn(
+                              jersey.className,
+                              "text-sm tracking-wider text-black"
+                            )}
+                          >
+                            x{count}
+                          </span>
+                        )}
+                      </div>
+                    );
                   })
                 ) : (
                   <div

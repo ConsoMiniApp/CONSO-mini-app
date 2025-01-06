@@ -36,11 +36,17 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     degen_score: 0,
     current_boost: 0,
     user_points: 0,
-    connected_consoles: {},
     created_at: "",
     completed_missions: [],
+    connected_consoles: {
+      playstation: [],
+      xbox: [],
+      steam: [],
+      nintendo: [],
+      bitboy: [],
+      sui: [],
+    },
     global_rank: 0,
-    my_consoles: [],
     game_distance: 0,
   });
 

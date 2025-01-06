@@ -16,7 +16,7 @@ import RetroLoader from "@/components/app/common/RetroLoader";
 
 export function PlayStationConnectDialog() {
   const supabase = createClient();
-  const { telegramUsername } = useAppContext();
+  const { telegramUsername, user } = useAppContext();
 
   const [npssocode, setNpssocode] = useState("");
   const [isPending, setIsPending] = useState(false);
@@ -61,7 +61,6 @@ export function PlayStationConnectDialog() {
       }
 
       // save data to database
-
       const { data: playstationData, error: playstationError } = await supabase
         .from("playstation_users_consoles_data")
         .insert([
@@ -71,10 +70,49 @@ export function PlayStationConnectDialog() {
             console_user_identifier: userDataRes.data.data.profile.accountId,
             user_data: userDataRes.data.data.profile,
             games_data: gameDataRes.data,
+            last_data_sync: new Date().toISOString(),
+            mining_status: true,
           },
         ]);
 
       console.log(playstationData, playstationError);
+
+      if (playstationError) {
+        setIsPending(false);
+        throw new Error("Error");
+      }
+
+      // upsert "Play Station" to users_table  my_consoles
+      const { data: userData, error: userError } = await supabase
+        .from("users_table")
+        .update({
+          connected_consoles: {
+            ...user.connected_consoles,
+            playstation: [
+              ...user.connected_consoles.playstation,
+              {
+                console_username: userDataRes.data.data.profile.onlineId,
+                joined_date: new Date().toISOString(),
+                console_user_identifier:
+                  userDataRes.data.data.profile.accountId,
+                conso_bonus: 20000, // calculated based on game data
+                status: "Mining",
+              },
+            ],
+          },
+        })
+        .eq("username", telegramUsername);
+
+      console.log(userData, userError);
+
+      if (userError) {
+        setIsPending(false);
+        throw new Error("Error");
+      }
+
+      console.log(userData, userError);
+
+      // update app context
 
       toast("PlayStation Connected.", {
         className: cn(jersey.className, "text-xl text-white"),

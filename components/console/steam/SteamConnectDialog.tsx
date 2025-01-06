@@ -48,7 +48,7 @@ export function SteamConnectDialog() {
                 jersey.className
               )}
             >
-              Steam
+              Steam Web/Deck
             </p>
             <Image
               src={"console-logos/steam-pixelated.svg"}

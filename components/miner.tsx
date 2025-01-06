@@ -244,63 +244,79 @@ export default function Miner() {
     });
   }
 
-  // load user data from supabase
-  useEffect(() => {
-    const fetchUserData = async () => {
-      setIsLoading(true);
-      const { data, error } = await supabase
-        .from("users_table")
-        .select("*")
-        .eq("username", telegramUsername)
-        .single();
+  const fetchUserData = async () => {
+    setIsLoading(true);
+    const { data, error } = await supabase
+      .from("users_table")
+      .select("*")
+      .eq("username", telegramUsername)
+      .single();
 
-      if (data) {
-        setUserData(data);
+    if (data) {
+      setUserData(data);
+      if (data.connected_consoles !== null) {
         setConnectButtons({
           ...connectButtons,
-          playstation: data.my_consoles.includes("Play Station")
-            ? CustomButtonType.SUCCESS
-            : CustomButtonType.PRIMARY,
-          xbox: data.my_consoles.includes("Xbox")
-            ? CustomButtonType.SUCCESS
-            : CustomButtonType.PRIMARY,
-          steam: data.my_consoles.includes("Steam Deck")
-            ? CustomButtonType.SUCCESS
-            : CustomButtonType.PRIMARY,
-          nintendo: data.my_consoles.includes("Nintendo")
-            ? CustomButtonType.SUCCESS
-            : CustomButtonType.PRIMARY,
+          playstation:
+            data.connected_consoles.playstation !== undefined &&
+            data.connected_consoles.playstation.length > 0
+              ? CustomButtonType.SUCCESS
+              : CustomButtonType.PRIMARY,
+          xbox:
+            data.connected_consoles.xbox !== undefined &&
+            data.connected_consoles.xbox.length > 0
+              ? CustomButtonType.SUCCESS
+              : CustomButtonType.PRIMARY,
+          steam:
+            data.connected_consoles.steam !== undefined &&
+            data.connected_consoles.steam.length > 0
+              ? CustomButtonType.SUCCESS
+              : CustomButtonType.PRIMARY,
+          nintendo:
+            data.connected_consoles.nintendo !== undefined &&
+            data.connected_consoles.nintendo.length > 0
+              ? CustomButtonType.SUCCESS
+              : CustomButtonType.PRIMARY,
           bitboy: CustomButtonType.INACTIVE,
           sui: CustomButtonType.INACTIVE,
         });
-        setPointBalance(Number(data.user_points));
-        setStartPointBalance(Number(data.user_points));
-        setIsLoading(false);
       }
-      if (error) {
-        if (error.code == "PGRST116") {
-          // create new user
-          const { data, error } = await supabase.from("users_table").insert([
-            {
-              nickname: null,
-              username: telegramUsername,
-              degen_score: 0,
-              current_boost: 0,
-              user_points: 0,
-              connected_consoles: {},
-              completed_missions: [],
-              global_rank: 0,
-              my_consoles: [],
-              game_distance: 0,
+
+      setPointBalance(Number(data.user_points));
+      setStartPointBalance(Number(data.user_points));
+      setIsLoading(false);
+    }
+    if (error) {
+      if (error.code == "PGRST116") {
+        // create new user
+        const { data, error } = await supabase.from("users_table").insert([
+          {
+            nickname: null,
+            username: telegramUsername,
+            degen_score: 0,
+            current_boost: 0,
+            user_points: 0,
+            connected_consoles: {
+              playstation: [],
+              xbox: [],
+              steam: [],
+              nintendo: [],
             },
-          ]);
-        }
-        console.log("Error fetching user data", error);
-        setIsLoading(false);
-        return;
+            completed_missions: [],
+            global_rank: 0,
+            game_distance: 0,
+          },
+        ]);
       }
-      console.log(data);
-    };
+      console.log("Error fetching user data", error);
+      setIsLoading(false);
+      return;
+    }
+    console.log(data);
+  };
+
+  // load user data from supabase
+  useEffect(() => {
     if (telegramUsername) fetchUserData();
   }, [telegramUsername]);
 
@@ -518,11 +534,13 @@ export default function Miner() {
                         jersey.className
                       )}
                     >
-                      {user?.my_consoles.map((console) => (
+                      {/* {user?.my_consoles.map((console) => (
                         <p>{console}</p>
                       ))}
 
-                      {user?.my_consoles.length === 0 && <p>--- NA ---</p>}
+                      {user?.my_consoles.length === 0 && <p>--- NA ---</p>} */}
+
+                      <p>--- NA ---</p>
 
                       {/* <p>Play Station </p>
                       <p>Xbox</p>

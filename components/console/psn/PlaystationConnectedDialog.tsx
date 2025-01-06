@@ -13,41 +13,16 @@ import {
   AddIcon,
   BackArrow,
   BackIcon,
+  CoinSmallIcon,
   DeleteIcon,
 } from "@/components/ui/icons";
-
-const consoleData = [
-  {
-    id: 1,
-    consoleName: "PlayStation",
-    joinedDate: "22-03-2020",
-    psBoost: "2.5x",
-    consoBonus: "25,000",
-    status: "Running",
-    selected: false,
-  },
-  {
-    id: 2,
-    consoleName: "Xbox",
-    joinedDate: "22-03-2020",
-    psBoost: "2.5x",
-    consoBonus: "25,000",
-    status: "Running",
-    selected: false,
-  },
-  {
-    id: 3,
-    consoleName: "Nintendo",
-    joinedDate: "22-03-2020",
-    psBoost: "2.5x",
-    consoBonus: "25,000",
-    status: "Running",
-    selected: false,
-  },
-];
+import { useAppContext } from "@/contexts/AppContext";
+import { ConnectedConsole } from "@/lib/types";
 
 export function PlaystationConnectedDialog() {
-  const [consoles, setConsoles] = useState(consoleData);
+  const [consoles, setConsoles] = useState<ConnectedConsole[]>([]);
+
+  const { user } = useAppContext();
 
   function handleDelete() {
     const selectedConsoles = consoles.filter((c) => c.selected);
@@ -57,6 +32,18 @@ export function PlaystationConnectedDialog() {
   // scroll to top of screen on component load
   useEffect(() => {
     window.scrollTo(0, 0);
+    const connectedConsoles = user.connected_consoles.playstation.map(
+      (c, index) => ({
+        id: index.toString(),
+        console_username: c.console_username,
+        joined_date: c.joined_date,
+        console_user_identifier: c.console_user_identifier,
+        conso_bonus: c.conso_bonus,
+        status: c.status,
+        selected: false,
+      })
+    );
+    setConsoles(connectedConsoles);
   }, []);
 
   return (
@@ -96,16 +83,22 @@ export function PlaystationConnectedDialog() {
             >
               PlayStation
             </p>
-            <Lottie className="w-32 " animationData={consoleAnimation} />
+            <Lottie
+              className="w-40 mt-[-10px]"
+              animationData={consoleAnimation}
+            />
 
-            <p
-              className={cn(
-                "text-[#FFE500] text-2xl text-nowrap tracking-wider mt-[-30px] mb-[10px]",
-                jersey.className
-              )}
-            >
-              4.5x Boost
-            </p>
+            <div className="flex gap-2 justify-center items-center mt-[-26px]">
+              <CoinSmallIcon />
+              <p
+                className={cn(
+                  "text-[#FFE500] text-2xl text-nowrap tracking-wider",
+                  jersey.className
+                )}
+              >
+                180 tokens/hr
+              </p>
+            </div>
           </div>
         </div>
 
@@ -141,7 +134,7 @@ export function PlaystationConnectedDialog() {
           <div className="flex flex-col gap-3 px-1 mt-3">
             {/* Console Connected Card */}
             {consoles.map((console) => (
-              <div className="bg-[#F1F1F1] grid grid-cols-6 rounded-md border-[0.5px] border-black p-4 tracking-tighter">
+              <div className="bg-[#F1F1F1] grid grid-cols-6 rounded-md border-[0.5px] border-black p-4 tracking-wide">
                 <div className="flex flex-col gap-2 col-span-5 ">
                   <p
                     className={cn(
@@ -149,11 +142,29 @@ export function PlaystationConnectedDialog() {
                       "text-[#DE5EA6] text-xs"
                     )}
                   >
-                    Console Connected :{" "}
+                    Username :{" "}
+                    <span
+                      className={cn(
+                        ibmPlex500.className,
+                        "text-xs text-black "
+                      )}
+                    >
+                      {console.console_username.length > 15
+                        ? console.console_username.substring(0, 15) + "..."
+                        : console.console_username}
+                    </span>
+                  </p>
+                  <p
+                    className={cn(
+                      ibmPlex700.className,
+                      "text-[#DE5EA6] text-xs"
+                    )}
+                  >
+                    Console Type :{" "}
                     <span
                       className={cn(ibmPlex500.className, "text-xs text-black")}
                     >
-                      {console.consoleName}
+                      PS5
                     </span>
                   </p>
                   <p
@@ -166,22 +177,13 @@ export function PlaystationConnectedDialog() {
                     <span
                       className={cn(ibmPlex500.className, "text-xs text-black")}
                     >
-                      {console.joinedDate}
+                      {new Date(console.joined_date).toLocaleDateString(
+                        "en-US",
+                        { day: "numeric", month: "long", year: "numeric" }
+                      )}
                     </span>
                   </p>
-                  <p
-                    className={cn(
-                      ibmPlex700.className,
-                      "text-[#DE5EA6] text-xs"
-                    )}
-                  >
-                    PS Boost :{" "}
-                    <span
-                      className={cn(ibmPlex500.className, "text-xs text-black")}
-                    >
-                      {console.psBoost}
-                    </span>
-                  </p>
+
                   <p
                     className={cn(
                       ibmPlex700.className,
@@ -192,7 +194,7 @@ export function PlaystationConnectedDialog() {
                     <span
                       className={cn(ibmPlex500.className, "text-xs text-black")}
                     >
-                      {console.consoBonus}
+                      {console.conso_bonus}
                     </span>
                   </p>
 
@@ -206,7 +208,9 @@ export function PlaystationConnectedDialog() {
                     <span
                       className={cn(
                         ibmPlex500.className,
-                        "text-xs text-[#00BA64]"
+                        console.status == "Mining"
+                          ? "text-xs text-[#00BA64]"
+                          : "text-xs text-[#FF0000]"
                       )}
                     >
                       {console.status}

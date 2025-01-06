@@ -4,19 +4,51 @@ import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import Lottie from "lottie-react";
 import consoleAnimation from "@/public/animations/console-animation.json";
-import { AddIcon, BackArrow, DeleteIcon } from "@/components/ui/icons";
-import { useEffect } from "react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { ConfirmDialog } from "@/components/app/common/ConfirmDialog";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
+import {
+  AddIcon,
+  BackArrow,
+  BackIcon,
+  CoinSmallIcon,
+  DeleteIcon,
+} from "@/components/ui/icons";
+import { useAppContext } from "@/contexts/AppContext";
+import { ConnectedConsole } from "@/lib/types";
 
 export function XboxConnectedDialog() {
+  const [consoles, setConsoles] = useState<ConnectedConsole[]>([]);
+
+  const { user } = useAppContext();
+
+  function handleDelete() {
+    const selectedConsoles = consoles.filter((c) => c.selected);
+    console.log(selectedConsoles);
+    setConsoles(consoles.filter((c) => !c.selected));
+  }
   // scroll to top of screen on component load
   useEffect(() => {
     window.scrollTo(0, 0);
+    const connectedConsoles = user.connected_consoles.xbox.map((c, index) => ({
+      id: index.toString(),
+      console_username: c.console_username,
+      joined_date: c.joined_date,
+      console_user_identifier: c.console_user_identifier,
+      conso_bonus: c.conso_bonus,
+      status: c.status,
+      selected: false,
+    }));
+    setConsoles(connectedConsoles);
   }, []);
+
   return (
     <>
-      <div className="overflow-y-scroll scrollbar-always-visible h-screen ">
+      <div className="overflow-y-scroll scrollbar-none ">
         {/* Top Status Card */}
-        <div className="p-4 mt-4 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
+        <div className="p-4 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
           <div className="flex justify-between ">
             <DialogClose>
               <BackArrow />
@@ -49,16 +81,22 @@ export function XboxConnectedDialog() {
             >
               Xbox
             </p>
-            <Lottie className="w-24 " animationData={consoleAnimation} />
+            <Lottie
+              className="w-40 mt-[-10px]"
+              animationData={consoleAnimation}
+            />
 
-            <p
-              className={cn(
-                "text-[#FFE500] text-2xl text-nowrap tracking-wider",
-                jersey.className
-              )}
-            >
-              4.5x Boost
-            </p>
+            <div className="flex gap-2 justify-center items-center mt-[-26px]">
+              <CoinSmallIcon />
+              <p
+                className={cn(
+                  "text-[#FFE500] text-2xl text-nowrap tracking-wider",
+                  jersey.className
+                )}
+              >
+                180 tokens/hr
+              </p>
+            </div>
           </div>
         </div>
 
@@ -75,100 +113,114 @@ export function XboxConnectedDialog() {
               MINING STATUS
             </p>
             <div className="flex gap-3">
-              <DeleteIcon />
-              <AddIcon />
+              <Dialog>
+                <DialogTrigger>
+                  <div>
+                    <DeleteIcon />
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="h-screen border-none backdrop-blur-md">
+                  <ConfirmDialog handleConfirm={handleDelete} />
+                </DialogContent>
+              </Dialog>
+              <div className="flex justify-center items-center">
+                <AddIcon />
+              </div>
             </div>
           </div>
 
           <div className="flex flex-col gap-3 px-1 mt-3">
             {/* Console Connected Card */}
-            <div className="bg-[#F1F1F1] flex flex-col gap-2 rounded-md border-[0.5px] border-black p-4 tracking-tighter">
-              <p className={cn(ibmPlex700.className, "text-[#DE5EA6] text-xs")}>
-                Console Connected :{" "}
-                <span
-                  className={cn(ibmPlex500.className, "text-xs text-black")}
-                >
-                  Xbox
-                </span>
-              </p>
-              <p className={cn(ibmPlex700.className, "text-[#DE5EA6] text-xs")}>
-                Joined Date :{" "}
-                <span
-                  className={cn(ibmPlex500.className, "text-xs text-black")}
-                >
-                  22-03-2020
-                </span>
-              </p>
-              <p className={cn(ibmPlex700.className, "text-[#DE5EA6] text-xs")}>
-                PS Boost :{" "}
-                <span
-                  className={cn(ibmPlex500.className, "text-xs text-black")}
-                >
-                  2.5x
-                </span>
-              </p>
-              <p className={cn(ibmPlex700.className, "text-[#DE5EA6] text-xs")}>
-                CONSO Bonus :{" "}
-                <span
-                  className={cn(ibmPlex500.className, "text-xs text-black")}
-                >
-                  25,000
-                </span>
-              </p>
+            {consoles.map((console) => (
+              <div className="bg-[#F1F1F1] grid grid-cols-6 rounded-md border-[0.5px] border-black p-4 tracking-tighter">
+                <div className="flex flex-col gap-2 col-span-5 ">
+                  <p
+                    className={cn(
+                      ibmPlex700.className,
+                      "text-[#DE5EA6] text-xs"
+                    )}
+                  >
+                    Console Connected :{" "}
+                    <span
+                      className={cn(ibmPlex500.className, "text-xs text-black")}
+                    >
+                      {console.console_username}
+                    </span>
+                  </p>
+                  <p
+                    className={cn(
+                      ibmPlex700.className,
+                      "text-[#DE5EA6] text-xs"
+                    )}
+                  >
+                    Joined Date :{" "}
+                    <span
+                      className={cn(ibmPlex500.className, "text-xs text-black")}
+                    >
+                      {console.joined_date}
+                    </span>
+                  </p>
+                  <p
+                    className={cn(
+                      ibmPlex700.className,
+                      "text-[#DE5EA6] text-xs"
+                    )}
+                  >
+                    PS Boost :{" "}
+                    <span
+                      className={cn(ibmPlex500.className, "text-xs text-black")}
+                    >
+                      100
+                    </span>
+                  </p>
+                  <p
+                    className={cn(
+                      ibmPlex700.className,
+                      "text-[#DE5EA6] text-xs"
+                    )}
+                  >
+                    CONSO Bonus :{" "}
+                    <span
+                      className={cn(ibmPlex500.className, "text-xs text-black")}
+                    >
+                      {console.conso_bonus}
+                    </span>
+                  </p>
 
-              <p className={cn(ibmPlex700.className, "text-[#DE5EA6] text-xs")}>
-                Status :{" "}
-                <span
-                  className={cn(ibmPlex500.className, "text-xs text-[#00BA64]")}
-                >
-                  Running...!
-                </span>
-              </p>
-            </div>
-
-            <div className="bg-[#F1F1F1] flex flex-col gap-2 rounded-md border-[0.5px] border-black p-4 tracking-tighter">
-              <p className={cn(ibmPlex700.className, "text-[#DE5EA6] text-xs")}>
-                Console Connected :{" "}
-                <span
-                  className={cn(ibmPlex500.className, "text-xs text-black")}
-                >
-                  Xbox
-                </span>
-              </p>
-              <p className={cn(ibmPlex700.className, "text-[#DE5EA6] text-xs")}>
-                Joined Date :{" "}
-                <span
-                  className={cn(ibmPlex500.className, "text-xs text-black")}
-                >
-                  22-03-2020
-                </span>
-              </p>
-              <p className={cn(ibmPlex700.className, "text-[#DE5EA6] text-xs")}>
-                PS Boost :{" "}
-                <span
-                  className={cn(ibmPlex500.className, "text-xs text-black")}
-                >
-                  2.5x
-                </span>
-              </p>
-              <p className={cn(ibmPlex700.className, "text-[#DE5EA6] text-xs")}>
-                CONSO Bonus :{" "}
-                <span
-                  className={cn(ibmPlex500.className, "text-xs text-black")}
-                >
-                  25,000
-                </span>
-              </p>
-
-              <p className={cn(ibmPlex700.className, "text-[#DE5EA6] text-xs")}>
-                Status :{" "}
-                <span
-                  className={cn(ibmPlex500.className, "text-xs text-[#00BA64]")}
-                >
-                  Running...!
-                </span>
-              </p>
-            </div>
+                  <p
+                    className={cn(
+                      ibmPlex700.className,
+                      "text-[#DE5EA6] text-xs"
+                    )}
+                  >
+                    Status :{" "}
+                    <span
+                      className={cn(
+                        ibmPlex500.className,
+                        console.status == "Mining"
+                          ? "text-xs text-[#00BA64]"
+                          : "text-xs text-[#FF0000]"
+                      )}
+                    >
+                      {console.status}
+                    </span>
+                  </p>
+                </div>
+                <div className="flex justify-end space-x-2 col-span-1">
+                  <Checkbox
+                    id="terms"
+                    checked={console.selected}
+                    onCheckedChange={(state: boolean) =>
+                      setConsoles(
+                        consoles.map((c) =>
+                          c.id === console.id ? { ...c, selected: state } : c
+                        )
+                      )
+                    }
+                  />
+                </div>
+              </div>
+            ))}
           </div>
 
           <div className="flex flex-col gap-3 justify-between px-2 mt-3">

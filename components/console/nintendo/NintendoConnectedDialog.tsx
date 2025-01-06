@@ -7,45 +7,22 @@ import consoleAnimation from "@/public/animations/console-animation.json";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { ConfirmDialog } from "@/components/app/common/ConfirmDialog";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import {
   AddIcon,
   BackArrow,
+  BackIcon,
+  CoinSmallIcon,
   DeleteIcon,
-  SuccessIcon,
 } from "@/components/ui/icons";
-
-const consoleData = [
-  {
-    id: 1,
-    consoleName: "PlayStation",
-    joinedDate: "22-03-2020",
-    psBoost: "2.5x",
-    consoBonus: "25,000",
-    status: "Running",
-    selected: false,
-  },
-  {
-    id: 2,
-    consoleName: "Xbox",
-    joinedDate: "22-03-2020",
-    psBoost: "2.5x",
-    consoBonus: "25,000",
-    status: "Running",
-    selected: false,
-  },
-  {
-    id: 3,
-    consoleName: "Nintendo",
-    joinedDate: "22-03-2020",
-    psBoost: "2.5x",
-    consoBonus: "25,000",
-    status: "Running",
-    selected: false,
-  },
-];
+import { useAppContext } from "@/contexts/AppContext";
+import { ConnectedConsole } from "@/lib/types";
 
 export function NintendoConnectedDialog() {
-  const [consoles, setConsoles] = useState(consoleData);
+  const [consoles, setConsoles] = useState<ConnectedConsole[]>([]);
+
+  const { user } = useAppContext();
 
   function handleDelete() {
     const selectedConsoles = consoles.filter((c) => c.selected);
@@ -55,6 +32,18 @@ export function NintendoConnectedDialog() {
   // scroll to top of screen on component load
   useEffect(() => {
     window.scrollTo(0, 0);
+    const connectedConsoles = user.connected_consoles.nintendo.map(
+      (c, index) => ({
+        id: index.toString(),
+        console_username: c.console_username,
+        joined_date: c.joined_date,
+        console_user_identifier: c.console_user_identifier,
+        conso_bonus: c.conso_bonus,
+        status: c.status,
+        selected: false,
+      })
+    );
+    setConsoles(connectedConsoles);
   }, []);
 
   return (
@@ -92,18 +81,24 @@ export function NintendoConnectedDialog() {
                 jersey.className
               )}
             >
-              PlayStation
+              Nintendo
             </p>
-            <Lottie className="w-32 " animationData={consoleAnimation} />
+            <Lottie
+              className="w-40 mt-[-10px]"
+              animationData={consoleAnimation}
+            />
 
-            <p
-              className={cn(
-                "text-[#FFE500] text-2xl text-nowrap tracking-wider mt-[-30px] mb-[10px]",
-                jersey.className
-              )}
-            >
-              4.5x Boost
-            </p>
+            <div className="flex gap-2 justify-center items-center mt-[-26px]">
+              <CoinSmallIcon />
+              <p
+                className={cn(
+                  "text-[#FFE500] text-2xl text-nowrap tracking-wider",
+                  jersey.className
+                )}
+              >
+                180 tokens/hr
+              </p>
+            </div>
           </div>
         </div>
 
@@ -120,19 +115,17 @@ export function NintendoConnectedDialog() {
               MINING STATUS
             </p>
             <div className="flex gap-3">
-              <div
-                onClick={() => {
-                  console.log("Deleting selected consoles");
-                  handleDelete();
-                  toast("Console removed.", {
-                    className: cn(jersey.className, "text-xl text-white"),
-                    icon: <SuccessIcon />,
-                  });
-                }}
-              >
-                <DeleteIcon />
-              </div>
-              <div onClick={() => console.log("Add")}>
+              <Dialog>
+                <DialogTrigger>
+                  <div>
+                    <DeleteIcon />
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="h-screen border-none backdrop-blur-md">
+                  <ConfirmDialog handleConfirm={handleDelete} />
+                </DialogContent>
+              </Dialog>
+              <div className="flex justify-center items-center">
                 <AddIcon />
               </div>
             </div>
@@ -153,7 +146,7 @@ export function NintendoConnectedDialog() {
                     <span
                       className={cn(ibmPlex500.className, "text-xs text-black")}
                     >
-                      {console.consoleName}
+                      {console.console_username}
                     </span>
                   </p>
                   <p
@@ -166,7 +159,7 @@ export function NintendoConnectedDialog() {
                     <span
                       className={cn(ibmPlex500.className, "text-xs text-black")}
                     >
-                      {console.joinedDate}
+                      {console.joined_date}
                     </span>
                   </p>
                   <p
@@ -179,7 +172,7 @@ export function NintendoConnectedDialog() {
                     <span
                       className={cn(ibmPlex500.className, "text-xs text-black")}
                     >
-                      {console.psBoost}
+                      100
                     </span>
                   </p>
                   <p
@@ -192,7 +185,7 @@ export function NintendoConnectedDialog() {
                     <span
                       className={cn(ibmPlex500.className, "text-xs text-black")}
                     >
-                      {console.consoBonus}
+                      {console.conso_bonus}
                     </span>
                   </p>
 
@@ -206,7 +199,9 @@ export function NintendoConnectedDialog() {
                     <span
                       className={cn(
                         ibmPlex500.className,
-                        "text-xs text-[#00BA64]"
+                        console.status == "Mining"
+                          ? "text-xs text-[#00BA64]"
+                          : "text-xs text-[#FF0000]"
                       )}
                     >
                       {console.status}
@@ -248,8 +243,8 @@ export function NintendoConnectedDialog() {
               )}
             >
               {" "}
-              PlayStation Console holders will act as NODES, contributing data
-              and mining tokens with a 2.5x BOOST multiplier over the base rate.
+              Nintendo Console holders will act as NODES, contributing data and
+              mining tokens with a 2.5x BOOST multiplier over the base rate.
             </p>
           </div>
         </div>

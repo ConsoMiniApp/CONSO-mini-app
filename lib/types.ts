@@ -1,4 +1,12 @@
 // User: User table type
+type ConsoleType =
+  | "playstation"
+  | "xbox"
+  | "steam"
+  | "nintendo"
+  | "bitboy"
+  | "sui";
+
 export interface ConsoUser {
   id: string;
   nickname: string;
@@ -6,12 +14,23 @@ export interface ConsoUser {
   degen_score: number;
   current_boost: number;
   user_points: number;
-  connected_consoles: Object;
+  connected_consoles: {
+    [key in ConsoleType]: ConnectedConsole[];
+  };
   created_at: string;
   completed_missions: number[];
   global_rank: number;
-  my_consoles: Array<string>;
   game_distance: number;
+}
+
+export interface ConnectedConsole {
+  id: string;
+  console_username: string;
+  joined_date: string;
+  console_user_identifier: string;
+  conso_bonus: number;
+  status: string;
+  selected: boolean;
 }
 
 // button types
