@@ -261,7 +261,8 @@ export default function Rank() {
                       {/* {user.current_boost} per hr */}
                     {/* 400 / hr
                     </div> */}
-                    <div className={cn("flex gap-2 mt-1")}>
+                    {/* TO DO */}
+                    {/* <div className={cn("flex gap-2 mt-1")}>
                       {user.my_consoles.length > 0 ? (
                         Object.entries(
                           user.my_consoles.reduce(
@@ -300,7 +301,7 @@ export default function Rank() {
                           -NA-
                         </div>
                       )}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

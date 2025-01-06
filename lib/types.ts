@@ -106,7 +106,6 @@ export interface XboxUserData {
   isSponsoredUser: boolean;
 }
 
-// TO DO: Add the NintendoGameDataType interface
 export interface NintendoGameDataType {
   titleId: string;
   name: string;
@@ -127,7 +126,6 @@ export interface NintendoUserData {
   isSponsoredUser: boolean;
 }
 
-// TO DO: Add the Steam interface
 export interface SteamGameDataType {
   titleId: string;
   name: string;

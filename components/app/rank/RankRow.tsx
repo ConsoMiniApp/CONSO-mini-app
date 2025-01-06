@@ -122,10 +122,11 @@ const RankRow = ({ row, index, expandRow, rowExpanded }: RankRowProps) => {
               >
                 {row.current_boost} x
               </div> */}
-              <div className={cn("flex gap-2 mt-1")}>
-                {row.my_consoles.length > 0 ? (
+              {/* TO DO */}
+              {/* <div className={cn("flex gap-2 mt-1")}>
+                {row.connected_consoles.length > 0 ? (
                   Object.entries(
-                    row.my_consoles.reduce(
+                    row.connected_consoles.reduce(
                       (acc: Record<string, number>, console: string) => {
                         acc[console] = (acc[console] || 0) + 1;
                         return acc;
@@ -161,7 +162,7 @@ const RankRow = ({ row, index, expandRow, rowExpanded }: RankRowProps) => {
                     -NA-
                   </div>
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
