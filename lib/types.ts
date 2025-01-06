@@ -1,11 +1,15 @@
 // User: User table type
-type ConsoleType =
+export type ConsoleType =
   | "playstation"
   | "xbox"
   | "steam"
   | "nintendo"
   | "bitboy"
   | "sui";
+
+export type ConnectedConsoles = {
+  [key in ConsoleType]: ConnectedConsole[];
+};
 
 export interface ConsoUser {
   id: string;
@@ -14,9 +18,7 @@ export interface ConsoUser {
   degen_score: number;
   current_boost: number;
   user_points: number;
-  connected_consoles: {
-    [key in ConsoleType]: ConnectedConsole[];
-  };
+  connected_consoles: ConnectedConsoles;
   created_at: string;
   completed_missions: number[];
   global_rank: number;

@@ -17,10 +17,6 @@ export function ConfirmDialog({ handleConfirm }: ConfirmDialogProps) {
   function handleClick() {
     console.log("Deleting selected consoles");
     handleConfirm();
-    toast("Console removed.", {
-      className: cn(jersey.className, "text-xl text-white"),
-      icon: <SuccessIcon />,
-    });
   }
 
   return (
@@ -28,7 +24,7 @@ export function ConfirmDialog({ handleConfirm }: ConfirmDialogProps) {
       <div className="flex justify-center items-center">
         <div className="bg-white h-60 w-[90%] rounded-md shadow-xl flex flex-col justify-center items-center text-center p-6">
           <p className={cn(ibmPlex500.className, "text-lg mb-8")}>
-            Are you sure you want to delete selected consoles?
+            Are you sure you want to delete selected console(s)?
           </p>
           <div className="flex gap-4">
             <DialogClose>

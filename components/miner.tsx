@@ -49,15 +49,10 @@ import {
 import { createClient } from "@/utils/supabase/client";
 import { NicknameInput } from "./app/miner/NicknameInput";
 import { MinerTabSkeleton } from "./app/miner/MinerTabSkeleton";
-
-const defaultConnectButtons = {
-  playstation: CustomButtonType.PRIMARY,
-  xbox: CustomButtonType.PRIMARY,
-  nintendo: CustomButtonType.PRIMARY,
-  steam: CustomButtonType.PRIMARY,
-  bitboy: CustomButtonType.INACTIVE,
-  sui: CustomButtonType.INACTIVE,
-};
+import {
+  getConnectButtons,
+  defaultConnectButtons,
+} from "@/lib/helpers/getConnectButtons";
 
 const videoSrc = "/videos/ad.mp4";
 const advertiserInfo = {
@@ -254,32 +249,9 @@ export default function Miner() {
 
     if (data) {
       setUserData(data);
+
       if (data.connected_consoles !== null) {
-        setConnectButtons({
-          ...connectButtons,
-          playstation:
-            data.connected_consoles.playstation !== undefined &&
-            data.connected_consoles.playstation.length > 0
-              ? CustomButtonType.SUCCESS
-              : CustomButtonType.PRIMARY,
-          xbox:
-            data.connected_consoles.xbox !== undefined &&
-            data.connected_consoles.xbox.length > 0
-              ? CustomButtonType.SUCCESS
-              : CustomButtonType.PRIMARY,
-          steam:
-            data.connected_consoles.steam !== undefined &&
-            data.connected_consoles.steam.length > 0
-              ? CustomButtonType.SUCCESS
-              : CustomButtonType.PRIMARY,
-          nintendo:
-            data.connected_consoles.nintendo !== undefined &&
-            data.connected_consoles.nintendo.length > 0
-              ? CustomButtonType.SUCCESS
-              : CustomButtonType.PRIMARY,
-          bitboy: CustomButtonType.INACTIVE,
-          sui: CustomButtonType.INACTIVE,
-        });
+        setConnectButtons(getConnectButtons(data.connected_consoles));
       }
 
       setPointBalance(Number(data.user_points));
@@ -319,6 +291,12 @@ export default function Miner() {
   useEffect(() => {
     if (telegramUsername) fetchUserData();
   }, [telegramUsername]);
+
+  useEffect(() => {
+    if (user.connected_consoles !== null) {
+      setConnectButtons(getConnectButtons(user.connected_consoles));
+    }
+  }, [user]);
 
   // scroll to top of screen on component load
   useEffect(() => {
@@ -695,7 +673,7 @@ export default function Miner() {
                             handleClick={handlePlayStationConnect}
                           />
                         </DialogTrigger>
-                        <DialogContent className="  w-[100%] h-[100%] border-none bg-[#5C6E7E]">
+                        <DialogContent className="w-[100%] h-[100%] border-none bg-[#5C6E7E]">
                           <PlayStationConnectDialog />
                         </DialogContent>
                       </Dialog>
@@ -709,6 +687,7 @@ export default function Miner() {
                         </DialogTrigger>
                         <DialogContent className=" w-[100%] h-[100%] border-none bg-[#5C6E7E] ">
                           <PlaystationConnectedDialog />
+                          {/* <ConnectDialogSkeleton /> */}
                         </DialogContent>
                       </Dialog>
                     )}
