@@ -3,7 +3,7 @@ import Image from "next/image";
 import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import CustomButton from "@/components/app/common/CustomButton";
-import { CustomButtonType } from "@/lib/types";
+import { CustomButtonType, PlaystationGameData } from "@/lib/types";
 import { BackArrow, ErrorIcon, SuccessIcon } from "@/components/ui/icons";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
@@ -15,6 +15,7 @@ import { Circle, Loader, Loader2 } from "lucide-react";
 import RetroLoader from "@/components/app/common/RetroLoader";
 import ConnectDialogSkeleton from "../ConnectDialogSkeleton";
 import { PlaystationConnectedDialog } from "./PlaystationConnectedDialog";
+import { calculateGameBonus } from "@/lib/psn/calculateConsoBonus";
 
 export function PlayStationConnectDialog() {
   const supabase = createClient();
@@ -108,6 +109,10 @@ export function PlayStationConnectDialog() {
         throw new Error("Error");
       }
 
+      let consoleConnectionBonus = calculateGameBonus({
+        games: gameDataRes.data.data,
+      });
+
       // add playstation to user data.connected_consoles
       const { data: userData, error: userError } = await supabase
         .from("users_table")
@@ -121,11 +126,12 @@ export function PlayStationConnectDialog() {
                 joined_date: new Date().toISOString(),
                 console_user_identifier:
                   userDataRes.data.data.profile.accountId,
-                conso_bonus: 20000, // calculated based on game data
+                conso_bonus: consoleConnectionBonus,
                 status: "Mining",
               },
             ],
           },
+          user_points: user.user_points + consoleConnectionBonus,
         })
         .eq("username", telegramUsername);
 

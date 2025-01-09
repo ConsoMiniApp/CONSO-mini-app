@@ -48,7 +48,8 @@ export enum CustomButtonType {
   TASK_COIN_AMOUNT = "taskcoinamount",
 }
 
-export interface GameData {
+// Playstation
+export interface PlaystationGameData {
   npServiceName: string;
   npCommunicationId: string;
   trophySetVersion: string;
@@ -74,6 +75,7 @@ export interface GameData {
   lastUpdatedDateTime: string;
 }
 
+// Xbox
 interface GameAchievement {
   currentAchievements: number;
   totalAchievements: number;
@@ -108,6 +110,7 @@ export interface XboxUserData {
   isSponsoredUser: boolean;
 }
 
+// Nintendo
 export interface NintendoGameDataType {
   titleId: string;
   name: string;
@@ -128,6 +131,7 @@ export interface NintendoUserData {
   isSponsoredUser: boolean;
 }
 
+// Steam
 export interface SteamGameDataType {
   titleId: string;
   name: string;

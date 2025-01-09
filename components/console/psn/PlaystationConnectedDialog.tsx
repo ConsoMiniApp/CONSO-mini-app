@@ -21,6 +21,7 @@ import { useAppContext } from "@/contexts/AppContext";
 import { ConnectedConsole } from "@/lib/types";
 import ConnectDialogSkeleton from "../ConnectDialogSkeleton";
 import { createClient } from "@/utils/supabase/client";
+import { calculateGameEmissions } from "@/lib/psn/calculateConsoEmissions";
 
 export function PlaystationConnectedDialog() {
   const supabase = createClient();
@@ -146,7 +147,7 @@ export function PlaystationConnectedDialog() {
                     jersey.className
                   )}
                 >
-                  180 tokens/hr
+                  {calculateGameEmissions([""])} tokens/hr
                 </p>
               </div>
             </div>
