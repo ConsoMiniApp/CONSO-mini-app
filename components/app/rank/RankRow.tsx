@@ -5,6 +5,7 @@ import {
   SteamColoredLogo,
   XboxColoredLogo,
 } from "@/components/ui/icons";
+import { checkForNoConsoles } from "@/lib/helpers/checkForNoConsoles";
 import { ConsoUser } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -15,16 +16,7 @@ interface RankRowProps {
   rowExpanded: boolean;
 }
 
-const consoleLogos: any = {
-  "Play Station": PlaystationColoredLogo,
-  Xbox: XboxColoredLogo,
-  "Steam Deck": SteamColoredLogo,
-  Nintendo: NintendoColoredLogo,
-};
-
 const RankRow = ({ row, index, expandRow, rowExpanded }: RankRowProps) => {
-  // const [rowExpanded, setRowExpanded] = useState(false);
-
   function handleRowClick() {
     expandRow(index);
   }
@@ -123,36 +115,8 @@ const RankRow = ({ row, index, expandRow, rowExpanded }: RankRowProps) => {
                 {row.current_boost} x
               </div> */}
               {/* TO DO */}
-              {/* <div className={cn("flex gap-2 mt-1")}>
-                {row.connected_consoles.length > 0 ? (
-                  Object.entries(
-                    row.connected_consoles.reduce(
-                      (acc: Record<string, number>, console: string) => {
-                        acc[console] = (acc[console] || 0) + 1;
-                        return acc;
-                      },
-                      {}
-                    )
-                  ).map(([console, count]: [string, number]) => {
-                    const Logo = consoleLogos[console];
-                    if (!Logo) return null;
-                    return (
-                      <div className="flex items-center gap-1">
-                        <Logo />
-                        {count > 1 && (
-                          <span
-                            className={cn(
-                              jersey.className,
-                              "text-sm tracking-wider text-black"
-                            )}
-                          >
-                            x{count}
-                          </span>
-                        )}
-                      </div>
-                    );
-                  })
-                ) : (
+              <div className={cn("flex gap-2 mt-1")}>
+                {checkForNoConsoles(row.connected_consoles) ? (
                   <div
                     className={cn(
                       jersey.className,
@@ -161,8 +125,48 @@ const RankRow = ({ row, index, expandRow, rowExpanded }: RankRowProps) => {
                   >
                     -NA-
                   </div>
+                ) : (
+                  Object.entries(row.connected_consoles).map(
+                    ([consoleType, consoleData]) => {
+                      const count = consoleData.length;
+
+                      const Logo = () => {
+                        switch (consoleType) {
+                          case "nintendo":
+                            return <NintendoColoredLogo />;
+                          case "playstation":
+                            return <PlaystationColoredLogo />;
+                          case "xbox":
+                            return <XboxColoredLogo />;
+                          case "steam":
+                            return <SteamColoredLogo />;
+                          default:
+                            return null;
+                        }
+                      };
+
+                      return (
+                        <div
+                          key={consoleType}
+                          className="flex items-center gap-1"
+                        >
+                          <Logo />
+                          {count > 1 && (
+                            <span
+                              className={cn(
+                                jersey.className,
+                                "text-sm tracking-wider text-black"
+                              )}
+                            >
+                              x{count}
+                            </span>
+                          )}
+                        </div>
+                      );
+                    }
+                  )
                 )}
-              </div> */}
+              </div>
             </div>
           </div>
         </div>

@@ -11,15 +11,14 @@ import {
 import { useEffect, useState } from "react";
 import { useAppContext } from "@/contexts/AppContext";
 import { createClient } from "@/utils/supabase/client";
-import { ConsoUser } from "@/lib/types";
+import {
+  ConnectedConsole,
+  ConnectedConsoles,
+  ConsoleType,
+  ConsoUser,
+} from "@/lib/types";
 import { RankTabSkeleton } from "./app/rank/RankTabSkeleton";
-
-const consoleLogos: any = {
-  "Play Station": PlaystationColoredLogo,
-  Xbox: XboxColoredLogo,
-  "Steam Deck": SteamColoredLogo,
-  Nintendo: NintendoColoredLogo,
-};
+import { checkForNoConsoles } from "@/lib/helpers/checkForNoConsoles";
 
 // create interface for RankRow type which has ConsoUser and rowExpanded boolean
 interface RankRowUsers extends ConsoUser {
@@ -261,37 +260,9 @@ export default function Rank() {
                       {/* {user.current_boost} per hr */}
                     {/* 400 / hr
                     </div> */}
-                    {/* TO DO */}
-                    {/* <div className={cn("flex gap-2 mt-1")}>
-                      {user.my_consoles.length > 0 ? (
-                        Object.entries(
-                          user.my_consoles.reduce(
-                            (acc: Record<string, number>, console: string) => {
-                              acc[console] = (acc[console] || 0) + 1;
-                              return acc;
-                            },
-                            {}
-                          )
-                        ).map(([console, count]: [string, number]) => {
-                          const Logo = consoleLogos[console];
-                          if (!Logo) return null;
-                          return (
-                            <div className="flex items-center gap-1">
-                              <Logo />
-                              {count > 1 && (
-                                <span
-                                  className={cn(
-                                    jersey.className,
-                                    "text-sm tracking-wider text-black"
-                                  )}
-                                >
-                                  x{count}
-                                </span>
-                              )}
-                            </div>
-                          );
-                        })
-                      ) : (
+
+                    <div className={cn("flex gap-2 mt-1")}>
+                      {checkForNoConsoles(user.connected_consoles) ? (
                         <div
                           className={cn(
                             jersey.className,
@@ -300,8 +271,47 @@ export default function Rank() {
                         >
                           -NA-
                         </div>
+                      ) : (
+                        Object.entries(user.connected_consoles).map(
+                          ([consoleType, consoleData]) => {
+                            const count = consoleData.length;
+                            const Logo = () => {
+                              switch (consoleType) {
+                                case "nintendo":
+                                  return <NintendoColoredLogo />;
+                                case "playstation":
+                                  return <PlaystationColoredLogo />;
+                                case "xbox":
+                                  return <XboxColoredLogo />;
+                                case "steam":
+                                  return <SteamColoredLogo />;
+                                default:
+                                  return null;
+                              }
+                            };
+
+                            return (
+                              <div
+                                key={consoleType}
+                                className="flex items-center gap-1"
+                              >
+                                <Logo />
+                                {count > 1 && (
+                                  <span
+                                    className={cn(
+                                      jersey.className,
+                                      "text-sm tracking-wider text-black"
+                                    )}
+                                  >
+                                    x{count}
+                                  </span>
+                                )}
+                              </div>
+                            );
+                          }
+                        )
                       )}
-                    </div> */}
+                    </div>
                   </div>
                 </div>
               </div>
