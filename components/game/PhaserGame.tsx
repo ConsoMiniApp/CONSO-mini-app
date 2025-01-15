@@ -1,6 +1,13 @@
 import { forwardRef, useEffect, useLayoutEffect, useRef } from "react";
 import StartGame from "./main";
 import { EventBus } from "./EventBus";
+import {
+  CharacterOptionsType,
+  EnvironmentOptionsType,
+  GameInitSettings,
+  JetpackOptionsType,
+} from "./types";
+import { characterOptions } from "./constants";
 
 export interface IRefPhaserGame {
   game: Phaser.Game | null;
@@ -9,15 +16,23 @@ export interface IRefPhaserGame {
 
 interface IProps {
   currentActiveScene?: (scene_instance: Phaser.Scene) => void;
+  gameInitSettings: GameInitSettings;
 }
 
 export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(
-  function PhaserGame({ currentActiveScene }, ref) {
+  function PhaserGame({ currentActiveScene, gameInitSettings }, ref) {
     const game = useRef<Phaser.Game | null>(null!);
+
+    console.log(
+      "PhaserGame initialized with :",
+      gameInitSettings.character,
+      gameInitSettings.jetpack,
+      gameInitSettings.environment
+    );
 
     useLayoutEffect(() => {
       if (game.current === null) {
-        game.current = StartGame("game-container");
+        game.current = StartGame("game-container", gameInitSettings);
 
         if (typeof ref === "function") {
           ref({ game: game.current, scene: null });

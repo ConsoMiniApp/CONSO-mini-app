@@ -47,7 +47,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       sui: [],
     },
     global_rank: 0,
-    game_distance: 0,
+    game_total_distance: 0,
   });
 
   // const state: AppState = { pointBalance, message };

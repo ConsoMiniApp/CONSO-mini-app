@@ -55,7 +55,7 @@ const RankRow = ({ row, index, expandRow, rowExpanded }: RankRowProps) => {
                 jersey.className
               )}
             >
-              {row.game_distance} m
+              {row.game_total_distance} m
             </span>
             <span
               className={cn(

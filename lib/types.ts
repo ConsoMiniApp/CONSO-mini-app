@@ -22,7 +22,7 @@ export interface ConsoUser {
   created_at: string;
   completed_missions: number[];
   global_rank: number;
-  game_distance: number;
+  game_total_distance: number;
 }
 
 export interface ConnectedConsole {

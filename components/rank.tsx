@@ -203,7 +203,7 @@ export default function Rank() {
                     jersey.className
                   )}
                 >
-                  {user?.game_distance} m
+                  {user?.game_total_distance} m
                 </span>
                 <span
                   className={cn(

@@ -1,30 +1,44 @@
-import { Game } from "./scenes/Game";
 import { AUTO } from "phaser";
 import Phaser from "phaser";
+import { MainGame } from "./scenes/MainGame";
+import { GameInitSettings } from "./types";
+import { GameOver } from "./scenes/GameOver";
+import { MysteryBoxCardScene } from "./scenes/card-scenes/MysteryBoxCardScene";
+import { ResumeGameCardScene } from "./scenes/card-scenes/ResumeGameCardScene";
 
-//  Find out more information about the Game Config at:
-//  https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
-const config: Phaser.Types.Core.GameConfig = {
-  type: AUTO,
-  width: 800,
-  height: 600,
-  scale: {
-    mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-  },
-  physics: {
-    default: "arcade",
-    arcade: {
-      gravity: { x: 0, y: 300 },
-      debug: false,
+const StartGame = (parent: string, gameInitSettings: GameInitSettings) => {
+  const config: Phaser.Types.Core.GameConfig = {
+    type: AUTO,
+    width: 1800,
+    height: 1000,
+    physics: {
+      default: "arcade",
+      arcade: {
+        gravity: { x: 0, y: 900 },
+        debug: false,
+        // debug: process.env.NEXT_PUBLIC_NODE_ENV === "development",
+      },
     },
-  },
-  parent: "game-container",
-  backgroundColor: "#028af8",
-  scene: [Game],
-};
-
-const StartGame = (parent: string) => {
+    scale: {
+      mode: Phaser.Scale.FIT,
+      autoCenter: Phaser.Scale.CENTER_BOTH,
+    },
+    parent: "game-container",
+    backgroundColor: "#028af8",
+    scene: [
+      new MainGame(
+        gameInitSettings.character,
+        gameInitSettings.environment,
+        gameInitSettings.jetpack
+      ),
+      GameOver,
+      MysteryBoxCardScene,
+      ResumeGameCardScene,
+    ],
+    input: {
+      activePointers: 1,
+    },
+  };
   return new Phaser.Game({ ...config, parent });
 };
 
