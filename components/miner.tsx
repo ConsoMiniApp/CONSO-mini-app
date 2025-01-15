@@ -301,18 +301,18 @@ export default function Miner() {
 
   // scroll to top of screen on component load
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (window && typeof window !== "undefined") window.scrollTo(0, 0);
   }, []);
 
   let acceptedTerms = false;
-  if (typeof window !== "undefined") {
+  if (window && typeof window !== "undefined") {
     const alreadyAcceptedTerms = localStorage.getItem("termsAccepted");
     if (alreadyAcceptedTerms === "true") {
       acceptedTerms = true;
     }
   }
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (window && typeof window !== "undefined") {
       const alreadyAcceptedTerms = localStorage.getItem("termsAccepted");
       if (alreadyAcceptedTerms === "true") {
         setTermsAccepted(true);

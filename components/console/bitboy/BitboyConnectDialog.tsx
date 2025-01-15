@@ -9,7 +9,7 @@ import { useEffect } from "react";
 export function BitboyConnectDialog() {
   // scroll to top of screen on component load
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (window && typeof window !== "undefined") window.scrollTo(0, 0);
   }, []);
   return (
     <>
