@@ -1,3 +1,4 @@
+"use client";
 import { cn } from "@/lib/utils";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";

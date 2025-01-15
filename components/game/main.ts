@@ -1,3 +1,4 @@
+"use client";
 import { AUTO } from "phaser";
 import * as Phaser from "phaser";
 import { MainGame } from "./scenes/MainGame";

@@ -1,3 +1,4 @@
+"use client";
 import { ConsoUser } from "@/lib/types";
 import React, {
   createContext,
