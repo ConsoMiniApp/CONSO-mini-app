@@ -1,5 +1,5 @@
 import { AUTO } from "phaser";
-import Phaser from "phaser";
+import * as Phaser from "phaser";
 import { MainGame } from "./scenes/MainGame";
 import { GameInitSettings } from "./types";
 import { GameOver } from "./scenes/GameOver";

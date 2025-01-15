@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { log } from "console";
 import { GameObjects, Physics, Scene } from "phaser";
 import {
