@@ -305,14 +305,26 @@ export default function Miner() {
   }, []);
 
   let acceptedTerms = false;
-  if (window && typeof window !== "undefined") {
+
+  if (
+    window &&
+    navigator &&
+    typeof window !== "undefined" &&
+    typeof navigator !== "undefined"
+  ) {
     const alreadyAcceptedTerms = localStorage.getItem("termsAccepted");
     if (alreadyAcceptedTerms === "true") {
       acceptedTerms = true;
     }
   }
+
   useEffect(() => {
-    if (window && typeof window !== "undefined") {
+    if (
+      window &&
+      navigator &&
+      typeof window !== "undefined" &&
+      typeof navigator !== "undefined"
+    ) {
       const alreadyAcceptedTerms = localStorage.getItem("termsAccepted");
       if (alreadyAcceptedTerms === "true") {
         setTermsAccepted(true);
@@ -396,7 +408,7 @@ export default function Miner() {
 
               {/* Key Info Section : TO REMOVE  */}
 
-              <div className="flex justify-center gap-2 mb-4">
+              {/* <div className="flex justify-center gap-2 mb-4">
                 <div
                   className="w-[73.33px] h-[27px] flex justify-center items-center rounded-lg"
                   style={{
@@ -445,10 +457,10 @@ export default function Miner() {
                   />
                   <span className={cn(jersey.className)}>x4</span>
                 </div>
-              </div>
+              </div> */}
 
               {/* User Multipliers and Info Section */}
-              <div className="flex gap-2 ml-8 justify-center mb-4">
+              {/* <div className="flex gap-2 ml-8 justify-center mb-4">
                 <div>
                   <div className="grid grid-cols-4 justify-left items-left">
                     <div className="col-span-1 flex items-center justify-center">
@@ -513,22 +525,13 @@ export default function Miner() {
                         jersey.className
                       )}
                     >
-                      {/* {user?.my_consoles.map((console) => (
-                        <p>{console}</p>
-                      ))}
-
-                      {user?.my_consoles.length === 0 && <p>--- NA ---</p>} */}
-
                       <p>--- NA ---</p>
-
-                      {/* <p>Play Station </p>
-                      <p>Xbox</p>
-                      <p>Steam Deck</p>
-                      <p>Nintendo</p> */}
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
+
+              <div className="h-[187px]"></div>
             </div>
 
             {/* Tap and Ads Section */}
@@ -663,7 +666,7 @@ export default function Miner() {
                         "text-xl text-white mr-2 tracking-[0.05em]"
                       )}
                     >
-                      4.5x
+                      2.5x
                     </p>
 
                     {connectButtons.playstation === CustomButtonType.PRIMARY ? (
@@ -715,7 +718,7 @@ export default function Miner() {
                         "text-xl text-white mr-2 tracking-[0.05em]"
                       )}
                     >
-                      4.5x
+                      2.5x
                     </p>
 
                     {connectButtons.xbox === CustomButtonType.PRIMARY ? (
@@ -766,7 +769,7 @@ export default function Miner() {
                         "text-xl text-white mr-2 tracking-[0.05em]"
                       )}
                     >
-                      4.5x
+                      2.0x
                     </p>
 
                     {connectButtons.steam === CustomButtonType.PRIMARY ? (
@@ -817,7 +820,7 @@ export default function Miner() {
                         "text-xl text-white mr-2 tracking-[0.05em]"
                       )}
                     >
-                      4.5x
+                      1.5x
                     </p>
                     {connectButtons.nintendo === CustomButtonType.PRIMARY ? (
                       <Dialog>

@@ -46,7 +46,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && typeof navigator !== "undefined") {
       getTelegramUserDetails();
     }
   }, []);

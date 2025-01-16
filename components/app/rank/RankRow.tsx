@@ -106,15 +106,6 @@ const RankRow = ({ row, index, expandRow, rowExpanded }: RankRowProps) => {
             </div>
 
             <div className="grid grid-cols-2 ">
-              {/* <div
-                className={cn(
-                  jersey.className,
-                  "text-lg tracking-wider text-black"
-                )}
-              >
-                {row.current_boost} x
-              </div> */}
-              {/* TO DO */}
               <div className={cn("flex gap-2 mt-1")}>
                 {checkForNoConsoles(row.connected_consoles) ? (
                   <div

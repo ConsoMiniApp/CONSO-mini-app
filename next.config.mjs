@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // experimental: { ppr: false },
   reactStrictMode: true,
   images: {
     domains: [

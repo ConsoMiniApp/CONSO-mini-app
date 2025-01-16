@@ -6,10 +6,13 @@ import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 import { BackArrow, SuccessIcon } from "@/components/ui/icons";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export function SteamConnectDialog() {
   // scroll to top of screen on component load
+
+  const [ownSteamDeck, setOwnSteamDeck] = useState(false);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -104,23 +107,6 @@ export function SteamConnectDialog() {
           <div className="flex flex-col gap-3 px-1 mt-3">
             {/* Console Connected Card */}
             <div className=" flex flex-col gap-3 tracking-tighter">
-              {/* <p className={cn(ibmPlex500.className, " text-xs")}>
-                <span
-                  className={cn(ibmPlex700.className, "text-xs text-black")}
-                >
-                  1.{" "}
-                </span>
-                Log in to{" "}
-                <a
-                  href="https://xbl.io"
-                  target="__blank"
-                  className="underline text-[#002E87]"
-                >
-                  https://xbl.io
-                </a>{" "}
-                and create an API key.
-              </p> */}
-
               <p className={cn(ibmPlex500.className, " text-xs flex gap-1")}>
                 <span
                   className={cn(ibmPlex700.className, "text-xs text-black")}
@@ -151,6 +137,39 @@ export function SteamConnectDialog() {
                     ibmPlex500.className
                   )}
                 />
+
+                <p className={cn(ibmPlex500.className, " text-xs flex gap-2")}>
+                  <span
+                    className={cn(ibmPlex700.className, "text-xs text-black ")}
+                  >
+                    <Checkbox
+                      className="h-4 w-4"
+                      id="terms"
+                      checked={ownSteamDeck}
+                      onCheckedChange={(state: boolean) => {
+                        console.log("Selected", state);
+                        setOwnSteamDeck(state);
+                      }}
+                    />
+                  </span>
+                  <span>
+                    Do you own a steam deck?
+                    <br />
+                    <br />
+                    {ownSteamDeck ? "Enter Steam Deck Serial Number" : ""}
+                  </span>
+                </p>
+
+                {ownSteamDeck && (
+                  <input
+                    type="text"
+                    placeholder="STEAM_DECK_SERIAL_NUMBER"
+                    className={cn(
+                      "border-2 border-gray-400 bg-[#D7D7D7] rounded-lg p-2  ml-4 text-xs tracking-wider mr-2",
+                      ibmPlex500.className
+                    )}
+                  />
+                )}
 
                 <p
                   className={cn(

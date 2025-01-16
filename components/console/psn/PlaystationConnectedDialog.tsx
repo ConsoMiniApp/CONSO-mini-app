@@ -147,7 +147,7 @@ export function PlaystationConnectedDialog() {
                     jersey.className
                   )}
                 >
-                  {calculateGameEmissions([""])} tokens/hr
+                  {calculateGameEmissions(consoles)} tokens/day
                 </p>
               </div>
             </div>

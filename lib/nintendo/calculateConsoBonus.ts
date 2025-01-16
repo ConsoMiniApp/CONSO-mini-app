@@ -28,14 +28,20 @@ export const calculateGameBonus = (data: GameData) => {
   if (weightedAverage > 0.5) {
     gamingDegenScore = 1;
   } else {
-    gamingDegenScore = weightedAverage * 2;
+    if (weightedAverage < 0.15) {
+      gamingDegenScore = 0.3;
+    } else {
+      gamingDegenScore = weightedAverage * 2;
+    }
   }
 
-  // console.log("Normalized Weighted average :", weightedAverage);
-
   // Adjust if less than 5 games
-  const finalBonus =
-    (gamesConsidered / 5) * gamingDegenScore * MAX_PLAYSTATION_BONUS;
+  if (gamesConsidered == 0) {
+    return MAX_PLAYSTATION_BONUS * 0.25;
+  } else {
+    const finalBonus =
+      (gamesConsidered / 5) * gamingDegenScore * MAX_PLAYSTATION_BONUS;
 
-  return Math.floor(finalBonus);
+    return Math.floor(finalBonus);
+  }
 };

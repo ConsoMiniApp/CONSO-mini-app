@@ -33,6 +33,7 @@ export interface ConnectedConsole {
   conso_bonus: number;
   status: string;
   selected: boolean;
+  degen_score?: number;
 }
 
 // button types
