@@ -2,7 +2,12 @@
 import BottomTabNavigation from "@/components/bottom-tab-navigation";
 import { useAppContext } from "@/contexts/AppContext";
 import { validateTelgramUser } from "@/lib/telegram/validateUser";
+import dynamic from "next/dynamic";
 import { useEffect } from "react";
+const AppWithoutSSR = dynamic(
+  () => import("@/components/bottom-tab-navigation"),
+  { ssr: false }
+);
 
 export default function Home() {
   const { telegramUsername, setTelegramUsername } = useAppContext();
@@ -53,7 +58,8 @@ export default function Home() {
 
   return (
     <div>
-      <BottomTabNavigation />
+      {/* <BottomTabNavigation /> */}
+      <AppWithoutSSR />
     </div>
   );
 }
