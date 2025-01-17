@@ -27,7 +27,12 @@ export default function Home() {
       //@ts-ignore
       window.Telegram.WebApp.disableVerticalSwipes();
       //@ts-ignore
+      window.Telegram.WebApp.lockOrientation();
+      //@ts-ignore
       window.Telegram.WebApp.requestFullscreen();
+      //@ts-ignore
+      const insets = window.Telegram.WebApp.SafeAreaInset;
+      console.log("Telegram Safe Inset Valuse", insets);
       // console.log("Telegram init Data", urlEncodedData);
     } else {
       urlEncodedData =
