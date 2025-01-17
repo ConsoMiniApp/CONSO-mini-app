@@ -25,6 +25,8 @@ export default function Home() {
       //@ts-ignore
       urlEncodedData = window.Telegram.WebApp.initData;
       //@ts-ignore
+      window.Telegram.WebApp.disableVerticalSwipes();
+      //@ts-ignore
       window.Telegram.WebApp.requestFullscreen();
       // console.log("Telegram init Data", urlEncodedData);
     } else {
