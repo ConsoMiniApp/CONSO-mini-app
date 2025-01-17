@@ -24,6 +24,8 @@ export default function Home() {
     if (process.env.NEXT_PUBLIC_NODE_ENV === "production") {
       //@ts-ignore
       urlEncodedData = window.Telegram.WebApp.initData;
+      //@ts-ignore
+      window.Telegram.WebApp.requestFullscreen();
       // console.log("Telegram init Data", urlEncodedData);
     } else {
       urlEncodedData =
