@@ -3,7 +3,7 @@ import BottomTabNavigation from "@/components/bottom-tab-navigation";
 import { useAppContext } from "@/contexts/AppContext";
 import { validateTelgramUser } from "@/lib/telegram/validateUser";
 import dynamic from "next/dynamic";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 const AppWithoutSSR = dynamic(
   () => import("@/components/bottom-tab-navigation"),
   { ssr: false }
@@ -11,6 +11,12 @@ const AppWithoutSSR = dynamic(
 
 export default function Home() {
   const { telegramUsername, setTelegramUsername } = useAppContext();
+  const [safeAreaInsets, setSafeAreaInsets] = useState({
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  });
   async function verifyTelegramUser(urlEncodedData: string) {
     const response = await validateTelgramUser(urlEncodedData);
 
@@ -23,16 +29,24 @@ export default function Home() {
 
     if (process.env.NEXT_PUBLIC_NODE_ENV === "production") {
       //@ts-ignore
-      urlEncodedData = window.Telegram.WebApp.initData;
+      const tg = window.Telegram.WebApp;
       //@ts-ignore
-      window.Telegram.WebApp.disableVerticalSwipes();
+      urlEncodedData = tg.initData;
       //@ts-ignore
-      window.Telegram.WebApp.lockOrientation();
+      tg.disableVerticalSwipes();
       //@ts-ignore
-      window.Telegram.WebApp.requestFullscreen();
+      tg.lockOrientation();
       //@ts-ignore
-      const insets = window.Telegram.WebApp.SafeAreaInset;
-      console.log("Telegram Safe Inset Valuse", insets);
+      tg.requestFullscreen();
+      //@ts-ignore
+      // Set Safe Area Insets
+      setSafeAreaInsets({
+        top: tg?.SafeAreaInset?.top || 0,
+        bottom: tg?.SafeAreaInset?.bottom || 0,
+        left: tg?.SafeAreaInset?.left || 0,
+        right: tg?.SafeAreaInset?.right || 0,
+      });
+
       // console.log("Telegram init Data", urlEncodedData);
     } else {
       urlEncodedData =
@@ -66,7 +80,14 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <div
+      style={{
+        paddingTop: `${safeAreaInsets.top}px`,
+        paddingBottom: `${safeAreaInsets.bottom}px`,
+        paddingLeft: `${safeAreaInsets.left}px`,
+        paddingRight: `${safeAreaInsets.right}px`,
+      }}
+    >
       {/* <BottomTabNavigation /> */}
       <AppWithoutSSR />
     </div>
