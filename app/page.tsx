@@ -11,12 +11,7 @@ const AppWithoutSSR = dynamic(
 
 export default function Home() {
   const { telegramUsername, setTelegramUsername } = useAppContext();
-  const [safeAreaInsets, setSafeAreaInsets] = useState({
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-  });
+
   async function verifyTelegramUser(urlEncodedData: string) {
     const response = await validateTelgramUser(urlEncodedData);
 
@@ -39,18 +34,22 @@ export default function Home() {
       //@ts-ignore
       tg.requestFullscreen();
       //@ts-ignore
-      // Set Safe Area Insets
-      setSafeAreaInsets({
-        top: tg?.SafeAreaInset?.top || 0,
-        bottom: tg?.SafeAreaInset?.bottom || 0,
-        left: tg?.SafeAreaInset?.left || 0,
-        right: tg?.SafeAreaInset?.right || 0,
-      });
+      tg.enableClosingConfirmation();
 
       // console.log("Telegram init Data", urlEncodedData);
     } else {
       urlEncodedData =
         "query_id=AAGxXiEyAAAAALFeITJSbJqG&user=%7B%22id%22%3A841047729%2C%22first_name%22%3A%22MHT%22%2C%22last_name%22%3A%22%7C%20AlphaDevs%22%2C%22username%22%3A%22mht0x%22%2C%22language_code%22%3A%22en%22%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FAVbOg0HTNE5Rmsm8HgAjWfe_J9CiAjOVycFzJCcwonI.svg%22%7D&auth_date=1735018277&signature=wA_Nt7Qr9St_Wy-XZr2iWHefDLgzvZCSPc19rNsvfveHcoGbgdhOf7MYoOHFSCB6fVqNgRuzcjTgOE_TFWSWDA&hash=012c965a6f2a9129b7de5f2b6707ead24098e4d9e2edd3dc47fadf0ac4585c5d";
+      //@ts-ignore
+      const tg = window.Telegram.WebApp;
+      //@ts-ignore
+      tg.disableVerticalSwipes();
+      //@ts-ignore
+      tg.lockOrientation();
+      //@ts-ignore
+      tg.requestFullscreen();
+      //@ts-ignore
+      tg.enableClosingConfirmation();
     }
     const res = await verifyTelegramUser(urlEncodedData);
 
@@ -80,14 +79,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div
-      style={{
-        paddingTop: `${safeAreaInsets.top}px`,
-        paddingBottom: `${safeAreaInsets.bottom}px`,
-        paddingLeft: `${safeAreaInsets.left}px`,
-        paddingRight: `${safeAreaInsets.right}px`,
-      }}
-    >
+    <div>
       {/* <BottomTabNavigation /> */}
       <AppWithoutSSR />
     </div>
