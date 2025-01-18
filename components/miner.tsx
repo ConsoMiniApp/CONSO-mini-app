@@ -689,7 +689,7 @@ export default function Miner() {
                             handleClick={handlePlayStationConnected}
                           />
                         </DialogTrigger>
-                        <DialogContent className=" w-[100%] h-[100%] border-none bg-[#5C6E7E] ">
+                        <DialogContent className=" w-[100%] h-screen border-none bg-[#5C6E7E] ">
                           <PlaystationConnectedDialog />
                           {/* <ConnectDialogSkeleton /> */}
                         </DialogContent>

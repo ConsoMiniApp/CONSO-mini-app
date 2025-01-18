@@ -47,7 +47,7 @@ export default function Home() {
       //@ts-ignore
       tg.lockOrientation();
       //@ts-ignore
-      tg.requestFullscreen();
+      // tg.requestFullscreen();
       //@ts-ignore
       tg.enableClosingConfirmation();
     }
