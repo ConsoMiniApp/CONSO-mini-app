@@ -1,4 +1,4 @@
-import { log } from "console";
+//@ts-nocheck
 import { GameObjects, Physics, Scene } from "phaser";
 import {
   CharacterOptionsType,

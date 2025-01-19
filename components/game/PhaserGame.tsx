@@ -1,13 +1,7 @@
 import { forwardRef, useEffect, useLayoutEffect, useRef } from "react";
 import StartGame from "./main";
 import { EventBus } from "./EventBus";
-import {
-  CharacterOptionsType,
-  EnvironmentOptionsType,
-  GameInitSettings,
-  JetpackOptionsType,
-} from "./types";
-import { characterOptions } from "./constants";
+import { GameInitSettings } from "./types";
 
 export interface IRefPhaserGame {
   game: Phaser.Game | null;
