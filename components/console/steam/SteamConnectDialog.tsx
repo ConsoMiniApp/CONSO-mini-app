@@ -13,12 +13,12 @@ export function SteamConnectDialog() {
   // scroll to top of screen on component load
 
   const [ownSteamDeck, setOwnSteamDeck] = useState(false);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
   return (
     <>
-      <div className="overflow-y-scroll scrollbar-none ">
+      <div className="overflow-y-scroll scrollbar-none mt-12">
         {/* Top Status Card */}
         <div className="p-4 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
           <div className="flex justify-between ">
@@ -140,7 +140,10 @@ export function SteamConnectDialog() {
 
                 <p className={cn(ibmPlex500.className, " text-xs flex gap-2")}>
                   <span
-                    className={cn(ibmPlex700.className, "text-xs text-black ")}
+                    className={cn(
+                      ibmPlex700.className,
+                      "text-xs text-black mt-2 "
+                    )}
                   >
                     <Checkbox
                       className="h-4 w-4"
@@ -152,11 +155,11 @@ export function SteamConnectDialog() {
                       }}
                     />
                   </span>
-                  <span>
-                    Do you own a steam deck?
-                    <br />
-                    <br />
-                    {ownSteamDeck ? "Enter Steam Deck Serial Number" : ""}
+                  <span className="flex flex-col gap-2">
+                    <span></span>Do you own a steam deck?
+                    <span>
+                      {ownSteamDeck ? "Enter Steam Deck Serial Number" : ""}
+                    </span>
                   </span>
                 </p>
 

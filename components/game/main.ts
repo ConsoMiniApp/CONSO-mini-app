@@ -1,6 +1,5 @@
-"use client";
 import { AUTO } from "phaser";
-import * as Phaser from "phaser";
+import Phaser from "phaser";
 import { MainGame } from "./scenes/MainGame";
 import { GameInitSettings } from "./types";
 import { GameOver } from "./scenes/GameOver";
@@ -15,9 +14,9 @@ const StartGame = (parent: string, gameInitSettings: GameInitSettings) => {
     physics: {
       default: "arcade",
       arcade: {
-        gravity: { x: 0, y: 900 },
-        debug: false,
+        gravity: { x: 0, y: 1200 },
         // debug: process.env.NEXT_PUBLIC_NODE_ENV === "development",
+        debug: false,
       },
     },
     scale: {

@@ -1,12 +1,9 @@
-//@ts-nocheck
 import { EventBus } from "../EventBus";
 import { Scene } from "phaser";
 
 export class GameOver extends Scene {
   character: string;
-
   environment: string;
-
   jetpack: string;
   player: Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
   backgroundLayers: Phaser.GameObjects.TileSprite[] = [];

@@ -79,7 +79,7 @@ export function PlaystationConnectedDialog() {
   }
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     const connectedConsoles = user.connected_consoles.playstation
       .filter((c) => c.status === "Mining")
       .map((c, index) => ({
@@ -99,7 +99,7 @@ export function PlaystationConnectedDialog() {
       {isLoading ? (
         <ConnectDialogSkeleton />
       ) : (
-        <div className="overflow-y-scroll scrollbar-none ">
+        <div className="overflow-y-scroll scrollbar-none mt-12 ">
           {/* Top Status Card */}
           <div className="p-4 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
             <div className="flex justify-between ">

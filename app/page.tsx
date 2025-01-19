@@ -47,7 +47,9 @@ export default function Home() {
       //@ts-ignore
       tg.lockOrientation();
       //@ts-ignore
-      // tg.requestFullscreen();
+      tg.setBackgroundColor("#000000");
+      //@ts-ignore
+      tg.requestFullscreen();
       //@ts-ignore
       tg.enableClosingConfirmation();
     }
@@ -79,7 +81,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="bg-black">
       {/* <BottomTabNavigation /> */}
       <AppWithoutSSR />
     </div>

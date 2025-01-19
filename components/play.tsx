@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IRefPhaserGame, PhaserGame } from "./game/PhaserGame";
 import CustomButton from "./app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
@@ -37,20 +37,18 @@ import {
   GameInitSettings,
   JetpackOptionsType,
 } from "./game/types";
+import BackgroundParallaxEffect from "./play/BackgroundParallax";
+import DynamicBackground from "./play/BackgroundParallax";
+import { useAppContext } from "@/contexts/AppContext";
 
 export default function Play() {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [gameLoaded, setGameLoaded] = useState(false);
-
-  const handleVideoLoad = () => {
-    setIsVideoLoaded(true);
-  };
-
-  const handleVideoEnd = () => {
-    console.log("Video Ended");
-  };
-
   const phaserRef = useRef<IRefPhaserGame | null>(null);
+
+  const [isDeviceLandscape, setIsDeviceLandscape] = useState("abc");
+
+  const { setNavigationBarHidden } = useAppContext();
 
   const gameInitSettings: GameInitSettings = {
     environment: EnvironmentOptionsType.Forest,
@@ -58,9 +56,50 @@ export default function Play() {
     jetpack: JetpackOptionsType.Jetpack,
   };
 
+  const handleGameLoading = () => {
+    // setIsLoading(true);
+    setTimeout(() => {
+      // setIsLoading(false);
+      setNavigationBarHidden(true);
+      setGameLoaded(true);
+    }, 2000);
+  };
+
+  // add an event listener to check if the device is in landscape mode Telegram.WebApp.onEvent(eventType, eventHandler)
+  //@ts-ignore
+  // window.Telegram.WebApp.onEvent("deviceOrientationChanged", (event) => {
+  //   setIsDeviceLandscape(event);
+  // });
+
+  useEffect(() => {
+    //@ts-ignore
+    const tg = window.Telegram.WebApp;
+    tg.unlockOrientation();
+    const handleEvent = (eventData: any) => {
+      console.log("Event fired:", eventData);
+      setIsDeviceLandscape("changed");
+    };
+
+    // Subscribe to the event
+    //@ts-ignore
+    if (tg) {
+      //@ts-ignore
+      tg.onEvent("viewportChanged", handleEvent);
+    }
+
+    // Cleanup the subscription when the component unmounts
+    return () => {
+      //@ts-ignore
+      if (tg) {
+        //@ts-ignore
+        tg.offEvent("viewportChanged", handleEvent); // Use the appropriate method to unsubscribe
+      }
+    };
+  }, []);
+
   return (
-    <>
-      {!isVideoLoaded && (
+    <div className="">
+      {isLoading && (
         <div
           className={cn(
             "text-6xl text-white flex justify-center items-center h-screen",
@@ -74,39 +113,19 @@ export default function Play() {
       {gameLoaded ? (
         <div className="h-screen">
           <PhaserGame ref={phaserRef} gameInitSettings={gameInitSettings} />
-          {/* <CustomButton
-            type={CustomButtonType.INACTIVE}
-            handleClick={() => {
-              setGameLoaded(false);
-            }}
-            text="BACK"
-            className="absolute top-4 left-4"
-          ></CustomButton> */}
         </div>
       ) : (
         <div className="">
-          {" "}
-          <video
-            src={"/videos/player-video.mp4"}
-            controls={false}
-            loop={true}
-            autoPlay
-            playsInline
-            muted
-            onEnded={handleVideoEnd}
-            onCanPlayThrough={handleVideoLoad}
-            className="object-cover absolute top-0 h-screen  pb-24 z-[-1]"
-          ></video>
-          {isVideoLoaded && (
-            <Image
-              src={"/videos/player.gif"}
-              alt="player"
-              className="object-cover absolute bottom-0 mb-3 ml-10 bg-none pb-32"
-              width={100}
-              height={100}
-            ></Image>
-          )}
-          <div className="flex flex-col p-4">
+          {/* Add parallex div here */}
+          <DynamicBackground />
+          <Image
+            src={"/videos/player.gif"}
+            alt="player"
+            className="object-cover absolute bottom-0 mb-3 ml-14 bg-none pb-36 "
+            width={100}
+            height={100}
+          ></Image>
+          <div className="flex flex-col p-4 z-10 absolute top-20 left-0 right-0 overflow-hidden ">
             <div className="flex justify-center items-center mt-4">
               <GameLogo />
             </div>
@@ -210,16 +229,17 @@ export default function Play() {
               <CustomButton
                 type={CustomButtonType.PRIMARY_MEDIUM}
                 handleClick={() => {
-                  setGameLoaded(true);
+                  handleGameLoading();
+                  // setNavigationBarHidden(true);
+                  // setGameLoaded(true);
                 }}
                 text="TAP TO PLAY"
               ></CustomButton>
+              {/* <p>{isDeviceLandscape.toString()}</p> */}
             </div>
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
-
-//   {/* <PhaserGame ref={phaserRef} currentActiveScene={currentScene} /> */}

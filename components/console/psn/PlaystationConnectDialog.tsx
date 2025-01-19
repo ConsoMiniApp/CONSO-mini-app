@@ -182,9 +182,9 @@ export function PlayStationConnectDialog() {
     }
   }
   // scroll to top of screen on component load
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   return (
     <>
@@ -195,7 +195,7 @@ export function PlayStationConnectDialog() {
           <PlaystationConnectedDialog />
         </>
       ) : (
-        <div className="overflow-y-scroll scrollbar-none ">
+        <div className="overflow-y-scroll scrollbar-none mt-12">
           {/* Top Status Card */}
           <div className="p-4 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
             <div className="flex justify-between ">

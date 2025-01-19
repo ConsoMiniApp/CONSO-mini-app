@@ -31,7 +31,7 @@ export function SteamConnectedDialog() {
   }
   // scroll to top of screen on component load
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     const connectedConsoles = user.connected_consoles.steam.map((c, index) => ({
       id: index.toString(),
       console_username: c.console_username,
@@ -46,7 +46,7 @@ export function SteamConnectedDialog() {
 
   return (
     <>
-      <div className="overflow-y-scroll scrollbar-none ">
+      <div className="overflow-y-scroll scrollbar-none mt-12">
         {/* Top Status Card */}
         <div className="p-4 rounded-3xl border-2 shadow-lg bg-black border-neutral-800">
           <div className="flex justify-between ">

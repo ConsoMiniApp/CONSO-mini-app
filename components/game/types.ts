@@ -31,3 +31,18 @@ export enum CharacterOptionsType {
   Armor = "armor",
   Angel = "angel",
 }
+
+export type PatternType = "low" | "medium" | "high";
+export interface CoinPattern {
+  x: number;
+  y: number;
+}
+
+export type PatternGroup = {
+  positions: CoinPattern[];
+  coinCount: number;
+};
+
+export type CoinPatterns = {
+  [key in PatternType]: PatternGroup[];
+};

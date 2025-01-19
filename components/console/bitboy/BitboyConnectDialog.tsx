@@ -8,12 +8,12 @@ import { useEffect } from "react";
 
 export function BitboyConnectDialog() {
   // scroll to top of screen on component load
-  useEffect(() => {
-    if (window && typeof window !== "undefined") window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   if (window && typeof window !== "undefined") window.scrollTo(0, 0);
+  // }, []);
   return (
     <>
-      <div className="overflow-y-scroll scrollbar-none ">
+      <div className="overflow-y-scroll scrollbar-none mt-12">
         <DialogClose className="absolute top-0 right-0 p-2 ">
           <Image
             src="/other-logos/close.svg"

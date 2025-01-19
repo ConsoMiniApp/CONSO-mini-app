@@ -19,9 +19,11 @@ import {
   TaskActive,
   TaskInactive,
 } from "./ui/icons";
+import { useAppContext } from "@/contexts/AppContext";
 
 export default function BottomTabNavigation() {
   const [activeTab, setActiveTab] = useState("miner");
+  const { navigationBarHidden } = useAppContext();
 
   const tabs = [
     {
@@ -57,15 +59,16 @@ export default function BottomTabNavigation() {
   ];
 
   return (
-    <div className="min-h-screen pb-24 flex flex-col">
-      <main className="">
+    <div className="min-h-screen flex flex-col">
+      <div className="fixed top-0 left-0 right-0 h-[var(--tg-safe-area-inset-top)] bg-black"></div>
+      <main className="mt-10">
         {activeTab === "miner" && (
           <div className="space-y-4">
             <Miner />
           </div>
         )}
         {activeTab === "rank" && (
-          <div className="space-y-4">
+          <div className="">
             <Rank />
           </div>
         )}
@@ -85,37 +88,38 @@ export default function BottomTabNavigation() {
           </div>
         )}
       </main>
-
-      <nav className="bg-[#1E2E3D] fixed bottom-0 left-0 right-0 border-border">
-        <ul className="flex justify-around items-center h-24">
-          {tabs.map((tab) => (
-            <li key={tab.id} className="flex-1">
-              <button
-                onClick={() => setActiveTab(tab.id)}
-                className={cn(
-                  "w-full h-full flex flex-col items-center justify-center space-y-1",
-                  activeTab === tab.id
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-primary"
-                )}
-              >
-                {activeTab == tab.id ? tab.icon : tab.inactive_icon}
-
-                <span
+      {!navigationBarHidden && (
+        <nav className="bg-[#1E2E3D] fixed bottom-0 left-0 right-0 pb-[var(--tg-safe-area-inset-bottom)] ">
+          <ul className="flex justify-around items-center h-22 pt-2 ">
+            {tabs.map((tab) => (
+              <li key={tab.id} className="flex-1">
+                <button
+                  onClick={() => setActiveTab(tab.id)}
                   className={cn(
-                    jersey.className,
-                    activeTab == tab.id
-                      ? "text-xl text-[#FFE500] tracking-wider"
-                      : "text-xl text-white tracking-wider"
+                    "w-full h-full flex flex-col items-center justify-center space-y-1",
+                    activeTab === tab.id
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-primary"
                   )}
                 >
-                  {tab.label}
-                </span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
+                  {activeTab == tab.id ? tab.icon : tab.inactive_icon}
+
+                  <span
+                    className={cn(
+                      jersey.className,
+                      activeTab == tab.id
+                        ? "text-xl text-[#FFE500] tracking-wider"
+                        : "text-xl text-white tracking-wider"
+                    )}
+                  >
+                    {tab.label}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
     </div>
   );
 }

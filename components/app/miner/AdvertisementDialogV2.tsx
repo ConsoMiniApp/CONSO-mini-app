@@ -53,7 +53,7 @@ export function AdvertisementDialogV2({
   // };
 
   return (
-    <div>
+    <div className="mt-12">
       {!showAdInfo ? (
         <>
           <video
@@ -67,7 +67,7 @@ export function AdvertisementDialogV2({
             // onLoadedMetadata={enterFullScreen}
           ></video>
           {/* Top Section */}
-          <div className="flex justify-end items-center z-10 absolute top-0 left-0 right-0 p-4">
+          <div className="flex justify-end items-center z-10 absolute top-16 left-0 right-0 p-4">
             {/* <Image
               src="/pngs/eigenlayer.png"
               alt="Advertisement"
@@ -76,7 +76,7 @@ export function AdvertisementDialogV2({
               className="bg-white rounded-lg p-2"
             /> */}
 
-            <div className="flex gap-2 bg-[#5C6E7E] rounded-full p-2">
+            <div className="flex gap-2 bg-black rounded-full p-2">
               <Coin />
               <p className={cn(jersey.className, "text-2xl text-white")}>
                 10 with this ad
@@ -87,7 +87,7 @@ export function AdvertisementDialogV2({
       ) : (
         <div className="">
           {/* Top Section */}
-          <div className="flex justify-between items-center z-10 absolute top-0 left-0 right-0 p-4">
+          <div className="flex justify-between items-center z-10 absolute top-16 left-0 right-0 p-4">
             <DialogClose>
               <a className="">
                 <div

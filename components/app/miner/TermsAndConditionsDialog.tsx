@@ -19,7 +19,7 @@ export function TermsDisclaimer({
 }) {
   return (
     <>
-      <div className="flex flex-col overflow-y-scroll scrollbar-none ">
+      <div className="flex flex-col overflow-y-scroll scrollbar-none mt-12">
         {/* Top Section */}
         <div className="flex justify-between ">
           <p

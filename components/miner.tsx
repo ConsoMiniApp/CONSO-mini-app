@@ -299,11 +299,6 @@ export default function Miner() {
     }
   }, [user]);
 
-  // scroll to top of screen on component load
-  useEffect(() => {
-    if (window && typeof window !== "undefined") window.scrollTo(0, 0);
-  }, []);
-
   let acceptedTerms = false;
 
   if (
@@ -368,7 +363,7 @@ export default function Miner() {
         </div>
       ) : (
         <div className="min-h-screen bg-[#5C6E7E]">
-          <div className="max-w-md mx-auto min-h-screen flex flex-col">
+          <div className="max-w-md mx-auto min-h-screen flex flex-col pt-8">
             {/* Top Status Card */}
             <div
               className="p-4 rounded-3xl m-4  bg-black"
@@ -545,7 +540,13 @@ export default function Miner() {
                           <VideoPlayIcon />
                         </div>
                       </DialogTrigger>
-                      <DialogContent className="h-screen border-none bg-black">
+                      <DialogContent
+                        className="w-[100%] h-screen border-none backdrop-blur-xl"
+                        style={{
+                          paddingTop: "var(--tg-safe-area-inset-top)",
+                          paddingBottom: "var(--tg-safe-area-inset-bottom)",
+                        }}
+                      >
                         <AdvertisementDialogV2
                           videoSrc={videoSrc}
                           advertiserInfo={advertiserInfo}
@@ -581,7 +582,13 @@ export default function Miner() {
                             <InfoIcon />
                           </div>
                         </DialogTrigger>
-                        <DialogContent className=" w-[95%] h-[95%] rounded-xl bg-white backdrop-blur-md">
+                        <DialogContent
+                          className="w-[100%] h-screen border-none backdrop-blur-xl"
+                          style={{
+                            paddingTop: "var(--tg-safe-area-inset-top)",
+                            paddingBottom: "var(--tg-safe-area-inset-bottom)",
+                          }}
+                        >
                           <InfoDialog />
                         </DialogContent>
                       </Dialog>
@@ -599,7 +606,7 @@ export default function Miner() {
             )}
 
             {/* Connect Section */}
-            <div className="flex flex-col ">
+            <div className="flex flex-col pb-8">
               <hr className="w-full border-[#C9C9C9] mb-2" />
               <div className="space-y-4 px-6">
                 <div className="flex justify-between">
@@ -645,7 +652,7 @@ export default function Miner() {
               </div>
               <hr className="w-full border-[#C9C9C9] mt-2 mb-3" />
 
-              <div className="space-y-4 px-6 mb-4">
+              <div className="space-y-4 px-6 pb-28 ">
                 {/* PlayStation */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
@@ -677,7 +684,13 @@ export default function Miner() {
                             handleClick={handlePlayStationConnect}
                           />
                         </DialogTrigger>
-                        <DialogContent className="w-[100%] h-[100%] border-none bg-[#5C6E7E]">
+                        <DialogContent
+                          className="w-[100%] h-screen border-none backdrop-blur-xl"
+                          style={{
+                            paddingTop: "var(--tg-safe-area-inset-top)",
+                            paddingBottom: "var(--tg-safe-area-inset-bottom)",
+                          }}
+                        >
                           <PlayStationConnectDialog />
                         </DialogContent>
                       </Dialog>
@@ -689,9 +702,14 @@ export default function Miner() {
                             handleClick={handlePlayStationConnected}
                           />
                         </DialogTrigger>
-                        <DialogContent className=" w-[100%] h-screen border-none bg-[#5C6E7E] ">
+                        <DialogContent
+                          className="w-[100%] h-screen border-none backdrop-blur-xl"
+                          style={{
+                            paddingTop: "var(--tg-safe-area-inset-top)",
+                            paddingBottom: "var(--tg-safe-area-inset-bottom)",
+                          }}
+                        >
                           <PlaystationConnectedDialog />
-                          {/* <ConnectDialogSkeleton /> */}
                         </DialogContent>
                       </Dialog>
                     )}
@@ -729,7 +747,13 @@ export default function Miner() {
                             handleClick={handleXboxConnect}
                           />
                         </DialogTrigger>
-                        <DialogContent className="  w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
+                        <DialogContent
+                          className="w-[100%] h-screen border-none backdrop-blur-xl"
+                          style={{
+                            paddingTop: "var(--tg-safe-area-inset-top)",
+                            paddingBottom: "var(--tg-safe-area-inset-bottom)",
+                          }}
+                        >
                           <XboxConnectDialog />
                         </DialogContent>
                       </Dialog>
@@ -741,7 +765,13 @@ export default function Miner() {
                             handleClick={handleXboxConnected}
                           />
                         </DialogTrigger>
-                        <DialogContent className="  w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
+                        <DialogContent
+                          className="w-[100%] h-screen border-none backdrop-blur-xl"
+                          style={{
+                            paddingTop: "var(--tg-safe-area-inset-top)",
+                            paddingBottom: "var(--tg-safe-area-inset-bottom)",
+                          }}
+                        >
                           <XboxConnectedDialog />
                         </DialogContent>
                       </Dialog>
@@ -780,7 +810,13 @@ export default function Miner() {
                             handleClick={handleSteamConnect}
                           />
                         </DialogTrigger>
-                        <DialogContent className="  w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
+                        <DialogContent
+                          className="w-[100%] h-screen border-none backdrop-blur-xl"
+                          style={{
+                            paddingTop: "var(--tg-safe-area-inset-top)",
+                            paddingBottom: "var(--tg-safe-area-inset-bottom)",
+                          }}
+                        >
                           <SteamConnectDialog />
                         </DialogContent>
                       </Dialog>
@@ -792,7 +828,13 @@ export default function Miner() {
                             handleClick={handleSteamConnected}
                           />
                         </DialogTrigger>
-                        <DialogContent className="  w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
+                        <DialogContent
+                          className="w-[100%] h-screen border-none backdrop-blur-xl"
+                          style={{
+                            paddingTop: "var(--tg-safe-area-inset-top)",
+                            paddingBottom: "var(--tg-safe-area-inset-bottom)",
+                          }}
+                        >
                           <SteamConnectedDialog />
                         </DialogContent>
                       </Dialog>
@@ -830,7 +872,13 @@ export default function Miner() {
                             handleClick={handleNintendoConnect}
                           />
                         </DialogTrigger>
-                        <DialogContent className="  w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
+                        <DialogContent
+                          className="w-[100%] h-screen border-none backdrop-blur-xl"
+                          style={{
+                            paddingTop: "var(--tg-safe-area-inset-top)",
+                            paddingBottom: "var(--tg-safe-area-inset-bottom)",
+                          }}
+                        >
                           <NintendoConnectDialog />
                         </DialogContent>
                       </Dialog>
@@ -842,7 +890,13 @@ export default function Miner() {
                             handleClick={handleNintendoConnected}
                           />
                         </DialogTrigger>
-                        <DialogContent className=" w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
+                        <DialogContent
+                          className="w-[100%] h-screen border-none backdrop-blur-xl"
+                          style={{
+                            paddingTop: "var(--tg-safe-area-inset-top)",
+                            paddingBottom: "var(--tg-safe-area-inset-bottom)",
+                          }}
+                        >
                           <NintendoConnectedDialog />
                         </DialogContent>
                       </Dialog>

@@ -84,11 +84,11 @@ export default function Rank() {
   }, []);
 
   return (
-    <div className="max-w-md mx-auto min-h-screen ">
-      <div className="sticky top-0 z-10">
+    <div className=" bg-black pb-28">
+      <div className="fixed top-0 left-0 bg-black">
         {/* Heading */}
         <div className="bg-black">
-          <div className="flex justify-around mb-2">
+          <div className="flex justify-around mb-2 mt-16">
             <span
               className={cn("text-5xl mt-10 text-white ", jersey.className)}
             >
@@ -163,12 +163,12 @@ export default function Rank() {
       </div>
 
       {isLoading ? (
-        <div className="">
+        <div className="pt-[204px]">
           <RankTabSkeleton />
         </div>
       ) : (
         <>
-          <div className="">
+          <div className="pt-[204px]">
             {/* My Rank Row */}
             <div className="">
               <div

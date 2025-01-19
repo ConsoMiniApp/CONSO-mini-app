@@ -1,4 +1,124 @@
-import { EnvironmentBackgroundsLayersType } from "./types";
+import { EnvironmentBackgroundsLayersType, CoinPatterns } from "./types";
+
+export const coinPatterns: CoinPatterns = {
+  // average max collectible : 3
+  low: [
+    {
+      // Horizontal three dots
+      positions: [
+        { x: 0, y: 0 },
+        { x: 100, y: 0 },
+        { x: 200, y: 0 },
+      ],
+      coinCount: 3,
+    },
+
+    {
+      // Horizontal three dots
+      positions: [
+        { x: 0, y: 160 },
+        { x: 100, y: 160 },
+        { x: 200, y: 160 },
+      ],
+      coinCount: 3,
+    },
+    {
+      // Horizontal three dots
+      positions: [
+        { x: 0, y: 320 },
+        { x: 100, y: 320 },
+        { x: 200, y: 320 },
+      ],
+      coinCount: 3,
+    },
+    {
+      // Horizontal three dots
+      positions: [
+        { x: 0, y: 480 },
+        { x: 100, y: 480 },
+        { x: 200, y: 480 },
+      ],
+      coinCount: 3,
+    },
+    {
+      // Horizontal three dots
+      positions: [
+        { x: 0, y: 640 },
+        { x: 100, y: 640 },
+        { x: 200, y: 640 },
+      ],
+      coinCount: 3,
+    },
+  ],
+  // average max collectible : 6
+  medium: [
+    {
+      // Vertical stack of paired dots
+      positions: [
+        { x: 0, y: 0 },
+        { x: 100, y: 0 },
+        { x: 0, y: 100 },
+        { x: 100, y: 100 },
+        { x: 0, y: 200 },
+        { x: 100, y: 200 },
+      ],
+      coinCount: 6,
+    },
+    {
+      // 3x3 grid
+      positions: [
+        { x: 0, y: 0 },
+        { x: 100, y: 0 },
+        { x: 200, y: 0 },
+        { x: 0, y: 100 },
+        { x: 100, y: 100 },
+        { x: 200, y: 100 },
+        { x: 0, y: 200 },
+        { x: 100, y: 200 },
+        { x: 200, y: 200 },
+      ],
+      coinCount: 9,
+    },
+  ],
+  high: [
+    {
+      // Ascending diagonal pattern
+      positions: [
+        { x: 0, y: 0 },
+        { x: 60, y: 30 },
+        { x: 120, y: 60 },
+        { x: 180, y: 90 },
+        { x: 240, y: 120 },
+      ],
+      coinCount: 5,
+    },
+    {
+      // Wave pattern in middle
+      positions: [
+        { x: 0, y: 60 },
+        { x: 60, y: 30 },
+        { x: 120, y: 60 },
+        { x: 180, y: 30 },
+        { x: 240, y: 60 },
+      ],
+      coinCount: 5,
+    },
+    {
+      // 4x2 grid
+      positions: [
+        { x: 0, y: 0 },
+        { x: 60, y: 0 },
+        { x: 120, y: 0 },
+        { x: 180, y: 0 },
+        { x: 0, y: 60 },
+        { x: 60, y: 60 },
+        { x: 120, y: 60 },
+        { x: 180, y: 60 },
+      ],
+      coinCount: 8,
+    },
+  ],
+};
 
 export const environmentBackgrounds: EnvironmentBackgroundsLayersType = {
   city: [
@@ -118,6 +238,14 @@ export const constantKeyAnimations: Array<AnimationOptions> = [
     texture: "rocket",
     start: 0,
     end: 3,
+    frameRate: 10,
+    repeat: -1,
+  },
+  {
+    key: "rocket_warning_animation",
+    texture: "rocket_warning",
+    start: 0,
+    end: 1,
     frameRate: 10,
     repeat: -1,
   },

@@ -28,7 +28,7 @@ export function InfoDialog() {
   ];
   return (
     <>
-      <div className="overflow-y-scroll scrollbar-none  ">
+      <div className="overflow-y-scroll scrollbar-none  bg-white p-4 rounded-xl mt-12">
         {/* Top Section */}
         <div className="flex justify-between">
           <p

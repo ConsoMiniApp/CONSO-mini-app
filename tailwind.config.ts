@@ -56,6 +56,17 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+
+      animation: {
+        scroll: "scroll 10s linear infinite",
+        "square-bounce": "square-bounce 1s infinite",
+        "scroll-slow": "scroll 40s linear infinite",
+        "scroll-medium": "scroll 20s linear infinite",
+        "scroll-fast": "scroll 10s linear infinite",
+        "scroll-ground": "scroll 8s linear infinite",
+        "scroll-slowest": "scroll 60s linear infinite",
+      },
+
       keyframes: {
         "square-bounce": {
           "0%, 100%": {
@@ -65,9 +76,10 @@ const config: Config = {
             transform: "translateY(-0.7rem)",
           },
         },
-      },
-      animation: {
-        "square-bounce": "square-bounce 1s infinite",
+        scroll: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
       },
     },
   },

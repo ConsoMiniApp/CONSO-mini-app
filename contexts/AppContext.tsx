@@ -13,10 +13,12 @@ import React, {
 interface AppContextType {
   // state: AppState;
   pointBalance: number;
+  navigationBarHidden: boolean;
   user: ConsoUser;
   startPointBalance: number;
   telegramUsername: string;
   setUserData: Dispatch<SetStateAction<ConsoUser>>;
+  setNavigationBarHidden: Dispatch<SetStateAction<boolean>>;
   setPointBalance: Dispatch<SetStateAction<number>>;
   setStartPointBalance: Dispatch<SetStateAction<number>>;
   setTelegramUsername: Dispatch<SetStateAction<string>>;
@@ -30,6 +32,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [pointBalance, setPointBalance] = useState<number>(0);
   const [startPointBalance, setStartPointBalance] = useState<number>(0);
   const [telegramUsername, setTelegramUsername] = useState<string>("");
+  const [navigationBarHidden, setNavigationBarHidden] =
+    useState<boolean>(false);
   const [user, setUserData] = useState<ConsoUser>({
     id: "",
     nickname: "",
@@ -57,10 +61,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     <AppContext.Provider
       value={{
         pointBalance,
+        navigationBarHidden,
         startPointBalance,
         telegramUsername,
         user,
         setUserData,
+        setNavigationBarHidden,
         setPointBalance,
         setStartPointBalance,
         setTelegramUsername,
