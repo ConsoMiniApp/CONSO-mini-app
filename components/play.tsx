@@ -24,6 +24,7 @@ import {
   MissionsLogo,
   MysteryBoxLogo,
   PotionLogo,
+  RotateScreenIcon,
   ShopSectionLogo,
 } from "./ui/icons";
 import { cn } from "@/lib/utils";
@@ -37,16 +38,19 @@ import {
   GameInitSettings,
   JetpackOptionsType,
 } from "./game/types";
-import BackgroundParallaxEffect from "./play/BackgroundParallax";
 import DynamicBackground from "./play/BackgroundParallax";
 import { useAppContext } from "@/contexts/AppContext";
+import { isLandscape } from "@/lib/helpers/checkLandscape";
+import rotateScreenAnimation from "@/public/animations/rotate-screen-animation.json";
+import Lottie from "lottie-react";
 
 export default function Play() {
-  const [isLoading, setIsLoading] = useState(false);
   const [gameLoaded, setGameLoaded] = useState(false);
   const phaserRef = useRef<IRefPhaserGame | null>(null);
 
-  const [isDeviceLandscape, setIsDeviceLandscape] = useState("abc");
+  const [isDeviceLandscape, setIsDeviceLandscape] = useState(false);
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
 
   const { setNavigationBarHidden } = useAppContext();
 
@@ -54,37 +58,46 @@ export default function Play() {
     environment: EnvironmentOptionsType.Forest,
     character: CharacterOptionsType.Og,
     jetpack: JetpackOptionsType.Jetpack,
+    mysteryBoxes: [
+      {
+        id: "1",
+        name: "mysteryBox1",
+        link: "this_will_be_link",
+        timestamp: 50,
+      },
+    ],
+    powerUps: [
+      { character: "flash", time: 20, timestamp: 100 },
+      { character: "armor", time: 45, timestamp: 210 },
+    ],
   };
 
   const handleGameLoading = () => {
-    // setIsLoading(true);
-    setTimeout(() => {
-      // setIsLoading(false);
-      setNavigationBarHidden(true);
-      setGameLoaded(true);
-    }, 2000);
+    setNavigationBarHidden(true);
+    setGameLoaded(true);
   };
-
-  // add an event listener to check if the device is in landscape mode Telegram.WebApp.onEvent(eventType, eventHandler)
-  //@ts-ignore
-  // window.Telegram.WebApp.onEvent("deviceOrientationChanged", (event) => {
-  //   setIsDeviceLandscape(event);
-  // });
 
   useEffect(() => {
     //@ts-ignore
     const tg = window.Telegram.WebApp;
     tg.unlockOrientation();
-    const handleEvent = (eventData: any) => {
-      console.log("Event fired:", eventData);
-      setIsDeviceLandscape("changed");
+    const handleViewportChanged = (eventData: any) => {
+      // get height and width of view port
+      const width = window.visualViewport?.width || window.innerWidth;
+      const height = window.visualViewport?.height || window.innerHeight;
+      if (isLandscape(height, width)) {
+        tg.lockOrientation();
+        setHeight(height);
+        setWidth(width);
+        setIsDeviceLandscape(true);
+      }
     };
 
     // Subscribe to the event
     //@ts-ignore
     if (tg) {
       //@ts-ignore
-      tg.onEvent("viewportChanged", handleEvent);
+      window.addEventListener("resize", handleViewportChanged);
     }
 
     // Cleanup the subscription when the component unmounts
@@ -92,28 +105,34 @@ export default function Play() {
       //@ts-ignore
       if (tg) {
         //@ts-ignore
-        tg.offEvent("viewportChanged", handleEvent); // Use the appropriate method to unsubscribe
+        window.addEventListener("resize", handleViewportChanged); // Use the appropriate method to unsubscribe
       }
     };
   }, []);
 
   return (
     <div className="">
-      {isLoading && (
-        <div
-          className={cn(
-            "text-6xl text-white flex justify-center items-center h-screen",
-            jersey.className
-          )}
-        >
-          LOADING ...
-        </div>
-      )}
-
       {gameLoaded ? (
-        <div className="h-screen">
-          <PhaserGame ref={phaserRef} gameInitSettings={gameInitSettings} />
-        </div>
+        isDeviceLandscape ? (
+          <div className="absolute top-0 left-0 right-0 bottom-0">
+            <PhaserGame ref={phaserRef} gameInitSettings={gameInitSettings} />
+          </div>
+        ) : (
+          <div className="absolute flex flex-col items-center justify-center top-0 left-0 right-0 bottom-0 ">
+            <div className="flex w-52">
+              <Lottie className=" " animationData={rotateScreenAnimation} />
+            </div>
+            <p
+              className={cn(
+                "text-2xl text-white tracking-widest",
+                handjet.className
+              )}
+            >
+              {" "}
+              Please Rotate Screen
+            </p>
+          </div>
+        )
       ) : (
         <div className="">
           {/* Add parallex div here */}
@@ -230,8 +249,6 @@ export default function Play() {
                 type={CustomButtonType.PRIMARY_MEDIUM}
                 handleClick={() => {
                   handleGameLoading();
-                  // setNavigationBarHidden(true);
-                  // setGameLoaded(true);
                 }}
                 text="TAP TO PLAY"
               ></CustomButton>

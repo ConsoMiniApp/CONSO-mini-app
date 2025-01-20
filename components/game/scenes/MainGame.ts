@@ -1,17 +1,20 @@
 //@ts-nocheck
-import { GameObjects, Physics, Scene } from "phaser";
+import { Scene } from "phaser";
 import {
   CharacterOptionsType,
   EnvironmentOptionsType,
   JetpackOptionsType,
   PatternType,
   CoinPatterns,
+  MysteryBox,
+  PowerUp,
 } from "../types";
 import {
   constantKeyAnimations,
   environmentBackgrounds,
   jetpackOptions,
   coinPatterns,
+  zapperConfigs,
 } from "../constants";
 
 export class MainGame extends Scene {
@@ -20,62 +23,74 @@ export class MainGame extends Scene {
   character: CharacterOptionsType;
   environment: EnvironmentOptionsType;
   jetpack: JetpackOptionsType;
-  inTransition: boolean = false;
+  mysteryBoxes: Array<MysteryBox>;
+  powerUps: Array<PowerUp>;
+
+  // DEVICE VARIABLES
   deviceWidth: number = window.innerWidth;
-  // coin counter variables
+
+  // COIN COUNTER
   coinCount: number = 0;
   coinText!: Phaser.GameObjects.Text;
-  // Distance tracking variables
+  // GAME DISTANCE
   distanceTravelled: number = 0;
   distanceText!: Phaser.GameObjects.Text;
-  //Mystery box count
-  mysteryBoxCount: number = 0;
-  // power up progress bar variables
-  previous_character: CharacterOptionsType = CharacterOptionsType.Og;
-  previous_jetpack: JetpackOptionsType = JetpackOptionsType.Jetpack;
+  // POWER UPS
+  inTransition: boolean = false;
   private progressBarBackground: Phaser.GameObjects.Image;
   private progressBarFill: Phaser.GameObjects.Image;
   private progressBarMaxWidth: number = 300;
-  // TESTING : Will be rendered as per game mechanics
+
+  // GAME STATE
+  previous_character: CharacterOptionsType = CharacterOptionsType.Og;
+  previous_jetpack: JetpackOptionsType = JetpackOptionsType.Jetpack;
+  screenYRangeBlockedForSpawning: number[] = [0, 0]; //[{start:0, end:160}, {start: 200, end: 360}]
+  gameStartTime: number;
+  totalGameTime: number = 0;
+  currentGameSpeed = 9;
+  currentGameObjectsSpeed = -550;
+  lastZapperTime!: number;
+  lastRocketTime!: number;
+  lastLaserWarning!: number;
+  powerupCount: number = 0;
+  lastCoinSpawnTime: number = 0;
+
+  // GAME BODIES
   coins: Phaser.Physics.Arcade.Group;
   powerup_boxes: Phaser.Physics.Arcade.Group;
   mystery_boxes: Phaser.Physics.Arcade.Group;
   zappers: Phaser.Physics.Arcade.Group;
   lasers: Phaser.Physics.Arcade.Group;
   rockets: Phaser.Physics.Arcade.Group;
-  rocket_warning: Phaser.Physics.Arcade.Group;
+  laserActive: boolean = false;
+  rocketWarning: Phaser.Physics.Arcade.Group;
   platform: Phaser.Physics.Arcade.Image;
   environmentList: string[] = ["forest", "city", "mars"];
   currentEnvironmentIndex: number = 0;
   environmentTimer!: Phaser.Time.TimerEvent;
-  spawnTimer: Phaser.Time.TimerEvent;
-  difficultyLevel: number = 1;
-  laserActive: boolean = false;
-  coinSpawnTimer: Phaser.Time.TimerEvent;
-  // NOTE : Readonly means speed is hard coded and cannot be changed
-  gameStartTime: number;
-  readonly BEGINNER_SPEED = 9; // 9 m/s (0-2 mins)
-  readonly AVERAGE_SPEED = 18; // 18 m/s (2-4 mins)
-  readonly SKILLED_SPEED = 25; // 25 m/s (4+ mins)
-  currentGameSpeed = 9;
-  readonly BASE_OBSTACLE_SPEED = -550;
-  currentObstacleSpeed = -550;
-  lastZapperTime!: number;
-  lastRocketTime!: number;
-  lastLaserWarning!: number;
-  powerupCount: number = 0;
-  lastCoinSpawnTime: number = 0;
-  lastCoinPatternYRange: number[] = [0, 0];
+
+  // CONSTANTS
+  readonly START_SPEED = 6; // t=0
+  readonly END_SPEED = 25; // t=240s
+  readonly BASE_OBSTACLE_SPEED = -380;
+
+  // ARCHIVE
+  mysteryBoxCount: number = 0;
 
   constructor(
     character: CharacterOptionsType,
     environment: EnvironmentOptionsType,
-    jetpack: JetpackOptionsType
+    jetpack: JetpackOptionsType,
+    mysteryBoxes: Array<MysteryBox>,
+    powerUps: Array<PowerUp>
   ) {
     super({ key: "MainGame" });
     this.character = character;
     this.environment = environment;
     this.jetpack = jetpack;
+    this.mysteryBoxes = mysteryBoxes;
+    this.powerUps = powerUps;
+    this.currentEnvironmentIndex = this.environmentList.indexOf(environment);
   }
 
   init(data: { newGame: boolean }) {
@@ -157,7 +172,7 @@ export class MainGame extends Scene {
       "assets/obstacles/rocket/rocket_warning.png",
       {
         frameWidth: 100,
-        frameHeight: 100,
+        frameHeight: 95,
       }
     );
     this.load.spritesheet("rocket", "assets/obstacles/rocket/rocket.png", {
@@ -239,15 +254,6 @@ export class MainGame extends Scene {
       fontFamily: "Jersey",
     });
 
-    // Timer to increment distance every 'delay' milliseconds
-    this.time.addEvent({
-      delay: 200, // 1000 - 1m/s speed  , 200 - 5m/s speed, counter - 1m/s
-      callback: () => {
-        this.updateDistance();
-      },
-      loop: true,
-    });
-
     // Create the progress bar background (image with borders)
     this.progressBarBackground = this.add
       .image(800, 80, "bar_1")
@@ -289,7 +295,7 @@ export class MainGame extends Scene {
     this.mystery_boxes.children.iterate((child: any) => {
       child.body.setAllowGravity(false);
       child.setScale(0.85);
-      child.setVelocityX(this.currentObstacleSpeed);
+      child.setVelocityX(this.currentGameObjectsSpeed);
       child.anims.play("mystery_box_animation", true);
     });
 
@@ -311,7 +317,7 @@ export class MainGame extends Scene {
     this.powerup_boxes.children.iterate((child: any) => {
       child.body.setAllowGravity(false);
       child.setScale(0.85);
-      child.setVelocityX(this.currentObstacleSpeed);
+      child.setVelocityX(this.currentGameObjectsSpeed);
       child.anims.play("power_up_animation", true);
     });
 
@@ -327,7 +333,7 @@ export class MainGame extends Scene {
     this.zappers = this.physics.add.group();
     this.lasers = this.physics.add.group();
     this.rockets = this.physics.add.group();
-    this.rocket_warning = this.physics.add.group();
+    this.rocketWarning = this.physics.add.group();
 
     // Set up collisions/overlaps
     this.physics.add.overlap(
@@ -355,26 +361,19 @@ export class MainGame extends Scene {
       this
     );
 
-    // this.time.addEvent({
-    //   delay: 1000, // 1 second
-    //   callback: this.handleObstacleSpawning,
-    //   callbackScope: this,
-    //   loop: true,
-    // });
-
-    this.difficultyLevel = 1;
+    // Event to increment distance every 'delay' milliseconds
     this.time.addEvent({
-      delay: 5000, //30 seconds
-      callback: this.handleGameDifficulty,
-      callbackScope: this,
+      delay: 200,
+      callback: () => {
+        this.updateDistance();
+      },
       loop: true,
     });
 
     // Spawn coins every second
-
     this.time.addEvent({
       delay: 1000, // Check every second
-      callback: this.handleCollectiblesAndObstacles,
+      callback: this.updateGameState,
       callbackScope: this,
       loop: true,
     });
@@ -391,13 +390,12 @@ export class MainGame extends Scene {
   }
 
   update() {
-    this.updateGameSpeedByTime();
     this.backgroundLayers.forEach((layer, index) => {
       if (index === 0) {
         layer.tilePositionX += 0;
       } else {
         // Convert m/s to game units
-        const gameSpeedUnit = this.currentGameSpeed / 4.38; // Scale factor to match original game units
+        const gameSpeedUnit = this.currentGameSpeed / 6; // Scale factor to match original game units
         layer.tilePositionX += gameSpeedUnit + index * gameSpeedUnit;
       }
     });
@@ -415,7 +413,7 @@ export class MainGame extends Scene {
 
     if (isPointerDown) {
       // Keep setting upward velocity while pointer is held down
-      this.player.setVelocityY(-900);
+      this.player.setVelocityY(-700);
       if (!this.inTransition) {
         this.player.anims.play(`${this.character}_${this.jetpack}_fly`, true);
       }
@@ -428,7 +426,6 @@ export class MainGame extends Scene {
     }
   }
 
-  // Add these new methods to the MainGame class
   setupEnvironmentTransition() {
     this.environmentTimer = this.time.addEvent({
       delay: 60000, // 60 seconds
@@ -439,6 +436,25 @@ export class MainGame extends Scene {
   }
 
   async changeEnvironment() {
+    const fade = this.add.graphics();
+    fade.fillStyle(0x000000, 1);
+    fade.fillRect(
+      0,
+      0,
+      this.game.config.width as number,
+      this.game.config.height as number
+    );
+    fade.setDepth(999);
+    fade.alpha = 0;
+
+    await new Promise<void>((resolve) => {
+      this.tweens.add({
+        targets: fade,
+        alpha: 1,
+        duration: 100,
+        onComplete: () => resolve(),
+      });
+    });
     this.currentEnvironmentIndex =
       (this.currentEnvironmentIndex + 1) % this.environmentList.length;
     const nextEnvironment = this.environmentList[this.currentEnvironmentIndex];
@@ -447,6 +463,13 @@ export class MainGame extends Scene {
     this.backgroundLayers.forEach((layer, index) => {
       const textureKeys = ["bg_last", "bg_b3", "bg_b2", "bg_b1", "bg_ground"];
       layer.setTexture(textureKeys[index]);
+    });
+
+    this.tweens.add({
+      targets: fade,
+      alpha: 0,
+      duration: 100,
+      onComplete: () => fade.destroy(),
     });
   }
 
@@ -603,66 +626,61 @@ export class MainGame extends Scene {
     }
   }
 
+  // MAIN UPDATE FUNCTION
+  updateGameState() {
+    this.updateGameTimeAndSpeed();
+    this.updateGameObjectsSpeed();
+    //this.handleMysteryBoxSpawning();
+    //this.handlePowerUpSpawning();
+    this.handleCoinSpawning();
+    this.handleObstacleSpawning();
+  }
+
   updateDistance() {
-    // Calculate distance based on current speed (5 updates per second due to 200ms delay)
-    const distanceIncrement = this.currentGameSpeed / 5; // Convert speed (m/s) to distance per update
-    this.distanceTravelled += distanceIncrement;
+    let distanceIncrement = this.currentGameSpeed / 5; // Convert to meters
+    this.distanceTravelled += distanceIncrement; // Convert to meters
     this.distanceText.setText(`${Math.floor(this.distanceTravelled)}m`);
   }
 
-  updateGameSpeedByTime() {
-    const elapsedMinutes = (Date.now() - this.gameStartTime) / 60000; // Convert to minutes
-    if (elapsedMinutes >= 4) {
-      this.currentGameSpeed = this.SKILLED_SPEED;
-    } else if (elapsedMinutes >= 2) {
-      this.currentGameSpeed = this.AVERAGE_SPEED;
-    } else {
-      this.currentGameSpeed = this.BEGINNER_SPEED;
-    }
+  updateGameTimeAndSpeed() {
+    this.totalGameTime += 1;
+    this.currentGameSpeed = this.START_SPEED + (this.totalGameTime * 19) / 360;
   }
 
-  updateObstacleSpeed() {
+  updateGameObjectsSpeed() {
     // Calculate speed multiplier based on current game speed
-    const speedMultiplier = this.currentGameSpeed / this.BEGINNER_SPEED;
-    this.currentObstacleSpeed = this.BASE_OBSTACLE_SPEED * speedMultiplier;
-  }
-
-  handleCollectiblesAndObstacles() {
-    this.handleCoinSpawning();
-    this.handleObstacleSpawning();
+    const speedMultiplier = this.currentGameSpeed / this.START_SPEED;
+    this.currentGameObjectsSpeed = this.BASE_OBSTACLE_SPEED * speedMultiplier;
   }
 
   // HANDLER FUNCTIONS
   handleCoinSpawning() {
     const currentTime = Date.now();
-    const gameTimeElapsed = (currentTime - this.gameStartTime) / 1000; // in seconds
-
     // Clear existing coins that are too far left
     //@ts-ignore
     this.coins.children.each((coin: any) => {
       if (coin.x < -100) {
-        this.lastCoinPatternYRange = [0, 0]; // Reset coin pattern range
+        this.screenYRangeBlockedForSpawning = [0, 0]; // Reset coin pattern range
         coin.destroy();
       }
     });
 
-    // Determine coin count based on game mechanics : TO DO
     let maxCoinCollectible: number;
     let spawnFunctionInvocationDelay: number = 0;
 
-    if (gameTimeElapsed <= 30) {
+    if (this.totalGameTime <= 30) {
       // First 30 seconds: 10 coins
       maxCoinCollectible = 10;
       spawnFunctionInvocationDelay = 7000;
-    } else if (gameTimeElapsed <= 90) {
+    } else if (this.totalGameTime <= 90) {
       // Next 1 minute (30s - 90s): 30 coins
       maxCoinCollectible = 30;
-      spawnFunctionInvocationDelay = 12000;
-    } else if (gameTimeElapsed <= 150) {
+      spawnFunctionInvocationDelay = 6000;
+    } else if (this.totalGameTime <= 150) {
       // Next 1 minute (90s - 150s): 40 coins
       maxCoinCollectible = 40;
-      spawnFunctionInvocationDelay = 12000;
-    } else if (gameTimeElapsed <= 210) {
+      spawnFunctionInvocationDelay = 6000;
+    } else if (this.totalGameTime <= 210) {
       // Next 1 minute (150s - 210s): 60 coins
       maxCoinCollectible = 60;
       spawnFunctionInvocationDelay = 12000;
@@ -674,9 +692,9 @@ export class MainGame extends Scene {
 
     // Determine pattern type based on difficulty level
     let patternType: PatternType;
-    if (gameTimeElapsed <= 90) {
+    if (this.totalGameTime <= 90) {
       patternType = "low";
-    } else if (gameTimeElapsed <= 150) {
+    } else if (this.totalGameTime <= 150) {
       patternType = "medium";
     } else {
       patternType = "high";
@@ -696,28 +714,25 @@ export class MainGame extends Scene {
     console.log(
       "Check overlap, zapper location, lastCoinPatternYRange",
       y - 300,
-      this.lastCoinPatternYRange
+      this.screenYRangeBlockedForSpawning
     );
     // lastCoinPatternYRange should not lie between y and y+351 : UNDER DEVELOPMENT
     if (
-      (this.lastCoinPatternYRange[0] > y - 300 &&
-        this.lastCoinPatternYRange[0] < y + 51) ||
-      (this.lastCoinPatternYRange[1] > y - 300 &&
-        this.lastCoinPatternYRange[1] < y + 51)
+      (this.screenYRangeBlockedForSpawning[0] > y - 300 &&
+        this.screenYRangeBlockedForSpawning[0] < y + 51) ||
+      (this.screenYRangeBlockedForSpawning[1] > y - 300 &&
+        this.screenYRangeBlockedForSpawning[1] < y + 51)
     ) {
       console.log(
         "Coin pattern and obstacle overlap detected",
         y,
-        this.lastCoinPatternYRange
+        this.screenYRangeBlockedForSpawning
       );
       return;
     }
 
     // Calculate elapsed time in seconds
     const elapsedSeconds = (Date.now() - this.gameStartTime) / 1000;
-
-    // Update obstacle speed based on current game speed
-    this.updateObstacleSpeed();
 
     if (elapsedSeconds <= 30) {
       // Level 1 (0-30s): Only zappers, 10 coins
@@ -828,10 +843,6 @@ export class MainGame extends Scene {
     }
   }
 
-  handleGameDifficulty() {
-    this.difficultyLevel++;
-  }
-
   spawnCoinsWithPattern(pattern: PatternType): void {
     const patternGroups = coinPatterns[pattern]; // total patterns of cetain pattern type e.g. low has 2 patterns
     const baseX = 1800; // Starting x-coordinate for coins
@@ -849,10 +860,10 @@ export class MainGame extends Scene {
       coin.setScale(0.18); // coin height is 87px
       //@ts-ignore
       coin.body.setAllowGravity(false);
-      coin.setVelocityX(-550);
+      coin.setVelocityX(this.currentGameObjectsSpeed);
     }
 
-    this.lastCoinPatternYRange = [
+    this.screenYRangeBlockedForSpawning = [
       randomPatternGroup.positions[0].y,
       randomPatternGroup.positions[randomPatternGroup.positions.length - 1].y +
         87,
@@ -861,7 +872,7 @@ export class MainGame extends Scene {
 
   collectCoin(player: any, coin: any) {
     coin.disableBody(true, true);
-    this.lastCoinPatternYRange = [0, 0]; // Reset coin pattern range
+    this.screenYRangeBlockedForSpawning = [0, 0]; // Reset coin pattern range
 
     this.coinCount += 1;
     this.coinText.setText(`${this.coinCount}`);
@@ -872,16 +883,6 @@ export class MainGame extends Scene {
     console.log("Mystery Box collected");
     mystery_box.disableBody(true, true);
   }
-
-  // collectPowerupBox(player: any, powerup_box: any) {
-  //   powerup_box.disableBody(true, true);
-  //   console.log("Powerup Box collected");
-  //   this.startPowerUpTransition(
-  //     CharacterOptionsType.Flash,
-  //     this.character,
-  //     this.jetpack
-  //   );
-  // }
 
   collectPowerupBox(player: any, powerup_box: any) {
     powerup_box.disableBody(true, true);
@@ -916,8 +917,6 @@ export class MainGame extends Scene {
     }
   }
 
-  // SPAWN FUNCTIONS
-
   initiateLaserSequence() {
     const warningDuration = 500; // 1 second warning
     const y = Phaser.Math.Between(200, this.cameras.main.height - 200);
@@ -943,68 +942,6 @@ export class MainGame extends Scene {
   }
   // Add these spawn functions
   spawnZapper(x: number, y: number) {
-    const zapperConfigs = [
-      {
-        rotation: 0,
-        bodies: [
-          {
-            shape: "rectangle",
-            width: 40,
-            height: 250,
-            offsetX: 0,
-            offsetY: 0,
-          },
-        ],
-      },
-      {
-        rotation: 45,
-        bodies: [
-          { shape: "circle", radius: 30, offsetX: 55, offsetY: -80 },
-          {
-            shape: "rectangle",
-            width: 30,
-            height: 30,
-            offsetX: -35,
-            offsetY: 40,
-          },
-          {
-            shape: "rectangle",
-            width: 30,
-            height: 30,
-            offsetX: 30,
-            offsetY: -30,
-          },
-          { shape: "circle", radius: 30, offsetX: -90, offsetY: 65 },
-        ],
-      },
-      {
-        rotation: -45,
-        bodies: [
-          {
-            shape: "circle",
-            radius: 30,
-            offsetX: -85,
-            offsetY: -85,
-          },
-          {
-            shape: "rectangle",
-            width: 30,
-            height: 30,
-            offsetX: 40,
-            offsetY: 40,
-          },
-          {
-            shape: "rectangle",
-            width: 30,
-            height: 30,
-            offsetX: -30,
-            offsetY: -40,
-          },
-          { shape: "circle", radius: 30, offsetX: 60, offsetY: 60 },
-        ],
-      },
-    ];
-
     const randomConfig = Phaser.Math.RND.pick(zapperConfigs);
     const zapper = this.zappers.create(x, y, "zapper_90");
     zapper.setData("config", randomConfig);
@@ -1015,7 +952,7 @@ export class MainGame extends Scene {
     zapper.setSize(50, 50);
     zapper.setRotation(Phaser.Math.DegToRad(randomConfig.rotation));
     zapper.anims.play("zapper_90", true);
-    zapper.setVelocityX(this.currentObstacleSpeed);
+    zapper.setVelocityX(this.currentGameObjectsSpeed);
 
     // Add collision bodies
     randomConfig.bodies.forEach((bodyConfig: any) => {
@@ -1030,7 +967,7 @@ export class MainGame extends Scene {
         body.body.setSize(bodyConfig.width || 0, bodyConfig.height || 0);
       }
       body.body.setAllowGravity(false);
-      body.setVelocityX(this.currentObstacleSpeed);
+      body.setVelocityX(this.currentGameObjectsSpeed);
       body.setVisible(false);
       this.physics.add.existing(body);
       this.physics.add.collider(
@@ -1045,25 +982,18 @@ export class MainGame extends Scene {
   }
 
   spawnRocket(x: number, y: number) {
-    // const warning = this.rocket_warning.create(x, y, "rocket_warning");
-    // warning.setScale(0.8);
-    // warning.body.setAllowGravity(false);
-    // warning.anims.play("rocket_warning_animation", true);
+    const warning = this.rocketWarning.create(x - 200, y, "rocket_warning");
+    warning.setScale(1);
+    warning.body.setAllowGravity(false);
+    warning.anims.play("rocket_warning_animation", true);
 
-    this.time.delayedCall(4000, () => {
-      // warning.destroy();
+    this.time.delayedCall(300, () => {
+      warning.destroy();
       const rocket = this.rockets.create(x, y, "rocket");
-      rocket.setVelocityX(this.currentObstacleSpeed * 3);
+      rocket.setVelocityX(this.currentGameObjectsSpeed * 2);
       rocket.setScale(0.8);
       rocket.body.setAllowGravity(false);
       rocket.anims.play("rocket", true);
-      this.physics.add.collider(
-        this.player,
-        rocket,
-        this.hitRocket,
-        undefined,
-        this
-      );
     });
   }
 

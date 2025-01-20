@@ -2,6 +2,21 @@ export interface GameInitSettings {
   environment: EnvironmentOptionsType;
   character: CharacterOptionsType;
   jetpack: JetpackOptionsType;
+  mysteryBoxes: Array<MysteryBox>;
+  powerUps: Array<PowerUp>;
+}
+
+export interface MysteryBox {
+  id: string;
+  name: string;
+  link: string;
+  timestamp: number;
+}
+
+export interface PowerUp {
+  character: string;
+  time: number;
+  timestamp: number;
 }
 
 export interface EnvironmentBackgroundsLayersType {

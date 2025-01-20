@@ -18,6 +18,7 @@ import DeleteIcon from "@/public/other-logos/delete.svg";
 import AddIcon from "@/public/other-logos/add.svg";
 import SuccessIcon from "@/public/toast-logos/success.svg";
 import ErrorIcon from "@/public/toast-logos/error.svg";
+import RotateScreenIcon from "@/public/other-logos/rotate-screen.svg";
 
 // bottom tab navigation logos
 import MinerActive from "@/public/navigation-logos/miner-active.svg";
@@ -71,6 +72,7 @@ export {
   AddIcon,
   SuccessIcon,
   ErrorIcon,
+  RotateScreenIcon,
   MinerActive, //
   MinerInactive,
   RankActive,

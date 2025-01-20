@@ -16,7 +16,6 @@ const StartGame = (parent: string, gameInitSettings: GameInitSettings) => {
       arcade: {
         gravity: { x: 0, y: 1200 },
         // debug: process.env.NEXT_PUBLIC_NODE_ENV === "development",
-        debug: false,
       },
     },
     scale: {
@@ -29,7 +28,9 @@ const StartGame = (parent: string, gameInitSettings: GameInitSettings) => {
       new MainGame(
         gameInitSettings.character,
         gameInitSettings.environment,
-        gameInitSettings.jetpack
+        gameInitSettings.jetpack,
+        gameInitSettings.mysteryBoxes,
+        gameInitSettings.powerUps
       ),
       GameOver,
       MysteryBoxCardScene,

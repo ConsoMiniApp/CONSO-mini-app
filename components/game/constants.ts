@@ -12,7 +12,6 @@ export const coinPatterns: CoinPatterns = {
       ],
       coinCount: 3,
     },
-
     {
       // Horizontal three dots
       positions: [
@@ -53,7 +52,6 @@ export const coinPatterns: CoinPatterns = {
   // average max collectible : 6
   medium: [
     {
-      // Vertical stack of paired dots
       positions: [
         { x: 0, y: 0 },
         { x: 100, y: 0 },
@@ -65,7 +63,40 @@ export const coinPatterns: CoinPatterns = {
       coinCount: 6,
     },
     {
-      // 3x3 grid
+      positions: [
+        { x: 0, y: 100 },
+        { x: 100, y: 100 },
+        { x: 0, y: 200 },
+        { x: 100, y: 200 },
+        { x: 0, y: 300 },
+        { x: 100, y: 300 },
+      ],
+      coinCount: 6,
+    },
+    {
+      positions: [
+        { x: 0, y: 300 },
+        { x: 100, y: 300 },
+        { x: 0, y: 400 },
+        { x: 100, y: 400 },
+        { x: 0, y: 500 },
+        { x: 100, y: 500 },
+      ],
+      coinCount: 6,
+    },
+    {
+      positions: [
+        { x: 0, y: 400 },
+        { x: 100, y: 400 },
+        { x: 0, y: 500 },
+        { x: 100, y: 500 },
+        { x: 0, y: 600 },
+        { x: 100, y: 600 },
+      ],
+      coinCount: 6,
+    },
+    // horizontal
+    {
       positions: [
         { x: 0, y: 0 },
         { x: 100, y: 0 },
@@ -73,47 +104,56 @@ export const coinPatterns: CoinPatterns = {
         { x: 0, y: 100 },
         { x: 100, y: 100 },
         { x: 200, y: 100 },
+      ],
+      coinCount: 6,
+    },
+    {
+      positions: [
         { x: 0, y: 200 },
         { x: 100, y: 200 },
         { x: 200, y: 200 },
+        { x: 0, y: 300 },
+        { x: 100, y: 300 },
+        { x: 200, y: 300 },
       ],
-      coinCount: 9,
+      coinCount: 6,
+    },
+    {
+      positions: [
+        { x: 0, y: 400 },
+        { x: 100, y: 400 },
+        { x: 200, y: 400 },
+        { x: 0, y: 500 },
+        { x: 100, y: 500 },
+        { x: 200, y: 500 },
+      ],
+      coinCount: 6,
+    },
+    {
+      positions: [
+        { x: 0, y: 500 },
+        { x: 100, y: 500 },
+        { x: 200, y: 500 },
+        { x: 0, y: 600 },
+        { x: 100, y: 600 },
+        { x: 200, y: 600 },
+      ],
+      coinCount: 6,
     },
   ],
   high: [
-    {
-      // Ascending diagonal pattern
-      positions: [
-        { x: 0, y: 0 },
-        { x: 60, y: 30 },
-        { x: 120, y: 60 },
-        { x: 180, y: 90 },
-        { x: 240, y: 120 },
-      ],
-      coinCount: 5,
-    },
-    {
-      // Wave pattern in middle
-      positions: [
-        { x: 0, y: 60 },
-        { x: 60, y: 30 },
-        { x: 120, y: 60 },
-        { x: 180, y: 30 },
-        { x: 240, y: 60 },
-      ],
-      coinCount: 5,
-    },
+    // average max collectible : 7
     {
       // 4x2 grid
       positions: [
         { x: 0, y: 0 },
-        { x: 60, y: 0 },
-        { x: 120, y: 0 },
-        { x: 180, y: 0 },
-        { x: 0, y: 60 },
-        { x: 60, y: 60 },
-        { x: 120, y: 60 },
-        { x: 180, y: 60 },
+        { x: 100, y: 0 },
+        { x: 200, y: 0 },
+        { x: 300, y: 0 },
+        { x: 0, y: 100 },
+        { x: 100, y: 100 },
+        { x: 200, y: 100 },
+        { x: 300, y: 100 },
       ],
       coinCount: 8,
     },
@@ -246,8 +286,70 @@ export const constantKeyAnimations: Array<AnimationOptions> = [
     texture: "rocket_warning",
     start: 0,
     end: 1,
-    frameRate: 10,
+    frameRate: 5,
     repeat: -1,
+  },
+];
+
+export const zapperConfigs = [
+  {
+    rotation: 0,
+    bodies: [
+      {
+        shape: "rectangle",
+        width: 40,
+        height: 250,
+        offsetX: 0,
+        offsetY: 0,
+      },
+    ],
+  },
+  {
+    rotation: 45,
+    bodies: [
+      { shape: "circle", radius: 30, offsetX: 55, offsetY: -80 },
+      {
+        shape: "rectangle",
+        width: 30,
+        height: 30,
+        offsetX: -35,
+        offsetY: 40,
+      },
+      {
+        shape: "rectangle",
+        width: 30,
+        height: 30,
+        offsetX: 30,
+        offsetY: -30,
+      },
+      { shape: "circle", radius: 30, offsetX: -90, offsetY: 65 },
+    ],
+  },
+  {
+    rotation: -45,
+    bodies: [
+      {
+        shape: "circle",
+        radius: 30,
+        offsetX: -85,
+        offsetY: -85,
+      },
+      {
+        shape: "rectangle",
+        width: 30,
+        height: 30,
+        offsetX: 40,
+        offsetY: 40,
+      },
+      {
+        shape: "rectangle",
+        width: 30,
+        height: 30,
+        offsetX: -30,
+        offsetY: -40,
+      },
+      { shape: "circle", radius: 30, offsetX: 60, offsetY: 60 },
+    ],
   },
 ];
 

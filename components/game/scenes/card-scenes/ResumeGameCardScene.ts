@@ -223,21 +223,21 @@ export class ResumeGameCardScene extends Scene {
     );
 
     //Add game over player
-    this.player = this.physics.add
-      .staticSprite(250, 240, `${this.character}_${this.jetpack}`)
-      .setScale(0.8);
-    this.player = this.physics.add
-      .staticSprite(250, 370, `${this.character}_${this.jetpack}`)
-      .setScale(0.8);
-    this.player = this.physics.add
-      .staticSprite(250, 500, `${this.character}_${this.jetpack}`)
-      .setScale(0.8);
-    this.player = this.physics.add
-      .staticSprite(250, 630, `${this.character}_${this.jetpack}`)
-      .setScale(0.8);
-    this.player = this.physics.add
-      .staticSprite(250, 760, `${this.character}_${this.jetpack}`)
-      .setScale(0.8);
+    // this.player = this.physics.add
+    //   .staticSprite(250, 240, `${this.character}_${this.jetpack}`)
+    //   .setScale(0.8);
+    // this.player = this.physics.add
+    //   .staticSprite(250, 370, `${this.character}_${this.jetpack}`)
+    //   .setScale(0.8);
+    // this.player = this.physics.add
+    //   .staticSprite(250, 500, `${this.character}_${this.jetpack}`)
+    //   .setScale(0.8);
+    // this.player = this.physics.add
+    //   .staticSprite(250, 630, `${this.character}_${this.jetpack}`)
+    //   .setScale(0.8);
+    // this.player = this.physics.add
+    //   .staticSprite(250, 760, `${this.character}_${this.jetpack}`)
+    //   .setScale(0.8);
 
     // Add a black transparent rectangle to cover the background
     this.add.graphics().fillStyle(0x6a6a6a, 0.6).fillRect(0, 0, 1800, 1000);
