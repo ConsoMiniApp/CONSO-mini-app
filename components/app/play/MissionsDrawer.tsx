@@ -9,18 +9,27 @@ import { CustomButtonType } from "@/lib/types";
 const missions = [
   {
     logo: <ConsoleIcon />,
-    title: "Connect atleast two Consoles.",
-    points: 2500,
+    title: "Run 2000m in one game.",
+    points: 250,
+    completed: true,
   },
   {
     logo: <ConsoleIcon />,
-    title: "Connect atleast two Consoles.",
-    points: 2500,
+    title: "Collect 3 mystery boxes.",
+    points: 250,
+    completed: false,
   },
   {
     logo: <ConsoleIcon />,
-    title: "Connect atleast two Consoles.",
-    points: 2500,
+    title: "Collect all skins.",
+    points: 250,
+    completed: false,
+  },
+  {
+    logo: <ConsoleIcon />,
+    title: "Collect all jetpacks.",
+    points: 250,
+    completed: false,
   },
 ];
 
@@ -65,21 +74,30 @@ export function MissionsDrawer() {
           {/* Task Cards */}
           <div className="flex flex-col my-6 gap-3 w-full">
             {missions.map((mission) => (
-              <div className="grid grid-cols-7 justify-center items-center px-4 py-2 border-2 border-[#FFE500] rounded-xl">
+              <div
+                className={cn(
+                  "grid grid-cols-7 justify-center items-center px-4 py-2 border-2 border-[#FFE500] rounded-xl",
+                  mission.completed ? "bg-[#FFE500]" : "bg-white"
+                )}
+              >
                 <div className="col-span-1 bg-[#DE5EA6] flex items-center justify-center rounded-lg h-10 w-10 ">
                   {mission.logo}
                 </div>
                 <span
                   className={cn(
                     jersey.className,
-                    "text-xl text-black col-span-4 tracking-wider ml-2"
+                    "text-md text-black col-span-4 tracking-wider ml-2"
                   )}
                 >
                   {mission.title}
                 </span>
                 <CustomButton
                   text={mission.points.toString()}
-                  type={CustomButtonType.TASK_COIN_AMOUNT}
+                  type={
+                    mission.completed
+                      ? CustomButtonType.TASK_COIN_AMOUNT_CREDITED
+                      : CustomButtonType.TASK_COIN_AMOUNT
+                  }
                   handleClick={() => console.log("do nothing")}
                 ></CustomButton>
               </div>

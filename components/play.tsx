@@ -67,8 +67,8 @@ export default function Play() {
       },
     ],
     powerUps: [
-      { character: "flash", time: 20, timestamp: 100 },
-      { character: "armor", time: 45, timestamp: 210 },
+      { character: CharacterOptionsType.Flash, time: 20, timestamp: 100 },
+      { character: CharacterOptionsType.Angel, time: 45, timestamp: 210 },
     ],
   };
 

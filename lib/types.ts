@@ -47,6 +47,7 @@ export enum CustomButtonType {
   PRIMARY_WIDE = "primarywide",
   PRIMARY_MEDIUM = "primarymedium",
   TASK_COIN_AMOUNT = "taskcoinamount",
+  TASK_COIN_AMOUNT_CREDITED = "taskcoinamountcredited",
 }
 
 // Playstation

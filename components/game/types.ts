@@ -14,7 +14,7 @@ export interface MysteryBox {
 }
 
 export interface PowerUp {
-  character: string;
+  character: CharacterOptionsType;
   time: number;
   timestamp: number;
 }
@@ -60,4 +60,9 @@ export type PatternGroup = {
 
 export type CoinPatterns = {
   [key in PatternType]: PatternGroup[];
+};
+export type LaserPosition = { x: number; y: number };
+
+export type LaserPatternGroup = {
+  positions: LaserPosition[];
 };

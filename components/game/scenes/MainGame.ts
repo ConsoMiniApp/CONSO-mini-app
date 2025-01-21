@@ -15,6 +15,7 @@ import {
   jetpackOptions,
   coinPatterns,
   zapperConfigs,
+  laserPatterns,
 } from "../constants";
 
 export class MainGame extends Scene {
@@ -23,8 +24,8 @@ export class MainGame extends Scene {
   character: CharacterOptionsType;
   environment: EnvironmentOptionsType;
   jetpack: JetpackOptionsType;
-  mysteryBoxes: Array<MysteryBox>;
-  powerUps: Array<PowerUp>;
+  mysteryBoxesToSpawn: Array<MysteryBox> = [];
+  powerUpsToSpawn: Array<PowerUp>;
 
   // DEVICE VARIABLES
   deviceWidth: number = window.innerWidth;
@@ -37,6 +38,7 @@ export class MainGame extends Scene {
   distanceText!: Phaser.GameObjects.Text;
   // POWER UPS
   inTransition: boolean = false;
+  transitionCharacter: CharacterOptionsType = CharacterOptionsType.Og;
   private progressBarBackground: Phaser.GameObjects.Image;
   private progressBarFill: Phaser.GameObjects.Image;
   private progressBarMaxWidth: number = 300;
@@ -44,10 +46,13 @@ export class MainGame extends Scene {
   // GAME STATE
   previous_character: CharacterOptionsType = CharacterOptionsType.Og;
   previous_jetpack: JetpackOptionsType = JetpackOptionsType.Jetpack;
-  screenYRangeBlockedForSpawning: number[] = [0, 0]; //[{start:0, end:160}, {start: 200, end: 360}]
+  // Y Priority - [Mystery Box, Powerup Box] , [Coin], Laser, Zapper
+  screenYRangeBlockedByBoxForSpawning: number[] = [0, 0];
+  screenYRangeBlockedByCoinForSpawning: number[] = [0, 0];
+  screenYRangeBlockedByLaserForSpawning: number[] = [0, 0];
   gameStartTime: number;
   totalGameTime: number = 0;
-  currentGameSpeed = 9;
+  currentGameSpeed = 9; // in m/s
   currentGameObjectsSpeed = -550;
   lastZapperTime!: number;
   lastRocketTime!: number;
@@ -72,7 +77,7 @@ export class MainGame extends Scene {
   // CONSTANTS
   readonly START_SPEED = 6; // t=0
   readonly END_SPEED = 25; // t=240s
-  readonly BASE_OBSTACLE_SPEED = -380;
+  readonly BASE_OBSTACLE_SPEED = -300;
 
   // ARCHIVE
   mysteryBoxCount: number = 0;
@@ -88,8 +93,8 @@ export class MainGame extends Scene {
     this.character = character;
     this.environment = environment;
     this.jetpack = jetpack;
-    this.mysteryBoxes = mysteryBoxes;
-    this.powerUps = powerUps;
+    this.mysteryBoxesToSpawn = mysteryBoxes;
+    this.powerUpsToSpawn = powerUps;
     this.currentEnvironmentIndex = this.environmentList.indexOf(environment);
   }
 
@@ -100,12 +105,44 @@ export class MainGame extends Scene {
   }
 
   resetGame() {
+    // Reset gameplay metrics
     this.coinCount = 0;
     this.distanceTravelled = 0;
     this.mysteryBoxCount = 0;
+
+    // Reset character and environment states
     this.character = CharacterOptionsType.Og;
-    this.environment = EnvironmentOptionsType.Forest;
     this.jetpack = JetpackOptionsType.Jetpack;
+    this.environment = EnvironmentOptionsType.Forest;
+    this.currentEnvironmentIndex = 0;
+
+    // Reset timers and counters
+    this.totalGameTime = 0;
+    this.lastZapperTime = 0;
+    this.lastRocketTime = 0;
+    this.lastLaserWarning = 0;
+    this.lastCoinSpawnTime = 0;
+
+    // Reset game object states
+    this.currentGameSpeed = this.START_SPEED; // Reset speed to start speed
+    this.currentGameObjectsSpeed = this.BASE_OBSTACLE_SPEED; // Reset object speeds
+    this.powerupCount = 0;
+    this.inTransition = false;
+    this.screenYRangeBlockedByBoxForSpawning = [0, 0];
+    this.screenYRangeBlockedByCoinForSpawning = [0, 0];
+    this.screenYRangeBlockedByLaserForSpawning = [0, 0];
+    this.laserActive = false;
+
+    // Reset player properties
+    this.previous_character = CharacterOptionsType.Og;
+    this.previous_jetpack = JetpackOptionsType.Jetpack;
+
+    // Reset UI elements
+    this.progressBarBackground.setVisible(false);
+    this.progressBarFill.setVisible(false);
+    this.updateProgressBar(1); // Reset progress bar to full
+
+    console.log("Game has been reset");
   }
 
   preload() {
@@ -289,15 +326,6 @@ export class MainGame extends Scene {
 
     // Add Mystery Box
     this.mystery_boxes = this.physics.add.group();
-    // this.mystery_boxes.create(1300, 840, "mystery_box");
-
-    // @ts-ignore
-    this.mystery_boxes.children.iterate((child: any) => {
-      child.body.setAllowGravity(false);
-      child.setScale(0.85);
-      child.setVelocityX(this.currentGameObjectsSpeed);
-      child.anims.play("mystery_box_animation", true);
-    });
 
     this.physics.add.overlap(
       this.player,
@@ -309,17 +337,8 @@ export class MainGame extends Scene {
 
     // Add Powerup Box
 
-    this.powerupCount = 0;
+    // this.powerupCount = 0;
     this.powerup_boxes = this.physics.add.group();
-    // this.powerup_boxes.create(1700, 840, "power_up");
-
-    // @ts-ignore
-    this.powerup_boxes.children.iterate((child: any) => {
-      child.body.setAllowGravity(false);
-      child.setScale(0.85);
-      child.setVelocityX(this.currentGameObjectsSpeed);
-      child.anims.play("power_up_animation", true);
-    });
 
     this.physics.add.overlap(
       this.player,
@@ -436,25 +455,25 @@ export class MainGame extends Scene {
   }
 
   async changeEnvironment() {
-    const fade = this.add.graphics();
-    fade.fillStyle(0x000000, 1);
-    fade.fillRect(
-      0,
-      0,
-      this.game.config.width as number,
-      this.game.config.height as number
-    );
-    fade.setDepth(999);
-    fade.alpha = 0;
+    // const fade = this.add.graphics();
+    // fade.fillStyle(0x000000, 1);
+    // fade.fillRect(
+    //   0,
+    //   0,
+    //   this.game.config.width as number,
+    //   this.game.config.height as number
+    // );
+    // fade.setDepth(999);
+    // fade.alpha = 0;
 
-    await new Promise<void>((resolve) => {
-      this.tweens.add({
-        targets: fade,
-        alpha: 1,
-        duration: 100,
-        onComplete: () => resolve(),
-      });
-    });
+    // await new Promise<void>((resolve) => {
+    //   this.tweens.add({
+    //     targets: fade,
+    //     alpha: 1,
+    //     duration: 100,
+    //     onComplete: () => resolve(),
+    //   });
+    // });
     this.currentEnvironmentIndex =
       (this.currentEnvironmentIndex + 1) % this.environmentList.length;
     const nextEnvironment = this.environmentList[this.currentEnvironmentIndex];
@@ -465,12 +484,12 @@ export class MainGame extends Scene {
       layer.setTexture(textureKeys[index]);
     });
 
-    this.tweens.add({
-      targets: fade,
-      alpha: 0,
-      duration: 100,
-      onComplete: () => fade.destroy(),
-    });
+    // this.tweens.add({
+    //   targets: fade,
+    //   alpha: 0,
+    //   duration: 100,
+    //   onComplete: () => fade.destroy(),
+    // });
   }
 
   async loadNewEnvironment(envName: string) {
@@ -630,8 +649,8 @@ export class MainGame extends Scene {
   updateGameState() {
     this.updateGameTimeAndSpeed();
     this.updateGameObjectsSpeed();
-    //this.handleMysteryBoxSpawning();
-    //this.handlePowerUpSpawning();
+    this.handleMysteryBoxSpawning();
+    this.handlePowerUpSpawning();
     this.handleCoinSpawning();
     this.handleObstacleSpawning();
   }
@@ -644,7 +663,7 @@ export class MainGame extends Scene {
 
   updateGameTimeAndSpeed() {
     this.totalGameTime += 1;
-    this.currentGameSpeed = this.START_SPEED + (this.totalGameTime * 19) / 360;
+    this.currentGameSpeed = this.START_SPEED + (this.totalGameTime * 16) / 240;
   }
 
   updateGameObjectsSpeed() {
@@ -654,13 +673,67 @@ export class MainGame extends Scene {
   }
 
   // HANDLER FUNCTIONS
+  handleMysteryBoxSpawning() {
+    console.log(
+      "screenYRangeBlockedByBoxForSpawning",
+
+      this.screenYRangeBlockedByBoxForSpawning
+    );
+    //@ts-ignore
+    this.mystery_boxes?.children.each((mysteryBox: any) => {
+      if (mysteryBox.x < -100) {
+        this.screenYRangeBlockedByBoxForSpawning = [0, 0]; // Reset coin pattern range
+        mysteryBox.destroy();
+      }
+    });
+
+    this.mysteryBoxesToSpawn?.forEach((mysteryBox) => {
+      if (this.totalGameTime == mysteryBox.timestamp) {
+        // this.mystery_boxes.create(1300, 840, "mystery_box");
+        const mysteryBox = this.mystery_boxes.create(1900, 840, "mystery_box");
+        mysteryBox.body.setAllowGravity(false);
+        mysteryBox.setScale(0.85);
+        mysteryBox.setVelocityX(this.currentGameObjectsSpeed);
+        mysteryBox.anims.play("mystery_box_animation", true);
+        this.screenYRangeBlockedByBoxForSpawning = [840, 942]; // 102 px height of mystery box
+      }
+    });
+  }
+
+  handlePowerUpSpawning() {
+    console.log(
+      "screenYRangeBlockedByBoxForSpawning",
+
+      this.screenYRangeBlockedByBoxForSpawning
+    );
+    //@ts-ignore
+    this.powerup_boxes?.children.each((powerUpBox: any) => {
+      if (powerUpBox.x < -100) {
+        this.screenYRangeBlockedByBoxForSpawning = [0, 0]; //
+        powerUpBox.destroy();
+      }
+    });
+
+    this.powerUpsToSpawn?.forEach((powerUp: PowerUp) => {
+      if (this.totalGameTime == powerUp.timestamp) {
+        const powerUpBody = this.powerup_boxes.create(1900, 840, "power_up");
+        powerUpBody.body.setAllowGravity(false);
+        powerUpBody.setScale(0.85);
+        powerUpBody.setVelocityX(this.currentGameObjectsSpeed);
+        powerUpBody.anims.play("power_up_animation", true);
+        this.screenYRangeBlockedByBoxForSpawning = [840, 942]; // 102 px height of power up box
+        this.transitionCharacter = powerUp.character as CharacterOptionsType;
+      }
+    });
+  }
+
   handleCoinSpawning() {
     const currentTime = Date.now();
     // Clear existing coins that are too far left
     //@ts-ignore
     this.coins.children.each((coin: any) => {
       if (coin.x < -100) {
-        this.screenYRangeBlockedForSpawning = [0, 0]; // Reset coin pattern range
+        this.screenYRangeBlockedByCoinForSpawning = [0, 0]; // Reset coin pattern range
         coin.destroy();
       }
     });
@@ -679,7 +752,7 @@ export class MainGame extends Scene {
     } else if (this.totalGameTime <= 150) {
       // Next 1 minute (90s - 150s): 40 coins
       maxCoinCollectible = 40;
-      spawnFunctionInvocationDelay = 6000;
+      spawnFunctionInvocationDelay = 5000;
     } else if (this.totalGameTime <= 210) {
       // Next 1 minute (150s - 210s): 60 coins
       maxCoinCollectible = 60;
@@ -712,21 +785,19 @@ export class MainGame extends Scene {
     const y = Phaser.Math.Between(300, this.cameras.main.height - 250);
 
     console.log(
-      "Check overlap, zapper location, lastCoinPatternYRange",
-      y - 300,
-      this.screenYRangeBlockedForSpawning
+      "screenYRangeBlockedByCoinForSpawning",
+      this.screenYRangeBlockedByCoinForSpawning
     );
-    // lastCoinPatternYRange should not lie between y and y+351 : UNDER DEVELOPMENT
     if (
-      (this.screenYRangeBlockedForSpawning[0] > y - 300 &&
-        this.screenYRangeBlockedForSpawning[0] < y + 51) ||
-      (this.screenYRangeBlockedForSpawning[1] > y - 300 &&
-        this.screenYRangeBlockedForSpawning[1] < y + 51)
+      (this.screenYRangeBlockedByCoinForSpawning[0] > y - 300 &&
+        this.screenYRangeBlockedByCoinForSpawning[0] < y + 51) ||
+      (this.screenYRangeBlockedByCoinForSpawning[1] > y - 300 &&
+        this.screenYRangeBlockedByCoinForSpawning[1] < y + 51)
     ) {
       console.log(
         "Coin pattern and obstacle overlap detected",
         y,
-        this.screenYRangeBlockedForSpawning
+        this.screenYRangeBlockedByCoinForSpawning
       );
       return;
     }
@@ -737,6 +808,20 @@ export class MainGame extends Scene {
     if (elapsedSeconds <= 30) {
       // Level 1 (0-30s): Only zappers, 10 coins
       if (!this.lastZapperTime || this.time.now - this.lastZapperTime > 3000) {
+        // check if laser exists before spawning zapper
+        if (
+          (this.screenYRangeBlockedByLaserForSpawning[0] > y - 300 &&
+            this.screenYRangeBlockedByLaserForSpawning[0] < y + 51) ||
+          (this.screenYRangeBlockedByLaserForSpawning[1] > y - 300 &&
+            this.screenYRangeBlockedByLaserForSpawning[1] < y + 51)
+        ) {
+          console.log(
+            "laser can overlap with zapper",
+            y,
+            this.screenYRangeBlockedByCoinForSpawning
+          );
+          return;
+        }
         this.spawnZapper(x, y);
         this.lastZapperTime = this.time.now;
       }
@@ -752,55 +837,41 @@ export class MainGame extends Scene {
         this.lastZapperTime = this.time.now;
       } else if (
         obstacleType === "rocket" &&
-        (!this.lastRocketTime || this.time.now - this.lastRocketTime > 4000)
+        (!this.lastRocketTime || this.time.now - this.lastRocketTime > 6000)
       ) {
-        this.spawnRocket(x, y);
+        this.spawnRocketWithWarning(x, y);
         this.lastRocketTime = this.time.now;
-      }
-    } else if (elapsedSeconds <= 120) {
-      if (
-        !this.lastLaserWarning ||
-        this.time.now - this.lastLaserWarning > 8000
-      ) {
-        // Don't return after initiating laser sequence
-        this.initiateLaserSequence();
-        this.lastLaserWarning = this.time.now;
       }
     } else if (elapsedSeconds <= 150) {
       // Level 3 (90s-150s): Medium density with lasers, 40 coins
-      if (
-        !this.lastLaserWarning ||
-        this.time.now - this.lastLaserWarning > 8000
-      ) {
-        // Don't return after initiating laser sequence
-        this.initiateLaserSequence();
-        this.lastLaserWarning = this.time.now;
-      }
-
-      const obstacleType = Phaser.Math.RND.pick(["zapper", "zapper", "rocket"]);
+      const obstacleType = Phaser.Math.RND.pick([
+        "zapper",
+        "zapper",
+        "rocket",
+        "laser",
+        "laser",
+      ]);
       if (
         obstacleType === "zapper" &&
-        (!this.lastZapperTime || this.time.now - this.lastZapperTime > 1800)
+        (!this.lastZapperTime || this.time.now - this.lastZapperTime > 2000)
       ) {
         this.spawnZapper(x, y);
         this.lastZapperTime = this.time.now;
       } else if (
         obstacleType === "rocket" &&
-        (!this.lastRocketTime || this.time.now - this.lastRocketTime > 3500)
+        (!this.lastRocketTime || this.time.now - this.lastRocketTime > 4000)
       ) {
-        this.spawnRocket(x, y);
+        this.spawnRocketWithWarning(x, y);
         this.lastRocketTime = this.time.now;
+      } else if (
+        obstacleType === "laser" &&
+        (!this.lastLaserWarning || this.time.now - this.lastLaserWarning > 8000)
+      ) {
+        this.spawnLaserWithWarning();
+        this.lastLaserWarning = this.time.now;
       }
     } else if (elapsedSeconds <= 210) {
       // Level 4 (150s-210s): 50% increased difficulty, 60 coins
-      if (
-        !this.lastLaserWarning ||
-        this.time.now - this.lastLaserWarning > 6000
-      ) {
-        this.initiateLaserSequence();
-        this.lastLaserWarning = this.time.now;
-      }
-
       const obstacleType = Phaser.Math.RND.pick(["zapper", "rocket", "zapper"]);
       if (
         obstacleType === "zapper" &&
@@ -812,20 +883,11 @@ export class MainGame extends Scene {
         obstacleType === "rocket" &&
         (!this.lastRocketTime || this.time.now - this.lastRocketTime > 2300)
       ) {
-        this.spawnRocket(x, y);
+        this.spawnRocketWithWarning(x, y);
         this.lastRocketTime = this.time.now;
       }
     } else {
       // Level 5 (210s+): Maximum difficulty (permanent), 60 coins
-      // This level continues indefinitely
-      if (
-        !this.lastLaserWarning ||
-        this.time.now - this.lastLaserWarning > 4000
-      ) {
-        this.initiateLaserSequence();
-        this.lastLaserWarning = this.time.now;
-      }
-
       const obstacleType = Phaser.Math.RND.pick(["zapper", "rocket"]);
       if (
         obstacleType === "zapper" &&
@@ -837,7 +899,7 @@ export class MainGame extends Scene {
         obstacleType === "rocket" &&
         (!this.lastRocketTime || this.time.now - this.lastRocketTime > 1500)
       ) {
-        this.spawnRocket(x, y);
+        this.spawnRocketWithWarning(x, y);
         this.lastRocketTime = this.time.now;
       }
     }
@@ -863,7 +925,7 @@ export class MainGame extends Scene {
       coin.setVelocityX(this.currentGameObjectsSpeed);
     }
 
-    this.screenYRangeBlockedForSpawning = [
+    this.screenYRangeBlockedByCoinForSpawning = [
       randomPatternGroup.positions[0].y,
       randomPatternGroup.positions[randomPatternGroup.positions.length - 1].y +
         87,
@@ -872,7 +934,7 @@ export class MainGame extends Scene {
 
   collectCoin(player: any, coin: any) {
     coin.disableBody(true, true);
-    this.screenYRangeBlockedForSpawning = [0, 0]; // Reset coin pattern range
+    this.screenYRangeBlockedByCoinForSpawning = [0, 0]; // Reset coin pattern range
 
     this.coinCount += 1;
     this.coinText.setText(`${this.coinCount}`);
@@ -882,65 +944,49 @@ export class MainGame extends Scene {
     this.mysteryBoxCount++;
     console.log("Mystery Box collected");
     mystery_box.disableBody(true, true);
+    this.screenYRangeBlockedByBoxForSpawning = [0, 0]; // Reset mystery box pattern range
   }
 
   collectPowerupBox(player: any, powerup_box: any) {
+    console.log("collectPowerupBox triggered");
     powerup_box.disableBody(true, true);
     console.log("Powerup Box collected");
 
-    this.powerupCount += 1; // Increment powerup counter
-
-    switch (this.powerupCount) {
-      case 1:
-        this.startPowerUpTransition(
-          CharacterOptionsType.Flash,
-          this.character,
-          this.jetpack
-        );
-        break;
-      case 2:
-        this.startPowerUpTransition(
-          CharacterOptionsType.Angel,
-          this.character,
-          this.jetpack
-        );
-        break;
-      case 3:
-        this.startPowerUpTransition(
-          CharacterOptionsType.Armor,
-          this.character,
-          this.jetpack
-        );
-        break;
-      default:
-        console.log("All powerups collected!");
-    }
-  }
-
-  initiateLaserSequence() {
-    const warningDuration = 500; // 1 second warning
-    const y = Phaser.Math.Between(200, this.cameras.main.height - 200);
-
-    // Spawn warning indicators
-    const leftWarning = this.add.sprite(300, y, "laser_left");
-    const rightWarning = this.add.sprite(
-      this.cameras.main.width - 300,
-      y,
-      "laser_right"
+    // this.powerupCount += 1; // Increment powerup counter
+    this.startPowerUpTransition(
+      this.transitionCharacter as CharacterOptionsType, // Flash, Armor, Angel
+      // CharacterOptionsType.Flash,
+      this.character,
+      this.jetpack
     );
 
-    // Play warning animations if they exist
-    leftWarning.anims.play("laser_left", true);
-    rightWarning.anims.play("laser_right", true);
-
-    // After warning duration, remove warnings and spawn laser
-    this.time.delayedCall(warningDuration, () => {
-      leftWarning.destroy();
-      rightWarning.destroy();
-      this.spawnLaser(this.cameras.main.width / 2, y);
-    });
+    // switch (this.powerupCount) {
+    //   case 1:
+    //     this.startPowerUpTransition(
+    //       CharacterOptionsType.Flash,
+    //       this.character,
+    //       this.jetpack
+    //     );
+    //     break;
+    //   case 2:
+    //     this.startPowerUpTransition(
+    //       CharacterOptionsType.Angel,
+    //       this.character,
+    //       this.jetpack
+    //     );
+    //     break;
+    //   case 3:
+    //     this.startPowerUpTransition(
+    //       CharacterOptionsType.Armor,
+    //       this.character,
+    //       this.jetpack
+    //     );
+    //     break;
+    //   default:
+    //     console.log("All powerups collected!");
+    // }
   }
-  // Add these spawn functions
+
   spawnZapper(x: number, y: number) {
     const randomConfig = Phaser.Math.RND.pick(zapperConfigs);
     const zapper = this.zappers.create(x, y, "zapper_90");
@@ -970,7 +1016,7 @@ export class MainGame extends Scene {
       body.setVelocityX(this.currentGameObjectsSpeed);
       body.setVisible(false);
       this.physics.add.existing(body);
-      this.physics.add.collider(
+      this.physics.add.overlap(
         this.player,
         body,
         //@ts-ignore
@@ -981,13 +1027,13 @@ export class MainGame extends Scene {
     });
   }
 
-  spawnRocket(x: number, y: number) {
+  spawnRocketWithWarning(x: number, y: number) {
     const warning = this.rocketWarning.create(x - 200, y, "rocket_warning");
     warning.setScale(1);
     warning.body.setAllowGravity(false);
     warning.anims.play("rocket_warning_animation", true);
 
-    this.time.delayedCall(300, () => {
+    this.time.delayedCall(1000, () => {
       warning.destroy();
       const rocket = this.rockets.create(x, y, "rocket");
       rocket.setVelocityX(this.currentGameObjectsSpeed * 2);
@@ -997,29 +1043,74 @@ export class MainGame extends Scene {
     });
   }
 
-  spawnLaser(x: number, y: number) {
-    // Ensure the laser is within the screen bounds
-    const laserX = Phaser.Math.Clamp(x, 0, this.cameras.main.width - 100);
-    const laserY = Phaser.Math.Clamp(y, 0, this.cameras.main.height - 100);
+  spawnLaserWithWarning() {
+    const warning_left = this.rocketWarning.create(200, 700, "laser_left");
+    const warning_right = this.rocketWarning.create(
+      this.cameras.main.width - 200,
+      700,
+      "laser_right"
+    );
+    const warning_duration = 2000; // Duration for the warning animation (in milliseconds)
 
-    const laser = this.lasers.create(laserX, laserY, "laser");
-    laser.setScale(0.7);
-    laser.setVelocityX(0);
-    laser.body.setAllowGravity(false);
-    laser.anims.play("laser", true);
+    // Play warning animation
+    warning_left.setScale(1);
+    warning_left.body.setAllowGravity(false);
+    warning_left.anims.play("laser_left", true);
 
-    this.laserActive = true; // Set laser active flag
+    this.time.delayedCall(warning_duration, () => {
+      warning_left.destroy();
+    });
 
-    this.time.addEvent({
-      delay: 4000, // Laser appears for 4seconds
-      callback: () => {
-        laser.destroy();
-      },
-      callbackScope: this,
+    warning_right.setScale(1);
+    warning_right.body.setAllowGravity(false);
+    warning_right.anims.play("laser_right", true);
+
+    this.time.delayedCall(warning_duration, () => {
+      warning_right.destroy();
+    });
+
+    this.time.delayedCall(1500, () => {
+      warning_left.destroy();
+      warning_right.destroy();
+      const randomPattern = Phaser.Math.RND.pick(laserPatterns);
+
+      randomPattern.positions.forEach((position: { x: number; y: number }) => {
+        // Ensure the laser is within the screen bounds
+        const laserX = Phaser.Math.Clamp(
+          this.cameras.main.width / 2 + position.x,
+          0,
+          this.cameras.main.width - 100
+        );
+        const laserY = Phaser.Math.Clamp(
+          this.cameras.main.height / 2 + position.y,
+          0,
+          this.cameras.main.height - 100
+        );
+
+        const laser = this.lasers.create(laserX, laserY, "laser");
+        laser.setVelocityX(0);
+        laser.setSize(laser.width * 0.9, laser.height * 0.6);
+        laser.body.setAllowGravity(false);
+        laser.anims.play("laser", true);
+
+        this.laserActive = true; // Set laser active flag
+
+        this.time.addEvent({
+          delay: 6000, // Laser appears for 6 seconds
+          callback: () => {
+            laser.destroy();
+          },
+          callbackScope: this,
+        });
+      });
+      // Update the screen range blocked for spawning lasers
+      this.screenYRangeBlockedByLaserForSpawning = [
+        randomPattern.positions[0].y,
+        randomPattern.positions[randomPattern.positions.length - 1].y + 87,
+      ];
     });
   }
 
-  // KILL PLAYER FUNCTIONS
   hitZapper(
     player: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody,
     zapper: any

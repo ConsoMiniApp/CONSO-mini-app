@@ -91,6 +91,18 @@ function getButtonDetails(type: CustomButtonType) {
           "w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer text-black",
         icon: "./other-logos/coin.svg",
       };
+    case CustomButtonType.TASK_COIN_AMOUNT_CREDITED:
+      return {
+        buttonText: "Mining...",
+        buttonTextStyles: cn(jersey.className, "text-xl tracking-[0.05em]"),
+        buttonStyles: {
+          backgroundImage: "url('/other-logos/button-bg-gray.svg')",
+          backgroundSize: "cover",
+        },
+        buttonClassName:
+          "w-[90px] h-[37px] flex justify-center items-center rounded-lg cursor-pointer text-white",
+        icon: "./other-logos/coin.svg",
+      };
     case CustomButtonType.INACTIVE:
       return {
         buttonText: "Soon...",
