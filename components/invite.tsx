@@ -27,9 +27,9 @@ export default function Invite() {
     if (window.Telegram) {
       //@ts-ignore
       const tg = window.Telegram.WebApp;
-      tg.showPopup({
-        title: "Invite Conso",
-        message: "Invite Conso to your Telegram Group",
+      tg.openTelegramShareDialog({
+        url: "https://your-referral-link.com", // The referral link
+        text: "Hey! Check out this cool app: https://your-referral-link.com", // Your message
       });
     }
   }
