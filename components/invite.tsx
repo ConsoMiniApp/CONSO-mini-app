@@ -137,7 +137,13 @@ export default function Invite() {
                   jersey.className
                 )}
               >
-                30,000
+                {referees.length > 0
+                  ? 200 * referees.length +
+                    0.1 *
+                      referees
+                        .map((r) => r.user_points)
+                        .reduce((a, b) => a + b, 0)
+                  : 0}
               </span>
             </div>
           </div>
@@ -157,7 +163,7 @@ export default function Invite() {
                 <CoinSmallIcon />
               </div>
               <span className={cn(" text-3xl font-bold", jersey.className)}>
-                30,000
+                200
               </span>
             </div>
           </div>
