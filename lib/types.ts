@@ -12,16 +12,17 @@ export type ConnectedConsoles = {
 };
 
 export interface ConsoUser {
-  id: string;
-  nickname: string;
-  username: string;
-  degen_score: number;
-  current_boost: number;
-  user_points: number;
-  connected_consoles: ConnectedConsoles;
   created_at: string;
+  id: string;
+  username: string;
+  nickname: string;
+  user_points: number;
+  current_boost: number;
+  degen_score: number;
   completed_missions: number[];
   global_rank: number;
+  connected_consoles: ConnectedConsoles;
+  game_high_score: number;
   game_total_distance: number;
   referral_code: string;
 }

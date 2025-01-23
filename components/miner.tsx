@@ -262,25 +262,30 @@ export default function Miner() {
     if (error) {
       if (error.code == "PGRST116") {
         // create new user
-        const { data, error } = await supabase.from("users_table").insert([
-          {
-            nickname: null,
-            username: telegramUsername,
-            degen_score: 0,
-            current_boost: 0,
-            user_points: 0,
-            connected_consoles: {
-              playstation: [],
-              xbox: [],
-              steam: [],
-              nintendo: [],
-            },
-            completed_missions: [],
-            global_rank: 0,
-            game_distance: 0,
-            referral_code: `ref_${Math.random().toString(36).substring(2, 9)}`,
+        const user = {
+          username: telegramUsername,
+          nickname: null,
+          user_points: 0,
+          current_boost: 0,
+          degen_score: 0,
+          completed_missions: [],
+          global_rank: 0,
+          connected_consoles: {
+            playstation: [],
+            xbox: [],
+            steam: [],
+            nintendo: [],
           },
-        ]);
+          game_high_score: 0,
+          game_total_distance: 0,
+          referral_code: `ref_${Math.random().toString(36).substring(2, 9)}`,
+        };
+        console.log("Creating new user", user);
+        const { data, error } = await supabase
+          .from("users_table")
+          .insert([user]);
+
+        console.log(data, error);
       }
       console.log("Error fetching user data", error);
       setIsLoading(false);

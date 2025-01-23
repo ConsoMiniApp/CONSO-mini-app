@@ -36,8 +36,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     useState<boolean>(false);
   const [user, setUserData] = useState<ConsoUser>({
     id: "",
-    nickname: "",
     username: "",
+    nickname: "",
     degen_score: 0,
     current_boost: 0,
     user_points: 0,
@@ -52,6 +52,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       sui: [],
     },
     global_rank: 0,
+    game_high_score: 0,
     game_total_distance: 0,
     referral_code: "",
   });
