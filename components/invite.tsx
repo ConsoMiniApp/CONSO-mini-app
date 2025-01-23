@@ -2,10 +2,21 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { handjet, jersey, ibmPlex } from "./ui/fonts";
 import CustomButton from "@/components/app/common/CustomButton";
-import { CustomButtonType } from "@/lib/types";
-import { Coin, CoinSmallIcon } from "./ui/icons";
-import { useEffect } from "react";
+import { CustomButtonType, Referre } from "@/lib/types";
+import {
+  Coin,
+  CoinSmallIcon,
+  NintendoColoredLogo,
+  PlaystationColoredLogo,
+  SteamColoredLogo,
+  XboxColoredLogo,
+} from "./ui/icons";
+import { useEffect, useState } from "react";
 import { INVITE_LINK } from "@/lib/constants";
+import { createClient } from "@/utils/supabase/client";
+import { useAppContext } from "@/contexts/AppContext";
+import RankRow from "./app/rank/RankRow";
+import RefereeRow from "./app/invite/RefereeRow";
 
 const friendsList = [
   {
@@ -22,7 +33,27 @@ const friendsList = [
   },
 ];
 
+interface InviteRowUsers extends Referre {
+  rowExpanded: boolean;
+}
+
 export default function Invite() {
+  const supabase = createClient();
+  const [isLoading, setIsLoading] = useState(false);
+  const { telegramUsername } = useAppContext();
+  const [referees, setReferees] = useState<InviteRowUsers[]>([]);
+
+  function expandRow(index: number) {
+    console.log("Row Expanded", index);
+    const newUsers = [...referees];
+    newUsers[index].rowExpanded = !newUsers[index].rowExpanded;
+    // close all other expanded rows
+    newUsers.forEach((row, i) => {
+      if (i !== index) row.rowExpanded = false;
+    });
+    setReferees(newUsers);
+  }
+
   function invite() {
     //@ts-ignore
     if (window.Telegram) {
@@ -32,8 +63,30 @@ export default function Invite() {
     }
   }
 
+  async function fetchUserData() {
+    setIsLoading(true);
+    const { data, error } = await supabase
+      .from("invite_table")
+      .select("referees")
+      .eq("username", telegramUsername)
+      .single();
+
+    if (data) {
+      setIsLoading(false);
+      setReferees(data.referees);
+      console.log(data.referees);
+    }
+    if (error) {
+      setIsLoading(false);
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
-    if (window && typeof window !== "undefined") window.scrollTo(0, 0);
+    if (window && typeof window !== "undefined") {
+      window.scrollTo(0, 0);
+      fetchUserData();
+    }
   }, []);
 
   return (
@@ -160,14 +213,14 @@ export default function Invite() {
                   handjet.className
                 )}
               >
-                TOTAL : 2
+                TOTAL : {referees.length}
               </span>
             </div>
           </div>
         </div>
         <div className="flex flex-col ">
           <div className="">
-            <div className="grid grid-cols-8 justify-center items-center px-4 bg-[#DE5EA6] h-[31px] border border-[#004AAD] border-1">
+            <div className="grid grid-cols-9 justify-center items-center px-4 bg-[#DE5EA6] h-[31px] border border-[#004AAD] border-1">
               <span
                 className={cn(
                   "text-white text-xl font-normal col-span-1 ",
@@ -186,19 +239,18 @@ export default function Invite() {
               </span>
               <span
                 className={cn(
-                  "text-white text-center text-xl font-normal col-span-2 border-l border-r border-[#004AAD]",
+                  "text-white text-center text-xl font-normal col-span-3 border-l border-r border-[#004AAD]",
                   jersey.className
                 )}
               >
                 <Image
-                  src="./other-logos/boost.svg"
-                  width={11}
-                  height={11}
+                  src="/play-logos/og_jetpack.png"
+                  width={18}
+                  height={18}
                   alt=""
                   className="inline-block mr-1"
-                  onClick={() => console.log("Coin")}
                 />
-                BOOST
+                DISTANCE
               </span>
               <span
                 className={cn(
@@ -221,52 +273,16 @@ export default function Invite() {
         </div>
 
         {/* Friends List Table Body */}
-        {friendsList.map((row, index) => (
-          <div className="flex flex-col ">
-            <div className="">
-              <div
-                className={cn(
-                  "grid grid-cols-8 justify-center items-center px-4  h-[32px]",
-                  index % 2 !== 0 ? "bg-[#5C6E7E]" : "bg-black"
-                )}
-              >
-                <span
-                  className={cn(
-                    "text-white text-xl font-normal col-span-1 ",
-                    jersey.className
-                  )}
-                >
-                  #{row.rank}
-                </span>
-                <span
-                  className={cn(
-                    "text-white text-xl font-normal col-span-3",
-                    jersey.className
-                  )}
-                >
-                  {row.name}
-                </span>
-                <span
-                  className={cn(
-                    "text-white text-center text-xl font-normal col-span-2 ",
-                    jersey.className
-                  )}
-                >
-                  x{row.boost}
-                </span>
-                <span
-                  className={cn(
-                    "text-[#E8BA00] text-center text-xl font-normal col-span-2",
-                    jersey.className
-                  )}
-                >
-                  {row.conso}M
-                </span>
-              </div>
-            </div>
-          </div>
+        {referees.map((row, index) => (
+          <RefereeRow
+            key={index}
+            row={row}
+            index={index}
+            expandRow={expandRow}
+            rowExpanded={row.rowExpanded}
+          />
         ))}
-        <div className="h-8"></div>
+        <div className="h-32"></div>
       </div>
     </div>
   );

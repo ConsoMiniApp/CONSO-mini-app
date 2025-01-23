@@ -38,6 +38,13 @@ export interface ConnectedConsole {
   degen_score?: number;
 }
 
+export interface Referre {
+  nickname: string;
+  user_points: number;
+  game_total_distance: number;
+  connected_consoles: ConsoleType[];
+}
+
 // button types
 export enum CustomButtonType {
   PRIMARY = "primary",
