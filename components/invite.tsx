@@ -27,10 +27,9 @@ export default function Invite() {
     if (window.Telegram) {
       //@ts-ignore
       const tg = window.Telegram.WebApp;
-      tg.openTelegramShareDialog({
-        url: "https://your-referral-link.com", // The referral link
-        text: "Hey! Check out this cool app: https://your-referral-link.com", // Your message
-      });
+      tg.openTelegramLink(
+        "https://t.me/share/url?url=https://t.me/test_app_349857_bot/startapp=ref_abcdefg&text=%F0%9F%92%B0Catizen%3A%20Unleash%2C%20Play%2C%20Earn%20-%20Where%20Every%20Game%20Leads%20to%20an%20Airdrop%20Adventure!%0A%F0%9F%8E%81Let%27s%20play-to-earn%20airdrop%20right%20now!"
+      );
     }
   }
 
