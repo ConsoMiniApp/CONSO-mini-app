@@ -12,6 +12,7 @@ import { TaskDrawer } from "./app/tasks/TaskDrawer";
 
 const missions = [
   {
+    id: 1,
     logo: <ConsoleIcon />,
     name: "Connect Consoles",
     title: "Connect atleast 2 different consoles.",
@@ -20,6 +21,7 @@ const missions = [
     imgSrc: "/pngs/x-logo.png",
   },
   {
+    id: 2,
     logo: <ConsoleIcon />,
     name: "Connect Consoles",
     title: "Connect atleast 2 consoles from same provider.",
@@ -28,6 +30,7 @@ const missions = [
     imgSrc: "/pngs/x-logo.png",
   },
   {
+    id: 3,
     logo: <ConsoleIcon />,
     name: "Connect Consoles",
     title: "Connect all supported Consoles.",
@@ -36,6 +39,7 @@ const missions = [
     imgSrc: "/pngs/x-logo.png",
   },
   {
+    id: 4,
     logo: <ConsoleIcon />,
     name: "Refer ",
     title: "Refer 3 friends.",
@@ -44,6 +48,7 @@ const missions = [
     imgSrc: "/pngs/x-logo.png",
   },
   {
+    id: 5,
     logo: <ConsoleIcon />,
     name: "Refer ",
     title: "Refer 10 friends.",
@@ -54,7 +59,7 @@ const missions = [
 ];
 
 export default function Tasks() {
-  const { pointBalance } = useAppContext();
+  const { user } = useAppContext();
   const [activeTab, setActiveTab] = useState("console");
   const [filteredMissions, setFilteredMissions] = useState(missions);
 
@@ -160,23 +165,32 @@ export default function Tasks() {
                 >
                   {mission.title}
                 </span>
-                <Drawer>
-                  <DrawerTrigger>
-                    <CustomButton
-                      text={mission.points.toString()}
-                      type={CustomButtonType.TASK_COIN_AMOUNT}
-                      handleClick={() => console.log("do nothing")}
-                    ></CustomButton>
-                  </DrawerTrigger>
-                  <DrawerContent>
-                    <TaskDrawer
-                      logo={mission.imgSrc}
-                      name={mission.name}
-                      description={mission.title}
-                      coinAmount={mission.points}
-                    />
-                  </DrawerContent>
-                </Drawer>
+                {user.completed_missions.includes(mission.id) ? (
+                  <CustomButton
+                    text={mission.points.toString()}
+                    type={CustomButtonType.TASK_COIN_AMOUNT_CREDITED}
+                    handleClick={() => console.log("already completed")}
+                  ></CustomButton>
+                ) : (
+                  <Drawer>
+                    <DrawerTrigger>
+                      <CustomButton
+                        text={mission.points.toString()}
+                        type={CustomButtonType.TASK_COIN_AMOUNT}
+                        handleClick={() => console.log("opening task drawer")}
+                      ></CustomButton>
+                    </DrawerTrigger>
+                    <DrawerContent>
+                      <TaskDrawer
+                        id={mission.id}
+                        logo={mission.imgSrc}
+                        name={mission.name}
+                        description={mission.title}
+                        coinAmount={mission.points}
+                      />
+                    </DrawerContent>
+                  </Drawer>
+                )}
               </div>
             ))
           )}

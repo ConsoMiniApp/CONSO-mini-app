@@ -22,9 +22,22 @@ const friendsList = [
 ];
 
 export default function Invite() {
+  function invite() {
+    //@ts-ignore
+    if (window.Telegram) {
+      //@ts-ignore
+      const tg = window.Telegram.WebApp;
+      tg.showPopup({
+        title: "Invite Conso",
+        message: "Invite Conso to your Telegram Group",
+      });
+    }
+  }
+
   useEffect(() => {
     if (window && typeof window !== "undefined") window.scrollTo(0, 0);
   }, []);
+
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-md mx-auto min-h-screen flex flex-col">
@@ -124,7 +137,9 @@ export default function Invite() {
           <CustomButton
             text="INVITE FRIENDS"
             type={CustomButtonType.OTHER}
-            handleClick={() => {}}
+            handleClick={() => {
+              invite();
+            }}
           />
         </div>
 
