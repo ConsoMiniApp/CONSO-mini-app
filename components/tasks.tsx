@@ -7,37 +7,49 @@ import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 import { ConsoleIcon } from "./ui/icons";
 import { useEffect, useState } from "react";
+import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
+import { TaskDrawer } from "./app/tasks/TaskDrawer";
 
 const missions = [
   {
     logo: <ConsoleIcon />,
+    name: "Connect Consoles",
     title: "Connect atleast 2 different consoles.",
-    points: 2500,
+    points: 200,
     category: "console",
+    imgSrc: "/pngs/x-logo.png",
   },
   {
     logo: <ConsoleIcon />,
+    name: "Connect Consoles",
     title: "Connect atleast 2 consoles from same provider.",
-    points: 2500,
+    points: 200,
     category: "console",
+    imgSrc: "/pngs/x-logo.png",
   },
   {
     logo: <ConsoleIcon />,
+    name: "Connect Consoles",
     title: "Connect all supported Consoles.",
-    points: 2500,
+    points: 250,
     category: "console",
+    imgSrc: "/pngs/x-logo.png",
   },
   {
     logo: <ConsoleIcon />,
+    name: "Refer ",
     title: "Refer 3 friends.",
-    points: 2500,
+    points: 150,
     category: "others",
+    imgSrc: "/pngs/x-logo.png",
   },
   {
     logo: <ConsoleIcon />,
+    name: "Refer ",
     title: "Refer 10 friends.",
-    points: 2500,
+    points: 250,
     category: "others",
+    imgSrc: "/pngs/x-logo.png",
   },
 ];
 
@@ -148,11 +160,23 @@ export default function Tasks() {
                 >
                   {mission.title}
                 </span>
-                <CustomButton
-                  text={mission.points.toString()}
-                  type={CustomButtonType.TASK_COIN_AMOUNT}
-                  handleClick={() => console.log("do nothing")}
-                ></CustomButton>
+                <Drawer>
+                  <DrawerTrigger>
+                    <CustomButton
+                      text={mission.points.toString()}
+                      type={CustomButtonType.TASK_COIN_AMOUNT}
+                      handleClick={() => console.log("do nothing")}
+                    ></CustomButton>
+                  </DrawerTrigger>
+                  <DrawerContent>
+                    <TaskDrawer
+                      logo={mission.imgSrc}
+                      name={mission.name}
+                      description={mission.title}
+                      coinAmount={mission.points}
+                    />
+                  </DrawerContent>
+                </Drawer>
               </div>
             ))
           )}
