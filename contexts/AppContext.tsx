@@ -53,6 +53,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     },
     global_rank: 0,
     game_total_distance: 0,
+    referral_code: "",
   });
 
   // const state: AppState = { pointBalance, message };

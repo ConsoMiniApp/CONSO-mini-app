@@ -278,6 +278,7 @@ export default function Miner() {
             completed_missions: [],
             global_rank: 0,
             game_distance: 0,
+            referral_code: `ref_${Math.random().toString(36).substring(2, 9)}`,
           },
         ]);
       }

@@ -23,6 +23,7 @@ export interface ConsoUser {
   completed_missions: number[];
   global_rank: number;
   game_total_distance: number;
+  referral_code: string;
 }
 
 export interface ConnectedConsole {
