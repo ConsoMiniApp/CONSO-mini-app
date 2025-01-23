@@ -74,9 +74,22 @@ export default function Home() {
     }
   }
 
+  function checkReferralCode() {
+    // get query params
+    const urlParams = new URLSearchParams(window.location.search);
+    const referralCode = urlParams.get("startapp");
+    console.log("Referral code:", referralCode);
+
+    if (referralCode) {
+      console.log("Referral code:", referralCode);
+      // save this telegram user under referral code in database
+    }
+  }
+
   useEffect(() => {
     if (typeof window !== "undefined" && typeof navigator !== "undefined") {
       getTelegramUserDetails();
+      checkReferralCode();
     }
   }, []);
 

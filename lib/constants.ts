@@ -16,3 +16,7 @@ export const DECAY_THRESHOLD_DAYS = 90;
 export const ALPHA = 100;
 export const DECAY_CONSTANT = 0.0007451; // lambda
 export const NORMALIZING_FACTOR = 20.0;
+
+// Invite link
+export const INVITE_LINK =
+  "https://t.me/share/url?url=https://t.me/test_app_349857_bot/testapp?startapp=ref_abcdefgh&text=Ready+to+level+up+with+Conso%3F%0A%F0%9F%94%97+Connect+your+consoles+to+unlock+rewards.%0A%F0%9F%92%B0+Play+games+and+mine+tokens+effortlessly.%0A%F0%9F%8F%86+Compete+to+dominate+the+leaderboard%21";
