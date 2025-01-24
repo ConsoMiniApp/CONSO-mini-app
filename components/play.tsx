@@ -73,7 +73,7 @@ export default function Play() {
       },
     ],
     powerUps: [
-      { character: CharacterOptionsType.Flash, time: 5, timestamp: 10 },
+      { character: CharacterOptionsType.Flash, time: 10, timestamp: 10 },
       // { character: CharacterOptionsType.Angel, time: 5, timestamp: 35 },
     ],
   };
