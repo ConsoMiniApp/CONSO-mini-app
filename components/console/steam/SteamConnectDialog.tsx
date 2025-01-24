@@ -149,7 +149,7 @@ export function SteamConnectDialog() {
       // get latest user data and update app context
 
       toast("Steam Connected.", {
-        className: cn(jersey.className, "text-xl text-white"),
+        className: cn(jersey.className, "text-xl text-white mt-10"),
         icon: <SuccessIcon />,
       });
       setIsPending(false);
