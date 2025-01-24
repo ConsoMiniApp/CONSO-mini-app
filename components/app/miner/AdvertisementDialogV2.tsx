@@ -18,6 +18,8 @@ import CustomButton from "@/components/app/common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
 import { useRef, useState } from "react";
 import { BackIcon, Coin } from "@/components/ui/icons";
+import { createClient } from "@/utils/supabase/client";
+import { useAppContext } from "@/contexts/AppContext";
 
 interface AdvertisementDialogProps {
   videoSrc: string;
@@ -39,9 +41,28 @@ export function AdvertisementDialogV2({
 }: AdvertisementDialogProps) {
   const [showAdInfo, setShowAdInfo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const supabase = createClient();
 
-  const handleVideoEnd = () => {
+  const { user, telegramUsername, setUserData } = useAppContext();
+
+  const handleVideoEnd = async () => {
     setShowAdInfo(true);
+    // update user data in users_table
+    const { data: updatedUserData, error: updatedUserError } = await supabase
+      .from("users_table")
+      .update({
+        user_points: user.user_points + 10,
+      })
+      .eq("username", telegramUsername);
+
+    if (updatedUserError) {
+      throw updatedUserError;
+    }
+
+    setUserData({
+      ...user,
+      user_points: user.user_points + 10,
+    });
   };
 
   // const enterFullScreen = () => {
