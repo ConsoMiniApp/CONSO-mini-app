@@ -18,7 +18,7 @@ export function ClaimTokenDialog({ handleConfirm }: ClaimTokenDialogProps) {
     console.log("Claimed tokens in this mystery box.");
     handleConfirm();
     toast("Claimed Mystery box.", {
-      className: cn(jersey.className, "text-xl text-white"),
+      className: cn(jersey.className, "text-xl text-white mt-10"),
       icon: <SuccessIcon />,
     });
   }

@@ -29,7 +29,7 @@ export function ConfirmShopDialog({ handleConfirm, item }: ConfirmDialogProps) {
     console.log("Purchase selected items");
     handleConfirm();
     toast("Purchase successful.", {
-      className: cn(jersey.className, "text-xl text-white"),
+      className: cn(jersey.className, "text-xl text-white mt-10"),
       icon: <SuccessIcon />,
     });
   }

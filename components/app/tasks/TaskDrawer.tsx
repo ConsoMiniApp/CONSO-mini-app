@@ -53,13 +53,13 @@ export function TaskDrawer({
         setCheckPerformed(true);
         if (result) {
           toast.success("Congrats! Mission Completed.", {
-            className: cn(jersey.className, "text-xl text-white"),
+            className: cn(jersey.className, "text-xl text-white mt-10"),
             icon: <SuccessIcon />,
           });
           // update user data
         } else {
           toast.error("Mission Not Completed yet.", {
-            className: cn(jersey.className, "text-xl text-white"),
+            className: cn(jersey.className, "text-xl text-white mt-10"),
             icon: <ErrorIcon />,
           });
         }
@@ -68,13 +68,13 @@ export function TaskDrawer({
         setIsLoading(false);
         setCheckPerformed(true);
         toast.error("There was an error", {
-          className: cn(jersey.className, "text-xl text-white"),
+          className: cn(jersey.className, "text-xl text-white mt-10"),
         });
         console.log(error);
       }
     } catch (error) {
       toast.error("There was an error", {
-        className: cn(jersey.className, "text-xl text-white"),
+        className: cn(jersey.className, "text-xl text-white mt-10"),
       });
 
       setIsLoading(false);

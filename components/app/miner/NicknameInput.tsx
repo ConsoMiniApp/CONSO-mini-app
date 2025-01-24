@@ -35,13 +35,13 @@ export function NicknameInput({
       setAcceptNickname(false);
 
       toast("Nickname added.", {
-        className: cn(jersey.className, "text-xl text-white"),
+        className: cn(jersey.className, "text-xl text-white mt-10"),
         icon: <SuccessIcon />,
       });
     } catch (error) {
       console.error("Error adding nickname:", error);
       toast.error("There was an error.", {
-        className: cn(jersey.className, "text-xl text-white"),
+        className: cn(jersey.className, "text-xl text-white mt-10"),
         icon: <ErrorIcon />,
       });
     }

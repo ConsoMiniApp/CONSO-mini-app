@@ -63,13 +63,13 @@ export function PlaystationConnectedDialog() {
 
       setConsoles(updatedConsoles.filter((c) => c.status === "Mining"));
       toast("Console(s) removed.", {
-        className: cn(jersey.className, "text-xl text-white"),
+        className: cn(jersey.className, "text-xl text-white mt-10"),
         icon: <SuccessIcon />,
       });
     } catch (error) {
       console.error("Error saving to Supabase:", error);
       toast("Error removing console(s)", {
-        className: cn(jersey.className, "text-xl text-white"),
+        className: cn(jersey.className, "text-xl text-white mt-10"),
         icon: <ErrorIcon />,
       });
     } finally {

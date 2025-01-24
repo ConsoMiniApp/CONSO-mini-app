@@ -18,7 +18,7 @@ export function ClaimNftDialog({ handleConfirm }: ClaimNftDialogProps) {
     console.log("Deleting selected consoles");
     handleConfirm();
     toast("Console removed.", {
-      className: cn(jersey.className, "text-xl text-white"),
+      className: cn(jersey.className, "text-xl text-white mt-10"),
       icon: <SuccessIcon />,
     });
   }

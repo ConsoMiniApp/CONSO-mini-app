@@ -29,7 +29,7 @@ export function PlayStationConnectDialog() {
   async function handlePlaystationConnect() {
     if (npssocode.length < 64) {
       toast.error("Invalid NPSSO Code", {
-        className: cn(jersey.className, "text-xl text-white"),
+        className: cn(jersey.className, "text-xl text-white mt-10"),
       });
       return;
     }
@@ -48,7 +48,7 @@ export function PlayStationConnectDialog() {
       if ((data && data.length > 0) || error) {
         setIsPending(false);
         toast.error("PlayStation already connected.", {
-          className: cn(jersey.className, "text-xl text-white"),
+          className: cn(jersey.className, "text-xl text-white mt-10"),
           icon: <ErrorIcon />,
         });
         return;
@@ -81,7 +81,7 @@ export function PlayStationConnectDialog() {
       ) {
         setIsPending(false);
         toast.error("PlayStation already connected.", {
-          className: cn(jersey.className, "text-xl text-white"),
+          className: cn(jersey.className, "text-xl text-white mt-10"),
           icon: <ErrorIcon />,
         });
         return;
@@ -176,7 +176,7 @@ export function PlayStationConnectDialog() {
       console.error("Error:", error);
       setIsPending(false);
       toast.error("There was an error.", {
-        className: cn(jersey.className, "text-xl text-white"),
+        className: cn(jersey.className, "text-xl text-white mt-10"),
         icon: <ErrorIcon />,
       });
     }
