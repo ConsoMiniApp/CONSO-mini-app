@@ -86,6 +86,9 @@ export default function Play() {
   const handleGameExit = () => {
     // setNavigationBarHidden(false);
     setGameLoaded(false);
+    //@ts-ignore
+    const tg = window.Telegram.WebApp;
+    tg.unlockOrientation();
   };
 
   useEffect(() => {
