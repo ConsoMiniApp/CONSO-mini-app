@@ -46,6 +46,12 @@ import Lottie from "lottie-react";
 
 export default function Play() {
   const [gameLoaded, setGameLoaded] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const { user } = useAppContext();
+
+  const handleVideoLoad = () => {
+    setIsVideoLoaded(true);
+  };
   const phaserRef = useRef<IRefPhaserGame | null>(null);
 
   const [isDeviceLandscape, setIsDeviceLandscape] = useState(false);
@@ -63,18 +69,23 @@ export default function Play() {
         id: "1",
         name: "mysteryBox1",
         link: "this_will_be_link",
-        timestamp: 50,
+        timestamp: 5, // change to 35
       },
     ],
     powerUps: [
-      { character: CharacterOptionsType.Flash, time: 20, timestamp: 100 },
-      { character: CharacterOptionsType.Angel, time: 45, timestamp: 210 },
+      { character: CharacterOptionsType.Flash, time: 5, timestamp: 10 },
+      // { character: CharacterOptionsType.Angel, time: 5, timestamp: 35 },
     ],
   };
 
   const handleGameLoading = () => {
     setNavigationBarHidden(true);
     setGameLoaded(true);
+  };
+
+  const handleGameExit = () => {
+    setNavigationBarHidden(false);
+    setGameLoaded(false);
   };
 
   useEffect(() => {
@@ -136,11 +147,22 @@ export default function Play() {
       ) : (
         <div className="">
           {/* Add parallex div here */}
-          <DynamicBackground />
+          {/* <DynamicBackground /> */}
+          <video
+            src={"/videos/player-video.mp4"}
+            controls={false}
+            loop={true}
+            autoPlay
+            playsInline
+            muted
+            // onEnded={handleVideoEnd}
+            onCanPlayThrough={handleVideoLoad}
+            className="object-cover absolute top-0 h-screen pb-24 "
+          ></video>
           <Image
             src={"/videos/player.gif"}
             alt="player"
-            className="object-cover absolute bottom-0 mb-3 ml-14 bg-none pb-36 "
+            className="object-cover absolute bottom-0 mb-3 ml-14 bg-none pb-36 z-2 "
             width={100}
             height={100}
           ></Image>
@@ -215,7 +237,7 @@ export default function Play() {
                     HIGH SCORE
                   </p>
                   <p className={cn(jersey.className, "text-2xl text-white")}>
-                    5,24,56,234 m
+                    {user.game_high_score} m
                   </p>
                 </div>
 
@@ -230,7 +252,7 @@ export default function Play() {
                     TOTAL DISTANCE
                   </p>
                   <p className={cn(jersey.className, "text-2xl text-white")}>
-                    5,24,56,234 m
+                    {user.game_total_distance} m
                   </p>
                 </div>
 
@@ -238,7 +260,7 @@ export default function Play() {
                   {" "}
                   <PotionLogo />{" "}
                   <p className={cn(jersey.className, "text-2xl text-white")}>
-                    x 24
+                    x 0
                   </p>
                 </div>
               </div>

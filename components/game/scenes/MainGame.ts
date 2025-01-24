@@ -39,6 +39,10 @@ export class MainGame extends Scene {
   // POWER UPS
   inTransition: boolean = false;
   transitionCharacter: CharacterOptionsType = CharacterOptionsType.Og;
+  transitionCharacterTime: number = 0;
+  obstaclesInvisible: boolean = false; // Angel Power up
+  obstaclesInactive: boolean = false; // Flash poer up
+  shieldActive: boolean = false; // Armor power up
   private progressBarBackground: Phaser.GameObjects.Image;
   private progressBarFill: Phaser.GameObjects.Image;
   private progressBarMaxWidth: number = 300;
@@ -53,7 +57,8 @@ export class MainGame extends Scene {
   gameStartTime: number;
   totalGameTime: number = 0;
   currentGameSpeed = 9; // in m/s
-  currentGameObjectsSpeed = -550;
+  gameSpeedMultiplier = 1; // for flash powerup
+  currentGameObjectsSpeed = 0;
   lastZapperTime!: number;
   lastRocketTime!: number;
   lastLaserWarning!: number;
@@ -77,7 +82,7 @@ export class MainGame extends Scene {
   // CONSTANTS
   readonly START_SPEED = 6; // t=0
   readonly END_SPEED = 25; // t=240s
-  readonly BASE_OBSTACLE_SPEED = -300;
+  readonly BASE_OBSTACLE_SPEED = -380;
 
   // ARCHIVE
   mysteryBoxCount: number = 0;
@@ -598,6 +603,23 @@ export class MainGame extends Scene {
     this.player.setTexture("transition");
     this.player.play("player_transition");
 
+    // Add power up functionality to the game
+    switch (powerUpCharacter) {
+      case CharacterOptionsType.Flash:
+        this.gameSpeedMultiplier = 2;
+        this.obstaclesInactive = true;
+        break;
+      case CharacterOptionsType.Angel:
+        this.obstaclesInvisible = true;
+        break;
+      case CharacterOptionsType.Armor:
+        this.shieldActive = true;
+        break;
+
+      default:
+        break;
+    }
+
     // Show the progress bar
     this.progressBarBackground.setVisible(true);
     this.progressBarFill.setVisible(true);
@@ -614,9 +636,9 @@ export class MainGame extends Scene {
     // Progress Bar Simulation
     let progress = 1;
     const timer = this.time.addEvent({
-      delay: 300,
+      delay: 250,
       callback: () => {
-        progress -= 0.05; // Reduce progress
+        progress -= 1 / (this.transitionCharacterTime * 4); // Reduce progress
         this.updateProgressBar(progress);
 
         if (progress <= 0) {
@@ -625,6 +647,11 @@ export class MainGame extends Scene {
           this.character = this.previous_character;
           this.jetpack = this.previous_jetpack;
           this.player.setTexture(`${this.character}_${this.jetpack}`);
+          // reset all power up variables to normal values
+          this.gameSpeedMultiplier = 1;
+          this.obstaclesInactive = false;
+          this.obstaclesInvisible = false;
+          this.shieldActive = false;
         }
       },
       loop: true,
@@ -663,12 +690,15 @@ export class MainGame extends Scene {
 
   updateGameTimeAndSpeed() {
     this.totalGameTime += 1;
-    this.currentGameSpeed = this.START_SPEED + (this.totalGameTime * 16) / 240;
+    this.currentGameSpeed =
+      this.gameSpeedMultiplier * this.START_SPEED +
+      (this.totalGameTime * 19) / 360;
   }
 
   updateGameObjectsSpeed() {
     // Calculate speed multiplier based on current game speed
-    const speedMultiplier = this.currentGameSpeed / this.START_SPEED;
+    const speedMultiplier =
+      (this.gameSpeedMultiplier * this.currentGameSpeed) / this.START_SPEED;
     this.currentGameObjectsSpeed = this.BASE_OBSTACLE_SPEED * speedMultiplier;
   }
 
@@ -723,6 +753,7 @@ export class MainGame extends Scene {
         powerUpBody.anims.play("power_up_animation", true);
         this.screenYRangeBlockedByBoxForSpawning = [840, 942]; // 102 px height of power up box
         this.transitionCharacter = powerUp.character as CharacterOptionsType;
+        this.transitionCharacterTime = powerUp.time;
       }
     });
   }
@@ -782,7 +813,7 @@ export class MainGame extends Scene {
 
   handleObstacleSpawning() {
     const x = this.cameras.main.width + 100;
-    const y = Phaser.Math.Between(300, this.cameras.main.height - 250);
+    const y = Phaser.Math.Between(100, this.cameras.main.height - 250);
 
     console.log(
       "screenYRangeBlockedByCoinForSpawning",
@@ -837,7 +868,7 @@ export class MainGame extends Scene {
         this.lastZapperTime = this.time.now;
       } else if (
         obstacleType === "rocket" &&
-        (!this.lastRocketTime || this.time.now - this.lastRocketTime > 6000)
+        (!this.lastRocketTime || this.time.now - this.lastRocketTime > 9000)
       ) {
         this.spawnRocketWithWarning(x, y);
         this.lastRocketTime = this.time.now;
@@ -848,7 +879,6 @@ export class MainGame extends Scene {
         "zapper",
         "zapper",
         "rocket",
-        "laser",
         "laser",
       ]);
       if (
@@ -872,7 +902,13 @@ export class MainGame extends Scene {
       }
     } else if (elapsedSeconds <= 210) {
       // Level 4 (150s-210s): 50% increased difficulty, 60 coins
-      const obstacleType = Phaser.Math.RND.pick(["zapper", "rocket", "zapper"]);
+      const obstacleType = Phaser.Math.RND.pick([
+        "zapper",
+        "zapper",
+        "rocket",
+        "laser",
+        "laser",
+      ]);
       if (
         obstacleType === "zapper" &&
         (!this.lastZapperTime || this.time.now - this.lastZapperTime > 1200)
@@ -888,7 +924,7 @@ export class MainGame extends Scene {
       }
     } else {
       // Level 5 (210s+): Maximum difficulty (permanent), 60 coins
-      const obstacleType = Phaser.Math.RND.pick(["zapper", "rocket"]);
+      const obstacleType = Phaser.Math.RND.pick(["zapper", "rocket", "laser"]);
       if (
         obstacleType === "zapper" &&
         (!this.lastZapperTime || this.time.now - this.lastZapperTime > 800)
@@ -955,36 +991,9 @@ export class MainGame extends Scene {
     // this.powerupCount += 1; // Increment powerup counter
     this.startPowerUpTransition(
       this.transitionCharacter as CharacterOptionsType, // Flash, Armor, Angel
-      // CharacterOptionsType.Flash,
       this.character,
       this.jetpack
     );
-
-    // switch (this.powerupCount) {
-    //   case 1:
-    //     this.startPowerUpTransition(
-    //       CharacterOptionsType.Flash,
-    //       this.character,
-    //       this.jetpack
-    //     );
-    //     break;
-    //   case 2:
-    //     this.startPowerUpTransition(
-    //       CharacterOptionsType.Angel,
-    //       this.character,
-    //       this.jetpack
-    //     );
-    //     break;
-    //   case 3:
-    //     this.startPowerUpTransition(
-    //       CharacterOptionsType.Armor,
-    //       this.character,
-    //       this.jetpack
-    //     );
-    //     break;
-    //   default:
-    //     console.log("All powerups collected!");
-    // }
   }
 
   spawnZapper(x: number, y: number) {
@@ -1115,59 +1124,53 @@ export class MainGame extends Scene {
     player: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody,
     zapper: any
   ) {
-    player.disableBody(true, true);
-    this.scene.start("GameOver", {
-      coinCount: this.coinCount,
-      distanceTravelled: this.distanceTravelled,
-      character: this.character,
-      environment: this.environment,
-      jetpack: this.jetpack,
-    });
+    if (
+      !this.shieldActive &&
+      !this.obstaclesInvisible &&
+      !this.obstaclesInactive
+    ) {
+      player.disableBody(true, true);
+      this.scene.start("GameOver", {
+        coinCount: this.coinCount,
+        distanceTravelled: this.distanceTravelled,
+        character: this.character,
+        environment: this.environment,
+        jetpack: this.jetpack,
+      });
+    }
   }
 
   hitLaser(player: any, laser: any) {
-    player.disableBody(true, true);
-    this.scene.start("GameOver", {
-      coinCount: this.coinCount,
-      distanceTravelled: this.distanceTravelled,
-      character: this.character,
-      environment: this.environment,
-      jetpack: this.jetpack,
-    });
+    if (
+      !this.shieldActive &&
+      !this.obstaclesInvisible &&
+      !this.obstaclesInactive
+    ) {
+      player.disableBody(true, true);
+      this.scene.start("GameOver", {
+        coinCount: this.coinCount,
+        distanceTravelled: this.distanceTravelled,
+        character: this.character,
+        environment: this.environment,
+        jetpack: this.jetpack,
+      });
+    }
   }
 
   hitRocket(player: any, rocket: any) {
-    player.disableBody(true, true);
-    this.scene.start("GameOver", {
-      coinCount: this.coinCount,
-      distanceTravelled: this.distanceTravelled,
-      character: this.character,
-      environment: this.environment,
-      jetpack: this.jetpack,
-    });
-    // if (this.mysteryBoxCount > 0) {
-    //     this.scene.start("MysteryBoxScreen", {
-    //         character: this.character,
-    //         environment: this.environment,
-    //         jetpack: this.jetpack,
-    //         mysteryBoxCount: this.mysteryBoxCount,
-    //     });
-    // } else {
-    //     console.log("Player Dead. Loading GameOver Scene");
-    //     this.scene.start("GameOver", {
-    //         coinCount: this.coinCount,
-    //         distanceTravelled: this.distanceTravelled,
-    //         character: this.character,
-    //         environment: this.environment,
-    //         jetpack: this.jetpack,
-    //     });
-    // }
-    // this.scene.start("PotionScreen", {
-    //     character: this.character,
-    //     environment: this.environment,
-    //     jetpack: this.jetpack,
-    //     coinCount: this.coinCount,
-    //     distanceTravelled: this.distanceTravelled,
-    // });
+    if (
+      !this.shieldActive &&
+      !this.obstaclesInvisible &&
+      !this.obstaclesInactive
+    ) {
+      player.disableBody(true, true);
+      this.scene.start("GameOver", {
+        coinCount: this.coinCount,
+        distanceTravelled: this.distanceTravelled,
+        character: this.character,
+        environment: this.environment,
+        jetpack: this.jetpack,
+      });
+    }
   }
 }

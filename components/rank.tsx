@@ -346,19 +346,19 @@ export default function Rank() {
               <button className="border-2 border-[#DE5EA6] bg-[#DE5EA6] text-bg-[#DE5EA6] px-3 py-1 rounded-md hover:text-white">
                 1
               </button>
-              <button className="border border-gray-400 px-3 py-1 rounded-md hover:text-white">
+              <button className="border border-gray-400 px-3 py-1 bg-gray-400 rounded-md hover:text-white">
                 2
               </button>
-              <button className="border border-gray-400 px-3 py-1 rounded-md hover:text-white">
+              <button className="border border-gray-400 px-3 py-1 rounded-md bg-gray-400 hover:text-white">
                 3
               </button>
-              <button className="border border-gray-400 px-3 py-1 rounded-md hover:text-white">
+              <button className="border border-gray-400 px-3 py-1 rounded-md bg-gray-400 hover:text-white">
                 4
               </button>
-              <button className="border border-gray-400 px-3 py-1 rounded-md hover:text-white">
+              <button className="border border-gray-400 px-3 py-1 rounded-md bg-gray-400 hover:text-white">
                 ...
               </button>
-              <button className="border border-gray-400 px-3 py-1 rounded-md hover:text-white">
+              <button className="border border-gray-400 px-3 py-1 rounded-md bg-gray-400 hover:text-white">
                 20
               </button>
 
