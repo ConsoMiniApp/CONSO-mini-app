@@ -1,27 +1,16 @@
-interface TestRequest {
-  value: string;
+interface SteamData {
+  apiKey: string;
 }
 
-export const getUserData = async (data: TestRequest) => {
-  const result = await callApi(data);
+export const getUserData = async (data: SteamData) => {
+  const result = await callApi(data.apiKey);
 
   return result;
 };
 
-async function callApi(query: TestRequest) {
-  const res = await fetch(
-    `/api/steam/test-user-data/?testParam=${query.value}`
-  );
+async function callApi(query: string) {
+  const res = await fetch(`/api/steam/test-user-data/?apiKey=${query}`);
   if (!res.ok) {
-    const json = await res.json();
-    if (json.error) {
-      const error = new Error(json.error) as Error & { status: number };
-      error.status = res.status;
-      throw error;
-    } else {
-      throw new Error("An unexpected error occurred");
-    }
-  }
-
-  return res.json();
+    return { error: "An unexpected error occurred" };
+  } else return res.json();
 }

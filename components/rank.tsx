@@ -291,22 +291,26 @@ export default function Rank() {
                             };
 
                             return (
-                              <div
-                                key={consoleType}
-                                className="flex items-center gap-1"
-                              >
-                                <Logo />
-                                {count > 1 && (
-                                  <span
-                                    className={cn(
-                                      jersey.className,
-                                      "text-sm tracking-wider text-black"
-                                    )}
+                              <>
+                                {count > 0 && (
+                                  <div
+                                    key={consoleType}
+                                    className="flex items-center gap-1"
                                   >
-                                    x{count}
-                                  </span>
+                                    <Logo />
+                                    {count > 1 && (
+                                      <span
+                                        className={cn(
+                                          jersey.className,
+                                          "text-sm tracking-wider text-black"
+                                        )}
+                                      >
+                                        x{count}
+                                      </span>
+                                    )}
+                                  </div>
                                 )}
-                              </div>
+                              </>
                             );
                           }
                         )
@@ -330,7 +334,7 @@ export default function Rank() {
           </div>
 
           {/* Pagination Section */}
-          <div className="flex flex-col items-center justify-center space-y-2 bg-black py-4 ">
+          <div className="flex flex-col items-center justify-center space-y-2 bg-black py-4 mb-4">
             <div
               className={cn(
                 "flex items-center space-x-2 text-white",

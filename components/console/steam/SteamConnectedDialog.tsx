@@ -147,6 +147,20 @@ export function SteamConnectedDialog() {
                       {console.console_username}
                     </span>
                   </p>
+
+                  <p
+                    className={cn(
+                      ibmPlex700.className,
+                      "text-[#DE5EA6] text-xs"
+                    )}
+                  >
+                    Console Type :{" "}
+                    <span
+                      className={cn(ibmPlex500.className, "text-xs text-black")}
+                    >
+                      Web
+                    </span>
+                  </p>
                   <p
                     className={cn(
                       ibmPlex700.className,
@@ -157,20 +171,10 @@ export function SteamConnectedDialog() {
                     <span
                       className={cn(ibmPlex500.className, "text-xs text-black")}
                     >
-                      {console.joined_date}
-                    </span>
-                  </p>
-                  <p
-                    className={cn(
-                      ibmPlex700.className,
-                      "text-[#DE5EA6] text-xs"
-                    )}
-                  >
-                    PS Boost :{" "}
-                    <span
-                      className={cn(ibmPlex500.className, "text-xs text-black")}
-                    >
-                      100
+                      {new Date(console.joined_date).toLocaleDateString(
+                        "en-US",
+                        { day: "numeric", month: "long", year: "numeric" }
+                      )}
                     </span>
                   </p>
                   <p

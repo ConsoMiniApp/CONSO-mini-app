@@ -137,22 +137,26 @@ const RankRow = ({ row, index, expandRow, rowExpanded }: RankRowProps) => {
                       };
 
                       return (
-                        <div
-                          key={consoleType}
-                          className="flex items-center gap-1"
-                        >
-                          <Logo />
-                          {count > 1 && (
-                            <span
-                              className={cn(
-                                jersey.className,
-                                "text-sm tracking-wider text-black"
-                              )}
+                        <>
+                          {count > 0 && (
+                            <div
+                              key={consoleType}
+                              className="flex items-center gap-1"
                             >
-                              x{count}
-                            </span>
+                              <Logo />
+                              {count > 1 && (
+                                <span
+                                  className={cn(
+                                    jersey.className,
+                                    "text-sm tracking-wider text-black"
+                                  )}
+                                >
+                                  x{count}
+                                </span>
+                              )}
+                            </div>
                           )}
-                        </div>
+                        </>
                       );
                     }
                   )

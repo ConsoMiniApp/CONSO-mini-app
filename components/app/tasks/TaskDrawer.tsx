@@ -36,7 +36,7 @@ export function TaskDrawer({
   const supabase = createClient();
   const [isLoading, setIsLoading] = useState(false);
   const [checkPerformed, setCheckPerformed] = useState(false);
-  const { telegramUsername } = useAppContext();
+  const { telegramUsername, user, setUserData } = useAppContext();
 
   async function handleConsoleCheck() {
     setIsLoading(true);
@@ -56,7 +56,27 @@ export function TaskDrawer({
             className: cn(jersey.className, "text-xl text-white mt-10"),
             icon: <SuccessIcon />,
           });
-          // update user data
+          // update user data in users_table
+          const { data: updatedUserData, error: updatedUserError } =
+            await supabase
+              .from("users_table")
+              .update({
+                completed_missions: [...user.completed_missions, id],
+                user_points: user.user_points + coinAmount,
+              })
+              .eq("username", telegramUsername)
+              .select();
+          if (updatedUserError) {
+            toast.error("Error updating user data.", {
+              className: cn(jersey.className, "text-xl text-white mt-10"),
+              icon: <ErrorIcon />,
+            });
+            return;
+          }
+          setUserData({
+            ...user,
+            completed_missions: [...user.completed_missions, id],
+          });
         } else {
           toast.error("Mission Not Completed yet.", {
             className: cn(jersey.className, "text-xl text-white mt-10"),

@@ -243,7 +243,7 @@ export function PlayStationConnectDialog() {
                   jersey.className
                 )}
               >
-                4.5x Boost
+                2.5x Boost
               </p>
             </div>
           </div>

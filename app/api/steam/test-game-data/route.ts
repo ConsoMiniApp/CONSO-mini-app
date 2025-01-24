@@ -2,19 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
 import fs from "fs";
 
-const xboxEndpoint = "https://xbl.io/api/v2";
-
 export async function GET(req: NextRequest, res: NextResponse) {
   const requestURL = new URL(req.url as string);
-  const testParam = requestURL.searchParams.get("testParam");
+  const apiKey = requestURL.searchParams.get("apiKey");
 
   try {
-    const data = await getData(testParam as string);
+    const data = await getData(apiKey as string);
 
     console.log("data", data);
 
     const response = {
-      value: testParam,
       data: data,
     };
 
