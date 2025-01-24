@@ -290,6 +290,8 @@ export class GameOver extends Scene {
     this.exit = this.add.image(740, 750, "exit").setInteractive();
     this.exit.on("pointerdown", () => {
       console.log("Exit button clicked");
+      // close the game
+      EventBus.emit("exit-game", this);
     });
 
     // Restart button

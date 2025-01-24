@@ -79,12 +79,12 @@ export default function Play() {
   };
 
   const handleGameLoading = () => {
-    setNavigationBarHidden(true);
+    // setNavigationBarHidden(true);
     setGameLoaded(true);
   };
 
   const handleGameExit = () => {
-    setNavigationBarHidden(false);
+    // setNavigationBarHidden(false);
     setGameLoaded(false);
   };
 
@@ -101,6 +101,13 @@ export default function Play() {
         setHeight(height);
         setWidth(width);
         setIsDeviceLandscape(true);
+        setNavigationBarHidden(true);
+      } else {
+        tg.unlockOrientation();
+        setHeight(height);
+        setWidth(width);
+        setIsDeviceLandscape(false);
+        setNavigationBarHidden(false);
       }
     };
 
@@ -126,7 +133,11 @@ export default function Play() {
       {gameLoaded ? (
         isDeviceLandscape ? (
           <div className="absolute top-0 left-0 right-0 bottom-0">
-            <PhaserGame ref={phaserRef} gameInitSettings={gameInitSettings} />
+            <PhaserGame
+              ref={phaserRef}
+              gameInitSettings={gameInitSettings}
+              exitGame={handleGameExit}
+            />
           </div>
         ) : (
           <div className="absolute flex flex-col items-center justify-center top-0 left-0 right-0 bottom-0 ">
@@ -144,6 +155,21 @@ export default function Play() {
             </p>
           </div>
         )
+      ) : isDeviceLandscape ? (
+        <div className="absolute flex flex-col items-center justify-center top-0 left-0 right-0 bottom-0 ">
+          <div className="flex w-52">
+            <Lottie className=" " animationData={rotateScreenAnimation} />
+          </div>
+          <p
+            className={cn(
+              "text-2xl text-white tracking-widest",
+              handjet.className
+            )}
+          >
+            {" "}
+            Please Rotate Screen
+          </p>
+        </div>
       ) : (
         <div className="">
           {/* Add parallex div here */}

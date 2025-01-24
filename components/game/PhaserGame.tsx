@@ -17,10 +17,11 @@ export interface IRefPhaserGame {
 interface IProps {
   currentActiveScene?: (scene_instance: Phaser.Scene) => void;
   gameInitSettings: GameInitSettings;
+  exitGame: () => void;
 }
 
 export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(
-  function PhaserGame({ currentActiveScene, gameInitSettings }, ref) {
+  function PhaserGame({ currentActiveScene, gameInitSettings, exitGame }, ref) {
     const game = useRef<Phaser.Game | null>(null!);
 
     console.log(
@@ -66,6 +67,18 @@ export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(
       });
       return () => {
         EventBus.removeListener("current-scene-ready");
+      };
+    }, [currentActiveScene, ref]);
+
+    useEffect(() => {
+      EventBus.on("exit-game", (scene_instance: Phaser.Scene) => {
+        console.log("exit-game triggered");
+        scene_instance.scene.pause();
+        scene_instance.scene.stop();
+        exitGame();
+      });
+      return () => {
+        EventBus.removeListener("exit-game");
       };
     }, [currentActiveScene, ref]);
 
