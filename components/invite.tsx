@@ -17,6 +17,7 @@ import { createClient } from "@/utils/supabase/client";
 import { useAppContext } from "@/contexts/AppContext";
 import RankRow from "./app/rank/RankRow";
 import RefereeRow from "./app/invite/RefereeRow";
+import { getInviteLink } from "@/lib/helpers/getInviteLink";
 
 const friendsList = [
   {
@@ -40,7 +41,7 @@ interface InviteRowUsers extends Referre {
 export default function Invite() {
   const supabase = createClient();
   const [isLoading, setIsLoading] = useState(false);
-  const { telegramUsername } = useAppContext();
+  const { telegramUsername, user } = useAppContext();
   const [referees, setReferees] = useState<InviteRowUsers[]>([]);
 
   function expandRow(index: number) {
@@ -59,7 +60,8 @@ export default function Invite() {
     if (window.Telegram) {
       //@ts-ignore
       const tg = window.Telegram.WebApp;
-      tg.openTelegramLink(INVITE_LINK);
+      // tg.openTelegramLink(INVITE_LINK);
+      tg.openTelegramLink(getInviteLink(user.referral_code));
     }
   }
 

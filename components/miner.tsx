@@ -29,10 +29,7 @@ import toast from "react-hot-toast";
 import CountUp from "react-countup";
 import {
   BitboyPixelatedLogo,
-  Boost,
   Coin,
-  CoinSmallIcon,
-  ConsoleIcon,
   InfoIcon,
   NintendoPixelatedLogo,
   PlaystationPixelatedLogo,
@@ -92,54 +89,6 @@ export default function Miner() {
   const [bgMinerSound, setBgMinerSound] = useState<Howl>();
   const [infoOpenSound, setInfoOpenSound] = useState<Howl>();
   const [coinsCreditedSound, setCoinsCreditedSound] = useState<Howl>();
-
-  const handlePlayStationConnect = () => {
-    console.log("Connecting PlayStation");
-  };
-
-  const handlePlayStationConnected = () => {
-    console.log("Show Conneced Dialog");
-  };
-
-  const handleXboxConnect = () => {
-    console.log("Connecting Xbox");
-  };
-
-  const handleXboxConnected = () => {
-    console.log("Connecting Xbox");
-  };
-
-  const handleNintendoConnect = () => {
-    console.log("Connecting Nintendo");
-  };
-
-  const handleNintendoConnected = () => {
-    console.log("Connecting Nintendo");
-  };
-
-  const handleSteamConnect = () => {
-    console.log("Connecting Steam");
-  };
-
-  const handleSteamConnected = () => {
-    console.log("Connecting Steam");
-  };
-
-  const handleBitboyConnect = () => {
-    console.log("Connecting Bitboy");
-  };
-
-  const handleBitboyConnected = () => {
-    console.log("Connecting Bitboy");
-  };
-
-  const handleSuiConnect = () => {
-    console.log("Connecting Sui");
-  };
-
-  const handleSuiConnected = () => {
-    console.log("Connecting Sui");
-  };
 
   const doNothing = () => {
     console.log("Do nothing");
@@ -285,7 +234,24 @@ export default function Miner() {
           .from("users_table")
           .insert([user]);
 
-        console.log(data, error);
+        if (error) {
+          throw error;
+        }
+
+        // save the referral code in invite table
+        const { data: inviteData, error: inviteError } = await supabase
+          .from("invite_table")
+          .insert([
+            {
+              username: telegramUsername,
+              referral_code: user.referral_code,
+              referees: [],
+            },
+          ]);
+
+        if (inviteError) {
+          throw inviteError;
+        }
       }
       console.log("Error fetching user data", error);
       setIsLoading(false);
@@ -687,7 +653,9 @@ export default function Miner() {
                         <DialogTrigger>
                           <CustomButton
                             type={connectButtons.playstation}
-                            handleClick={handlePlayStationConnect}
+                            handleClick={() =>
+                              console.log("Connect PlayStation")
+                            }
                           />
                         </DialogTrigger>
                         <DialogContent
@@ -705,7 +673,7 @@ export default function Miner() {
                         <DialogTrigger>
                           <CustomButton
                             type={connectButtons.playstation}
-                            handleClick={handlePlayStationConnected}
+                            handleClick={() => console.log("Connected")}
                           />
                         </DialogTrigger>
                         <DialogContent
@@ -750,7 +718,7 @@ export default function Miner() {
                         <DialogTrigger>
                           <CustomButton
                             type={CustomButtonType.PRIMARY}
-                            handleClick={handleXboxConnect}
+                            handleClick={() => console.log("Connect Xbox")}
                           />
                         </DialogTrigger>
                         <DialogContent
@@ -768,7 +736,7 @@ export default function Miner() {
                         <DialogTrigger>
                           <CustomButton
                             type={connectButtons.xbox}
-                            handleClick={handleXboxConnected}
+                            handleClick={() => console.log("Connected")}
                           />
                         </DialogTrigger>
                         <DialogContent
@@ -813,7 +781,7 @@ export default function Miner() {
                         <DialogTrigger>
                           <CustomButton
                             type={CustomButtonType.PRIMARY}
-                            handleClick={handleSteamConnect}
+                            handleClick={() => console.log("Connect Steam")}
                           />
                         </DialogTrigger>
                         <DialogContent
@@ -831,7 +799,7 @@ export default function Miner() {
                         <DialogTrigger>
                           <CustomButton
                             type={connectButtons.steam}
-                            handleClick={handleSteamConnected}
+                            handleClick={() => console.log("Connected")}
                           />
                         </DialogTrigger>
                         <DialogContent
@@ -875,7 +843,7 @@ export default function Miner() {
                         <DialogTrigger>
                           <CustomButton
                             type={CustomButtonType.PRIMARY}
-                            handleClick={handleNintendoConnect}
+                            handleClick={() => console.log("Connect Nintendo")}
                           />
                         </DialogTrigger>
                         <DialogContent
@@ -893,7 +861,7 @@ export default function Miner() {
                         <DialogTrigger>
                           <CustomButton
                             type={connectButtons.nintendo}
-                            handleClick={handleNintendoConnected}
+                            handleClick={() => console.log("Connected")}
                           />
                         </DialogTrigger>
                         <DialogContent
@@ -940,7 +908,9 @@ export default function Miner() {
                             <DialogTrigger>
                               <CustomButton
                                 type={CustomButtonType.PRIMARY}
-                                handleClick={handleBitboyConnect}
+                                handleClick={() =>
+                                  console.log("Connect Bitboy")
+                                }
                               />
                             </DialogTrigger>
                             <DialogContent className=" w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
@@ -958,7 +928,7 @@ export default function Miner() {
                             <DialogTrigger>
                               <CustomButton
                                 type={connectButtons.bitboy}
-                                handleClick={handleBitboyConnected}
+                                handleClick={() => console.log("Connected")}
                               />
                             </DialogTrigger>
                             <DialogContent className="  w-[100%] h-[100%]  border-none bg-[#5C6E7E]">
@@ -996,7 +966,7 @@ export default function Miner() {
                             <DialogTrigger>
                               <CustomButton
                                 type={CustomButtonType.PRIMARY}
-                                handleClick={handleSuiConnect}
+                                handleClick={() => console.log("Connect Sui")}
                               />
                             </DialogTrigger>
                             <DialogContent className=" w-[95%] h-[95%] rounded-lg">
@@ -1013,7 +983,7 @@ export default function Miner() {
                             <DialogTrigger>
                               <CustomButton
                                 type={connectButtons.sui}
-                                handleClick={handleSuiConnected}
+                                handleClick={() => console.log("Connected")}
                               />
                             </DialogTrigger>
                             <DialogContent className="  w-[95%] h-[95%] rounded-lg border-none bg-[#5C6E7E]">

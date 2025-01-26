@@ -17,7 +17,7 @@ export function NicknameInput({
 }) {
   const supabase = createClient();
   const [nickname, setNickname] = useState("");
-  const { telegramUsername } = useAppContext();
+  const { telegramUsername, referralCode, user } = useAppContext();
 
   async function handleClick() {
     console.log("Setting your conso nickname");
@@ -30,6 +30,44 @@ export function NicknameInput({
 
       if (error) {
         throw error;
+      }
+
+      // if referral code is present, update the referral code
+      if (referralCode !== "") {
+        // Fetch the current referees array from the invite_table for this referral code
+        const { data: currentData, error: fetchError } = await supabase
+          .from("invite_table")
+          .select("referees")
+          .eq("referral_code", referralCode)
+          .single();
+
+        if (fetchError) {
+          console.error("Error fetching referees:", fetchError);
+          throw fetchError;
+        }
+
+        // Append the new referee to the current referees array
+        const updatedReferees = [
+          ...(currentData.referees || []),
+          {
+            nickname: nickname,
+            username: telegramUsername,
+            user_points: user.user_points,
+            connected_consoles: [],
+          },
+        ];
+
+        // Update the referees array in the invite_table
+        const { data: updateData, error: updateError } = await supabase
+          .from("invite_table")
+          .update({ referees: updatedReferees })
+          .eq("username", telegramUsername);
+
+        if (updateError) {
+          throw updateError;
+        }
+
+        console.log("Updated referees:", updateData);
       }
 
       setAcceptNickname(false);

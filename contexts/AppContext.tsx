@@ -17,11 +17,13 @@ interface AppContextType {
   user: ConsoUser;
   startPointBalance: number;
   telegramUsername: string;
+  referralCode: string;
   setUserData: Dispatch<SetStateAction<ConsoUser>>;
   setNavigationBarHidden: Dispatch<SetStateAction<boolean>>;
   setPointBalance: Dispatch<SetStateAction<number>>;
   setStartPointBalance: Dispatch<SetStateAction<number>>;
   setTelegramUsername: Dispatch<SetStateAction<string>>;
+  setReferralCode: Dispatch<SetStateAction<string>>;
 }
 
 // Create the context with an undefined default value
@@ -32,6 +34,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [pointBalance, setPointBalance] = useState<number>(0);
   const [startPointBalance, setStartPointBalance] = useState<number>(0);
   const [telegramUsername, setTelegramUsername] = useState<string>("");
+  const [referralCode, setReferralCode] = useState<string>("");
   const [navigationBarHidden, setNavigationBarHidden] =
     useState<boolean>(false);
   const [user, setUserData] = useState<ConsoUser>({
@@ -66,12 +69,14 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         navigationBarHidden,
         startPointBalance,
         telegramUsername,
+        referralCode,
         user,
         setUserData,
         setNavigationBarHidden,
         setPointBalance,
         setStartPointBalance,
         setTelegramUsername,
+        setReferralCode,
       }}
     >
       {children}
