@@ -6,7 +6,7 @@ import { handjet, jersey } from "./ui/fonts";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { XboxConnectDialog } from "./console/xbox/XboxConnectDialog";
 import CustomButton from "@/components/app/common/CustomButton";
-import { CustomButtonType } from "@/lib/types";
+import { ConsoUser, CustomButtonType } from "@/lib/types";
 import { PlayStationConnectDialog } from "./console/psn/PlaystationConnectDialog";
 import { NintendoConnectDialog } from "./console/nintendo/NintendoConnectDialog";
 import { SteamConnectDialog } from "./console/steam/SteamConnectDialog";
@@ -213,7 +213,7 @@ export default function Miner() {
         // create new user
         const user = {
           username: telegramUsername,
-          nickname: null,
+          nickname: "",
           user_points: 0,
           current_boost: 0,
           degen_score: 0,
@@ -224,6 +224,8 @@ export default function Miner() {
             xbox: [],
             steam: [],
             nintendo: [],
+            bitboy: [],
+            sui: [],
           },
           game_high_score: 0,
           game_total_distance: 0,
@@ -252,6 +254,20 @@ export default function Miner() {
         if (inviteError) {
           throw inviteError;
         }
+
+        // update app context
+        const { data: updatedUserData, error: updatedUserError } =
+          await supabase
+            .from("users_table")
+            .select("*")
+            .eq("username", telegramUsername)
+            .single();
+
+        if (updatedUserError) {
+          throw updatedUserError;
+        }
+
+        setUserData(updatedUserData);
       }
       console.log("Error fetching user data", error);
       setIsLoading(false);

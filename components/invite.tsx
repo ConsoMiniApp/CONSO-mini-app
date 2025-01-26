@@ -19,21 +19,6 @@ import RankRow from "./app/rank/RankRow";
 import RefereeRow from "./app/invite/RefereeRow";
 import { getInviteLink } from "@/lib/helpers/getInviteLink";
 
-const friendsList = [
-  {
-    rank: 1,
-    name: "John Doe",
-    boost: 4.5,
-    conso: 43.37,
-  },
-  {
-    rank: 2,
-    name: "Jane Doe",
-    boost: 3.5,
-    conso: 33.37,
-  },
-];
-
 interface InviteRowUsers extends Referre {
   rowExpanded: boolean;
 }
