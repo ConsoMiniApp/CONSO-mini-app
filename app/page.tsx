@@ -10,7 +10,8 @@ const AppWithoutSSR = dynamic(
 );
 
 export default function Home() {
-  const { telegramUsername, setTelegramUsername } = useAppContext();
+  const { telegramUsername, setTelegramUsername, setReferralCode } =
+    useAppContext();
 
   async function verifyTelegramUser(urlEncodedData: string) {
     const response = await validateTelgramUser(urlEncodedData);
@@ -77,11 +78,12 @@ export default function Home() {
   function checkReferralCode() {
     // get query params
     const urlParams = new URLSearchParams(window.location.search);
-    const referralCode = urlParams.get("startapp");
+    const referralCode = urlParams.get("inviteCode");
     console.log("Referral code:", referralCode);
 
     if (referralCode) {
       console.log("Referral code:", referralCode);
+      setReferralCode(referralCode);
       // save this telegram user under referral code in database
     }
   }
