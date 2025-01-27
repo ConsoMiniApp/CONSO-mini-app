@@ -77,14 +77,16 @@ export default function Home() {
 
   function checkReferralCode() {
     // get query params
-    const urlParams = new URLSearchParams(window.location.search);
-    const referralCode = urlParams.get("inviteCode");
-    console.log("Referral code:", referralCode);
-
-    if (referralCode) {
+    if (window.location.hash) {
+      const urlParams = new URLSearchParams(window.location.hash);
+      const referralCode = urlParams.get("inviteCode");
       console.log("Referral code:", referralCode);
-      setReferralCode(referralCode);
-      // save this telegram user under referral code in database
+
+      if (referralCode) {
+        console.log("Referral code:", referralCode);
+        setReferralCode(referralCode);
+        // save this telegram user under referral code in database
+      }
     }
   }
 
