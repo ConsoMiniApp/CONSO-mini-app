@@ -4,67 +4,30 @@ import { cn } from "@/lib/utils";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { ClaimTokenDialog } from "../common/ClaimTokensDialog";
 import { ConfirmDialog } from "../common/ConfirmDialog";
-import { CoinSmallIcon } from "@/components/ui/icons";
+import { CoinSmallIcon, ErrorIcon, SuccessIcon } from "@/components/ui/icons";
 import { ConfirmShopDialog } from "../common/ConfirmShopDialog";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { createClient } from "@/utils/supabase/client";
+import { useAppContext } from "@/contexts/AppContext";
+import { Character, Jetpack } from "@/lib/types";
 
-const initialCharacter = [
-  {
-    name: "DEFAULT",
-    key: "og",
-    image: "/play-logos/default-character.gif",
-    selected: true,
-    owned: true,
-    price: 0,
-  },
-  {
-    name: "NINJA",
-    key: "ninja",
-    image: "/play-logos/ninja-character.gif",
-    selected: false,
-    owned: false,
-    price: 200,
-  },
-  {
-    name: "SAMURAI",
-    key: "samurai",
-    image: "/play-logos/samurai-character.gif",
-    selected: false,
-    owned: false,
-    price: 2500,
-  },
-];
+interface ShopDrawerProps {
+  characters: Character[];
+  jetpacks: Jetpack[];
+  setCharacters: React.Dispatch<React.SetStateAction<Character[]>>;
+  setJetpacks: React.Dispatch<React.SetStateAction<Jetpack[]>>;
+}
 
-const initialJetpacks = [
-  {
-    name: "OG PACK",
-    key: "jetpack",
-    image: "/play-logos/og-jetpack.gif",
-    selected: true,
-    owned: true,
-    price: 0,
-  },
-  {
-    name: "ROCKET",
-    key: "rocket",
-    image: "/play-logos/og-rocket.gif",
-    selected: false,
-    owned: false,
-    price: 2500,
-  },
-  {
-    name: "HELICOPTER",
-    key: "heli",
-    image: "/play-logos/og-heli.gif",
-    selected: false,
-    owned: false,
-    price: 5000,
-  },
-];
+export function ShopDrawer({
+  characters,
+  jetpacks,
+  setCharacters,
+  setJetpacks,
+}: ShopDrawerProps) {
+  const supabase = createClient();
+  const { telegramUsername, user } = useAppContext();
 
-export function ShopDrawer() {
-  const [characters, setCharacters] = useState(initialCharacter);
-  const [jetpacks, setJetpacks] = useState(initialJetpacks);
   function switchJetpacks(character: string) {
     setJetpacks((prev) =>
       prev.map((jetpack) => {
@@ -75,6 +38,10 @@ export function ShopDrawer() {
       })
     );
   }
+
+  console.log("shop characters", characters);
+  console.log("shop jetpacks", jetpacks);
+
   return (
     <>
       <div className="overflow-y-scroll scrollbar-none p-4 ">
@@ -89,11 +56,6 @@ export function ShopDrawer() {
             {" "}
             SHOP ACCESSORIES
           </p>
-          {/* <DialogClose>
-            <a>
-              <Close />
-            </a>
-          </DialogClose> */}
         </div>
 
         {/* Sub Heading */}
@@ -126,16 +88,20 @@ export function ShopDrawer() {
                       character.selected ? "bg-[#FFE500]" : "bg-white"
                     )}
                     onClick={() => {
-                      if (!character.owned) return;
-                      setCharacters((prev) =>
-                        prev.map((char, i) =>
-                          i === index
-                            ? { ...char, selected: true }
-                            : { ...char, selected: false }
-                        )
-                      );
-
-                      switchJetpacks(character.key);
+                      if (character.owned) {
+                        setCharacters((prev) =>
+                          prev.map((char, i) =>
+                            char.key === character.key
+                              ? { ...char, selected: true }
+                              : { ...char, selected: false }
+                          )
+                        );
+                        switchJetpacks(character.key);
+                        localStorage.setItem(
+                          "selectedCharacter",
+                          character.key
+                        );
+                      }
                     }}
                   >
                     <p
@@ -148,7 +114,7 @@ export function ShopDrawer() {
                     </p>
                     <Image
                       src={character.image}
-                      alt="Mystery Box"
+                      alt="Character"
                       width={134}
                       height={100}
                     />
@@ -182,16 +148,61 @@ export function ShopDrawer() {
                 {!character.owned && (
                   <DialogContent className="h-screen border-none backdrop-blur-md">
                     <ConfirmShopDialog
-                      handleConfirm={() => {
-                        setCharacters((prev) =>
-                          prev.map((char, i) =>
-                            i === index
-                              ? { ...char, selected: true, owned: true }
-                              : { ...char, selected: false }
-                          )
-                        );
-                        console.log("you purchased an item");
-                        switchJetpacks(character.key);
+                      handleConfirm={async () => {
+                        // deduct conso user_points and update users_table game_assets
+                        if (user.user_points < character.price) {
+                          toast.error("Insufficient CONSO points");
+                          return;
+                        }
+                        const {
+                          data: updatedUserData,
+                          error: updatedUserError,
+                        } = await supabase
+                          .from("users_table")
+                          .update({
+                            user_points: user.user_points - character.price,
+                            game_assets: {
+                              ...user.game_assets,
+                              characters: [
+                                ...user.game_assets.characters,
+                                character.key,
+                              ],
+                            },
+                          })
+                          .eq("username", telegramUsername)
+                          .select();
+                        if (updatedUserError) {
+                          toast.error("There was an error", {
+                            className: cn(
+                              jersey.className,
+                              "text-xl text-white mt-10"
+                            ),
+                            icon: <ErrorIcon />,
+                          });
+                          return;
+                        } else {
+                          toast.success("Purchase successfull", {
+                            className: cn(
+                              jersey.className,
+                              "text-xl text-white mt-10"
+                            ),
+                            icon: <SuccessIcon />,
+                          });
+
+                          setCharacters((prev) =>
+                            prev.map((char, i) =>
+                              i === index
+                                ? { ...char, selected: true, owned: true }
+                                : { ...char, selected: false }
+                            )
+                          );
+                          localStorage.setItem(
+                            "selectedCharacter",
+                            character.key
+                          );
+
+                          switchJetpacks(character.key);
+                        }
                       }}
                       item={character}
                     />
@@ -224,14 +235,17 @@ export function ShopDrawer() {
                       jetpack.selected ? "bg-[#FFE500]" : "bg-white"
                     )}
                     onClick={() => {
-                      if (!jetpack.owned) return;
-                      setJetpacks((prev) =>
-                        prev.map((char, i) =>
-                          i === index
-                            ? { ...char, selected: true }
-                            : { ...char, selected: false }
-                        )
-                      );
+                      if (jetpack.owned) {
+                        setJetpacks((prev) =>
+                          prev.map((jet, i) =>
+                            jet.key === jetpack.key
+                              ? { ...jet, selected: true }
+                              : { ...jet, selected: false }
+                          )
+                        );
+
+                        localStorage.setItem("selectedJetpack", jetpack.key);
+                      }
                     }}
                   >
                     <p
@@ -278,15 +292,61 @@ export function ShopDrawer() {
                 {!jetpack.owned && (
                   <DialogContent className="h-screen border-none backdrop-blur-md">
                     <ConfirmShopDialog
-                      handleConfirm={() => {
-                        setJetpacks((prev) =>
-                          prev.map((char, i) =>
-                            i === index
-                              ? { ...char, selected: true, owned: true }
-                              : { ...char, selected: false }
-                          )
-                        );
-                        console.log("you purchased an item");
+                      handleConfirm={async () => {
+                        {
+                          // deduct conso user_points and update users_table game_assets
+                          if (user.user_points < jetpack.price) {
+                            toast.error("Insufficient CONSO points");
+                            return;
+                          }
+                          const {
+                            data: updatedUserData,
+                            error: updatedUserError,
+                          } = await supabase
+                            .from("users_table")
+                            .update({
+                              user_points: user.user_points - jetpack.price,
+                              game_assets: {
+                                ...user.game_assets,
+                                jetpacks: [
+                                  ...user.game_assets.jetpacks,
+                                  jetpack.key,
+                                ],
+                              },
+                            })
+                            .eq("username", telegramUsername)
+                            .select();
+                          if (updatedUserError) {
+                            toast.error("There was an error", {
+                              className: cn(
+                                jersey.className,
+                                "text-xl text-white mt-10"
+                              ),
+                              icon: <ErrorIcon />,
+                            });
+                            return;
+                          } else {
+                            toast.success("Purchase successfull", {
+                              className: cn(
+                                jersey.className,
+                                "text-xl text-white mt-10"
+                              ),
+                              icon: <SuccessIcon />,
+                            });
+
+                            setJetpacks((prev) =>
+                              prev.map((jet, i) =>
+                                i === index
+                                  ? { ...jet, selected: true, owned: true }
+                                  : { ...jet, selected: false }
+                              )
+                            );
+                            localStorage.setItem(
+                              "selectedJetpack",
+                              jetpack.key
+                            );
+                          }
+                        }
                       }}
                       item={jetpack}
                     />

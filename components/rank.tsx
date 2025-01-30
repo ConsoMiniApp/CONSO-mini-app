@@ -184,7 +184,7 @@ export default function Rank() {
                     jersey.className
                   )}
                 >
-                  # {user?.id}
+                  #{user?.id}
                 </span>
                 <span
                   className={cn(

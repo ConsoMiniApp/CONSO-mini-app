@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { IRefPhaserGame, PhaserGame } from "./game/PhaserGame";
 import CustomButton from "./app/common/CustomButton";
-import { CustomButtonType } from "@/lib/types";
+import { Character, CustomButtonType, Jetpack } from "@/lib/types";
 import {
   Drawer,
   DrawerClose,
@@ -38,15 +38,21 @@ import {
   GameInitSettings,
   JetpackOptionsType,
 } from "./game/types";
-import DynamicBackground from "./play/BackgroundParallax";
+// import DynamicBackground from "./play/BackgroundParallax";
 import { useAppContext } from "@/contexts/AppContext";
 import { isLandscape } from "@/lib/helpers/checkLandscape";
 import rotateScreenAnimation from "@/public/animations/rotate-screen-animation.json";
 import Lottie from "lottie-react";
+import { initialCharacters, initialJetpacks } from "@/lib/constants";
+import { getSelectedCharacter } from "@/lib/helpers/play/getSelectedCharacter";
+import { getSelectedJetpack } from "@/lib/helpers/play/getSelectedJetpack";
 
 export default function Play() {
   const [gameLoaded, setGameLoaded] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [characters, setCharacters] = useState<Character[]>(initialCharacters);
+  const [jetpacks, setJetpacks] = useState<Jetpack[]>(initialJetpacks);
+
   const { user } = useAppContext();
 
   const handleVideoLoad = () => {
@@ -60,23 +66,27 @@ export default function Play() {
 
   const { setNavigationBarHidden } = useAppContext();
 
-  const gameInitSettings: GameInitSettings = {
-    environment: EnvironmentOptionsType.Forest,
-    character: CharacterOptionsType.Og,
-    jetpack: JetpackOptionsType.Jetpack,
-    mysteryBoxes: [
-      {
-        id: "1",
-        name: "mysteryBox1",
-        link: "this_will_be_link",
-        timestamp: 5, // change to 35
-      },
-    ],
-    powerUps: [
-      { character: CharacterOptionsType.Flash, time: 10, timestamp: 10 },
-      // { character: CharacterOptionsType.Angel, time: 5, timestamp: 35 },
-    ],
-  };
+  // game functions
+  function getGameInitSettings() {
+    const gameInitSettings: GameInitSettings = {
+      environment: EnvironmentOptionsType.Forest,
+      character: getSelectedCharacter(characters),
+      jetpack: getSelectedJetpack(jetpacks),
+      mysteryBoxes: [
+        {
+          id: "1",
+          name: "mysteryBox1",
+          link: "this_will_be_link",
+          timestamp: 5, // change to 35
+        },
+      ],
+      powerUps: [
+        { character: CharacterOptionsType.Flash, time: 10, timestamp: 10 },
+        // { character: CharacterOptionsType.Angel, time: 5, timestamp: 35 },
+      ],
+    };
+    return gameInitSettings;
+  }
 
   const handleGameLoading = () => {
     // setNavigationBarHidden(true);
@@ -131,6 +141,48 @@ export default function Play() {
     };
   }, []);
 
+  // load characters and jetpacks in shop section
+  useEffect(() => {
+    console.log(user.game_assets);
+
+    // Mark owned characters
+    const updatedCharacters = initialCharacters.map((char) => ({
+      ...char,
+      owned:
+        user.game_assets.characters?.some(
+          (character) => character === char.key
+        ) || char.owned,
+    }));
+
+    // Mark owned jetpacks
+    const updatedJetpacks = initialJetpacks.map((jet) => ({
+      ...jet,
+      owned:
+        user.game_assets.jetpacks?.some((jetpack) => jetpack === jet.key) ||
+        jet.owned,
+    }));
+
+    // Select stored character
+    const selectedCharacter = localStorage.getItem("selectedCharacter");
+    const finalCharacters = updatedCharacters.map((char) => ({
+      ...char,
+      selected: char.owned && char.key === selectedCharacter,
+    }));
+
+    // Select stored jetpack
+    const selectedJetpack = localStorage.getItem("selectedJetpack");
+    const finalJetpacks = updatedJetpacks.map((jet) => ({
+      ...jet,
+      selected: jet.owned && jet.key === selectedJetpack,
+    }));
+
+    setCharacters(finalCharacters);
+    setJetpacks(finalJetpacks);
+
+    console.log("updated characters", finalCharacters);
+    console.log("updated jetpacks", finalJetpacks);
+  }, [user]);
+
   return (
     <div className="">
       {gameLoaded ? (
@@ -138,7 +190,7 @@ export default function Play() {
           <div className="absolute top-0 left-0 right-0 bottom-0">
             <PhaserGame
               ref={phaserRef}
-              gameInitSettings={gameInitSettings}
+              gameInitSettings={getGameInitSettings()}
               exitGame={handleGameExit}
             />
           </div>
@@ -249,7 +301,12 @@ export default function Play() {
                     </div>
                   </DrawerTrigger>
                   <DrawerContent>
-                    <ShopDrawer />
+                    <ShopDrawer
+                      characters={characters}
+                      jetpacks={jetpacks}
+                      setCharacters={setCharacters}
+                      setJetpacks={setJetpacks}
+                    />
                   </DrawerContent>
                 </Drawer>
               </div>
@@ -266,7 +323,7 @@ export default function Play() {
                     HIGH SCORE
                   </p>
                   <p className={cn(jersey.className, "text-2xl text-white")}>
-                    {user.game_high_score} m
+                    {user.game_high_score.toLocaleString()} m
                   </p>
                 </div>
 
@@ -281,7 +338,7 @@ export default function Play() {
                     TOTAL DISTANCE
                   </p>
                   <p className={cn(jersey.className, "text-2xl text-white")}>
-                    {user.game_total_distance} m
+                    {user.game_total_distance.toLocaleString()} m
                   </p>
                 </div>
 
@@ -289,7 +346,7 @@ export default function Play() {
                   {" "}
                   <PotionLogo />{" "}
                   <p className={cn(jersey.className, "text-2xl text-white")}>
-                    x 0
+                    x {user.game_assets.potions}
                   </p>
                 </div>
               </div>

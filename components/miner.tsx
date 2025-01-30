@@ -121,7 +121,6 @@ export default function Miner() {
 
       setStartPointBalance(pointBalance + 1);
       setPointBalance((prev) => prev + 1);
-      // localStorage.setItem("pointBalance", (pointBalance + 1).toString());
     } catch (error) {
       console.error("Error saving to Supabase:", error);
       setIsTapping(false);
@@ -230,6 +229,11 @@ export default function Miner() {
           game_high_score: 0,
           game_total_distance: 0,
           referral_code: `ref_${Math.random().toString(36).substring(2, 9)}`,
+          game_assets: {
+            potions: 0,
+            characters: [],
+            jetpacks: [],
+          },
         };
         console.log("Creating new user", user);
         const { data, error } = await supabase

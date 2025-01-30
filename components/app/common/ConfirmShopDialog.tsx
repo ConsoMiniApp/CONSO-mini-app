@@ -26,12 +26,8 @@ export interface ConfirmDialogProps {
 
 export function ConfirmShopDialog({ handleConfirm, item }: ConfirmDialogProps) {
   function handleClick() {
-    console.log("Purchase selected items");
+    console.log("Purchasing selected items");
     handleConfirm();
-    toast("Purchase successful.", {
-      className: cn(jersey.className, "text-xl text-white mt-10"),
-      icon: <SuccessIcon />,
-    });
   }
 
   return (

@@ -1,3 +1,5 @@
+import { Character, Jetpack } from "./types";
+
 export const MAX_PLAYSTATION_BONUS = 6000;
 export const PLAYSTATION_MULTIPLIER = 2.5; // K
 export const PLAYSTATION_CONSTANT_EMISSION_RATE = 2.08;
@@ -16,6 +18,61 @@ export const DECAY_THRESHOLD_DAYS = 90;
 export const ALPHA = 100;
 export const DECAY_CONSTANT = 0.0007451; // lambda
 export const NORMALIZING_FACTOR = 20.0;
+
+// Play page constants
+export const initialCharacters: Character[] = [
+  {
+    name: "DEFAULT",
+    key: "og",
+    image: "/play-logos/default-character.gif",
+    selected: true,
+    owned: true,
+    price: 0,
+  },
+  {
+    name: "NINJA",
+    key: "ninja",
+    image: "/play-logos/ninja-character.gif",
+    selected: false,
+    owned: false,
+    price: 200,
+  },
+  {
+    name: "SAMURAI",
+    key: "samurai",
+    image: "/play-logos/samurai-character.gif",
+    selected: false,
+    owned: false,
+    price: 2500,
+  },
+];
+
+export const initialJetpacks: Jetpack[] = [
+  {
+    name: "OG PACK",
+    key: "jetpack",
+    image: "/play-logos/og-jetpack.gif",
+    selected: true,
+    owned: true,
+    price: 0,
+  },
+  {
+    name: "ROCKET",
+    key: "rocket",
+    image: "/play-logos/og-rocket.gif",
+    selected: false,
+    owned: false,
+    price: 2500,
+  },
+  {
+    name: "HELICOPTER",
+    key: "heli",
+    image: "/play-logos/og-heli.gif",
+    selected: false,
+    owned: false,
+    price: 5000,
+  },
+];
 
 // Invite link
 export const INVITE_LINK =

@@ -58,6 +58,11 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     game_high_score: 0,
     game_total_distance: 0,
     referral_code: "",
+    game_assets: {
+      potions: 0,
+      characters: [],
+      jetpacks: [],
+    },
   });
 
   // const state: AppState = { pointBalance, message };

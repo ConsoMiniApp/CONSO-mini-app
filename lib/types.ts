@@ -25,6 +25,31 @@ export interface ConsoUser {
   game_high_score: number;
   game_total_distance: number;
   referral_code: string;
+  game_assets: GameAssets;
+}
+
+export interface GameAssets {
+  potions: number;
+  characters: [];
+  jetpacks: [];
+}
+
+export interface Character {
+  name: string;
+  key: string;
+  image: string;
+  selected: boolean;
+  owned: boolean;
+  price: number;
+}
+
+export interface Jetpack {
+  name: string;
+  key: string;
+  image: string;
+  selected: boolean;
+  owned: boolean;
+  price: number;
 }
 
 export interface ConnectedConsole {
