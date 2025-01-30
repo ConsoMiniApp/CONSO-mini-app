@@ -17,6 +17,7 @@ interface ShopDrawerProps {
   jetpacks: Jetpack[];
   setCharacters: React.Dispatch<React.SetStateAction<Character[]>>;
   setJetpacks: React.Dispatch<React.SetStateAction<Jetpack[]>>;
+  switchJetpacks: (character: string) => void;
 }
 
 export function ShopDrawer({
@@ -24,20 +25,10 @@ export function ShopDrawer({
   jetpacks,
   setCharacters,
   setJetpacks,
+  switchJetpacks,
 }: ShopDrawerProps) {
   const supabase = createClient();
-  const { telegramUsername, user } = useAppContext();
-
-  function switchJetpacks(character: string) {
-    setJetpacks((prev) =>
-      prev.map((jetpack) => {
-        return {
-          ...jetpack,
-          image: `/play-logos/${character}-${jetpack.key}.gif`,
-        };
-      })
-    );
-  }
+  const { telegramUsername, user, setUserData } = useAppContext();
 
   console.log("shop characters", characters);
   console.log("shop jetpacks", jetpacks);
@@ -189,13 +180,24 @@ export function ShopDrawer({
                             icon: <SuccessIcon />,
                           });
 
-                          setCharacters((prev) =>
-                            prev.map((char, i) =>
-                              i === index
-                                ? { ...char, selected: true, owned: true }
-                                : { ...char, selected: false }
-                            )
-                          );
+                          setUserData({
+                            ...user,
+                            game_assets: {
+                              ...user.game_assets,
+                              characters: [
+                                ...user.game_assets.characters,
+                                character.key,
+                              ],
+                            },
+                          });
+
+                          // setCharacters((prev) =>
+                          //   prev.map((char, i) =>
+                          //     i === index
+                          //       ? { ...char, selected: true, owned: true }
+                          //       : { ...char, selected: false }
+                          //   )
+                          // );
                           localStorage.setItem(
                             "selectedCharacter",
                             character.key
@@ -334,13 +336,24 @@ export function ShopDrawer({
                               icon: <SuccessIcon />,
                             });
 
-                            setJetpacks((prev) =>
-                              prev.map((jet, i) =>
-                                i === index
-                                  ? { ...jet, selected: true, owned: true }
-                                  : { ...jet, selected: false }
-                              )
-                            );
+                            setUserData({
+                              ...user,
+                              game_assets: {
+                                ...user.game_assets,
+                                jetpacks: [
+                                  ...user.game_assets.jetpacks,
+                                  jetpack.key,
+                                ],
+                              },
+                            });
+
+                            // setJetpacks((prev) =>
+                            //   prev.map((jet, i) =>
+                            //     i === index
+                            //       ? { ...jet, selected: true, owned: true }
+                            //       : { ...jet, selected: false }
+                            //   )
+                            // );
                             localStorage.setItem(
                               "selectedJetpack",
                               jetpack.key

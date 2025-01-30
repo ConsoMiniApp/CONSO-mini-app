@@ -30,8 +30,8 @@ export interface ConsoUser {
 
 export interface GameAssets {
   potions: number;
-  characters: [];
-  jetpacks: [];
+  characters: string[];
+  jetpacks: string[];
 }
 
 export interface Character {

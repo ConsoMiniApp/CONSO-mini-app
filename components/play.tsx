@@ -101,6 +101,17 @@ export default function Play() {
     tg.unlockOrientation();
   };
 
+  function switchJetpacks(character: string) {
+    setJetpacks((prev) =>
+      prev.map((jetpack) => {
+        return {
+          ...jetpack,
+          image: `/play-logos/${character}-${jetpack.key}.gif`,
+        };
+      })
+    );
+  }
+
   useEffect(() => {
     //@ts-ignore
     const tg = window.Telegram.WebApp;
@@ -181,6 +192,7 @@ export default function Play() {
 
     console.log("updated characters", finalCharacters);
     console.log("updated jetpacks", finalJetpacks);
+    switchJetpacks(selectedCharacter || "og");
   }, [user]);
 
   return (
@@ -306,6 +318,7 @@ export default function Play() {
                       jetpacks={jetpacks}
                       setCharacters={setCharacters}
                       setJetpacks={setJetpacks}
+                      switchJetpacks={switchJetpacks}
                     />
                   </DrawerContent>
                 </Drawer>
