@@ -15,7 +15,6 @@ import {
   jetpackOptions,
   coinPatterns,
   zapperConfigs,
-  laserPatterns,
 } from "../constants";
 
 export class MainGame extends Scene {
@@ -36,6 +35,7 @@ export class MainGame extends Scene {
   // GAME DISTANCE
   distanceTravelled: number = 0;
   distanceText!: Phaser.GameObjects.Text;
+  lastRewardDistance: number = 0;
   // POWER UPS
   inTransition: boolean = false;
   transitionCharacter: CharacterOptionsType = CharacterOptionsType.Og;
@@ -56,14 +56,15 @@ export class MainGame extends Scene {
   screenYRangeBlockedByLaserForSpawning: number[] = [0, 0];
   gameStartTime: number;
   totalGameTime: number = 0;
-  currentGameSpeed = 9; // in m/s
-  gameSpeedMultiplier = 1; // for flash powerup
+  currentGameSpeed = 0; // in m/s
+  gameSpeedMultiplier = 1;
   currentGameObjectsSpeed = 0;
   lastZapperTime!: number;
   lastRocketTime!: number;
   lastLaserWarning!: number;
   powerupCount: number = 0;
   lastCoinSpawnTime: number = 0;
+  armorHitWithObstaclesLeft: number;
 
   // GAME BODIES
   coins: Phaser.Physics.Arcade.Group;
@@ -79,10 +80,30 @@ export class MainGame extends Scene {
   currentEnvironmentIndex: number = 0;
   environmentTimer!: Phaser.Time.TimerEvent;
 
+  // SOUNDS
+  background_music: Phaser.Sound.BaseSound;
+  coin_music: Phaser.Sound.BaseSound;
+  mystery_box_music: Phaser.Sound.BaseSound;
+  rocket_warning_music: Phaser.Sound.BaseSound;
+  rocket_launch_music: Phaser.Sound.BaseSound;
+  laser_active_music: Phaser.Sound.BaseSound;
+  rocket_hit_music: Phaser.Sound.BaseSound;
+  zapper_hit_music: Phaser.Sound.BaseSound;
+  laser_hit_music: Phaser.Sound.BaseSound;
+  flash_transition_music: Phaser.Sound.BaseSound;
+  angel_transition_music: Phaser.Sound.BaseSound;
+  armor_transition_music: Phaser.Sound.BaseSound;
+  jetpack_normal_music: Phaser.Sound.BaseSound;
+  jetpack_heli_music: Phaser.Sound.BaseSound;
+  jetpack_rocket_music: Phaser.Sound.BaseSound;
+  currentJetpackSound: Phaser.Sound.BaseSound | null = null;
+  soundEnabled: boolean;
+  soundButton: Phaser.GameObjects.Image;
+
   // CONSTANTS
   readonly START_SPEED = 6; // t=0
   readonly END_SPEED = 25; // t=240s
-  readonly BASE_OBSTACLE_SPEED = -380;
+  readonly BASE_OBSTACLE_SPEED = -300;
 
   // ARCHIVE
   mysteryBoxCount: number = 0;
@@ -113,6 +134,7 @@ export class MainGame extends Scene {
     // Reset gameplay metrics
     this.coinCount = 0;
     this.distanceTravelled = 0;
+    this.lastRewardDistance = 0;
     this.mysteryBoxCount = 0;
 
     // Reset character and environment states
@@ -127,6 +149,7 @@ export class MainGame extends Scene {
     this.lastRocketTime = 0;
     this.lastLaserWarning = 0;
     this.lastCoinSpawnTime = 0;
+    this.armorHitWithObstaclesLeft = 1;
 
     // Reset game object states
     this.currentGameSpeed = this.START_SPEED; // Reset speed to start speed
@@ -146,6 +169,8 @@ export class MainGame extends Scene {
     this.progressBarBackground.setVisible(false);
     this.progressBarFill.setVisible(false);
     this.updateProgressBar(1); // Reset progress bar to full
+
+    this.stopJetpackSound();
 
     console.log("Game has been reset");
   }
@@ -248,10 +273,52 @@ export class MainGame extends Scene {
 
     // Load Character and Jetpack
     this.loadCharacterAssets();
+
+    // Load sound buttons
+    this.load.image("sound_on", "assets/misc/sound/sound-on.svg");
+    this.load.image("sound_off", "assets/misc/sound/no-sound.svg");
+
+    // Audios
+    this.load.audio("game_background", ["assets/sounds/game-bg-music.wav"]);
+    this.load.audio("coin_collect", ["assets/sounds/coin-collect.wav"]);
+    this.load.audio("mystery_box_collect", [
+      "assets/sounds/mystery-box-collect.wav",
+    ]);
+
+    // obstacles audios
+    this.load.audio("rocket_warning", [
+      "assets/sounds/obstacle-rocket-warning.wav",
+    ]);
+    this.load.audio("rocket_launch", [
+      "assets/sounds/obstacle-rocket-flyby.wav",
+    ]);
+    this.load.audio("laser_active", [
+      "assets/sounds/obstacle-laser-active.wav",
+    ]);
+    this.load.audio("rocket_hit", ["assets/sounds/rocket-hit-game-over.mp3"]);
+    this.load.audio("zapper_hit", ["assets/sounds/zapper-hit-game-over.wav"]);
+    this.load.audio("laser_hit", ["assets/sounds/laser-hit-game-over.wav"]);
+
+    // power ups transition audios
+    this.load.audio("flash_transition", ["assets/sounds/flash-transition.wav"]);
+    this.load.audio("angel_transition", ["assets/sounds/angel-transition.mp3"]);
+    this.load.audio("armor_transition", ["assets/sounds/armor-transition.wav"]);
+
+    // jetpack audios
+    this.load.audio("jetpack_normal", [
+      "assets/sounds/jetpack-normal-sound.wav",
+    ]);
+    this.load.audio("jetpack_heli", ["assets/sounds/jetpack-heli-sound.mp3"]);
+    this.load.audio("jetpack_rocket", [
+      "assets/sounds/jetpack-rocket-sound.mp3",
+    ]);
   }
 
   create() {
     console.log("Creating game scene");
+
+    this.initializeGameSounds();
+    this.background_music.play();
 
     // empty background layers array
     this.backgroundLayers = [];
@@ -279,22 +346,38 @@ export class MainGame extends Scene {
       strokeThickness: 10,
     });
 
+    // Sound Control Button
+    this.soundEnabled = false; // Track sound state
+    this.sound.mute = true;
+    this.soundButton = this.add
+      .image(1630, 110, "sound_off")
+      .setScale(2)
+      .setInteractive();
+
+    this.soundButton.on("pointerdown", () => {
+      this.soundEnabled = !this.soundEnabled;
+      this.sound.mute = !this.soundEnabled;
+      this.soundButton.setTexture(this.soundEnabled ? "sound_on" : "sound_off");
+    });
+
     // Total Distance Graphic counter
     const distanceBG = this.add.graphics();
-    distanceBG.fillStyle(0x6a6a6a, 0.8).fillRoundedRect(1300, 60, 335, 100, 10);
+    distanceBG.fillStyle(0x6a6a6a, 0.8).fillRoundedRect(1200, 60, 335, 100, 10);
 
-    this.add.text(1335, 70, "TOTAL DISTANCE", {
+    this.add.text(1235, 70, "TOTAL DISTANCE", {
       fontSize: "28px",
       color: "#FFFFFF",
       lineSpacing: 0.5,
       fontFamily: "handjet",
     });
 
-    this.distanceText = this.add.text(1335, 100, "0m", {
+    this.distanceText = this.add.text(1235, 100, "0m", {
       fontSize: "48px",
       color: "#FFFFFF",
       fontFamily: "Jersey",
     });
+
+    this.lastRewardDistance = 0;
 
     // Create the progress bar background (image with borders)
     this.progressBarBackground = this.add
@@ -317,73 +400,20 @@ export class MainGame extends Scene {
       this.player.height * 0.65
     );
 
-    // DYNAMIC ASSETS : Add coins, mystery box, powerup box and their overlaps
+    // DYNAMIC ASSETS
+    // Coins
     this.coins = this.physics.add.group();
-
-    // add overlap between player and coins
-    this.physics.add.overlap(
-      this.player,
-      this.coins,
-      this.collectCoin,
-      undefined,
-      this
-    );
-
-    // Add Mystery Box
+    // Mystery Box
     this.mystery_boxes = this.physics.add.group();
-
-    this.physics.add.overlap(
-      this.player,
-      this.mystery_boxes,
-      this.collectMysteryBox,
-      undefined,
-      this
-    );
-
-    // Add Powerup Box
-
-    // this.powerupCount = 0;
+    // Powerup Box
     this.powerup_boxes = this.physics.add.group();
-
-    this.physics.add.overlap(
-      this.player,
-      this.powerup_boxes,
-      this.collectPowerupBox,
-      undefined,
-      this
-    );
-
-    // Initialize physics groups first
+    // Initialize obstacles
     this.zappers = this.physics.add.group();
     this.lasers = this.physics.add.group();
     this.rockets = this.physics.add.group();
     this.rocketWarning = this.physics.add.group();
 
-    // Set up collisions/overlaps
-    this.physics.add.overlap(
-      this.player,
-      this.zappers,
-      //@ts-ignore
-      this.hitZapper,
-      undefined,
-      this
-    );
-
-    this.physics.add.overlap(
-      this.player,
-      this.lasers,
-      this.hitLaser,
-      undefined,
-      this
-    );
-
-    this.physics.add.overlap(
-      this.player,
-      this.rockets,
-      this.hitRocket,
-      undefined,
-      this
-    );
+    this.initializeOverlaps();
 
     // Event to increment distance every 'delay' milliseconds
     this.time.addEvent({
@@ -440,12 +470,14 @@ export class MainGame extends Scene {
       this.player.setVelocityY(-700);
       if (!this.inTransition) {
         this.player.anims.play(`${this.character}_${this.jetpack}_fly`, true);
+        this.playJetpackSound();
       }
     }
     if (isOnGround && !isPointerDown) {
       // Simply check if pointer is not down
       if (!this.inTransition) {
         this.player.anims.play(`${this.character}_${this.jetpack}_run`, true);
+        this.stopJetpackSound();
       }
     }
   }
@@ -545,6 +577,187 @@ export class MainGame extends Scene {
     }
   }
 
+  initializeGameSounds() {
+    this.background_music = this.sound.add("game_background", {
+      loop: true,
+      volume: 0.1,
+      rate: 1,
+    });
+
+    //Character & powerup audio
+    // jetpack audio
+    this.jetpack_normal_music = this.sound.add("jetpack_normal", {
+      loop: true,
+      volume: 0.3,
+      rate: 0.8,
+    });
+    this.jetpack_heli_music = this.sound.add("jetpack_heli", {
+      loop: true,
+      volume: 0.3,
+      rate: 0.8,
+    });
+    this.jetpack_rocket_music = this.sound.add("jetpack_rocket", {
+      loop: true,
+      volume: 0.15,
+      rate: 0.8,
+    });
+    //powerup transition audio
+    this.flash_transition_music = this.sound.add("flash_transition", {
+      loop: false,
+      volume: 0.5,
+      rate: 0.8,
+    });
+    this.angel_transition_music = this.sound.add("angel_transition", {
+      loop: false,
+      volume: 0.5,
+      rate: 0.8,
+    });
+    this.armor_transition_music = this.sound.add("armor_transition", {
+      loop: false,
+      volume: 0.5,
+      rate: 0.8,
+    });
+
+    // coin audio
+    this.coin_music = this.sound.add("coin_collect", {
+      loop: false,
+      volume: 0.25,
+      rate: 0.8,
+    });
+
+    //mystery box audio
+    this.mystery_box_music = this.sound.add("mystery_box_collect", {
+      loop: false,
+      volume: 0.25,
+      rate: 0.8,
+    });
+
+    // Obstacles audio
+    this.rocket_warning_music = this.sound.add("rocket_warning", {
+      loop: true,
+      volume: 0.25,
+      rate: 0.8,
+    });
+    this.rocket_launch_music = this.sound.add("rocket_launch", {
+      loop: true,
+      volume: 0.25,
+      rate: 0.8,
+    });
+    this.rocket_hit_music = this.sound.add("rocket_hit", {
+      loop: false,
+      volume: 0.5,
+      rate: 0.8,
+    });
+    this.zapper_hit_music = this.sound.add("zapper_hit", {
+      loop: false,
+      volume: 0.5,
+      rate: 2,
+    });
+    this.laser_active_music = this.sound.add("laser_active", {
+      loop: true,
+      volume: 0.5,
+      rate: 0.8,
+    });
+    this.laser_hit_music = this.sound.add("laser_hit", {
+      loop: false,
+      volume: 0.5,
+      rate: 0.8,
+    });
+  }
+
+  initializeOverlaps() {
+    // Coins
+    this.physics.add.overlap(
+      this.player,
+      this.coins,
+      this.collectCoin,
+      undefined,
+      this
+    );
+
+    // Mystery Box
+    this.physics.add.overlap(
+      this.player,
+      this.mystery_boxes,
+      this.collectMysteryBox,
+      undefined,
+      this
+    );
+
+    // Powerup Box
+    this.physics.add.overlap(
+      this.player,
+      this.powerup_boxes,
+      this.collectPowerupBox,
+      undefined,
+      this
+    );
+
+    // obstacles overlaps
+    this.physics.add.overlap(
+      this.player,
+      this.zappers,
+      //@ts-ignore
+      this.hitZapper,
+      undefined,
+      this
+    );
+
+    this.physics.add.overlap(
+      this.player,
+      this.lasers,
+      this.hitLaser,
+      undefined,
+      this
+    );
+
+    this.physics.add.overlap(
+      this.player,
+      this.rockets,
+      this.hitRocket,
+      undefined,
+      this
+    );
+  }
+
+  playJetpackSound() {
+    // If we're already playing the correct sound, don't restart it
+    if (this.currentJetpackSound?.isPlaying) {
+      return;
+    }
+
+    // Stop any currently playing jetpack sound
+    this.stopJetpackSound();
+
+    // Select the appropriate sound based on jetpack type
+    switch (this.jetpack) {
+      case JetpackOptionsType.Jetpack:
+        this.currentJetpackSound = this.jetpack_normal_music;
+        break;
+      case JetpackOptionsType.Heli:
+        this.currentJetpackSound = this.jetpack_heli_music;
+        break;
+      case JetpackOptionsType.Rocket:
+        this.currentJetpackSound = this.jetpack_rocket_music;
+        break;
+      default:
+        // No sound for other cases (like when character has no jetpack during power-ups)
+        return;
+    }
+
+    // Play the selected sound
+    if (this.currentJetpackSound && !this.currentJetpackSound.isPlaying) {
+      this.currentJetpackSound.play();
+    }
+  }
+
+  stopJetpackSound() {
+    if (this.currentJetpackSound?.isPlaying) {
+      this.currentJetpackSound.stop();
+    }
+    this.currentJetpackSound = null;
+  }
+
   createAnimations() {
     // Create animations for default character
     this.anims.create({
@@ -606,14 +819,60 @@ export class MainGame extends Scene {
     // Add power up functionality to the game
     switch (powerUpCharacter) {
       case CharacterOptionsType.Flash:
+        this.flash_transition_music.play();
         this.gameSpeedMultiplier = 2;
         this.obstaclesInactive = true;
+        // hide existing obstacles
+        [
+          ...this.zappers.getChildren(),
+          ...this.rockets.getChildren(),
+          ...this.coins.getChildren(),
+        ].forEach((obstacle: any) => {
+          obstacle.setAlpha(0.2);
+          obstacle.setVisible(false);
+          obstacle.destroy();
+        });
+        // New obstacles appear with lower opacity during Flash power-up
+        this.time.addEvent({
+          delay: 500,
+          loop: true,
+          callback: () => {
+            if (this.character === CharacterOptionsType.Flash) {
+              [
+                ...this.zappers.getChildren(),
+                ...this.rockets.getChildren(),
+              ].forEach((obstacle: any) => {
+                obstacle.setAlpha(0.4);
+              });
+            }
+          },
+        });
         break;
       case CharacterOptionsType.Angel:
+        this.angel_transition_music.play();
         this.obstaclesInvisible = true;
+        // clear existing obstacles
+        [
+          ...this.zappers.getChildren(),
+          ...this.rockets.getChildren(),
+          ...this.coins.getChildren(),
+        ].forEach((obstacle: any) => {
+          obstacle.setAlpha(0);
+          obstacle.setVisible(false);
+          obstacle.destroy();
+        });
+        // Prevent obstacle spawning during Angel power-up
+        const originalObstacleSpawn = this.handleObstacleSpawning.bind(this);
+        this.handleObstacleSpawning = () => {
+          if (this.character !== CharacterOptionsType.Angel) {
+            originalObstacleSpawn();
+          }
+        };
         break;
       case CharacterOptionsType.Armor:
+        this.armor_transition_music.play();
         this.shieldActive = true;
+        this.armorHitWithObstaclesLeft = 1;
         break;
 
       default:
@@ -652,6 +911,11 @@ export class MainGame extends Scene {
           this.obstaclesInactive = false;
           this.obstaclesInvisible = false;
           this.shieldActive = false;
+          // Reset handlers to original functions
+          if (powerUpCharacter === CharacterOptionsType.Angel) {
+            this.handleObstacleSpawning =
+              this.handleObstacleSpawning.bind(this);
+          }
         }
       },
       loop: true,
@@ -686,13 +950,46 @@ export class MainGame extends Scene {
     let distanceIncrement = this.currentGameSpeed / 5; // Convert to meters
     this.distanceTravelled += distanceIncrement; // Convert to meters
     this.distanceText.setText(`${Math.floor(this.distanceTravelled)}m`);
+
+    // Award coins every 1000m
+    if (Math.floor(this.distanceTravelled) - this.lastRewardDistance >= 1000) {
+      this.lastRewardDistance += 1000;
+      this.addCoins(30);
+    }
+  }
+
+  // Function to add coins with animation
+  addCoins(amount: number) {
+    this.coinCount += amount;
+    this.coinText.setText(`${this.coinCount}`);
+
+    // Create "+30" animation near the coin counter
+    const coinAnim = this.add.text(260, 20, "+30", {
+      fontSize: "60px",
+      color: "#FFD700",
+      fontFamily: "jersey",
+      fontStyle: "bold",
+      stroke: "#000000",
+      strokeThickness: 8,
+    });
+
+    this.tweens.add({
+      targets: coinAnim,
+      y: 0,
+      alpha: 0,
+      duration: 2000,
+      ease: "Power2",
+      onComplete: () => {
+        coinAnim.destroy();
+      },
+    });
   }
 
   updateGameTimeAndSpeed() {
     this.totalGameTime += 1;
     this.currentGameSpeed =
       this.gameSpeedMultiplier * this.START_SPEED +
-      (this.totalGameTime * 19) / 360;
+      (this.totalGameTime * (this.END_SPEED - this.START_SPEED)) / 360;
   }
 
   updateGameObjectsSpeed() {
@@ -771,8 +1068,10 @@ export class MainGame extends Scene {
 
     let maxCoinCollectible: number;
     let spawnFunctionInvocationDelay: number = 0;
-
-    if (this.totalGameTime <= 30) {
+    if (CharacterOptionsType.Angel === this.character) {
+      maxCoinCollectible = 30;
+      spawnFunctionInvocationDelay = 3000;
+    } else if (this.totalGameTime <= 30) {
       // First 30 seconds: 10 coins
       maxCoinCollectible = 10;
       spawnFunctionInvocationDelay = 7000;
@@ -814,6 +1113,13 @@ export class MainGame extends Scene {
   handleObstacleSpawning() {
     const x = this.cameras.main.width + 100;
     const y = Phaser.Math.Between(100, this.cameras.main.height - 250);
+    //@ts-ignore
+    this.rockets?.children.each((rocket: any) => {
+      if (rocket.x < -50) {
+        rocket.destroy();
+        this.rocket_launch_music.stop();
+      }
+    });
 
     console.log(
       "screenYRangeBlockedByCoinForSpawning",
@@ -970,6 +1276,7 @@ export class MainGame extends Scene {
 
   collectCoin(player: any, coin: any) {
     coin.disableBody(true, true);
+    this.coin_music.play();
     this.screenYRangeBlockedByCoinForSpawning = [0, 0]; // Reset coin pattern range
 
     this.coinCount += 1;
@@ -980,6 +1287,7 @@ export class MainGame extends Scene {
     this.mysteryBoxCount++;
     console.log("Mystery Box collected");
     mystery_box.disableBody(true, true);
+    this.mystery_box_music.play();
     this.screenYRangeBlockedByBoxForSpawning = [0, 0]; // Reset mystery box pattern range
   }
 
@@ -1038,85 +1346,72 @@ export class MainGame extends Scene {
 
   spawnRocketWithWarning(x: number, y: number) {
     const warning = this.rocketWarning.create(x - 200, y, "rocket_warning");
+
     warning.setScale(1);
     warning.body.setAllowGravity(false);
+    this.rocket_warning_music.play();
     warning.anims.play("rocket_warning_animation", true);
 
     this.time.delayedCall(1000, () => {
       warning.destroy();
+      this.rocket_warning_music.stop();
       const rocket = this.rockets.create(x, y, "rocket");
       rocket.setVelocityX(this.currentGameObjectsSpeed * 2);
       rocket.setScale(0.8);
       rocket.body.setAllowGravity(false);
       rocket.anims.play("rocket", true);
+      this.rocket_launch_music.play();
     });
   }
 
   spawnLaserWithWarning() {
-    const warning_left = this.rocketWarning.create(200, 700, "laser_left");
+    const laserY = Phaser.Math.Between(100, this.cameras.main.height - 100);
+
+    const warning_left = this.rocketWarning.create(200, laserY, "laser_left");
     const warning_right = this.rocketWarning.create(
-      this.cameras.main.width - 200,
-      700,
+      this.cameras.main.width - 150,
+      laserY,
       "laser_right"
     );
-    const warning_duration = 2000; // Duration for the warning animation (in milliseconds)
+    const warning_duration = 2000;
 
-    // Play warning animation
+    // Set up warning animations
     warning_left.setScale(1);
     warning_left.body.setAllowGravity(false);
     warning_left.anims.play("laser_left", true);
 
-    this.time.delayedCall(warning_duration, () => {
-      warning_left.destroy();
-    });
-
     warning_right.setScale(1);
     warning_right.body.setAllowGravity(false);
     warning_right.anims.play("laser_right", true);
-
+    this.laser_active_music.play();
+    // Clear warnings after duration
     this.time.delayedCall(warning_duration, () => {
+      warning_left.destroy();
       warning_right.destroy();
     });
 
     this.time.delayedCall(1500, () => {
-      warning_left.destroy();
-      warning_right.destroy();
-      const randomPattern = Phaser.Math.RND.pick(laserPatterns);
+      // Ensure the laser is within the screen bounds
+      // Fixed X position in the middle of the screen
+      const laserX = this.cameras.main.width / 2;
+      const laser = this.lasers.create(laserX, laserY, "laser");
+      laser.setVelocityX(0);
+      laser.setSize(laser.width * 0.9, laser.height * 0.6);
+      laser.body.setAllowGravity(false);
+      laser.anims.play("laser", true);
 
-      randomPattern.positions.forEach((position: { x: number; y: number }) => {
-        // Ensure the laser is within the screen bounds
-        const laserX = Phaser.Math.Clamp(
-          this.cameras.main.width / 2 + position.x,
-          0,
-          this.cameras.main.width - 100
-        );
-        const laserY = Phaser.Math.Clamp(
-          this.cameras.main.height / 2 + position.y,
-          0,
-          this.cameras.main.height - 100
-        );
+      this.laserActive = true; // Set laser active flag
 
-        const laser = this.lasers.create(laserX, laserY, "laser");
-        laser.setVelocityX(0);
-        laser.setSize(laser.width * 0.9, laser.height * 0.6);
-        laser.body.setAllowGravity(false);
-        laser.anims.play("laser", true);
-
-        this.laserActive = true; // Set laser active flag
-
-        this.time.addEvent({
-          delay: 6000, // Laser appears for 6 seconds
-          callback: () => {
-            laser.destroy();
-          },
-          callbackScope: this,
-        });
+      this.time.addEvent({
+        delay: 6000, // Laser appears for 6 seconds
+        callback: () => {
+          laser.destroy();
+          this.laser_active_music.stop();
+          this.screenYRangeBlockedByLaserForSpawning = [0, 0];
+        },
+        callbackScope: this,
       });
-      // Update the screen range blocked for spawning lasers
-      this.screenYRangeBlockedByLaserForSpawning = [
-        randomPattern.positions[0].y,
-        randomPattern.positions[randomPattern.positions.length - 1].y + 87,
-      ];
+      this.screenYRangeBlockedByLaserForSpawning = [laserX, laserY + 87];
     });
   }
 
@@ -1129,14 +1424,17 @@ export class MainGame extends Scene {
       !this.obstaclesInvisible &&
       !this.obstaclesInactive
     ) {
-      player.disableBody(true, true);
-      this.scene.start("GameOver", {
-        coinCount: this.coinCount,
-        distanceTravelled: this.distanceTravelled,
-        character: this.character,
-        environment: this.environment,
-        jetpack: this.jetpack,
+      if (this.inTransition) return;
+      this.inTransition = true; // running animation will be paused
+      this.zapper_hit_music.play();
+      this.player.setTexture("transition");
+      this.player.play("player_transition");
+      this.stopJetpackSound();
+      this.time.delayedCall(100, () => {
+        this.gameOver(this.player);
       });
+    } else {
+      this.armorHitWithObstacle();
     }
   }
 
@@ -1146,14 +1444,18 @@ export class MainGame extends Scene {
       !this.obstaclesInvisible &&
       !this.obstaclesInactive
     ) {
-      player.disableBody(true, true);
-      this.scene.start("GameOver", {
-        coinCount: this.coinCount,
-        distanceTravelled: this.distanceTravelled,
-        character: this.character,
-        environment: this.environment,
-        jetpack: this.jetpack,
+      if (this.inTransition) return;
+      this.inTransition = true; // running animation will be paused
+      this.laser_active_music.play();
+      this.player.setTexture("transition");
+      this.player.play("player_transition");
+      this.stopJetpackSound();
+      this.laser_hit_music.play();
+      this.time.delayedCall(100, () => {
+        this.gameOver(this.player);
       });
+    } else {
+      this.armorHitWithObstacle();
     }
   }
 
@@ -1163,14 +1465,63 @@ export class MainGame extends Scene {
       !this.obstaclesInvisible &&
       !this.obstaclesInactive
     ) {
-      player.disableBody(true, true);
-      this.scene.start("GameOver", {
-        coinCount: this.coinCount,
-        distanceTravelled: this.distanceTravelled,
-        character: this.character,
-        environment: this.environment,
-        jetpack: this.jetpack,
+      if (this.inTransition) return;
+      this.inTransition = true; // running animation will be paused
+      this.rocket_launch_music.stop();
+      this.player.setTexture("transition");
+      this.player.play("player_transition");
+      this.stopJetpackSound();
+      this.rocket_hit_music.play();
+      this.time.delayedCall(100, () => {
+        this.gameOver(this.player);
       });
+    } else {
+      this.armorHitWithObstacle();
     }
+  }
+
+  armorHitWithObstacle() {
+    if (this.inTransition) return;
+    // Play transition animation - fire burst one
+    this.inTransition = true; // running animation will be paused
+    this.armor_transition_music.play();
+    this.player.setTexture("transition");
+    this.player.play("player_transition");
+
+    // Remove progress bar (if it exists)
+    if (this.progressBarFill && this.progressBarBackground) {
+      this.progressBarFill.destroy();
+      this.progressBarBackground.destroy();
+    }
+
+    this.time.delayedCall(200, () => {
+      this.player.stop();
+      this.resetPowerUpVariableForArmor();
+    });
+  }
+
+  resetPowerUpVariableForArmor() {
+    this.shieldActive = false;
+    this.obstaclesInactive = false;
+    this.obstaclesInvisible = false;
+    this.inTransition = false;
+    this.character = this.previous_character;
+    this.jetpack = this.previous_jetpack;
+    this.player.setTexture(`${this.character}_${this.jetpack}`);
+    this.gameSpeedMultiplier = 1;
+    this.armorHitWithObstaclesLeft = 1;
+  }
+
+  gameOver(player: any) {
+    player.disableBody(true, true);
+    this.background_music.stop();
+    this.inTransition = false;
+    this.scene.start("GameOver", {
+      coinCount: this.coinCount,
+      distanceTravelled: this.distanceTravelled,
+      character: this.character,
+      environment: this.environment,
+      jetpack: this.jetpack,
+    });
   }
 }
