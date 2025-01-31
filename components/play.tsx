@@ -154,7 +154,7 @@ export default function Play() {
 
   // load characters and jetpacks in shop section
   useEffect(() => {
-    console.log(user.game_assets);
+    // console.log(user.game_assets);
 
     // Mark owned characters
     const updatedCharacters = initialCharacters.map((char) => ({
@@ -174,14 +174,22 @@ export default function Play() {
     }));
 
     // Select stored character
-    const selectedCharacter = localStorage.getItem("selectedCharacter");
+    let selectedCharacter = localStorage.getItem("selectedCharacter");
+    if (!selectedCharacter) {
+      localStorage.setItem("selectedCharacter", updatedCharacters[0].key);
+      selectedCharacter = updatedCharacters[0].key;
+    }
     const finalCharacters = updatedCharacters.map((char) => ({
       ...char,
       selected: char.owned && char.key === selectedCharacter,
     }));
 
     // Select stored jetpack
-    const selectedJetpack = localStorage.getItem("selectedJetpack");
+    let selectedJetpack = localStorage.getItem("selectedJetpack");
+    if (!selectedJetpack) {
+      localStorage.setItem("selectedJetpack", updatedJetpacks[0].key);
+      selectedJetpack = updatedJetpacks[0].key;
+    }
     const finalJetpacks = updatedJetpacks.map((jet) => ({
       ...jet,
       selected: jet.owned && jet.key === selectedJetpack,
@@ -190,8 +198,6 @@ export default function Play() {
     setCharacters(finalCharacters);
     setJetpacks(finalJetpacks);
 
-    console.log("updated characters", finalCharacters);
-    console.log("updated jetpacks", finalJetpacks);
     switchJetpacks(selectedCharacter || "og");
   }, [user]);
 
@@ -268,7 +274,7 @@ export default function Play() {
               <div className="flex flex-col gap-4 items-start">
                 <Drawer>
                   <DrawerTrigger>
-                    <div className="bg-black bg-opacity-40 rounded-md p-2 flex items-center justify-center gap-2">
+                    <div className="bg-black bg-opacity-40 rounded-md p-2 flex items-center justify-center gap-2 relative">
                       {" "}
                       <MissionsLogo />{" "}
                       <p
@@ -276,16 +282,31 @@ export default function Play() {
                       >
                         Missions
                       </p>
+                      {/* Add a red notification dot */}
+                      {user.show_conso_game_mission_notif ? (
+                        <div
+                          className={cn(
+                            "absolute top-[-5px] right-[-4px] h-3 w-3 rounded-full bg-red-600 text-sm text-white flex justify-center items-center ",
+                            jersey.className
+                          )}
+                        ></div>
+                      ) : (
+                        <></>
+                      )}
                     </div>
                   </DrawerTrigger>
                   <DrawerContent>
-                    <MissionsDrawer />
+                    <MissionsDrawer
+                      completedConsoGameMissions={
+                        user.completed_conso_game_missions
+                      }
+                    />
                   </DrawerContent>
                 </Drawer>
 
                 <Drawer>
                   <DrawerTrigger>
-                    <div className="bg-black bg-opacity-40 rounded-md p-2 flex items-center justify-center gap-2">
+                    <div className="bg-black bg-opacity-40 rounded-md p-2 flex items-center justify-center gap-2 relative">
                       {" "}
                       <MysteryBoxLogo />{" "}
                       <p
@@ -293,10 +314,23 @@ export default function Play() {
                       >
                         Rewards
                       </p>
+                      {user.unclaimed_mystery_boxes.length > 0 && (
+                        <div
+                          className={cn(
+                            "absolute top-[-5px] right-[-4px] h-3 w-3 rounded-full bg-red-600 text-sm text-white flex justify-center items-center p-2",
+                            jersey.className
+                          )}
+                        >
+                          {user.unclaimed_mystery_boxes.length}
+                        </div>
+                      )}
                     </div>
                   </DrawerTrigger>
                   <DrawerContent className="">
-                    <MysteryBoxDrawer />
+                    <MysteryBoxDrawer
+                      unclaimedMysteryBoxes={user.unclaimed_mystery_boxes}
+                      claimedMysteryBoxes={user.claimed_mystery_boxes}
+                    />
                   </DrawerContent>
                 </Drawer>
 

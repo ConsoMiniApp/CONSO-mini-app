@@ -5,18 +5,54 @@ import Image from "next/image";
 import { ibmPlex, ibmPlex500, ibmPlex700, jersey } from "../../ui/fonts";
 import { cn } from "@/lib/utils";
 import CustomButton from "./CustomButton";
-import { CustomButtonType } from "@/lib/types";
+import { CustomButtonType, UnclaimedMysteryBox } from "@/lib/types";
 import toast from "react-hot-toast";
 import { SuccessIcon } from "@/components/ui/icons";
+import { mysteryBoxTypes } from "@/lib/constants";
+import { createClient } from "@/utils/supabase/client";
+import { useAppContext } from "@/contexts/AppContext";
 
 export interface ClaimTokenDialogProps {
+  mysteryBox: UnclaimedMysteryBox;
   handleConfirm: () => void;
 }
 
-export function ClaimTokenDialog({ handleConfirm }: ClaimTokenDialogProps) {
-  function handleClick() {
-    console.log("Claimed tokens in this mystery box.");
+export function ClaimTokenDialog({
+  mysteryBox,
+  handleConfirm,
+}: ClaimTokenDialogProps) {
+  const supabase = createClient();
+  const { telegramUsername, user, setUserData } = useAppContext();
+
+  async function handleClick() {
     handleConfirm();
+    // delete mystery box id from users_table.
+    // TO DO : depending on mysteryBoxType, update the user_point or game_assets.potions counter
+
+    const updatedUnclaimedMysteryBoxes = user.unclaimed_mystery_boxes.filter(
+      (box) =>
+        box.id !== mysteryBox.id && box.collected_on !== mysteryBox.collected_on
+    );
+    const { data: updatedUserData, error: updatedUserError } = await supabase
+      .from("users_table")
+      .update({
+        unclaimed_mystery_boxes: updatedUnclaimedMysteryBoxes,
+        claimed_mystery_boxes: [...user.claimed_mystery_boxes, mysteryBox.id],
+      })
+      .eq("username", telegramUsername)
+      .select();
+    if (updatedUserError) {
+      toast.error("Error updating user data.", {
+        className: cn(jersey.className, "text-xl text-white mt-10"),
+      });
+      return;
+    }
+    setUserData({
+      ...user,
+      unclaimed_mystery_boxes: updatedUnclaimedMysteryBoxes,
+      claimed_mystery_boxes: [...user.claimed_mystery_boxes, mysteryBox.id],
+    });
+
     toast("Claimed Mystery box.", {
       className: cn(jersey.className, "text-xl text-white mt-10"),
       icon: <SuccessIcon />,
@@ -36,7 +72,7 @@ export function ClaimTokenDialog({ handleConfirm }: ClaimTokenDialogProps) {
           <div className="h-[222px] w-[222px] rounded-lg border-4 border-[#FFE500] bg-[#FFF59D] relative flex justify-center items-center">
             <div className="">
               <Image
-                src="/other-logos/coin.svg"
+                src={mysteryBoxTypes[mysteryBox.id].image}
                 alt="Coin"
                 width={107}
                 height={107}
@@ -48,13 +84,13 @@ export function ClaimTokenDialog({ handleConfirm }: ClaimTokenDialogProps) {
                 "absolute bottom-[-30px] left-1/2 transform -translate-x-1/2 py-1 px-4 bg-[#DE5EA6] rounded-lg border-4 border-white text-white text-4xl"
               )}
             >
-              x200
+              x {mysteryBoxTypes[mysteryBox.id].quantity}
             </div>
           </div>
           <div className="flex justify-center mt-16">
             <DialogClose>
               <CustomButton
-                text="CLAIM TOKEN"
+                text="CLAIM"
                 type={CustomButtonType.SUCCESS_MEDIUM}
                 handleClick={handleClick}
               />

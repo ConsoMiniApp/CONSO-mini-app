@@ -30,8 +30,8 @@ export function ShopDrawer({
   const supabase = createClient();
   const { telegramUsername, user, setUserData } = useAppContext();
 
-  console.log("shop characters", characters);
-  console.log("shop jetpacks", jetpacks);
+  // console.log("shop characters", characters);
+  // console.log("shop jetpacks", jetpacks);
 
   return (
     <>

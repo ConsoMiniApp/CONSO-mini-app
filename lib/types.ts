@@ -1,3 +1,5 @@
+import { MysteryBox } from "@/components/game/types";
+
 // User: User table type
 export type ConsoleType =
   | "playstation"
@@ -6,6 +8,10 @@ export type ConsoleType =
   | "nintendo"
   | "bitboy"
   | "sui";
+
+export type MysteryBoxType = {
+  [key: number]: MysteryBoxInfo;
+};
 
 export type ConnectedConsoles = {
   [key in ConsoleType]: ConnectedConsole[];
@@ -24,8 +30,12 @@ export interface ConsoUser {
   connected_consoles: ConnectedConsoles;
   game_high_score: number;
   game_total_distance: number;
-  referral_code: string;
+  completed_conso_game_missions: number[];
+  show_conso_game_mission_notif: boolean;
+  unclaimed_mystery_boxes: UnclaimedMysteryBox[];
+  claimed_mystery_boxes: number[];
   game_assets: GameAssets;
+  referral_code: string;
 }
 
 export interface GameAssets {
@@ -68,6 +78,21 @@ export interface Referre {
   user_points: number;
   game_total_distance: number;
   connected_consoles: ConsoleType[];
+}
+
+export interface UnclaimedMysteryBox {
+  id: number;
+  collected_on: string;
+}
+
+export interface MysteryBoxInfo {
+  id: number;
+  type: string;
+  title: string;
+  quantity: number;
+  image: string;
+  link: string;
+  class: string;
 }
 
 // button types

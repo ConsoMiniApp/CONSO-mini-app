@@ -1,4 +1,4 @@
-import { Character, Jetpack } from "./types";
+import { Character, Jetpack, MysteryBoxType } from "./types";
 
 export const MAX_PLAYSTATION_BONUS = 6000;
 export const PLAYSTATION_MULTIPLIER = 2.5; // K
@@ -73,6 +73,87 @@ export const initialJetpacks: Jetpack[] = [
     price: 5000,
   },
 ];
+
+// game missions
+export const allGameMissions = [
+  {
+    id: 1,
+    name: "Run in Meters",
+    description:
+      "Connect atleast 2 different consoles to play the game. You can play with any consoles from same provider.",
+    points: 200,
+    category: "game",
+    imgSrc: "/pngs/x-logo.png",
+  },
+  {
+    id: 2,
+    name: "Collect 3 Mystery Boxes",
+    description: "Collect atleast 3 mystery boxes to play the game.",
+    points: 200,
+    category: "game",
+    imgSrc: "/pngs/x-logo.png",
+  },
+  {
+    id: 3,
+    name: "Collect All Skins",
+    description: "Collect all skins to play the game.",
+    points: 250,
+    category: "game",
+    imgSrc: "/pngs/x-logo.png",
+  },
+  {
+    id: 4,
+    name: "Collect All Jetpacks",
+    description: "Collect all jetpacks to play the game.",
+    points: 250,
+    category: "game",
+    imgSrc: "/pngs/x-logo.png",
+  },
+];
+
+// type of mystery boxes : TO DO
+export const mysteryBoxTypes: MysteryBoxType = {
+  1: {
+    id: 1,
+    type: "potion",
+    title: "POTIONS",
+    quantity: 1,
+    image: "/play-logos/potion-logo.svg",
+    link: "",
+    class:
+      "border-2 border-[#00BA64] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#5EEFAC]",
+  },
+  2: {
+    id: 2,
+    type: "coin",
+    title: "TOKENS",
+    quantity: 100,
+    image: "/other-logos/coin.svg",
+    link: "",
+    class:
+      "border-2 border-[#FFE500] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#FFF59D]",
+  },
+  3: {
+    id: 3,
+    type: "nft",
+    title: "NFT",
+    quantity: 1,
+    image: "/other-logos/nft-logo.png",
+    link: "https://claim.metagamehub.io/game/conso-test-app",
+    class:
+      "border-2 border-[#00A3FF] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#71CCFF]",
+  },
+  4: {
+    id: 4,
+    type: "coin",
+    title: "TOKENS",
+    quantity: 500,
+    image: "/other-logos/coin.svg",
+    link: "",
+    class:
+      "border-2 border-[#FFE500] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#FFF59D]",
+  },
+};
 
 // Invite link
 export const INVITE_LINK =

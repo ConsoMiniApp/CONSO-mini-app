@@ -24,7 +24,7 @@ export const calculateGameEmissions = (consoles: ConnectedConsole[]) => {
     }
     // Apply the formula: (alpha * K * Math.exp(-lambda * H)) / N
     else {
-      // Multiply the emission rate by the degen_score : TO DO
+      // Multiply the emission rate by the degen_score
       const emissionRate =
         (ALPHA * PLAYSTATION_MULTIPLIER * Math.exp(-DECAY_CONSTANT * H)) /
         NORMALIZING_FACTOR;

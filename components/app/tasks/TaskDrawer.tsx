@@ -137,7 +137,6 @@ export function TaskDrawer({
             {isLoading ? (
               <RetroLoader />
             ) : checkPerformed ? (
-              // TO DO
               <p className={cn("text-2xl ", jersey.className)}>
                 Check Completed{" "}
               </p>

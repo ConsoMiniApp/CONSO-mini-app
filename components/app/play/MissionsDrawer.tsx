@@ -5,27 +5,34 @@ import { cn } from "@/lib/utils";
 import { ConsoleIcon } from "@/components/ui/icons";
 import CustomButton from "../common/CustomButton";
 import { CustomButtonType } from "@/lib/types";
+import { useEffect, useState } from "react";
+import { useAppContext } from "@/contexts/AppContext";
+import { createClient } from "@/utils/supabase/client";
 
-const missions = [
+const initialMissions = [
   {
+    id: 1,
     logo: <ConsoleIcon />,
     title: "Run 2000m in one game.",
     points: 250,
-    completed: true,
+    completed: false,
   },
   {
+    id: 2,
     logo: <ConsoleIcon />,
     title: "Collect 3 mystery boxes.",
     points: 250,
     completed: false,
   },
   {
+    id: 3,
     logo: <ConsoleIcon />,
     title: "Collect all skins.",
     points: 250,
     completed: false,
   },
   {
+    id: 4,
     logo: <ConsoleIcon />,
     title: "Collect all jetpacks.",
     points: 250,
@@ -33,15 +40,45 @@ const missions = [
   },
 ];
 
-export function MissionsDrawer() {
-  const activities = [
-    { name: "PlayStation", rate: "2.5x" },
-    { name: "Xbox", rate: "2.5x" },
-    { name: "Bitboy", rate: "2.0x" },
-    { name: "Sui Console", rate: "2.0x" },
-    { name: "Nintendo", rate: "1.75x" },
-    { name: "Steam", rate: "1.5x" },
-  ];
+export function MissionsDrawer({
+  completedConsoGameMissions,
+}: {
+  completedConsoGameMissions: number[];
+}) {
+  const [missions, setMissions] = useState(initialMissions);
+  const { user, setUserData, telegramUsername } = useAppContext();
+  const supabase = createClient();
+
+  async function updateConsoleGameMissionNotification() {
+    console.log("updating notification");
+    // update user data
+    const updatedUserData = {
+      ...user,
+      show_conso_game_mission_notif: false,
+    };
+    await supabase
+      .from("users_table")
+      .update({ show_conso_game_mission_notif: false })
+      .eq("username", telegramUsername);
+
+    setUserData(updatedUserData);
+  }
+
+  useEffect(() => {
+    const updatedMissions = missions.map((mission) => {
+      const updatedMission = {
+        ...mission,
+        completed: completedConsoGameMissions.includes(mission.id),
+      };
+      return updatedMission;
+    });
+    setMissions(updatedMissions);
+
+    // remove notification dot
+    if (user.show_conso_game_mission_notif)
+      updateConsoleGameMissionNotification();
+  }, []);
+
   return (
     <>
       <div className="overflow-y-scroll scrollbar-none p-4 ">
