@@ -84,13 +84,27 @@ export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(
     }, [currentActiveScene, ref]);
 
     useEffect(() => {
-      EventBus.on("exit-game", (scene_instance: Phaser.Scene) => {
-        console.log("exit-game triggered");
-        scene_instance.scene.pause();
-        scene_instance.scene.stop();
-        console.log(scene_instance);
-        // exitGame();
-      });
+      EventBus.on(
+        "exit-game",
+        (
+          scene_instance: Phaser.Scene,
+          coinCount: number,
+          mysteryBoxes: UnclaimedMysteryBox[],
+          distanceTravelled: number
+        ) => {
+          console.log("exit-game triggered");
+          scene_instance.scene.pause();
+          scene_instance.scene.stop();
+          // console.log(
+          //   scene_instance,
+          //   coinCount,
+          //   mysteryBoxCount,
+          //   distanceTravelled
+          // );
+
+          exitGame(coinCount, mysteryBoxes, distanceTravelled);
+        }
+      );
       return () => {
         EventBus.removeListener("exit-game");
       };

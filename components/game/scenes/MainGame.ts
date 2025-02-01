@@ -347,10 +347,10 @@ export class MainGame extends Scene {
     });
 
     // Sound Control Button
-    this.soundEnabled = false; // Track sound state
-    this.sound.mute = true;
+    this.soundEnabled = true; // Track sound state
+    this.sound.mute = false;
     this.soundButton = this.add
-      .image(1630, 110, "sound_off")
+      .image(1630, 110, "sound_on")
       .setScale(2)
       .setInteractive();
 

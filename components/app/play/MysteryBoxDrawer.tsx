@@ -6,51 +6,6 @@ import { ClaimTokenDialog } from "../common/ClaimTokensDialog";
 import { UnclaimedMysteryBox } from "@/lib/types";
 import { mysteryBoxTypes } from "@/lib/constants";
 
-// const claimedMysteryBoxes = [
-//   {
-//     title: "POTIONS",
-//     count: 2,
-//     image: "/play-logos/potion-logo.svg",
-//     class:
-//       "border-2 border-[#00BA64] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#5EEFAC]",
-//   },
-//   {
-//     title: "TOKENS",
-//     count: 200,
-//     image: "/other-logos/coin.svg",
-//     class:
-//       "border-2 border-[#FFE500] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#FFF59D]",
-//   },
-//   {
-//     title: "NFT",
-//     count: 1,
-//     image: "/other-logos/nft-logo.png",
-//     class:
-//       "border-2 border-[#00A3FF] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#71CCFF]",
-//   },
-//   {
-//     title: "POTIONS",
-//     count: 2,
-//     image: "/play-logos/potion-logo.svg",
-//     class:
-//       "border-2 border-[#00BA64] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#5EEFAC]",
-//   },
-//   {
-//     title: "TOKENS",
-//     count: 200,
-//     image: "/other-logos/coin.svg",
-//     class:
-//       "border-2 border-[#FFE500] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#FFF59D]",
-//   },
-//   {
-//     title: "NFT",
-//     count: 1,
-//     image: "/other-logos/nft-logo.png",
-//     class:
-//       "border-2 border-[#00A3FF] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#71CCFF]",
-//   },
-// ];
-
 interface MysteryBoxDrawerProps {
   unclaimedMysteryBoxes: UnclaimedMysteryBox[];
   claimedMysteryBoxes: number[];

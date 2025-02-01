@@ -293,8 +293,10 @@ export class GameOver extends Scene {
       // close the game
       EventBus.emit(
         "exit-game",
+        this,
         this.coinCount,
-        this.mysteryBoxCount,
+        [{ id: 1, collected_on: new Date().toISOString() }],
+        // this.mysteryBoxCount,
         this.distanceTravelled
       );
     });

@@ -203,7 +203,7 @@ export default function Rank() {
                     jersey.className
                   )}
                 >
-                  {user?.game_total_distance} m
+                  {user?.game_total_distance.toLocaleString()} m
                 </span>
                 <span
                   className={cn(

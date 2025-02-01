@@ -27,11 +27,8 @@ export function ClaimTokenDialog({
   async function handleClick() {
     handleConfirm();
     // delete mystery box id from users_table.
-    // TO DO : depending on mysteryBoxType, update the user_point or game_assets.potions counter
-
     const updatedUnclaimedMysteryBoxes = user.unclaimed_mystery_boxes.filter(
-      (box) =>
-        box.id !== mysteryBox.id && box.collected_on !== mysteryBox.collected_on
+      (box) => box.collected_on !== mysteryBox.collected_on
     );
     const { data: updatedUserData, error: updatedUserError } = await supabase
       .from("users_table")

@@ -110,24 +110,25 @@ export default function Play() {
   ) => {
     console.log("collectedPoints", gameTokensCollected);
     console.log("collectedMysteryBoxes", gameMysteryBoxesCollected);
+    console.log("gameDistance", gameDistance);
     const isHighScore = checkHighScore(gameDistance, user.game_high_score);
+    const roundedGameDistance = Math.floor(gameDistance);
     // update user data in users_table
     const { data: updatedUserData, error: updatedUserError } = await supabase
       .from("users_table")
       .update({
-        game_assets: {
-          ...user.game_assets,
-          potions: user.game_assets.potions + gameTokensCollected,
-        },
+        user_points: user.user_points + gameTokensCollected,
         unclaimed_mystery_boxes: [
           ...user.unclaimed_mystery_boxes,
           ...gameMysteryBoxesCollected,
         ],
-        game_total_distance: user.game_total_distance + gameDistance,
-        game_high_score: isHighScore ? gameDistance : user.game_high_score,
+        game_total_distance: user.game_total_distance + roundedGameDistance,
+        game_high_score: isHighScore
+          ? roundedGameDistance
+          : user.game_high_score,
       })
-      .eq("username", telegramUsername)
-      .select();
+      .eq("username", telegramUsername);
+
     if (updatedUserError) {
       toast.error("Error updating user data.", {
         className: cn(jersey.className, "text-xl text-white mt-10"),
@@ -136,16 +137,13 @@ export default function Play() {
     }
     setUserData({
       ...user,
-      game_assets: {
-        ...user.game_assets,
-        potions: user.game_assets.potions + gameTokensCollected,
-      },
+      user_points: user.user_points + gameTokensCollected,
       unclaimed_mystery_boxes: [
         ...user.unclaimed_mystery_boxes,
         ...gameMysteryBoxesCollected,
       ],
-      game_total_distance: user.game_total_distance + gameDistance,
-      game_high_score: isHighScore ? gameDistance : user.game_high_score,
+      game_total_distance: user.game_total_distance + roundedGameDistance,
+      game_high_score: isHighScore ? roundedGameDistance : user.game_high_score,
     });
   };
 
