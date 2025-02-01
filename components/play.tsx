@@ -329,7 +329,7 @@ export default function Play() {
         <div className="">
           {/* Add parallex div here */}
           {/* <DynamicBackground /> */}
-          {/* <video
+          <video
             src={"/videos/player-video.mp4"}
             controls={false}
             loop={true}
@@ -339,7 +339,7 @@ export default function Play() {
             // onEnded={handleVideoEnd}
             onCanPlayThrough={handleVideoLoad}
             className="object-cover absolute top-0 h-screen pb-24 "
-          ></video> */}
+          ></video>
           <Image
             src={"/videos/player.gif"}
             alt="player"
