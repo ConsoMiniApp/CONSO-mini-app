@@ -12,7 +12,6 @@ import React, {
 // Define the type for the context value (state + setters)
 interface AppContextType {
   // state: AppState;
-  pointBalance: number;
   navigationBarHidden: boolean;
   user: ConsoUser;
   startPointBalance: number;
@@ -20,7 +19,6 @@ interface AppContextType {
   referralCode: string;
   setUserData: Dispatch<SetStateAction<ConsoUser>>;
   setNavigationBarHidden: Dispatch<SetStateAction<boolean>>;
-  setPointBalance: Dispatch<SetStateAction<number>>;
   setStartPointBalance: Dispatch<SetStateAction<number>>;
   setTelegramUsername: Dispatch<SetStateAction<string>>;
   setReferralCode: Dispatch<SetStateAction<string>>;
@@ -31,7 +29,6 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 // Create the provider component
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [pointBalance, setPointBalance] = useState<number>(0);
   const [startPointBalance, setStartPointBalance] = useState<number>(0);
   const [telegramUsername, setTelegramUsername] = useState<string>("");
   const [referralCode, setReferralCode] = useState<string>("");
@@ -69,12 +66,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     referral_code: "",
   });
 
-  // const state: AppState = { pointBalance, message };
-
   return (
     <AppContext.Provider
       value={{
-        pointBalance,
         navigationBarHidden,
         startPointBalance,
         telegramUsername,
@@ -82,7 +76,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         user,
         setUserData,
         setNavigationBarHidden,
-        setPointBalance,
+
         setStartPointBalance,
         setTelegramUsername,
         setReferralCode,

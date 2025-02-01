@@ -69,8 +69,6 @@ export default function Miner() {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [acceptNickname, setAcceptNickname] = useState(true);
   const {
-    pointBalance,
-    setPointBalance,
     startPointBalance,
     setStartPointBalance,
     user,
@@ -108,7 +106,7 @@ export default function Miner() {
     try {
       const { data, error } = await supabase
         .from("users_table")
-        .update({ user_points: pointBalance + 1 })
+        .update({ user_points: user.user_points + 1 })
         .eq("username", telegramUsername);
 
       if (error) {
@@ -118,9 +116,12 @@ export default function Miner() {
 
         return;
       }
+      setUserData({
+        ...user,
+        user_points: user.user_points + 1,
+      });
 
-      setStartPointBalance(pointBalance + 1);
-      setPointBalance((prev) => prev + 1);
+      setStartPointBalance(user.user_points + 1);
     } catch (error) {
       console.error("Error saving to Supabase:", error);
       setIsTapping(false);
@@ -202,9 +203,7 @@ export default function Miner() {
       if (data.connected_consoles !== null) {
         setConnectButtons(getConnectButtons(data.connected_consoles));
       }
-
-      setPointBalance(Number(data.user_points));
-      setStartPointBalance(Number(data.user_points));
+      setStartPointBalance(0);
       setIsLoading(false);
     }
     if (error) {
@@ -381,10 +380,18 @@ export default function Miner() {
 
               <div className="flex justify-center items-center gap-2 mb-4">
                 <Coin />
+                {/* <div
+                  className={cn(
+                    "text-yellow-400 text-4xl font-bold",
+                    jersey.className
+                  )}
+                >
+                  {user.user_points}
+                </div> */}
 
                 <CountUp
                   start={startPointBalance}
-                  end={pointBalance}
+                  end={user.user_points}
                   duration={0.5}
                   className={cn(
                     "text-yellow-400 text-4xl font-bold",

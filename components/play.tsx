@@ -2,7 +2,12 @@
 import { useEffect, useRef, useState } from "react";
 import { IRefPhaserGame, PhaserGame } from "./game/PhaserGame";
 import CustomButton from "./app/common/CustomButton";
-import { Character, CustomButtonType, Jetpack } from "@/lib/types";
+import {
+  Character,
+  CustomButtonType,
+  Jetpack,
+  UnclaimedMysteryBox,
+} from "@/lib/types";
 import {
   Drawer,
   DrawerClose,
@@ -46,14 +51,18 @@ import Lottie from "lottie-react";
 import { initialCharacters, initialJetpacks } from "@/lib/constants";
 import { getSelectedCharacter } from "@/lib/helpers/play/getSelectedCharacter";
 import { getSelectedJetpack } from "@/lib/helpers/play/getSelectedJetpack";
+import { checkHighScore } from "@/lib/helpers/play/checkHighScore";
+import { createClient } from "@/utils/supabase/client";
+import toast from "react-hot-toast";
 
 export default function Play() {
+  const supabase = createClient();
   const [gameLoaded, setGameLoaded] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [characters, setCharacters] = useState<Character[]>(initialCharacters);
   const [jetpacks, setJetpacks] = useState<Jetpack[]>(initialJetpacks);
 
-  const { user } = useAppContext();
+  const { user, telegramUsername, setUserData } = useAppContext();
 
   const handleVideoLoad = () => {
     setIsVideoLoaded(true);
@@ -93,8 +102,69 @@ export default function Play() {
     setGameLoaded(true);
   };
 
+  // update user data in users_table when a game session ends : GameOver.ts
+  const updateUserData = async (
+    gameTokensCollected: number,
+    gameMysteryBoxesCollected: UnclaimedMysteryBox[],
+    gameDistance: number
+  ) => {
+    console.log("collectedPoints", gameTokensCollected);
+    console.log("collectedMysteryBoxes", gameMysteryBoxesCollected);
+    const isHighScore = checkHighScore(gameDistance, user.game_high_score);
+    // update user data in users_table
+    const { data: updatedUserData, error: updatedUserError } = await supabase
+      .from("users_table")
+      .update({
+        game_assets: {
+          ...user.game_assets,
+          potions: user.game_assets.potions + gameTokensCollected,
+        },
+        unclaimed_mystery_boxes: [
+          ...user.unclaimed_mystery_boxes,
+          ...gameMysteryBoxesCollected,
+        ],
+        game_total_distance: user.game_total_distance + gameDistance,
+        game_high_score: isHighScore ? gameDistance : user.game_high_score,
+      })
+      .eq("username", telegramUsername)
+      .select();
+    if (updatedUserError) {
+      toast.error("Error updating user data.", {
+        className: cn(jersey.className, "text-xl text-white mt-10"),
+      });
+      return;
+    }
+    setUserData({
+      ...user,
+      game_assets: {
+        ...user.game_assets,
+        potions: user.game_assets.potions + gameTokensCollected,
+      },
+      unclaimed_mystery_boxes: [
+        ...user.unclaimed_mystery_boxes,
+        ...gameMysteryBoxesCollected,
+      ],
+      game_total_distance: user.game_total_distance + gameDistance,
+      game_high_score: isHighScore ? gameDistance : user.game_high_score,
+    });
+  };
+
+  // TO DO : add potions to user data
+  // const usePotions = () => {
+  //   const { user, setUserData } = useAppContext();
+  //   const handlePotionClick = () => {
+  //     setUserData({
+  //       ...user,
+  //       game_assets: {
+  //         ...user.game_assets,
+  //         potions: user.game_assets.potions + 1,
+  //       },
+  //     });
+  //   };
+  //   return handlePotionClick;
+  // };
+
   const handleGameExit = () => {
-    // setNavigationBarHidden(false);
     setGameLoaded(false);
     //@ts-ignore
     const tg = window.Telegram.WebApp;
@@ -209,6 +279,7 @@ export default function Play() {
             <PhaserGame
               ref={phaserRef}
               gameInitSettings={getGameInitSettings()}
+              updateUserData={updateUserData}
               exitGame={handleGameExit}
             />
           </div>

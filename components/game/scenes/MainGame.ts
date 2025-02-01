@@ -834,7 +834,7 @@ export class MainGame extends Scene {
         });
         // New obstacles appear with lower opacity during Flash power-up
         this.time.addEvent({
-          delay: 500,
+          delay: 1000,
           loop: true,
           callback: () => {
             if (this.character === CharacterOptionsType.Flash) {
@@ -842,7 +842,7 @@ export class MainGame extends Scene {
                 ...this.zappers.getChildren(),
                 ...this.rockets.getChildren(),
               ].forEach((obstacle: any) => {
-                obstacle.setAlpha(0.4);
+                obstacle.setAlpha(0.5);
               });
             }
           },
@@ -1070,7 +1070,7 @@ export class MainGame extends Scene {
     let spawnFunctionInvocationDelay: number = 0;
     if (CharacterOptionsType.Angel === this.character) {
       maxCoinCollectible = 30;
-      spawnFunctionInvocationDelay = 3000;
+      spawnFunctionInvocationDelay = 2000;
     } else if (this.totalGameTime <= 30) {
       // First 30 seconds: 10 coins
       maxCoinCollectible = 10;
@@ -1419,11 +1419,10 @@ export class MainGame extends Scene {
     player: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody,
     zapper: any
   ) {
-    if (
-      !this.shieldActive &&
-      !this.obstaclesInvisible &&
-      !this.obstaclesInactive
-    ) {
+    if (this.obstaclesInactive || this.obstaclesInvisible) return;
+    if (this.shieldActive) {
+      this.armorHitWithObstacle();
+    } else {
       if (this.inTransition) return;
       this.inTransition = true; // running animation will be paused
       this.zapper_hit_music.play();
@@ -1433,17 +1432,14 @@ export class MainGame extends Scene {
       this.time.delayedCall(100, () => {
         this.gameOver(this.player);
       });
-    } else {
-      this.armorHitWithObstacle();
     }
   }
 
   hitLaser(player: any, laser: any) {
-    if (
-      !this.shieldActive &&
-      !this.obstaclesInvisible &&
-      !this.obstaclesInactive
-    ) {
+    if (this.obstaclesInactive || this.obstaclesInvisible) return;
+    if (this.shieldActive) {
+      this.armorHitWithObstacle();
+    } else {
       if (this.inTransition) return;
       this.inTransition = true; // running animation will be paused
       this.laser_active_music.play();
@@ -1454,17 +1450,14 @@ export class MainGame extends Scene {
       this.time.delayedCall(100, () => {
         this.gameOver(this.player);
       });
-    } else {
-      this.armorHitWithObstacle();
     }
   }
 
   hitRocket(player: any, rocket: any) {
-    if (
-      !this.shieldActive &&
-      !this.obstaclesInvisible &&
-      !this.obstaclesInactive
-    ) {
+    if (this.obstaclesInactive || this.obstaclesInvisible) return;
+    if (this.shieldActive) {
+      this.armorHitWithObstacle();
+    } else {
       if (this.inTransition) return;
       this.inTransition = true; // running animation will be paused
       this.rocket_launch_music.stop();
@@ -1475,8 +1468,6 @@ export class MainGame extends Scene {
       this.time.delayedCall(100, () => {
         this.gameOver(this.player);
       });
-    } else {
-      this.armorHitWithObstacle();
     }
   }
 
@@ -1490,20 +1481,17 @@ export class MainGame extends Scene {
 
     // Remove progress bar (if it exists)
     if (this.progressBarFill && this.progressBarBackground) {
-      this.progressBarFill.destroy();
-      this.progressBarBackground.destroy();
+      this.progressBarFill.setVisible(false);
+      this.progressBarBackground.setVisible(false);
     }
-
-    this.time.delayedCall(200, () => {
-      this.player.stop();
+    // fix
+    this.time.delayedCall(400, () => {
       this.resetPowerUpVariableForArmor();
     });
   }
 
   resetPowerUpVariableForArmor() {
     this.shieldActive = false;
-    this.obstaclesInactive = false;
-    this.obstaclesInvisible = false;
     this.inTransition = false;
     this.character = this.previous_character;
     this.jetpack = this.previous_jetpack;

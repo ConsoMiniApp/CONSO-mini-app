@@ -8,6 +8,7 @@ import {
   JetpackOptionsType,
 } from "./types";
 import { characterOptions } from "./constants";
+import { UnclaimedMysteryBox } from "@/lib/types";
 
 export interface IRefPhaserGame {
   game: Phaser.Game | null;
@@ -17,11 +18,19 @@ export interface IRefPhaserGame {
 interface IProps {
   currentActiveScene?: (scene_instance: Phaser.Scene) => void;
   gameInitSettings: GameInitSettings;
+  updateUserData: (
+    gameTokensCollected: number,
+    gameMysteryBoxesCollected: UnclaimedMysteryBox[],
+    gameDistance: number
+  ) => void;
   exitGame: () => void;
 }
 
 export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(
-  function PhaserGame({ currentActiveScene, gameInitSettings, exitGame }, ref) {
+  function PhaserGame(
+    { currentActiveScene, gameInitSettings, updateUserData, exitGame },
+    ref
+  ) {
     const game = useRef<Phaser.Game | null>(null!);
 
     console.log(

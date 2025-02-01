@@ -1,7 +1,7 @@
-// Users table
+import { allGameMissions } from "@/lib/constants";
 
 import { ConnectedConsoles } from "@/lib/types";
-// [{id:1, completed:true},{id:2, completed:false},{id:3, completed:true}]
+// TO DO : check which game missions out of all game missions are completed
 
 export function checkGameMissions(
   id: number,
