@@ -291,7 +291,12 @@ export class GameOver extends Scene {
     this.exit.on("pointerdown", () => {
       console.log("Exit button clicked");
       // close the game
-      EventBus.emit("exit-game", this);
+      EventBus.emit(
+        "exit-game",
+        this.coinCount,
+        this.mysteryBoxCount,
+        this.distanceTravelled
+      );
     });
 
     // Restart button

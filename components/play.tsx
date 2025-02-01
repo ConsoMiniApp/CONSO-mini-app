@@ -164,7 +164,18 @@ export default function Play() {
   //   return handlePotionClick;
   // };
 
-  const handleGameExit = () => {
+  const handleGameExit = async (
+    gameTokensCollected: number,
+    gameMysteryBoxesCollected: UnclaimedMysteryBox[],
+    gameDistance: number
+  ) => {
+    console.log("Game Exited - updating user data");
+    await updateUserData(
+      gameTokensCollected,
+      gameMysteryBoxesCollected,
+      gameDistance
+    );
+
     setGameLoaded(false);
     //@ts-ignore
     const tg = window.Telegram.WebApp;
@@ -318,7 +329,7 @@ export default function Play() {
         <div className="">
           {/* Add parallex div here */}
           {/* <DynamicBackground /> */}
-          <video
+          {/* <video
             src={"/videos/player-video.mp4"}
             controls={false}
             loop={true}
@@ -328,7 +339,7 @@ export default function Play() {
             // onEnded={handleVideoEnd}
             onCanPlayThrough={handleVideoLoad}
             className="object-cover absolute top-0 h-screen pb-24 "
-          ></video>
+          ></video> */}
           <Image
             src={"/videos/player.gif"}
             alt="player"

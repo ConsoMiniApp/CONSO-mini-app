@@ -23,7 +23,11 @@ interface IProps {
     gameMysteryBoxesCollected: UnclaimedMysteryBox[],
     gameDistance: number
   ) => void;
-  exitGame: () => void;
+  exitGame: (
+    gameTokensCollected: number,
+    gameMysteryBoxesCollected: UnclaimedMysteryBox[],
+    gameDistance: number
+  ) => Promise<void>;
 }
 
 export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(
@@ -84,7 +88,8 @@ export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(
         console.log("exit-game triggered");
         scene_instance.scene.pause();
         scene_instance.scene.stop();
-        exitGame();
+        console.log(scene_instance);
+        // exitGame();
       });
       return () => {
         EventBus.removeListener("exit-game");
