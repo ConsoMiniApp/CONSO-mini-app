@@ -7,9 +7,7 @@ export interface GameInitSettings {
 }
 
 export interface MysteryBox {
-  id: string;
-  name: string;
-  link: string;
+  id: number;
   timestamp: number;
 }
 

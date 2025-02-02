@@ -83,14 +83,16 @@ export default function Play() {
       jetpack: getSelectedJetpack(jetpacks),
       mysteryBoxes: [
         {
-          id: "1",
-          name: "mysteryBox1",
-          link: "this_will_be_link",
-          timestamp: 5, // change to 35
+          id: 1,
+          timestamp: 5,
+        },
+        {
+          id: 2,
+          timestamp: 10,
         },
       ],
       powerUps: [
-        { character: CharacterOptionsType.Flash, time: 10, timestamp: 10 },
+        // { character: CharacterOptionsType.Flash, time: 10, timestamp: 10 },
         // { character: CharacterOptionsType.Angel, time: 5, timestamp: 35 },
       ],
     };

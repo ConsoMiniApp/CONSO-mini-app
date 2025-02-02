@@ -2,7 +2,7 @@ import Image from "next/image";
 import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
-import { ClaimTokenDialog } from "../common/ClaimTokensDialog";
+import { ClaimMysteryBoxDialog } from "../common/ClaimMysteryBoxDialog";
 import { UnclaimedMysteryBox } from "@/lib/types";
 import { mysteryBoxTypes } from "@/lib/constants";
 
@@ -80,7 +80,7 @@ export function MysteryBoxDrawer({
                     </div>
                   </DialogTrigger>
                   <DialogContent className="h-screen border-none backdrop-blur-md">
-                    <ClaimTokenDialog
+                    <ClaimMysteryBoxDialog
                       mysteryBox={box}
                       handleConfirm={() => console.log("claimed mystery box")}
                     />
@@ -111,37 +111,49 @@ export function MysteryBoxDrawer({
             {" "}
             CLAIMED BOXES
           </p>
-          <div className="grid grid-cols-3 gap-5 mt-4">
-            {claimedMysteryBoxes.map((box, index) => (
-              <div key={index} className={mysteryBoxTypes[box].class}>
-                <p
-                  className={cn(
-                    handjet.className,
-                    "text-xs text-black tracking-widest"
-                  )}
-                >
-                  {mysteryBoxTypes[box].title}
-                </p>
-                <Image
-                  src={mysteryBoxTypes[box].image}
-                  alt="potion"
-                  width={47}
-                  height={47}
-                />
+          {claimedMysteryBoxes.length > 0 ? (
+            <div className="grid grid-cols-3 gap-5 mt-4">
+              {claimedMysteryBoxes.map((box: number) => (
+                <div key={box} className={mysteryBoxTypes[box].className}>
+                  <p
+                    className={cn(
+                      handjet.className,
+                      "text-xs text-black tracking-widest"
+                    )}
+                  >
+                    {mysteryBoxTypes[box].title}
+                  </p>
+                  <Image
+                    src={mysteryBoxTypes[box].image}
+                    alt="potion"
+                    width={47}
+                    height={47}
+                  />
 
-                <div
-                  className={cn(
-                    jersey.className,
-                    "absolute bottom-[-18px] left-1/2 transform -translate-x-1/2  px-2 bg-[#DE5EA6] rounded-lg border-2 border-white text-white text-[18px] w-[60%] text-center"
-                  )}
-                >
-                  x {mysteryBoxTypes[box].quantity}
+                  <div
+                    className={cn(
+                      jersey.className,
+                      "absolute bottom-[-18px] left-1/2 transform -translate-x-1/2  px-2 bg-[#DE5EA6] rounded-lg border-2 border-white text-white text-[18px] w-[60%] text-center"
+                    )}
+                  >
+                    x {mysteryBoxTypes[box].quantity}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div
+              className={cn(
+                "text-lg flex justify-center items-center p-8 text-gray-500 tracking-wider",
+                handjet.className
+              )}
+            >
+              No claimed mystery boxes.
+            </div>
+          )}
         </div>
       </div>
+
       <br />
       <br />
     </>

@@ -16,6 +16,7 @@ import {
   coinPatterns,
   zapperConfigs,
 } from "../constants";
+import { UnclaimedMysteryBox } from "@/lib/types";
 
 export class MainGame extends Scene {
   player: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
@@ -50,6 +51,8 @@ export class MainGame extends Scene {
   // GAME STATE
   previous_character: CharacterOptionsType = CharacterOptionsType.Og;
   previous_jetpack: JetpackOptionsType = JetpackOptionsType.Jetpack;
+  collectedMysteryBoxes: UnclaimedMysteryBox[] = [];
+  available_mystery_box_id_on_screen: number = 0;
   // Y Priority - [Mystery Box, Powerup Box] , [Coin], Laser, Zapper
   screenYRangeBlockedByBoxForSpawning: number[] = [0, 0];
   screenYRangeBlockedByCoinForSpawning: number[] = [0, 0];
@@ -105,9 +108,6 @@ export class MainGame extends Scene {
   readonly END_SPEED = 25; // t=240s
   readonly BASE_OBSTACLE_SPEED = -300;
 
-  // ARCHIVE
-  mysteryBoxCount: number = 0;
-
   constructor(
     character: CharacterOptionsType,
     environment: EnvironmentOptionsType,
@@ -135,7 +135,7 @@ export class MainGame extends Scene {
     this.coinCount = 0;
     this.distanceTravelled = 0;
     this.lastRewardDistance = 0;
-    this.mysteryBoxCount = 0;
+    this.collectedMysteryBoxes = [];
 
     // Reset character and environment states
     this.character = CharacterOptionsType.Og;
@@ -1001,11 +1001,10 @@ export class MainGame extends Scene {
 
   // HANDLER FUNCTIONS
   handleMysteryBoxSpawning() {
-    console.log(
-      "screenYRangeBlockedByBoxForSpawning",
-
-      this.screenYRangeBlockedByBoxForSpawning
-    );
+    // console.log(
+    //   "screenYRangeBlockedByBoxForSpawning",
+    //   this.screenYRangeBlockedByBoxForSpawning
+    // );
     //@ts-ignore
     this.mystery_boxes?.children.each((mysteryBox: any) => {
       if (mysteryBox.x < -100) {
@@ -1014,10 +1013,11 @@ export class MainGame extends Scene {
       }
     });
 
-    this.mysteryBoxesToSpawn?.forEach((mysteryBox) => {
-      if (this.totalGameTime == mysteryBox.timestamp) {
-        // this.mystery_boxes.create(1300, 840, "mystery_box");
+    this.mysteryBoxesToSpawn?.map((mBox: MysteryBox) => {
+      if (this.totalGameTime == mBox.timestamp) {
+        console.log("Mystery box spawned", mBox);
         const mysteryBox = this.mystery_boxes.create(1900, 840, "mystery_box");
+        this.available_mystery_box_id_on_screen = mBox.id;
         mysteryBox.body.setAllowGravity(false);
         mysteryBox.setScale(0.85);
         mysteryBox.setVelocityX(this.currentGameObjectsSpeed);
@@ -1028,11 +1028,10 @@ export class MainGame extends Scene {
   }
 
   handlePowerUpSpawning() {
-    console.log(
-      "screenYRangeBlockedByBoxForSpawning",
-
-      this.screenYRangeBlockedByBoxForSpawning
-    );
+    // console.log(
+    //   "screenYRangeBlockedByBoxForSpawning",
+    //   this.screenYRangeBlockedByBoxForSpawning
+    // );
     //@ts-ignore
     this.powerup_boxes?.children.each((powerUpBox: any) => {
       if (powerUpBox.x < -100) {
@@ -1121,10 +1120,10 @@ export class MainGame extends Scene {
       }
     });
 
-    console.log(
-      "screenYRangeBlockedByCoinForSpawning",
-      this.screenYRangeBlockedByCoinForSpawning
-    );
+    // console.log(
+    //   "screenYRangeBlockedByCoinForSpawning",
+    //   this.screenYRangeBlockedByCoinForSpawning
+    // );
     if (
       (this.screenYRangeBlockedByCoinForSpawning[0] > y - 300 &&
         this.screenYRangeBlockedByCoinForSpawning[0] < y + 51) ||
@@ -1284,18 +1283,20 @@ export class MainGame extends Scene {
   }
 
   collectMysteryBox(player: any, mystery_box: any) {
-    this.mysteryBoxCount++;
     console.log("Mystery Box collected");
     mystery_box.disableBody(true, true);
     this.mystery_box_music.play();
     this.screenYRangeBlockedByBoxForSpawning = [0, 0]; // Reset mystery box pattern range
+    this.collectedMysteryBoxes.push({
+      id: this.available_mystery_box_id_on_screen,
+      collected_on: new Date().toISOString(),
+    });
+    this.available_mystery_box_id_on_screen = 0;
   }
 
   collectPowerupBox(player: any, powerup_box: any) {
-    console.log("collectPowerupBox triggered");
+    console.log("Power up box collected");
     powerup_box.disableBody(true, true);
-    console.log("Powerup Box collected");
-
     // this.powerupCount += 1; // Increment powerup counter
     this.startPowerUpTransition(
       this.transitionCharacter as CharacterOptionsType, // Flash, Armor, Angel
@@ -1510,6 +1511,7 @@ export class MainGame extends Scene {
       character: this.character,
       environment: this.environment,
       jetpack: this.jetpack,
+      collected_mystery_boxes: this.collectedMysteryBoxes,
     });
   }
 }

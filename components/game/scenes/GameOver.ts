@@ -1,4 +1,5 @@
 //@ts-nocheck
+import { UnclaimedMysteryBox } from "@/lib/types";
 import { EventBus } from "../EventBus";
 import { Scene } from "phaser";
 
@@ -15,6 +16,7 @@ export class GameOver extends Scene {
   coinText!: Phaser.GameObjects.Text;
   restart: Phaser.GameObjects.Image;
   exit: Phaser.GameObjects.Image;
+  collectedMysteryBoxes: UnclaimedMysteryBox[] = [];
 
   constructor() {
     super({ key: "GameOver" });
@@ -26,12 +28,14 @@ export class GameOver extends Scene {
     character: string;
     environment: string;
     jetpack: string;
+    collected_mystery_boxes: UnclaimedMysteryBox[];
   }) {
     this.coinCount = data.coinCount;
     this.distanceTravelled = data.distanceTravelled;
     this.character = data.character;
     this.environment = data.environment;
     this.jetpack = data.jetpack;
+    this.collectedMysteryBoxes = data.collected_mystery_boxes;
   }
 
   preload() {
@@ -295,8 +299,7 @@ export class GameOver extends Scene {
         "exit-game",
         this,
         this.coinCount,
-        [{ id: 1, collected_on: new Date().toISOString() }],
-        // this.mysteryBoxCount,
+        this.collectedMysteryBoxes,
         this.distanceTravelled
       );
     });

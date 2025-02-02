@@ -2,7 +2,7 @@ import Image from "next/image";
 import { handjet, ibmPlex500, ibmPlex700, jersey } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
-import { ClaimTokenDialog } from "../common/ClaimTokensDialog";
+import { ClaimTokenDialog } from "../common/ClaimMysteryBoxDialog";
 import { ConfirmDialog } from "../common/ConfirmDialog";
 import { CoinSmallIcon, ErrorIcon, SuccessIcon } from "@/components/ui/icons";
 import { ConfirmShopDialog } from "../common/ConfirmShopDialog";

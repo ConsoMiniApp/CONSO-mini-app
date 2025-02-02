@@ -11,13 +11,16 @@ import { SuccessIcon } from "@/components/ui/icons";
 import { mysteryBoxTypes } from "@/lib/constants";
 import { createClient } from "@/utils/supabase/client";
 import { useAppContext } from "@/contexts/AppContext";
+import { getMysteryBoxContents } from "@/lib/helpers/play/getMysteryBoxContents";
+import { Howl } from "howler";
+import { useEffect, useState } from "react";
 
 export interface ClaimTokenDialogProps {
   mysteryBox: UnclaimedMysteryBox;
   handleConfirm: () => void;
 }
 
-export function ClaimTokenDialog({
+export function ClaimMysteryBoxDialog({
   mysteryBox,
   handleConfirm,
 }: ClaimTokenDialogProps) {
@@ -26,13 +29,20 @@ export function ClaimTokenDialog({
 
   async function handleClick() {
     handleConfirm();
-    // delete mystery box id from users_table.
+    // delete mystery box id from users_table
     const updatedUnclaimedMysteryBoxes = user.unclaimed_mystery_boxes.filter(
       (box) => box.collected_on !== mysteryBox.collected_on
     );
+
+    const { consoPoints, gamePotions } = getMysteryBoxContents(mysteryBox.id);
     const { data: updatedUserData, error: updatedUserError } = await supabase
       .from("users_table")
       .update({
+        user_points: user.user_points + consoPoints,
+        game_assets: {
+          ...user.game_assets,
+          potions: user.game_assets.potions + gamePotions,
+        },
         unclaimed_mystery_boxes: updatedUnclaimedMysteryBoxes,
         claimed_mystery_boxes: [...user.claimed_mystery_boxes, mysteryBox.id],
       })
@@ -46,6 +56,11 @@ export function ClaimTokenDialog({
     }
     setUserData({
       ...user,
+      user_points: user.user_points + consoPoints,
+      game_assets: {
+        ...user.game_assets,
+        potions: user.game_assets.potions + gamePotions,
+      },
       unclaimed_mystery_boxes: updatedUnclaimedMysteryBoxes,
       claimed_mystery_boxes: [...user.claimed_mystery_boxes, mysteryBox.id],
     });
@@ -55,6 +70,18 @@ export function ClaimTokenDialog({
       icon: <SuccessIcon />,
     });
   }
+
+  // Load the sounds
+  useEffect(() => {
+    const mysteryBoxSound = new Howl({
+      src: ["/sounds/mystery-box-open.wav"],
+      volume: 0.5,
+      sprite: {
+        mysteryBox: [0, 1000],
+      },
+    });
+    mysteryBoxSound.play("mysteryBox");
+  }, []);
 
   return (
     <>

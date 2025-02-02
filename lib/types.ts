@@ -92,7 +92,7 @@ export interface MysteryBoxInfo {
   quantity: number;
   image: string;
   link: string;
-  class: string;
+  className: string;
 }
 
 // button types

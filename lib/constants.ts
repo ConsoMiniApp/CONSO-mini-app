@@ -120,7 +120,7 @@ export const mysteryBoxTypes: MysteryBoxType = {
     quantity: 1,
     image: "/play-logos/potion-logo.svg",
     link: "",
-    class:
+    className:
       "border-2 border-[#00BA64] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#5EEFAC]",
   },
   2: {
@@ -130,7 +130,7 @@ export const mysteryBoxTypes: MysteryBoxType = {
     quantity: 100,
     image: "/other-logos/coin.svg",
     link: "",
-    class:
+    className:
       "border-2 border-[#FFE500] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#FFF59D]",
   },
   3: {
@@ -140,7 +140,7 @@ export const mysteryBoxTypes: MysteryBoxType = {
     quantity: 1,
     image: "/other-logos/nft-logo.png",
     link: "https://claim.metagamehub.io/game/conso-test-app",
-    class:
+    className:
       "border-2 border-[#00A3FF] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#71CCFF]",
   },
   4: {
@@ -150,7 +150,7 @@ export const mysteryBoxTypes: MysteryBoxType = {
     quantity: 500,
     image: "/other-logos/coin.svg",
     link: "",
-    class:
+    className:
       "border-2 border-[#FFE500] shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 py-4 relative bg-[#FFF59D]",
   },
 };
