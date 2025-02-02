@@ -74,13 +74,10 @@ export function ClaimMysteryBoxDialog({
   // Load the sounds
   useEffect(() => {
     const mysteryBoxSound = new Howl({
-      src: ["/sounds/mystery-box-open.wav"],
+      src: ["/sounds/mystery-box-open.mp3"],
       volume: 0.5,
-      sprite: {
-        mysteryBox: [0, 1000],
-      },
     });
-    mysteryBoxSound.play("mysteryBox");
+    mysteryBoxSound.play();
   }, []);
 
   return (
