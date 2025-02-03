@@ -2,6 +2,7 @@
 import BottomTabNavigation from "@/components/bottom-tab-navigation";
 import { useAppContext } from "@/contexts/AppContext";
 import { validateTelgramUser } from "@/lib/telegram/validateUser";
+import { createClient } from "@/utils/supabase/client";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 const AppWithoutSSR = dynamic(
@@ -10,8 +11,13 @@ const AppWithoutSSR = dynamic(
 );
 
 export default function Home() {
-  const { telegramUsername, setTelegramUsername, setReferralCode } =
-    useAppContext();
+  const supabase = createClient();
+  const {
+    telegramUsername,
+    setTelegramUsername,
+    setReferralCode,
+    referralCode,
+  } = useAppContext();
 
   async function verifyTelegramUser(urlEncodedData: string) {
     const response = await validateTelgramUser(urlEncodedData);
@@ -78,18 +84,38 @@ export default function Home() {
     }
   }
 
-  function checkReferralCode() {
-    // get query params
-    if (window.location.hash) {
-      const urlParams = new URLSearchParams(window.location.hash);
-      const referralCode = urlParams.get("inviteCode");
-      console.log("Referral code:", referralCode);
+  // TO DO : get query params and save this telegram user under referral code in database
+  async function checkReferralCode() {
+    //@ts-ignore
+    const params = new URLSearchParams(window.Telegram.WebApp.initData);
+    const refCode = params.get("start_param");
+    if (refCode) {
+      setReferralCode(refCode);
+      // save under referrer where referral_code in invite_table matched refCode
+      const { data, error } = await supabase
+        .from("invite_table")
+        .select("*")
+        .eq("referral_code", refCode)
+        .single();
 
-      // TO DO : get query params and save this telegram user under referral code in database
-      if (referralCode) {
-        console.log("Referral code:", referralCode);
-        setReferralCode(referralCode);
-        // save under referrer
+      if (data) {
+        // update referres in that invite_table row
+        const { data: updatedInviteData, error: updatedInviteError } =
+          await supabase
+            .from("invite_table")
+            .update({
+              referees: [
+                ...data.referees,
+                {
+                  nickname: "",
+                  username: telegramUsername,
+                  user_points: 0,
+                  connected_consoles: [],
+                  game_total_distance: 0,
+                },
+              ],
+            })
+            .eq("referral_code", refCode);
       }
     }
   }
@@ -104,6 +130,7 @@ export default function Home() {
   return (
     <div className="bg-black">
       {/* <BottomTabNavigation /> */}
+      <p className="text-white">{referralCode}</p>
       <AppWithoutSSR />
     </div>
   );

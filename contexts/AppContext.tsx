@@ -76,7 +76,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         user,
         setUserData,
         setNavigationBarHidden,
-
         setStartPointBalance,
         setTelegramUsername,
         setReferralCode,
