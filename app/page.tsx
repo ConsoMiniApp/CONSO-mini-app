@@ -92,31 +92,31 @@ export default function Home() {
     if (refCode) {
       setReferralCode(refCode);
       // save under referrer where referral_code in invite_table matched refCode
-      const { data, error } = await supabase
-        .from("invite_table")
-        .select("*")
-        .eq("referral_code", refCode)
-        .single();
+      // const { data, error } = await supabase
+      //   .from("invite_table")
+      //   .select("*")
+      //   .eq("referral_code", refCode)
+      //   .single();
 
-      if (data) {
-        // update referres in that invite_table row
-        const { data: updatedInviteData, error: updatedInviteError } =
-          await supabase
-            .from("invite_table")
-            .update({
-              referees: [
-                ...data.referees,
-                {
-                  nickname: "",
-                  username: telegramUsername,
-                  user_points: 0,
-                  connected_consoles: [],
-                  game_total_distance: 0,
-                },
-              ],
-            })
-            .eq("referral_code", refCode);
-      }
+      // if (data) {
+      //   // update referres in that invite_table row
+      //   const { data: updatedInviteData, error: updatedInviteError } =
+      //     await supabase
+      //       .from("invite_table")
+      //       .update({
+      //         referees: [
+      //           ...data.referees,
+      //           {
+      //             nickname: "",
+      //             username: telegramUsername,
+      //             user_points: 0,
+      //             connected_consoles: [],
+      //             game_total_distance: 0,
+      //           },
+      //         ],
+      //       })
+      //       .eq("referral_code", refCode);
+      // }
     }
   }
 
