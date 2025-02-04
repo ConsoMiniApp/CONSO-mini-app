@@ -25,6 +25,7 @@ import {
   Boost,
   Close,
   ConsoleIcon,
+  ErrorIcon,
   GameLogo,
   MissionsLogo,
   MysteryBoxLogo,
@@ -134,6 +135,7 @@ export default function Play() {
     if (updatedUserError) {
       toast.error("Error updating user data.", {
         className: cn(jersey.className, "text-xl text-white mt-10"),
+        icon: <ErrorIcon />,
       });
       return;
     }

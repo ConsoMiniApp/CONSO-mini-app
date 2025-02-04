@@ -68,6 +68,7 @@ export default function Miner() {
   const [mute, setMute] = useState<boolean>(true);
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [acceptNickname, setAcceptNickname] = useState(true);
+  const [lastPointSync, setLastPointSync] = useState(0); // to handle tap points updates
   const {
     startPointBalance,
     setStartPointBalance,
@@ -104,33 +105,56 @@ export default function Miner() {
 
     setIsTapping(true);
     try {
-      const { data, error } = await supabase
-        .from("users_table")
-        .update({ user_points: user.user_points + 1 })
-        .eq("username", telegramUsername);
+      // const { data, error } = await supabase
+      //   .from("users_table")
+      //   .update({ user_points: user.user_points + 1 })
+      //   .eq("username", telegramUsername);
 
-      if (error) {
-        console.error("Error updating points:", error);
-        setIsTapping(false);
-        setTapClass("inline-block");
+      // if (error) {
+      //   console.error("Error updating points:", error);
 
-        return;
-      }
+      //   return;
+      // }
       setUserData({
         ...user,
         user_points: user.user_points + 1,
       });
-
       setStartPointBalance(user.user_points + 1);
     } catch (error) {
       console.error("Error saving to Supabase:", error);
       setIsTapping(false);
       setTapClass("inline-block");
     } finally {
-      setIsTapping(false);
-      setTapClass("inline-block");
+      setTimeout(() => {
+        setIsTapping(false);
+        setTapClass("inline-block");
+      }, 250);
     }
   }
+
+  useEffect(() => {
+    const updatePoints = async () => {
+      if (user.user_points !== lastPointSync) {
+        console.log("Updating user points to ", user.user_points);
+
+        const { data, error } = await supabase
+          .from("users_table")
+          .update({ user_points: user.user_points })
+          .eq("username", telegramUsername);
+
+        if (error) {
+          console.error("Error updating points:", error);
+          return;
+        }
+
+        setLastPointSync(user.user_points);
+      }
+    };
+
+    const timeout = setTimeout(updatePoints, 1000);
+
+    return () => clearTimeout(timeout);
+  }, [user.user_points, lastPointSync]);
 
   // Load the sounds
   useEffect(() => {

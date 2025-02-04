@@ -32,7 +32,7 @@ export function NicknameInput({
         throw error;
       }
 
-      // if referral code is present, update the invite_table
+      // if referral code is present, update the invite_table : FIX
       if (referralCode !== "") {
         // check if the user is already a referee
         const { data: refereeData, error: refereeError } = await supabase

@@ -140,7 +140,13 @@ export function ShopDrawer({
                       handleConfirm={async () => {
                         // deduct conso user_points and update users_table game_assets
                         if (user.user_points < character.price) {
-                          toast.error("Insufficient CONSO points");
+                          toast.error("Insufficient CONSO points", {
+                            className: cn(
+                              jersey.className,
+                              "text-xl text-white mt-10"
+                            ),
+                            icon: <ErrorIcon />,
+                          });
                           return;
                         }
                         const {
@@ -296,7 +302,13 @@ export function ShopDrawer({
                         {
                           // deduct conso user_points and update users_table game_assets
                           if (user.user_points < jetpack.price) {
-                            toast.error("Insufficient CONSO points");
+                            toast.error("Insufficient CONSO points", {
+                              className: cn(
+                                jersey.className,
+                                "text-xl text-white mt-10"
+                              ),
+                              icon: <ErrorIcon />,
+                            });
                             return;
                           }
                           const {

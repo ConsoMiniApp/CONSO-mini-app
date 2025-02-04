@@ -64,6 +64,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       jetpacks: [],
     },
     referral_code: "",
+    earned_referral_points: 0,
   });
 
   return (

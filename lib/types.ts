@@ -36,6 +36,7 @@ export interface ConsoUser {
   claimed_mystery_boxes: number[];
   game_assets: GameAssets;
   referral_code: string;
+  earned_referral_points: number;
 }
 
 export interface GameAssets {

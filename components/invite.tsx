@@ -18,6 +18,7 @@ import { useAppContext } from "@/contexts/AppContext";
 import RankRow from "./app/rank/RankRow";
 import RefereeRow from "./app/invite/RefereeRow";
 import { getInviteLink } from "@/lib/helpers/getInviteLink";
+import { RefereeRowSkeleton } from "./app/invite/RefereeRowSkeleton";
 
 interface InviteRowUsers extends Referre {
   rowExpanded: boolean;
@@ -57,17 +58,18 @@ export default function Invite() {
       .select("referee")
       .eq("referral_code", user.referral_code);
 
-    console.log(data);
-
-    // if (data) {
-    //   setIsLoading(false);
-    //   setReferees(data.referee);
-    //   console.log(data.referees);
-    // }
-    // if (error) {
-    //   setIsLoading(false);
-    //   console.log(error);
-    // }
+    if (data) {
+      let referees: InviteRowUsers[] = [];
+      data.forEach((row: { referee: Referre }) => {
+        referees.push({ ...row.referee, rowExpanded: false });
+      });
+      setReferees(referees);
+      setIsLoading(false);
+    }
+    if (error) {
+      setIsLoading(false);
+      console.log(error);
+    }
   }
 
   useEffect(() => {
@@ -125,13 +127,14 @@ export default function Invite() {
                   jersey.className
                 )}
               >
-                {referees.length > 0
+                {user.earned_referral_points}
+                {/* {referees.length > 0
                   ? 200 * referees.length +
                     0.1 *
                       referees
                         .map((r) => r.user_points)
                         .reduce((a, b) => a + b, 0)
-                  : 0}
+                  : 0} */}
               </span>
             </div>
           </div>
@@ -267,15 +270,23 @@ export default function Invite() {
         </div>
 
         {/* Friends List Table Body */}
-        {referees.map((row, index) => (
-          <RefereeRow
-            key={index}
-            row={row}
-            index={index}
-            expandRow={expandRow}
-            rowExpanded={row.rowExpanded}
-          />
-        ))}
+        {isLoading ? (
+          <div className="">
+            <RefereeRowSkeleton />
+          </div>
+        ) : (
+          <>
+            {referees.map((row, index) => (
+              <RefereeRow
+                key={index}
+                row={row}
+                index={index}
+                expandRow={expandRow}
+                rowExpanded={row.rowExpanded}
+              />
+            ))}
+          </>
+        )}
         <div className="h-32"></div>
       </div>
     </div>

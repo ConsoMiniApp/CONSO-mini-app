@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import CustomButton from "./CustomButton";
 import { CustomButtonType, UnclaimedMysteryBox } from "@/lib/types";
 import toast from "react-hot-toast";
-import { SuccessIcon } from "@/components/ui/icons";
+import { ErrorIcon, SuccessIcon } from "@/components/ui/icons";
 import { mysteryBoxTypes } from "@/lib/constants";
 import { createClient } from "@/utils/supabase/client";
 import { useAppContext } from "@/contexts/AppContext";
@@ -51,7 +51,9 @@ export function ClaimMysteryBoxDialog({
     if (updatedUserError) {
       toast.error("Error updating user data.", {
         className: cn(jersey.className, "text-xl text-white mt-10"),
+        icon: <ErrorIcon />,
       });
+
       return;
     }
     setUserData({
