@@ -32,42 +32,48 @@ export function NicknameInput({
         throw error;
       }
 
-      // if referral code is present, update the referral code
+      // if referral code is present, update the invite_table
       if (referralCode !== "") {
-        // Fetch the current referees array from the invite_table for this referral code
-        const { data: currentData, error: fetchError } = await supabase
+        // check if the user is already a referee
+        const { data: refereeData, error: refereeError } = await supabase
           .from("invite_table")
-          .select("referees")
-          .eq("referral_code", referralCode)
+          .select("referee_username")
+          .eq("referral_username", telegramUsername)
           .single();
 
-        if (fetchError) {
-          console.error("Error fetching referees:", fetchError);
-          throw fetchError;
+        if (refereeError) {
+          console.error("Error fetching referee:", refereeError);
+          throw refereeError;
         }
 
-        // Append the new referee to the current referees array
-        const updatedReferees = [
-          ...(currentData.referees || []),
-          {
-            nickname: nickname,
-            username: telegramUsername,
-            user_points: user.user_points,
-            connected_consoles: [],
-          },
-        ];
+        if (refereeData.referee_username) {
+          toast("You are already a referee.", {
+            className: cn(jersey.className, "text-xl text-white mt-10"),
+            icon: <ErrorIcon />,
+          });
+          return;
+        } else {
+          // add the user to the referee in invite_table
+          const { data: refereeData, error: refereeError } = await supabase
+            .from("invite_table")
+            .insert([
+              {
+                referral_code: referralCode,
+                referee_username: telegramUsername,
+                referee: {
+                  nickname: nickname,
+                  user_points: user.user_points,
+                  game_total_distance: 0,
+                  connected_consoles: [],
+                },
+              },
+            ]);
 
-        // Update the referees array in the invite_table
-        const { data: updateData, error: updateError } = await supabase
-          .from("invite_table")
-          .update({ referees: updatedReferees })
-          .eq("username", telegramUsername);
-
-        if (updateError) {
-          throw updateError;
+          if (refereeError) {
+            throw refereeError;
+          }
+          console.log("Added referee to invite_table", refereeData);
         }
-
-        console.log("Updated referees:", updateData);
       }
 
       setAcceptNickname(false);

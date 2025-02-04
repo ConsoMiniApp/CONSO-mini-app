@@ -54,19 +54,20 @@ export default function Invite() {
     setIsLoading(true);
     const { data, error } = await supabase
       .from("invite_table")
-      .select("referees")
-      .eq("username", telegramUsername)
-      .single();
+      .select("referee")
+      .eq("referral_code", user.referral_code);
 
-    if (data) {
-      setIsLoading(false);
-      setReferees(data.referees);
-      console.log(data.referees);
-    }
-    if (error) {
-      setIsLoading(false);
-      console.log(error);
-    }
+    console.log(data);
+
+    // if (data) {
+    //   setIsLoading(false);
+    //   setReferees(data.referee);
+    //   console.log(data.referees);
+    // }
+    // if (error) {
+    //   setIsLoading(false);
+    //   console.log(error);
+    // }
   }
 
   useEffect(() => {
