@@ -128,7 +128,7 @@ export default function Miner() {
       setTimeout(() => {
         setIsTapping(false);
         setTapClass("inline-block");
-      }, 250);
+      }, 100);
     }
   }
 
