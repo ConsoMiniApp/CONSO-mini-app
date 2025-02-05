@@ -105,16 +105,6 @@ export default function Miner() {
 
     setIsTapping(true);
     try {
-      // const { data, error } = await supabase
-      //   .from("users_table")
-      //   .update({ user_points: user.user_points + 1 })
-      //   .eq("username", telegramUsername);
-
-      // if (error) {
-      //   console.error("Error updating points:", error);
-
-      //   return;
-      // }
       setUserData({
         ...user,
         user_points: user.user_points + 1,
@@ -151,7 +141,7 @@ export default function Miner() {
       }
     };
 
-    const timeout = setTimeout(updatePoints, 1000);
+    const timeout = setTimeout(updatePoints, 500);
 
     return () => clearTimeout(timeout);
   }, [user.user_points, lastPointSync]);
@@ -271,21 +261,6 @@ export default function Miner() {
           throw error;
         }
 
-        // save the referral code in invite table
-        const { data: inviteData, error: inviteError } = await supabase
-          .from("invite_table")
-          .insert([
-            {
-              username: telegramUsername,
-              referral_code: user.referral_code,
-              referees: [],
-            },
-          ]);
-
-        if (inviteError) {
-          throw inviteError;
-        }
-
         // update app context
         const { data: updatedUserData, error: updatedUserError } =
           await supabase
@@ -300,7 +275,7 @@ export default function Miner() {
 
         setUserData(updatedUserData);
       }
-      console.log("Error fetching user data", error);
+
       setIsLoading(false);
       return;
     }

@@ -17,7 +17,7 @@ export function NicknameInput({
 }) {
   const supabase = createClient();
   const [nickname, setNickname] = useState("");
-  const { telegramUsername, referralCode, user } = useAppContext();
+  const { telegramUsername, referralCode, user, setUserData } = useAppContext();
 
   async function handleClick() {
     console.log("Setting your conso nickname");
@@ -32,7 +32,7 @@ export function NicknameInput({
         throw error;
       }
 
-      // if referral code is present, update the invite_table : FIX
+      // if referral code is present, update the invite_table
       if (referralCode !== "") {
         // check if the user is already a referee
         const { data: refereeData, error: refereeError } = await supabase
@@ -81,6 +81,11 @@ export function NicknameInput({
       toast("Nickname added.", {
         className: cn(jersey.className, "text-xl text-white mt-10"),
         icon: <SuccessIcon />,
+      });
+
+      setUserData({
+        ...user,
+        nickname: nickname,
       });
     } catch (error) {
       console.error("Error adding nickname:", error);

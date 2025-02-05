@@ -36,7 +36,7 @@ export default function Rank() {
       const { data, error } = await supabase
         .from("users_table")
         .select("*")
-        .order("id", { ascending: true });
+        .order("user_points", { ascending: false });
 
       if (data) {
         console.log(data);

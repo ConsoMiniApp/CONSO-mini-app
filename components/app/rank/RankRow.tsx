@@ -37,7 +37,7 @@ const RankRow = ({ row, index, expandRow, rowExpanded }: RankRowProps) => {
                 jersey.className
               )}
             >
-              #{row.id}
+              #{index + 1}
             </span>
             <span
               className={cn(
