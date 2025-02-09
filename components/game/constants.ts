@@ -1,8 +1,4 @@
-import {
-  EnvironmentBackgroundsLayersType,
-  CoinPatterns,
-  LaserPatternGroup,
-} from "./types";
+import { EnvironmentBackgroundsLayersType, CoinPatterns } from "./types";
 
 export const coinPatterns: CoinPatterns = {
   // average max collectible : 3
@@ -163,25 +159,6 @@ export const coinPatterns: CoinPatterns = {
     },
   ],
 };
-
-export const laserPatterns: LaserPatternGroup[] = [
-  {
-    positions: [
-      { x: 0, y: 200 },
-      { x: 0, y: 400 },
-      { x: 0, y: 600 },
-    ],
-  },
-  {
-    positions: [
-      { x: 0, y: 400 },
-      { x: 0, y: 600 },
-    ],
-  },
-  {
-    positions: [{ x: 0, y: 600 }],
-  },
-];
 
 export const environmentBackgrounds: EnvironmentBackgroundsLayersType = {
   city: [

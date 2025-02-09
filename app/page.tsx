@@ -32,15 +32,15 @@ export default function Home() {
     if (process.env.NEXT_PUBLIC_NODE_ENV === "production") {
       //@ts-ignore
       const tg = window.Telegram.WebApp;
-      //@ts-ignore
+      // @ts-ignore
       urlEncodedData = tg.initData;
-      //@ts-ignore
+      // @ts-ignore
       tg.disableVerticalSwipes();
-      //@ts-ignore
+      // @ts-ignore
       tg.lockOrientation();
-      //@ts-ignore
+      // @ts-ignore
       tg.requestFullscreen();
-      //@ts-ignore
+      // @ts-ignore
       tg.enableClosingConfirmation();
 
       console.log("Telegram init Data", urlEncodedData);
@@ -84,27 +84,16 @@ export default function Home() {
     }
   }
 
-  // TO DO : get query params and save this telegram user under referral code in database
-  async function checkReferralCode() {
-    //@ts-ignore
-    const params = new URLSearchParams(window.Telegram.WebApp.initData);
-    const refCode = params.get("start_param");
-    if (refCode) {
-      setReferralCode(refCode);
-    }
-  }
-
   useEffect(() => {
     if (typeof window !== "undefined" && typeof navigator !== "undefined") {
       getTelegramUserDetails();
-      checkReferralCode();
     }
   }, []);
 
   return (
     <div className="bg-black">
       {/* <BottomTabNavigation /> */}
-      <p className="text-white">{referralCode}</p>
+
       <AppWithoutSSR />
     </div>
   );

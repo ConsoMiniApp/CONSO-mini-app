@@ -32,49 +32,49 @@ export function NicknameInput({
         throw error;
       }
 
-      // if referral code is present, update the invite_table
-      if (referralCode !== "") {
-        // check if the user is already a referee
-        const { data: refereeData, error: refereeError } = await supabase
-          .from("invite_table")
-          .select("referee_username")
-          .eq("referral_username", telegramUsername)
-          .single();
+      // if referral code is present, update the invite_table : NOT NEEDED HANDLED BY BOT SERVER
+      // if (referralCode !== "") {
+      //   // check if the user is already a referee
+      //   const { data: refereeData, error: refereeError } = await supabase
+      //     .from("invite_table")
+      //     .select("referee_username")
+      //     .eq("referral_username", telegramUsername)
+      //     .single();
 
-        if (refereeError) {
-          console.error("Error fetching referee:", refereeError);
-          throw refereeError;
-        }
+      //   if (refereeError) {
+      //     console.error("Error fetching referee:", refereeError);
+      //     throw refereeError;
+      //   }
 
-        if (refereeData.referee_username) {
-          toast("You are already a referee.", {
-            className: cn(jersey.className, "text-xl text-white mt-10"),
-            icon: <ErrorIcon />,
-          });
-          return;
-        } else {
-          // add the user to the referee in invite_table
-          const { data: refereeData, error: refereeError } = await supabase
-            .from("invite_table")
-            .insert([
-              {
-                referral_code: referralCode,
-                referee_username: telegramUsername,
-                referee: {
-                  nickname: nickname,
-                  user_points: user.user_points,
-                  game_total_distance: 0,
-                  connected_consoles: [],
-                },
-              },
-            ]);
+      //   if (refereeData.referee_username) {
+      //     toast("You are already a referee.", {
+      //       className: cn(jersey.className, "text-xl text-white mt-10"),
+      //       icon: <ErrorIcon />,
+      //     });
+      //     return;
+      //   } else {
+      //     // add the user to the referee in invite_table
+      //     const { data: refereeData, error: refereeError } = await supabase
+      //       .from("invite_table")
+      //       .insert([
+      //         {
+      //           referral_code: referralCode,
+      //           referee_username: telegramUsername,
+      //           referee: {
+      //             nickname: nickname,
+      //             user_points: user.user_points,
+      //             game_total_distance: 0,
+      //             connected_consoles: [],
+      //           },
+      //         },
+      //       ]);
 
-          if (refereeError) {
-            throw refereeError;
-          }
-          console.log("Added referee to invite_table", refereeData);
-        }
-      }
+      //     if (refereeError) {
+      //       throw refereeError;
+      //     }
+      //     console.log("Added referee to invite_table", refereeData);
+      //   }
+      // }
 
       setAcceptNickname(false);
 

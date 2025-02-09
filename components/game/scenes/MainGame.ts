@@ -10,13 +10,11 @@ import {
   PowerUp,
 } from "../types";
 import {
-  constantKeyAnimations,
   environmentBackgrounds,
-  jetpackOptions,
   coinPatterns,
   zapperConfigs,
 } from "../constants";
-import { UnclaimedMysteryBox } from "@/lib/types";
+import { UnclaimedMysteryBox } from "../types";
 
 export class MainGame extends Scene {
   player: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
@@ -128,6 +126,7 @@ export class MainGame extends Scene {
     if (data.newGame) {
       this.resetGame();
     }
+    this.initializeGameSounds();
   }
 
   resetGame() {
@@ -175,149 +174,9 @@ export class MainGame extends Scene {
     console.log("Game has been reset");
   }
 
-  preload() {
-    console.log(
-      "Preloading game scene :",
-      this.character,
-      this.environment,
-      this.jetpack
-    );
-
-    // Load Fonts
-    this.load.font({ key: "jersey", url: "assets/fonts/Jersey10.ttf" });
-    this.load.font({ key: "handjet", url: "assets/fonts/Handjet.ttf" });
-
-    // Remove Existing Textures
-    ["bg_b1", "bg_b2", "bg_b3", "bg_ground", "bg_last"].forEach((key) => {
-      if (this.textures.exists(key)) {
-        this.textures.remove(key);
-      }
-    });
-
-    // Preload Power-Up Characters
-    ["armor", "flash", "angel"].forEach((character) => {
-      this.load.spritesheet(character, `assets/characters/${character}.png`, {
-        frameWidth: 190,
-        frameHeight: 220,
-      });
-    });
-
-    // Power-Up Transition
-    this.load.spritesheet("transition", "assets/misc/transition.png", {
-      frameWidth: 190,
-      frameHeight: 220,
-    });
-
-    // Misc Assets
-    this.load.spritesheet("coin", "assets/misc/coin.png", {
-      frameWidth: 480,
-      frameHeight: 480,
-    });
-    this.load.image("coin_icon", "assets/misc/coin_icon.png");
-    this.load.image("bar_1", "assets/misc/progress_bar/bar_1.png");
-    this.load.image("bar_2", "assets/misc/progress_bar/bar_2.png");
-
-    // Obstacle Assets
-    this.load.spritesheet(
-      "laser_left",
-      "assets/obstacles/laser/laser_left.png",
-      { frameWidth: 160, frameHeight: 160 }
-    );
-    this.load.spritesheet(
-      "laser_right",
-      "assets/obstacles/laser/laser_right.png",
-      { frameWidth: 160, frameHeight: 160 }
-    );
-    this.load.spritesheet("laser", "assets/obstacles/laser/laser.png", {
-      frameWidth: 1627,
-      frameHeight: 172,
-    });
-
-    // Rocket
-    this.load.spritesheet(
-      "rocket_warning",
-      "assets/obstacles/rocket/rocket_warning.png",
-      {
-        frameWidth: 100,
-        frameHeight: 95,
-      }
-    );
-    this.load.spritesheet("rocket", "assets/obstacles/rocket/rocket.png", {
-      frameWidth: 225,
-      frameHeight: 120,
-    });
-    this.load.spritesheet(
-      "zapper_90",
-      "assets/obstacles/zapper/zapper_90.png",
-      {
-        frameWidth: 190,
-        frameHeight: 540,
-      }
-    );
-
-    // Boxes
-    this.load.spritesheet("mystery_box", "assets/misc/mystery_box.png", {
-      frameWidth: 120,
-      frameHeight: 120,
-    });
-    this.load.spritesheet("power_up", "assets/misc/power_up.png", {
-      frameWidth: 120,
-      frameHeight: 120,
-    });
-
-    // Platform
-    this.load.image("platform", "assets/platform.png");
-
-    // Load Environment
-    this.loadEnvironmentAssets();
-
-    // Load Character and Jetpack
-    this.loadCharacterAssets();
-
-    // Load sound buttons
-    this.load.image("sound_on", "assets/misc/sound/sound-on.svg");
-    this.load.image("sound_off", "assets/misc/sound/no-sound.svg");
-
-    // Audios
-    this.load.audio("game_background", ["assets/sounds/game-bg-music.wav"]);
-    this.load.audio("coin_collect", ["assets/sounds/coin-collect.wav"]);
-    this.load.audio("mystery_box_collect", [
-      "assets/sounds/mystery-box-collect.wav",
-    ]);
-
-    // obstacles audios
-    this.load.audio("rocket_warning", [
-      "assets/sounds/obstacle-rocket-warning.wav",
-    ]);
-    this.load.audio("rocket_launch", [
-      "assets/sounds/obstacle-rocket-flyby.wav",
-    ]);
-    this.load.audio("laser_active", [
-      "assets/sounds/obstacle-laser-active.wav",
-    ]);
-    this.load.audio("rocket_hit", ["assets/sounds/rocket-hit-game-over.mp3"]);
-    this.load.audio("zapper_hit", ["assets/sounds/zapper-hit-game-over.wav"]);
-    this.load.audio("laser_hit", ["assets/sounds/laser-hit-game-over.wav"]);
-
-    // power ups transition audios
-    this.load.audio("flash_transition", ["assets/sounds/flash-transition.wav"]);
-    this.load.audio("angel_transition", ["assets/sounds/angel-transition.mp3"]);
-    this.load.audio("armor_transition", ["assets/sounds/armor-transition.wav"]);
-
-    // jetpack audios
-    this.load.audio("jetpack_normal", [
-      "assets/sounds/jetpack-normal-sound.wav",
-    ]);
-    this.load.audio("jetpack_heli", ["assets/sounds/jetpack-heli-sound.mp3"]);
-    this.load.audio("jetpack_rocket", [
-      "assets/sounds/jetpack-rocket-sound.mp3",
-    ]);
-  }
-
   create() {
     console.log("Creating game scene");
 
-    this.initializeGameSounds();
     this.background_music.play();
 
     // empty background layers array
@@ -333,7 +192,6 @@ export class MainGame extends Scene {
     );
     this.gameStartTime = Date.now();
     this.lastCoinSpawnTime = this.gameStartTime;
-    this.createAnimations();
 
     // Coin Counter
     this.add.image(160, 115, "coin_icon").setScale(0.15);
@@ -553,30 +411,6 @@ export class MainGame extends Scene {
     await Promise.all(loadPromises);
   }
 
-  loadEnvironmentAssets() {
-    const assets = environmentBackgrounds[this.environment] || [];
-    assets.forEach((asset, index) => {
-      const key = ["bg_b1", "bg_b2", "bg_b3", "bg_ground", "bg_last"][index];
-      this.load.image(key, `assets/environments/${asset}.png`);
-    });
-  }
-
-  loadCharacterAssets() {
-    const jetpacks = jetpackOptions;
-    if (jetpacks.includes(this.jetpack)) {
-      this.load.spritesheet(
-        `${this.character}_${this.jetpack}`,
-        `assets/characters/${this.character}_${this.jetpack}.png`,
-        {
-          frameWidth: 190,
-          frameHeight: 220,
-        }
-      );
-    } else {
-      console.warn("Jetpack not recognized");
-    }
-  }
-
   initializeGameSounds() {
     this.background_music = this.sound.add("game_background", {
       loop: true,
@@ -756,50 +590,6 @@ export class MainGame extends Scene {
       this.currentJetpackSound.stop();
     }
     this.currentJetpackSound = null;
-  }
-
-  createAnimations() {
-    // Create animations for default character
-    this.anims.create({
-      key: `${this.character}_${this.jetpack}_run`,
-      frames: this.anims.generateFrameNumbers(
-        `${this.character}_${this.jetpack}`,
-        {
-          start: 4,
-          end: 7,
-        }
-      ),
-      frameRate: 10,
-      repeat: -1,
-    });
-
-    this.anims.create({
-      key: `${this.character}_${this.jetpack}_fly`,
-      frames: this.anims.generateFrameNumbers(
-        `${this.character}_${this.jetpack}`,
-        {
-          start: 0,
-          end: 3,
-        }
-      ),
-      frameRate: 10,
-      repeat: -1,
-    });
-
-    // constant key animations
-    constantKeyAnimations.forEach(
-      ({ key, texture, start, end, frameRate, repeat }) => {
-        this.anims.create({
-          key,
-          frames: this.anims.generateFrameNumbers(texture, {
-            start,
-            end,
-          }),
-          frameRate,
-          repeat,
-        });
-      }
-    );
   }
 
   startPowerUpTransition(
@@ -1111,7 +901,13 @@ export class MainGame extends Scene {
 
   handleObstacleSpawning() {
     const x = this.cameras.main.width + 100;
-    const y = Phaser.Math.Between(100, this.cameras.main.height - 250);
+    const y = Phaser.Math.Between(220, this.cameras.main.height - 250);
+    const rocketYPositions = [
+      65, 65, 65, 65, 165, 265, 365, 465, 565, 665, 800,
+    ]; // more rockets in top row
+
+    const rocket_y = Phaser.Math.RND.pick(rocketYPositions);
+
     //@ts-ignore
     this.rockets?.children.each((rocket: any) => {
       if (rocket.x < -50) {
@@ -1119,7 +915,6 @@ export class MainGame extends Scene {
         this.rocket_launch_music.stop();
       }
     });
-
     // console.log(
     //   "screenYRangeBlockedByCoinForSpawning",
     //   this.screenYRangeBlockedByCoinForSpawning
@@ -1143,7 +938,7 @@ export class MainGame extends Scene {
 
     if (elapsedSeconds <= 30) {
       // Level 1 (0-30s): Only zappers, 10 coins
-      if (!this.lastZapperTime || this.time.now - this.lastZapperTime > 3000) {
+      if (!this.lastZapperTime || this.time.now - this.lastZapperTime > 6000) {
         // check if laser exists before spawning zapper
         if (
           (this.screenYRangeBlockedByLaserForSpawning[0] > y - 300 &&
@@ -1167,7 +962,7 @@ export class MainGame extends Scene {
 
       if (
         obstacleType === "zapper" &&
-        (!this.lastZapperTime || this.time.now - this.lastZapperTime > 2000)
+        (!this.lastZapperTime || this.time.now - this.lastZapperTime > 4000)
       ) {
         this.spawnZapper(x, y);
         this.lastZapperTime = this.time.now;
@@ -1175,7 +970,7 @@ export class MainGame extends Scene {
         obstacleType === "rocket" &&
         (!this.lastRocketTime || this.time.now - this.lastRocketTime > 9000)
       ) {
-        this.spawnRocketWithWarning(x, y);
+        this.spawnRocketWithWarning(x, rocket_y);
         this.lastRocketTime = this.time.now;
       }
     } else if (elapsedSeconds <= 150) {
@@ -1196,7 +991,7 @@ export class MainGame extends Scene {
         obstacleType === "rocket" &&
         (!this.lastRocketTime || this.time.now - this.lastRocketTime > 4000)
       ) {
-        this.spawnRocketWithWarning(x, y);
+        this.spawnRocketWithWarning(x, rocket_y);
         this.lastRocketTime = this.time.now;
       } else if (
         obstacleType === "laser" &&
@@ -1224,7 +1019,7 @@ export class MainGame extends Scene {
         obstacleType === "rocket" &&
         (!this.lastRocketTime || this.time.now - this.lastRocketTime > 2300)
       ) {
-        this.spawnRocketWithWarning(x, y);
+        this.spawnRocketWithWarning(x, rocket_y);
         this.lastRocketTime = this.time.now;
       }
     } else {
@@ -1240,7 +1035,7 @@ export class MainGame extends Scene {
         obstacleType === "rocket" &&
         (!this.lastRocketTime || this.time.now - this.lastRocketTime > 1500)
       ) {
-        this.spawnRocketWithWarning(x, y);
+        this.spawnRocketWithWarning(x, rocket_y);
         this.lastRocketTime = this.time.now;
       }
     }
@@ -1368,7 +1163,7 @@ export class MainGame extends Scene {
   spawnLaserWithWarning() {
     const laserY = Phaser.Math.Between(100, this.cameras.main.height - 100);
 
-    const warning_left = this.rocketWarning.create(200, laserY, "laser_left");
+    const warning_left = this.rocketWarning.create(150, laserY, "laser_left");
     const warning_right = this.rocketWarning.create(
       this.cameras.main.width - 150,
       laserY,
@@ -1384,7 +1179,7 @@ export class MainGame extends Scene {
     warning_right.setScale(1);
     warning_right.body.setAllowGravity(false);
     warning_right.anims.play("laser_right", true);
-    this.laser_active_music.play();
+
     // Clear warnings after duration
     this.time.delayedCall(warning_duration, () => {
       warning_left.destroy();
@@ -1394,6 +1189,7 @@ export class MainGame extends Scene {
     this.time.delayedCall(1500, () => {
       // Ensure the laser is within the screen bounds
       // Fixed X position in the middle of the screen
+      this.laser_active_music.play();
       const laserX = this.cameras.main.width / 2;
       const laser = this.lasers.create(laserX, laserY, "laser");
       laser.setVelocityX(0);
@@ -1504,6 +1300,13 @@ export class MainGame extends Scene {
   gameOver(player: any) {
     player.disableBody(true, true);
     this.background_music.stop();
+    this.rocket_launch_music.stop();
+    this.rocket_warning_music.stop();
+    this.laser_active_music.stop();
+    this.jetpack_normal_music.stop();
+    this.jetpack_heli_music.stop();
+    this.jetpack_rocket_music.stop();
+    this.stopJetpackSound();
     this.inTransition = false;
     this.scene.start("GameOver", {
       coinCount: this.coinCount,

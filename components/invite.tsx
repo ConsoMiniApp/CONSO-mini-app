@@ -276,15 +276,27 @@ export default function Invite() {
           </div>
         ) : (
           <>
-            {referees.map((row, index) => (
-              <RefereeRow
-                key={index}
-                row={row}
-                index={index}
-                expandRow={expandRow}
-                rowExpanded={row.rowExpanded}
-              />
-            ))}
+            {referees.length > 0 ? (
+              <>
+                {referees.map((row, index) => (
+                  <RefereeRow
+                    key={index}
+                    row={row}
+                    index={index}
+                    expandRow={expandRow}
+                    rowExpanded={row.rowExpanded}
+                  />
+                ))}
+              </>
+            ) : (
+              <div className="flex flex-col justify-center items-center gap-3 h-20 mb-4 mt-2">
+                <span
+                  className={cn("text-xl text-[#E8BA00] ", jersey.className)}
+                >
+                  NO FRIENDS YET
+                </span>
+              </div>
+            )}
           </>
         )}
         <div className="h-32"></div>

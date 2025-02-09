@@ -292,7 +292,6 @@ export default function Play() {
             <PhaserGame
               ref={phaserRef}
               gameInitSettings={getGameInitSettings()}
-              updateUserData={updateUserData}
               exitGame={handleGameExit}
             />
           </div>
