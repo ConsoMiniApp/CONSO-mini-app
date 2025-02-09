@@ -55,6 +55,7 @@ import { getSelectedJetpack } from "@/lib/helpers/play/getSelectedJetpack";
 import { checkHighScore } from "@/lib/helpers/play/checkHighScore";
 import { createClient } from "@/utils/supabase/client";
 import toast from "react-hot-toast";
+import { generateGameItems } from "@/lib/helpers/play/generateGameItems";
 
 export default function Play() {
   const supabase = createClient();
@@ -78,24 +79,28 @@ export default function Play() {
 
   // game functions
   function getGameInitSettings() {
+    const gameItems = generateGameItems();
+    console.log("Game Items", gameItems);
     const gameInitSettings: GameInitSettings = {
       environment: EnvironmentOptionsType.Forest,
       character: getSelectedCharacter(characters),
       jetpack: getSelectedJetpack(jetpacks),
-      mysteryBoxes: [
-        {
-          id: 1,
-          timestamp: 5,
-        },
-        {
-          id: 2,
-          timestamp: 10,
-        },
-      ],
-      powerUps: [
-        // { character: CharacterOptionsType.Flash, time: 10, timestamp: 10 },
-        // { character: CharacterOptionsType.Angel, time: 5, timestamp: 35 },
-      ],
+      ...gameItems,
+      // mysteryBoxes: [
+      //   {
+      //     id: 1,
+      //     timestamp: 5,
+      //   },
+      //   {
+      //     id: 2,
+      //     timestamp: 10,
+      //   },
+      // ],
+      // powerUps: [
+      //   { character: CharacterOptionsType.Flash, time: 10, timestamp: 10 },
+      //   { character: CharacterOptionsType.Angel, time: 5, timestamp: 35 },
+      //   {character: CharacterOptionsType.Armor, time: 5, timestamp: 60},
+      // ],
     };
     return gameInitSettings;
   }
